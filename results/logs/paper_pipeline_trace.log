@@ -1,0 +1,16 @@
+2026-03-17 09:21:13 | bootstrap | running | Preparing background paper pipeline
+2026-03-17 09:21:13 | pipeline | failed | 无法覆盖变量 Pid，因为该变量为只读变量或常量。
+2026-03-17 09:22:07 | bootstrap | running | Preparing background paper pipeline
+2026-03-17 09:22:07 | main_table | running | 
+2026-03-17 09:22:07 | START main_table
+2026-03-17 09:26:08 | bootstrap | running | Preparing background paper pipeline
+2026-03-17 09:26:08 | main_table | running | -m analysis.make_tables --in results/results_main_rigorous.csv --out results/main_table.tex --experiment main
+2026-03-17 09:26:08 | START main_table
+2026-03-17 09:26:08 | main_table | completed | 
+2026-03-17 09:26:08 | DONE main_table
+2026-03-17 09:26:08 | main_plots | running | -m analysis.make_plots --in results/results_main_rigorous.csv --outdir figs/main --experiment main
+2026-03-17 09:26:08 | START main_plots
+2026-03-17 09:26:11 | main_plots | completed | 
+2026-03-17 09:26:11 | DONE main_plots
+2026-03-17 09:26:11 | scenario_run | running | -m src.runner --config configs/scenario.yaml
+2026-03-17 09:26:11 | START scenario_run

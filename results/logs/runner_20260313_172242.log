@@ -1,0 +1,3702 @@
+2026-03-13 17:22:42,971 | INFO | Experiment=simops | Seeds=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10] | Methods=['cg', 'greedy', 'fifo']
+2026-03-13 17:22:44,021 | ERROR | Run failed: N=25 seed=1 op=simops method=cg
+Traceback (most recent call last):
+  File "E:\PythonProject1\src\runner.py", line 393, in run_experiment
+    sol = solve_fn(instance, method_cfg, logger)
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 227, in solve
+    obj_lp, _, duals, status_lp = _solve_master(
+                                  ~~~~~~~~~~~~~^
+        columns_all,
+        ^^^^^^^^^^^^
+    ...<5 lines>...
+        time_limit=time_limit,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 190, in _solve_master
+    _solve_with(solver)
+    ~~~~~~~~~~~^^^^^^^^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 175, in _solve_with
+    prob.solve(solver_obj)
+    ~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\pulp.py", line 2092, in solve
+    status = solver.actualSolve(self, **kwargs)
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 347, in actualSolve
+    self.buildSolverModel(lp)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 276, in buildSolverModel
+    self.initGurobi()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 262, in initGurobi
+    raise e
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 257, in initGurobi
+    self.model = gp.Model(env=self.env)
+                 ~~~~~~~~^^^^^^^^^^^^^^
+  File "src/gurobipy/_model.pyx", line 152, in gurobipy._model.Model.__init__
+  File "src/gurobipy/gurobi.pxi", line 40, in gurobipy._core.gurobi._getdefaultenv
+  File "src/gurobipy/env.pxi", line 112, in gurobipy._core.Env.__init__
+gurobipy._exception.GurobiError: User name mismatch (licensed to 'researcher', current user is 'codexsandboxoffline')
+2026-03-13 17:22:44,554 | ERROR | Run failed: N=25 seed=1 op=sequential method=cg
+Traceback (most recent call last):
+  File "E:\PythonProject1\src\runner.py", line 393, in run_experiment
+    sol = solve_fn(instance, method_cfg, logger)
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 227, in solve
+    obj_lp, _, duals, status_lp = _solve_master(
+                                  ~~~~~~~~~~~~~^
+        columns_all,
+        ^^^^^^^^^^^^
+    ...<5 lines>...
+        time_limit=time_limit,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 190, in _solve_master
+    _solve_with(solver)
+    ~~~~~~~~~~~^^^^^^^^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 175, in _solve_with
+    prob.solve(solver_obj)
+    ~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\pulp.py", line 2092, in solve
+    status = solver.actualSolve(self, **kwargs)
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 347, in actualSolve
+    self.buildSolverModel(lp)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 276, in buildSolverModel
+    self.initGurobi()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 262, in initGurobi
+    raise e
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 257, in initGurobi
+    self.model = gp.Model(env=self.env)
+                 ~~~~~~~~^^^^^^^^^^^^^^
+  File "src/gurobipy/_model.pyx", line 152, in gurobipy._model.Model.__init__
+  File "src/gurobipy/gurobi.pxi", line 40, in gurobipy._core.gurobi._getdefaultenv
+  File "src/gurobipy/env.pxi", line 112, in gurobipy._core.Env.__init__
+gurobipy._exception.GurobiError: User name mismatch (licensed to 'researcher', current user is 'codexsandboxoffline')
+2026-03-13 17:22:45,322 | ERROR | Run failed: N=25 seed=2 op=simops method=cg
+Traceback (most recent call last):
+  File "E:\PythonProject1\src\runner.py", line 393, in run_experiment
+    sol = solve_fn(instance, method_cfg, logger)
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 227, in solve
+    obj_lp, _, duals, status_lp = _solve_master(
+                                  ~~~~~~~~~~~~~^
+        columns_all,
+        ^^^^^^^^^^^^
+    ...<5 lines>...
+        time_limit=time_limit,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 190, in _solve_master
+    _solve_with(solver)
+    ~~~~~~~~~~~^^^^^^^^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 175, in _solve_with
+    prob.solve(solver_obj)
+    ~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\pulp.py", line 2092, in solve
+    status = solver.actualSolve(self, **kwargs)
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 347, in actualSolve
+    self.buildSolverModel(lp)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 276, in buildSolverModel
+    self.initGurobi()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 262, in initGurobi
+    raise e
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 257, in initGurobi
+    self.model = gp.Model(env=self.env)
+                 ~~~~~~~~^^^^^^^^^^^^^^
+  File "src/gurobipy/_model.pyx", line 152, in gurobipy._model.Model.__init__
+  File "src/gurobipy/gurobi.pxi", line 40, in gurobipy._core.gurobi._getdefaultenv
+  File "src/gurobipy/env.pxi", line 112, in gurobipy._core.Env.__init__
+gurobipy._exception.GurobiError: User name mismatch (licensed to 'researcher', current user is 'codexsandboxoffline')
+2026-03-13 17:22:45,759 | ERROR | Run failed: N=25 seed=2 op=sequential method=cg
+Traceback (most recent call last):
+  File "E:\PythonProject1\src\runner.py", line 393, in run_experiment
+    sol = solve_fn(instance, method_cfg, logger)
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 227, in solve
+    obj_lp, _, duals, status_lp = _solve_master(
+                                  ~~~~~~~~~~~~~^
+        columns_all,
+        ^^^^^^^^^^^^
+    ...<5 lines>...
+        time_limit=time_limit,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 190, in _solve_master
+    _solve_with(solver)
+    ~~~~~~~~~~~^^^^^^^^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 175, in _solve_with
+    prob.solve(solver_obj)
+    ~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\pulp.py", line 2092, in solve
+    status = solver.actualSolve(self, **kwargs)
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 347, in actualSolve
+    self.buildSolverModel(lp)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 276, in buildSolverModel
+    self.initGurobi()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 262, in initGurobi
+    raise e
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 257, in initGurobi
+    self.model = gp.Model(env=self.env)
+                 ~~~~~~~~^^^^^^^^^^^^^^
+  File "src/gurobipy/_model.pyx", line 152, in gurobipy._model.Model.__init__
+  File "src/gurobipy/gurobi.pxi", line 40, in gurobipy._core.gurobi._getdefaultenv
+  File "src/gurobipy/env.pxi", line 112, in gurobipy._core.Env.__init__
+gurobipy._exception.GurobiError: User name mismatch (licensed to 'researcher', current user is 'codexsandboxoffline')
+2026-03-13 17:22:46,607 | ERROR | Run failed: N=25 seed=3 op=simops method=cg
+Traceback (most recent call last):
+  File "E:\PythonProject1\src\runner.py", line 393, in run_experiment
+    sol = solve_fn(instance, method_cfg, logger)
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 227, in solve
+    obj_lp, _, duals, status_lp = _solve_master(
+                                  ~~~~~~~~~~~~~^
+        columns_all,
+        ^^^^^^^^^^^^
+    ...<5 lines>...
+        time_limit=time_limit,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 190, in _solve_master
+    _solve_with(solver)
+    ~~~~~~~~~~~^^^^^^^^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 175, in _solve_with
+    prob.solve(solver_obj)
+    ~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\pulp.py", line 2092, in solve
+    status = solver.actualSolve(self, **kwargs)
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 347, in actualSolve
+    self.buildSolverModel(lp)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 276, in buildSolverModel
+    self.initGurobi()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 262, in initGurobi
+    raise e
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 257, in initGurobi
+    self.model = gp.Model(env=self.env)
+                 ~~~~~~~~^^^^^^^^^^^^^^
+  File "src/gurobipy/_model.pyx", line 152, in gurobipy._model.Model.__init__
+  File "src/gurobipy/gurobi.pxi", line 40, in gurobipy._core.gurobi._getdefaultenv
+  File "src/gurobipy/env.pxi", line 112, in gurobipy._core.Env.__init__
+gurobipy._exception.GurobiError: User name mismatch (licensed to 'researcher', current user is 'codexsandboxoffline')
+2026-03-13 17:22:47,087 | ERROR | Run failed: N=25 seed=3 op=sequential method=cg
+Traceback (most recent call last):
+  File "E:\PythonProject1\src\runner.py", line 393, in run_experiment
+    sol = solve_fn(instance, method_cfg, logger)
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 227, in solve
+    obj_lp, _, duals, status_lp = _solve_master(
+                                  ~~~~~~~~~~~~~^
+        columns_all,
+        ^^^^^^^^^^^^
+    ...<5 lines>...
+        time_limit=time_limit,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 190, in _solve_master
+    _solve_with(solver)
+    ~~~~~~~~~~~^^^^^^^^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 175, in _solve_with
+    prob.solve(solver_obj)
+    ~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\pulp.py", line 2092, in solve
+    status = solver.actualSolve(self, **kwargs)
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 347, in actualSolve
+    self.buildSolverModel(lp)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 276, in buildSolverModel
+    self.initGurobi()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 262, in initGurobi
+    raise e
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 257, in initGurobi
+    self.model = gp.Model(env=self.env)
+                 ~~~~~~~~^^^^^^^^^^^^^^
+  File "src/gurobipy/_model.pyx", line 152, in gurobipy._model.Model.__init__
+  File "src/gurobipy/gurobi.pxi", line 40, in gurobipy._core.gurobi._getdefaultenv
+  File "src/gurobipy/env.pxi", line 112, in gurobipy._core.Env.__init__
+gurobipy._exception.GurobiError: User name mismatch (licensed to 'researcher', current user is 'codexsandboxoffline')
+2026-03-13 17:22:48,000 | ERROR | Run failed: N=25 seed=4 op=simops method=cg
+Traceback (most recent call last):
+  File "E:\PythonProject1\src\runner.py", line 393, in run_experiment
+    sol = solve_fn(instance, method_cfg, logger)
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 227, in solve
+    obj_lp, _, duals, status_lp = _solve_master(
+                                  ~~~~~~~~~~~~~^
+        columns_all,
+        ^^^^^^^^^^^^
+    ...<5 lines>...
+        time_limit=time_limit,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 190, in _solve_master
+    _solve_with(solver)
+    ~~~~~~~~~~~^^^^^^^^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 175, in _solve_with
+    prob.solve(solver_obj)
+    ~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\pulp.py", line 2092, in solve
+    status = solver.actualSolve(self, **kwargs)
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 347, in actualSolve
+    self.buildSolverModel(lp)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 276, in buildSolverModel
+    self.initGurobi()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 262, in initGurobi
+    raise e
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 257, in initGurobi
+    self.model = gp.Model(env=self.env)
+                 ~~~~~~~~^^^^^^^^^^^^^^
+  File "src/gurobipy/_model.pyx", line 152, in gurobipy._model.Model.__init__
+  File "src/gurobipy/gurobi.pxi", line 40, in gurobipy._core.gurobi._getdefaultenv
+  File "src/gurobipy/env.pxi", line 112, in gurobipy._core.Env.__init__
+gurobipy._exception.GurobiError: User name mismatch (licensed to 'researcher', current user is 'codexsandboxoffline')
+2026-03-13 17:22:48,526 | ERROR | Run failed: N=25 seed=4 op=sequential method=cg
+Traceback (most recent call last):
+  File "E:\PythonProject1\src\runner.py", line 393, in run_experiment
+    sol = solve_fn(instance, method_cfg, logger)
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 227, in solve
+    obj_lp, _, duals, status_lp = _solve_master(
+                                  ~~~~~~~~~~~~~^
+        columns_all,
+        ^^^^^^^^^^^^
+    ...<5 lines>...
+        time_limit=time_limit,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 190, in _solve_master
+    _solve_with(solver)
+    ~~~~~~~~~~~^^^^^^^^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 175, in _solve_with
+    prob.solve(solver_obj)
+    ~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\pulp.py", line 2092, in solve
+    status = solver.actualSolve(self, **kwargs)
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 347, in actualSolve
+    self.buildSolverModel(lp)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 276, in buildSolverModel
+    self.initGurobi()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 262, in initGurobi
+    raise e
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 257, in initGurobi
+    self.model = gp.Model(env=self.env)
+                 ~~~~~~~~^^^^^^^^^^^^^^
+  File "src/gurobipy/_model.pyx", line 152, in gurobipy._model.Model.__init__
+  File "src/gurobipy/gurobi.pxi", line 40, in gurobipy._core.gurobi._getdefaultenv
+  File "src/gurobipy/env.pxi", line 112, in gurobipy._core.Env.__init__
+gurobipy._exception.GurobiError: User name mismatch (licensed to 'researcher', current user is 'codexsandboxoffline')
+2026-03-13 17:22:49,311 | ERROR | Run failed: N=25 seed=5 op=simops method=cg
+Traceback (most recent call last):
+  File "E:\PythonProject1\src\runner.py", line 393, in run_experiment
+    sol = solve_fn(instance, method_cfg, logger)
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 227, in solve
+    obj_lp, _, duals, status_lp = _solve_master(
+                                  ~~~~~~~~~~~~~^
+        columns_all,
+        ^^^^^^^^^^^^
+    ...<5 lines>...
+        time_limit=time_limit,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 190, in _solve_master
+    _solve_with(solver)
+    ~~~~~~~~~~~^^^^^^^^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 175, in _solve_with
+    prob.solve(solver_obj)
+    ~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\pulp.py", line 2092, in solve
+    status = solver.actualSolve(self, **kwargs)
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 347, in actualSolve
+    self.buildSolverModel(lp)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 276, in buildSolverModel
+    self.initGurobi()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 262, in initGurobi
+    raise e
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 257, in initGurobi
+    self.model = gp.Model(env=self.env)
+                 ~~~~~~~~^^^^^^^^^^^^^^
+  File "src/gurobipy/_model.pyx", line 152, in gurobipy._model.Model.__init__
+  File "src/gurobipy/gurobi.pxi", line 40, in gurobipy._core.gurobi._getdefaultenv
+  File "src/gurobipy/env.pxi", line 112, in gurobipy._core.Env.__init__
+gurobipy._exception.GurobiError: User name mismatch (licensed to 'researcher', current user is 'codexsandboxoffline')
+2026-03-13 17:22:49,702 | ERROR | Run failed: N=25 seed=5 op=sequential method=cg
+Traceback (most recent call last):
+  File "E:\PythonProject1\src\runner.py", line 393, in run_experiment
+    sol = solve_fn(instance, method_cfg, logger)
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 227, in solve
+    obj_lp, _, duals, status_lp = _solve_master(
+                                  ~~~~~~~~~~~~~^
+        columns_all,
+        ^^^^^^^^^^^^
+    ...<5 lines>...
+        time_limit=time_limit,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 190, in _solve_master
+    _solve_with(solver)
+    ~~~~~~~~~~~^^^^^^^^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 175, in _solve_with
+    prob.solve(solver_obj)
+    ~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\pulp.py", line 2092, in solve
+    status = solver.actualSolve(self, **kwargs)
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 347, in actualSolve
+    self.buildSolverModel(lp)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 276, in buildSolverModel
+    self.initGurobi()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 262, in initGurobi
+    raise e
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 257, in initGurobi
+    self.model = gp.Model(env=self.env)
+                 ~~~~~~~~^^^^^^^^^^^^^^
+  File "src/gurobipy/_model.pyx", line 152, in gurobipy._model.Model.__init__
+  File "src/gurobipy/gurobi.pxi", line 40, in gurobipy._core.gurobi._getdefaultenv
+  File "src/gurobipy/env.pxi", line 112, in gurobipy._core.Env.__init__
+gurobipy._exception.GurobiError: User name mismatch (licensed to 'researcher', current user is 'codexsandboxoffline')
+2026-03-13 17:22:50,540 | ERROR | Run failed: N=25 seed=6 op=simops method=cg
+Traceback (most recent call last):
+  File "E:\PythonProject1\src\runner.py", line 393, in run_experiment
+    sol = solve_fn(instance, method_cfg, logger)
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 227, in solve
+    obj_lp, _, duals, status_lp = _solve_master(
+                                  ~~~~~~~~~~~~~^
+        columns_all,
+        ^^^^^^^^^^^^
+    ...<5 lines>...
+        time_limit=time_limit,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 190, in _solve_master
+    _solve_with(solver)
+    ~~~~~~~~~~~^^^^^^^^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 175, in _solve_with
+    prob.solve(solver_obj)
+    ~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\pulp.py", line 2092, in solve
+    status = solver.actualSolve(self, **kwargs)
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 347, in actualSolve
+    self.buildSolverModel(lp)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 276, in buildSolverModel
+    self.initGurobi()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 262, in initGurobi
+    raise e
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 257, in initGurobi
+    self.model = gp.Model(env=self.env)
+                 ~~~~~~~~^^^^^^^^^^^^^^
+  File "src/gurobipy/_model.pyx", line 152, in gurobipy._model.Model.__init__
+  File "src/gurobipy/gurobi.pxi", line 40, in gurobipy._core.gurobi._getdefaultenv
+  File "src/gurobipy/env.pxi", line 112, in gurobipy._core.Env.__init__
+gurobipy._exception.GurobiError: User name mismatch (licensed to 'researcher', current user is 'codexsandboxoffline')
+2026-03-13 17:22:50,982 | ERROR | Run failed: N=25 seed=6 op=sequential method=cg
+Traceback (most recent call last):
+  File "E:\PythonProject1\src\runner.py", line 393, in run_experiment
+    sol = solve_fn(instance, method_cfg, logger)
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 227, in solve
+    obj_lp, _, duals, status_lp = _solve_master(
+                                  ~~~~~~~~~~~~~^
+        columns_all,
+        ^^^^^^^^^^^^
+    ...<5 lines>...
+        time_limit=time_limit,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 190, in _solve_master
+    _solve_with(solver)
+    ~~~~~~~~~~~^^^^^^^^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 175, in _solve_with
+    prob.solve(solver_obj)
+    ~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\pulp.py", line 2092, in solve
+    status = solver.actualSolve(self, **kwargs)
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 347, in actualSolve
+    self.buildSolverModel(lp)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 276, in buildSolverModel
+    self.initGurobi()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 262, in initGurobi
+    raise e
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 257, in initGurobi
+    self.model = gp.Model(env=self.env)
+                 ~~~~~~~~^^^^^^^^^^^^^^
+  File "src/gurobipy/_model.pyx", line 152, in gurobipy._model.Model.__init__
+  File "src/gurobipy/gurobi.pxi", line 40, in gurobipy._core.gurobi._getdefaultenv
+  File "src/gurobipy/env.pxi", line 112, in gurobipy._core.Env.__init__
+gurobipy._exception.GurobiError: User name mismatch (licensed to 'researcher', current user is 'codexsandboxoffline')
+2026-03-13 17:22:51,834 | ERROR | Run failed: N=25 seed=7 op=simops method=cg
+Traceback (most recent call last):
+  File "E:\PythonProject1\src\runner.py", line 393, in run_experiment
+    sol = solve_fn(instance, method_cfg, logger)
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 227, in solve
+    obj_lp, _, duals, status_lp = _solve_master(
+                                  ~~~~~~~~~~~~~^
+        columns_all,
+        ^^^^^^^^^^^^
+    ...<5 lines>...
+        time_limit=time_limit,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 190, in _solve_master
+    _solve_with(solver)
+    ~~~~~~~~~~~^^^^^^^^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 175, in _solve_with
+    prob.solve(solver_obj)
+    ~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\pulp.py", line 2092, in solve
+    status = solver.actualSolve(self, **kwargs)
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 347, in actualSolve
+    self.buildSolverModel(lp)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 276, in buildSolverModel
+    self.initGurobi()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 262, in initGurobi
+    raise e
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 257, in initGurobi
+    self.model = gp.Model(env=self.env)
+                 ~~~~~~~~^^^^^^^^^^^^^^
+  File "src/gurobipy/_model.pyx", line 152, in gurobipy._model.Model.__init__
+  File "src/gurobipy/gurobi.pxi", line 40, in gurobipy._core.gurobi._getdefaultenv
+  File "src/gurobipy/env.pxi", line 112, in gurobipy._core.Env.__init__
+gurobipy._exception.GurobiError: User name mismatch (licensed to 'researcher', current user is 'codexsandboxoffline')
+2026-03-13 17:22:52,360 | ERROR | Run failed: N=25 seed=7 op=sequential method=cg
+Traceback (most recent call last):
+  File "E:\PythonProject1\src\runner.py", line 393, in run_experiment
+    sol = solve_fn(instance, method_cfg, logger)
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 227, in solve
+    obj_lp, _, duals, status_lp = _solve_master(
+                                  ~~~~~~~~~~~~~^
+        columns_all,
+        ^^^^^^^^^^^^
+    ...<5 lines>...
+        time_limit=time_limit,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 190, in _solve_master
+    _solve_with(solver)
+    ~~~~~~~~~~~^^^^^^^^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 175, in _solve_with
+    prob.solve(solver_obj)
+    ~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\pulp.py", line 2092, in solve
+    status = solver.actualSolve(self, **kwargs)
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 347, in actualSolve
+    self.buildSolverModel(lp)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 276, in buildSolverModel
+    self.initGurobi()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 262, in initGurobi
+    raise e
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 257, in initGurobi
+    self.model = gp.Model(env=self.env)
+                 ~~~~~~~~^^^^^^^^^^^^^^
+  File "src/gurobipy/_model.pyx", line 152, in gurobipy._model.Model.__init__
+  File "src/gurobipy/gurobi.pxi", line 40, in gurobipy._core.gurobi._getdefaultenv
+  File "src/gurobipy/env.pxi", line 112, in gurobipy._core.Env.__init__
+gurobipy._exception.GurobiError: User name mismatch (licensed to 'researcher', current user is 'codexsandboxoffline')
+2026-03-13 17:22:53,870 | ERROR | Run failed: N=25 seed=8 op=simops method=cg
+Traceback (most recent call last):
+  File "E:\PythonProject1\src\runner.py", line 393, in run_experiment
+    sol = solve_fn(instance, method_cfg, logger)
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 227, in solve
+    obj_lp, _, duals, status_lp = _solve_master(
+                                  ~~~~~~~~~~~~~^
+        columns_all,
+        ^^^^^^^^^^^^
+    ...<5 lines>...
+        time_limit=time_limit,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 190, in _solve_master
+    _solve_with(solver)
+    ~~~~~~~~~~~^^^^^^^^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 175, in _solve_with
+    prob.solve(solver_obj)
+    ~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\pulp.py", line 2092, in solve
+    status = solver.actualSolve(self, **kwargs)
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 347, in actualSolve
+    self.buildSolverModel(lp)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 276, in buildSolverModel
+    self.initGurobi()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 262, in initGurobi
+    raise e
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 257, in initGurobi
+    self.model = gp.Model(env=self.env)
+                 ~~~~~~~~^^^^^^^^^^^^^^
+  File "src/gurobipy/_model.pyx", line 152, in gurobipy._model.Model.__init__
+  File "src/gurobipy/gurobi.pxi", line 40, in gurobipy._core.gurobi._getdefaultenv
+  File "src/gurobipy/env.pxi", line 112, in gurobipy._core.Env.__init__
+gurobipy._exception.GurobiError: User name mismatch (licensed to 'researcher', current user is 'codexsandboxoffline')
+2026-03-13 17:22:54,954 | ERROR | Run failed: N=25 seed=8 op=sequential method=cg
+Traceback (most recent call last):
+  File "E:\PythonProject1\src\runner.py", line 393, in run_experiment
+    sol = solve_fn(instance, method_cfg, logger)
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 227, in solve
+    obj_lp, _, duals, status_lp = _solve_master(
+                                  ~~~~~~~~~~~~~^
+        columns_all,
+        ^^^^^^^^^^^^
+    ...<5 lines>...
+        time_limit=time_limit,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 190, in _solve_master
+    _solve_with(solver)
+    ~~~~~~~~~~~^^^^^^^^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 175, in _solve_with
+    prob.solve(solver_obj)
+    ~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\pulp.py", line 2092, in solve
+    status = solver.actualSolve(self, **kwargs)
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 347, in actualSolve
+    self.buildSolverModel(lp)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 276, in buildSolverModel
+    self.initGurobi()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 262, in initGurobi
+    raise e
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 257, in initGurobi
+    self.model = gp.Model(env=self.env)
+                 ~~~~~~~~^^^^^^^^^^^^^^
+  File "src/gurobipy/_model.pyx", line 152, in gurobipy._model.Model.__init__
+  File "src/gurobipy/gurobi.pxi", line 40, in gurobipy._core.gurobi._getdefaultenv
+  File "src/gurobipy/env.pxi", line 112, in gurobipy._core.Env.__init__
+gurobipy._exception.GurobiError: User name mismatch (licensed to 'researcher', current user is 'codexsandboxoffline')
+2026-03-13 17:22:56,279 | ERROR | Run failed: N=25 seed=9 op=simops method=cg
+Traceback (most recent call last):
+  File "E:\PythonProject1\src\runner.py", line 393, in run_experiment
+    sol = solve_fn(instance, method_cfg, logger)
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 227, in solve
+    obj_lp, _, duals, status_lp = _solve_master(
+                                  ~~~~~~~~~~~~~^
+        columns_all,
+        ^^^^^^^^^^^^
+    ...<5 lines>...
+        time_limit=time_limit,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 190, in _solve_master
+    _solve_with(solver)
+    ~~~~~~~~~~~^^^^^^^^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 175, in _solve_with
+    prob.solve(solver_obj)
+    ~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\pulp.py", line 2092, in solve
+    status = solver.actualSolve(self, **kwargs)
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 347, in actualSolve
+    self.buildSolverModel(lp)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 276, in buildSolverModel
+    self.initGurobi()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 262, in initGurobi
+    raise e
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 257, in initGurobi
+    self.model = gp.Model(env=self.env)
+                 ~~~~~~~~^^^^^^^^^^^^^^
+  File "src/gurobipy/_model.pyx", line 152, in gurobipy._model.Model.__init__
+  File "src/gurobipy/gurobi.pxi", line 40, in gurobipy._core.gurobi._getdefaultenv
+  File "src/gurobipy/env.pxi", line 112, in gurobipy._core.Env.__init__
+gurobipy._exception.GurobiError: User name mismatch (licensed to 'researcher', current user is 'codexsandboxoffline')
+2026-03-13 17:22:56,658 | ERROR | Run failed: N=25 seed=9 op=sequential method=cg
+Traceback (most recent call last):
+  File "E:\PythonProject1\src\runner.py", line 393, in run_experiment
+    sol = solve_fn(instance, method_cfg, logger)
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 227, in solve
+    obj_lp, _, duals, status_lp = _solve_master(
+                                  ~~~~~~~~~~~~~^
+        columns_all,
+        ^^^^^^^^^^^^
+    ...<5 lines>...
+        time_limit=time_limit,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 190, in _solve_master
+    _solve_with(solver)
+    ~~~~~~~~~~~^^^^^^^^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 175, in _solve_with
+    prob.solve(solver_obj)
+    ~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\pulp.py", line 2092, in solve
+    status = solver.actualSolve(self, **kwargs)
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 347, in actualSolve
+    self.buildSolverModel(lp)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 276, in buildSolverModel
+    self.initGurobi()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 262, in initGurobi
+    raise e
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 257, in initGurobi
+    self.model = gp.Model(env=self.env)
+                 ~~~~~~~~^^^^^^^^^^^^^^
+  File "src/gurobipy/_model.pyx", line 152, in gurobipy._model.Model.__init__
+  File "src/gurobipy/gurobi.pxi", line 40, in gurobipy._core.gurobi._getdefaultenv
+  File "src/gurobipy/env.pxi", line 112, in gurobipy._core.Env.__init__
+gurobipy._exception.GurobiError: User name mismatch (licensed to 'researcher', current user is 'codexsandboxoffline')
+2026-03-13 17:22:57,301 | ERROR | Run failed: N=25 seed=10 op=simops method=cg
+Traceback (most recent call last):
+  File "E:\PythonProject1\src\runner.py", line 393, in run_experiment
+    sol = solve_fn(instance, method_cfg, logger)
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 227, in solve
+    obj_lp, _, duals, status_lp = _solve_master(
+                                  ~~~~~~~~~~~~~^
+        columns_all,
+        ^^^^^^^^^^^^
+    ...<5 lines>...
+        time_limit=time_limit,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 190, in _solve_master
+    _solve_with(solver)
+    ~~~~~~~~~~~^^^^^^^^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 175, in _solve_with
+    prob.solve(solver_obj)
+    ~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\pulp.py", line 2092, in solve
+    status = solver.actualSolve(self, **kwargs)
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 347, in actualSolve
+    self.buildSolverModel(lp)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 276, in buildSolverModel
+    self.initGurobi()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 262, in initGurobi
+    raise e
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 257, in initGurobi
+    self.model = gp.Model(env=self.env)
+                 ~~~~~~~~^^^^^^^^^^^^^^
+  File "src/gurobipy/_model.pyx", line 152, in gurobipy._model.Model.__init__
+  File "src/gurobipy/gurobi.pxi", line 40, in gurobipy._core.gurobi._getdefaultenv
+  File "src/gurobipy/env.pxi", line 112, in gurobipy._core.Env.__init__
+gurobipy._exception.GurobiError: User name mismatch (licensed to 'researcher', current user is 'codexsandboxoffline')
+2026-03-13 17:22:57,645 | ERROR | Run failed: N=25 seed=10 op=sequential method=cg
+Traceback (most recent call last):
+  File "E:\PythonProject1\src\runner.py", line 393, in run_experiment
+    sol = solve_fn(instance, method_cfg, logger)
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 227, in solve
+    obj_lp, _, duals, status_lp = _solve_master(
+                                  ~~~~~~~~~~~~~^
+        columns_all,
+        ^^^^^^^^^^^^
+    ...<5 lines>...
+        time_limit=time_limit,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 190, in _solve_master
+    _solve_with(solver)
+    ~~~~~~~~~~~^^^^^^^^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 175, in _solve_with
+    prob.solve(solver_obj)
+    ~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\pulp.py", line 2092, in solve
+    status = solver.actualSolve(self, **kwargs)
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 347, in actualSolve
+    self.buildSolverModel(lp)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 276, in buildSolverModel
+    self.initGurobi()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 262, in initGurobi
+    raise e
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 257, in initGurobi
+    self.model = gp.Model(env=self.env)
+                 ~~~~~~~~^^^^^^^^^^^^^^
+  File "src/gurobipy/_model.pyx", line 152, in gurobipy._model.Model.__init__
+  File "src/gurobipy/gurobi.pxi", line 40, in gurobipy._core.gurobi._getdefaultenv
+  File "src/gurobipy/env.pxi", line 112, in gurobipy._core.Env.__init__
+gurobipy._exception.GurobiError: User name mismatch (licensed to 'researcher', current user is 'codexsandboxoffline')
+2026-03-13 17:22:59,373 | ERROR | Run failed: N=50 seed=1 op=simops method=cg
+Traceback (most recent call last):
+  File "E:\PythonProject1\src\runner.py", line 393, in run_experiment
+    sol = solve_fn(instance, method_cfg, logger)
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 227, in solve
+    obj_lp, _, duals, status_lp = _solve_master(
+                                  ~~~~~~~~~~~~~^
+        columns_all,
+        ^^^^^^^^^^^^
+    ...<5 lines>...
+        time_limit=time_limit,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 190, in _solve_master
+    _solve_with(solver)
+    ~~~~~~~~~~~^^^^^^^^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 175, in _solve_with
+    prob.solve(solver_obj)
+    ~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\pulp.py", line 2092, in solve
+    status = solver.actualSolve(self, **kwargs)
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 347, in actualSolve
+    self.buildSolverModel(lp)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 276, in buildSolverModel
+    self.initGurobi()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 262, in initGurobi
+    raise e
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 257, in initGurobi
+    self.model = gp.Model(env=self.env)
+                 ~~~~~~~~^^^^^^^^^^^^^^
+  File "src/gurobipy/_model.pyx", line 152, in gurobipy._model.Model.__init__
+  File "src/gurobipy/gurobi.pxi", line 40, in gurobipy._core.gurobi._getdefaultenv
+  File "src/gurobipy/env.pxi", line 112, in gurobipy._core.Env.__init__
+gurobipy._exception.GurobiError: User name mismatch (licensed to 'researcher', current user is 'codexsandboxoffline')
+2026-03-13 17:23:00,322 | ERROR | Run failed: N=50 seed=1 op=sequential method=cg
+Traceback (most recent call last):
+  File "E:\PythonProject1\src\runner.py", line 393, in run_experiment
+    sol = solve_fn(instance, method_cfg, logger)
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 227, in solve
+    obj_lp, _, duals, status_lp = _solve_master(
+                                  ~~~~~~~~~~~~~^
+        columns_all,
+        ^^^^^^^^^^^^
+    ...<5 lines>...
+        time_limit=time_limit,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 190, in _solve_master
+    _solve_with(solver)
+    ~~~~~~~~~~~^^^^^^^^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 175, in _solve_with
+    prob.solve(solver_obj)
+    ~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\pulp.py", line 2092, in solve
+    status = solver.actualSolve(self, **kwargs)
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 347, in actualSolve
+    self.buildSolverModel(lp)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 276, in buildSolverModel
+    self.initGurobi()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 262, in initGurobi
+    raise e
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 257, in initGurobi
+    self.model = gp.Model(env=self.env)
+                 ~~~~~~~~^^^^^^^^^^^^^^
+  File "src/gurobipy/_model.pyx", line 152, in gurobipy._model.Model.__init__
+  File "src/gurobipy/gurobi.pxi", line 40, in gurobipy._core.gurobi._getdefaultenv
+  File "src/gurobipy/env.pxi", line 112, in gurobipy._core.Env.__init__
+gurobipy._exception.GurobiError: User name mismatch (licensed to 'researcher', current user is 'codexsandboxoffline')
+2026-03-13 17:23:02,393 | ERROR | Run failed: N=50 seed=2 op=simops method=cg
+Traceback (most recent call last):
+  File "E:\PythonProject1\src\runner.py", line 393, in run_experiment
+    sol = solve_fn(instance, method_cfg, logger)
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 227, in solve
+    obj_lp, _, duals, status_lp = _solve_master(
+                                  ~~~~~~~~~~~~~^
+        columns_all,
+        ^^^^^^^^^^^^
+    ...<5 lines>...
+        time_limit=time_limit,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 190, in _solve_master
+    _solve_with(solver)
+    ~~~~~~~~~~~^^^^^^^^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 175, in _solve_with
+    prob.solve(solver_obj)
+    ~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\pulp.py", line 2092, in solve
+    status = solver.actualSolve(self, **kwargs)
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 347, in actualSolve
+    self.buildSolverModel(lp)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 276, in buildSolverModel
+    self.initGurobi()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 262, in initGurobi
+    raise e
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 257, in initGurobi
+    self.model = gp.Model(env=self.env)
+                 ~~~~~~~~^^^^^^^^^^^^^^
+  File "src/gurobipy/_model.pyx", line 152, in gurobipy._model.Model.__init__
+  File "src/gurobipy/gurobi.pxi", line 40, in gurobipy._core.gurobi._getdefaultenv
+  File "src/gurobipy/env.pxi", line 112, in gurobipy._core.Env.__init__
+gurobipy._exception.GurobiError: User name mismatch (licensed to 'researcher', current user is 'codexsandboxoffline')
+2026-03-13 17:23:03,604 | ERROR | Run failed: N=50 seed=2 op=sequential method=cg
+Traceback (most recent call last):
+  File "E:\PythonProject1\src\runner.py", line 393, in run_experiment
+    sol = solve_fn(instance, method_cfg, logger)
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 227, in solve
+    obj_lp, _, duals, status_lp = _solve_master(
+                                  ~~~~~~~~~~~~~^
+        columns_all,
+        ^^^^^^^^^^^^
+    ...<5 lines>...
+        time_limit=time_limit,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 190, in _solve_master
+    _solve_with(solver)
+    ~~~~~~~~~~~^^^^^^^^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 175, in _solve_with
+    prob.solve(solver_obj)
+    ~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\pulp.py", line 2092, in solve
+    status = solver.actualSolve(self, **kwargs)
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 347, in actualSolve
+    self.buildSolverModel(lp)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 276, in buildSolverModel
+    self.initGurobi()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 262, in initGurobi
+    raise e
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 257, in initGurobi
+    self.model = gp.Model(env=self.env)
+                 ~~~~~~~~^^^^^^^^^^^^^^
+  File "src/gurobipy/_model.pyx", line 152, in gurobipy._model.Model.__init__
+  File "src/gurobipy/gurobi.pxi", line 40, in gurobipy._core.gurobi._getdefaultenv
+  File "src/gurobipy/env.pxi", line 112, in gurobipy._core.Env.__init__
+gurobipy._exception.GurobiError: User name mismatch (licensed to 'researcher', current user is 'codexsandboxoffline')
+2026-03-13 17:23:05,069 | ERROR | Run failed: N=50 seed=3 op=simops method=cg
+Traceback (most recent call last):
+  File "E:\PythonProject1\src\runner.py", line 393, in run_experiment
+    sol = solve_fn(instance, method_cfg, logger)
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 227, in solve
+    obj_lp, _, duals, status_lp = _solve_master(
+                                  ~~~~~~~~~~~~~^
+        columns_all,
+        ^^^^^^^^^^^^
+    ...<5 lines>...
+        time_limit=time_limit,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 190, in _solve_master
+    _solve_with(solver)
+    ~~~~~~~~~~~^^^^^^^^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 175, in _solve_with
+    prob.solve(solver_obj)
+    ~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\pulp.py", line 2092, in solve
+    status = solver.actualSolve(self, **kwargs)
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 347, in actualSolve
+    self.buildSolverModel(lp)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 276, in buildSolverModel
+    self.initGurobi()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 262, in initGurobi
+    raise e
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 257, in initGurobi
+    self.model = gp.Model(env=self.env)
+                 ~~~~~~~~^^^^^^^^^^^^^^
+  File "src/gurobipy/_model.pyx", line 152, in gurobipy._model.Model.__init__
+  File "src/gurobipy/gurobi.pxi", line 40, in gurobipy._core.gurobi._getdefaultenv
+  File "src/gurobipy/env.pxi", line 112, in gurobipy._core.Env.__init__
+gurobipy._exception.GurobiError: User name mismatch (licensed to 'researcher', current user is 'codexsandboxoffline')
+2026-03-13 17:23:05,816 | ERROR | Run failed: N=50 seed=3 op=sequential method=cg
+Traceback (most recent call last):
+  File "E:\PythonProject1\src\runner.py", line 393, in run_experiment
+    sol = solve_fn(instance, method_cfg, logger)
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 227, in solve
+    obj_lp, _, duals, status_lp = _solve_master(
+                                  ~~~~~~~~~~~~~^
+        columns_all,
+        ^^^^^^^^^^^^
+    ...<5 lines>...
+        time_limit=time_limit,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 190, in _solve_master
+    _solve_with(solver)
+    ~~~~~~~~~~~^^^^^^^^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 175, in _solve_with
+    prob.solve(solver_obj)
+    ~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\pulp.py", line 2092, in solve
+    status = solver.actualSolve(self, **kwargs)
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 347, in actualSolve
+    self.buildSolverModel(lp)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 276, in buildSolverModel
+    self.initGurobi()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 262, in initGurobi
+    raise e
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 257, in initGurobi
+    self.model = gp.Model(env=self.env)
+                 ~~~~~~~~^^^^^^^^^^^^^^
+  File "src/gurobipy/_model.pyx", line 152, in gurobipy._model.Model.__init__
+  File "src/gurobipy/gurobi.pxi", line 40, in gurobipy._core.gurobi._getdefaultenv
+  File "src/gurobipy/env.pxi", line 112, in gurobipy._core.Env.__init__
+gurobipy._exception.GurobiError: User name mismatch (licensed to 'researcher', current user is 'codexsandboxoffline')
+2026-03-13 17:23:07,813 | ERROR | Run failed: N=50 seed=4 op=simops method=cg
+Traceback (most recent call last):
+  File "E:\PythonProject1\src\runner.py", line 393, in run_experiment
+    sol = solve_fn(instance, method_cfg, logger)
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 227, in solve
+    obj_lp, _, duals, status_lp = _solve_master(
+                                  ~~~~~~~~~~~~~^
+        columns_all,
+        ^^^^^^^^^^^^
+    ...<5 lines>...
+        time_limit=time_limit,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 190, in _solve_master
+    _solve_with(solver)
+    ~~~~~~~~~~~^^^^^^^^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 175, in _solve_with
+    prob.solve(solver_obj)
+    ~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\pulp.py", line 2092, in solve
+    status = solver.actualSolve(self, **kwargs)
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 347, in actualSolve
+    self.buildSolverModel(lp)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 276, in buildSolverModel
+    self.initGurobi()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 262, in initGurobi
+    raise e
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 257, in initGurobi
+    self.model = gp.Model(env=self.env)
+                 ~~~~~~~~^^^^^^^^^^^^^^
+  File "src/gurobipy/_model.pyx", line 152, in gurobipy._model.Model.__init__
+  File "src/gurobipy/gurobi.pxi", line 40, in gurobipy._core.gurobi._getdefaultenv
+  File "src/gurobipy/env.pxi", line 112, in gurobipy._core.Env.__init__
+gurobipy._exception.GurobiError: User name mismatch (licensed to 'researcher', current user is 'codexsandboxoffline')
+2026-03-13 17:23:08,921 | ERROR | Run failed: N=50 seed=4 op=sequential method=cg
+Traceback (most recent call last):
+  File "E:\PythonProject1\src\runner.py", line 393, in run_experiment
+    sol = solve_fn(instance, method_cfg, logger)
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 227, in solve
+    obj_lp, _, duals, status_lp = _solve_master(
+                                  ~~~~~~~~~~~~~^
+        columns_all,
+        ^^^^^^^^^^^^
+    ...<5 lines>...
+        time_limit=time_limit,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 190, in _solve_master
+    _solve_with(solver)
+    ~~~~~~~~~~~^^^^^^^^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 175, in _solve_with
+    prob.solve(solver_obj)
+    ~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\pulp.py", line 2092, in solve
+    status = solver.actualSolve(self, **kwargs)
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 347, in actualSolve
+    self.buildSolverModel(lp)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 276, in buildSolverModel
+    self.initGurobi()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 262, in initGurobi
+    raise e
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 257, in initGurobi
+    self.model = gp.Model(env=self.env)
+                 ~~~~~~~~^^^^^^^^^^^^^^
+  File "src/gurobipy/_model.pyx", line 152, in gurobipy._model.Model.__init__
+  File "src/gurobipy/gurobi.pxi", line 40, in gurobipy._core.gurobi._getdefaultenv
+  File "src/gurobipy/env.pxi", line 112, in gurobipy._core.Env.__init__
+gurobipy._exception.GurobiError: User name mismatch (licensed to 'researcher', current user is 'codexsandboxoffline')
+2026-03-13 17:23:10,635 | ERROR | Run failed: N=50 seed=5 op=simops method=cg
+Traceback (most recent call last):
+  File "E:\PythonProject1\src\runner.py", line 393, in run_experiment
+    sol = solve_fn(instance, method_cfg, logger)
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 227, in solve
+    obj_lp, _, duals, status_lp = _solve_master(
+                                  ~~~~~~~~~~~~~^
+        columns_all,
+        ^^^^^^^^^^^^
+    ...<5 lines>...
+        time_limit=time_limit,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 190, in _solve_master
+    _solve_with(solver)
+    ~~~~~~~~~~~^^^^^^^^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 175, in _solve_with
+    prob.solve(solver_obj)
+    ~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\pulp.py", line 2092, in solve
+    status = solver.actualSolve(self, **kwargs)
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 347, in actualSolve
+    self.buildSolverModel(lp)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 276, in buildSolverModel
+    self.initGurobi()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 262, in initGurobi
+    raise e
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 257, in initGurobi
+    self.model = gp.Model(env=self.env)
+                 ~~~~~~~~^^^^^^^^^^^^^^
+  File "src/gurobipy/_model.pyx", line 152, in gurobipy._model.Model.__init__
+  File "src/gurobipy/gurobi.pxi", line 40, in gurobipy._core.gurobi._getdefaultenv
+  File "src/gurobipy/env.pxi", line 112, in gurobipy._core.Env.__init__
+gurobipy._exception.GurobiError: User name mismatch (licensed to 'researcher', current user is 'codexsandboxoffline')
+2026-03-13 17:23:11,575 | ERROR | Run failed: N=50 seed=5 op=sequential method=cg
+Traceback (most recent call last):
+  File "E:\PythonProject1\src\runner.py", line 393, in run_experiment
+    sol = solve_fn(instance, method_cfg, logger)
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 227, in solve
+    obj_lp, _, duals, status_lp = _solve_master(
+                                  ~~~~~~~~~~~~~^
+        columns_all,
+        ^^^^^^^^^^^^
+    ...<5 lines>...
+        time_limit=time_limit,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 190, in _solve_master
+    _solve_with(solver)
+    ~~~~~~~~~~~^^^^^^^^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 175, in _solve_with
+    prob.solve(solver_obj)
+    ~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\pulp.py", line 2092, in solve
+    status = solver.actualSolve(self, **kwargs)
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 347, in actualSolve
+    self.buildSolverModel(lp)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 276, in buildSolverModel
+    self.initGurobi()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 262, in initGurobi
+    raise e
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 257, in initGurobi
+    self.model = gp.Model(env=self.env)
+                 ~~~~~~~~^^^^^^^^^^^^^^
+  File "src/gurobipy/_model.pyx", line 152, in gurobipy._model.Model.__init__
+  File "src/gurobipy/gurobi.pxi", line 40, in gurobipy._core.gurobi._getdefaultenv
+  File "src/gurobipy/env.pxi", line 112, in gurobipy._core.Env.__init__
+gurobipy._exception.GurobiError: User name mismatch (licensed to 'researcher', current user is 'codexsandboxoffline')
+2026-03-13 17:23:13,494 | ERROR | Run failed: N=50 seed=6 op=simops method=cg
+Traceback (most recent call last):
+  File "E:\PythonProject1\src\runner.py", line 393, in run_experiment
+    sol = solve_fn(instance, method_cfg, logger)
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 227, in solve
+    obj_lp, _, duals, status_lp = _solve_master(
+                                  ~~~~~~~~~~~~~^
+        columns_all,
+        ^^^^^^^^^^^^
+    ...<5 lines>...
+        time_limit=time_limit,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 190, in _solve_master
+    _solve_with(solver)
+    ~~~~~~~~~~~^^^^^^^^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 175, in _solve_with
+    prob.solve(solver_obj)
+    ~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\pulp.py", line 2092, in solve
+    status = solver.actualSolve(self, **kwargs)
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 347, in actualSolve
+    self.buildSolverModel(lp)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 276, in buildSolverModel
+    self.initGurobi()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 262, in initGurobi
+    raise e
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 257, in initGurobi
+    self.model = gp.Model(env=self.env)
+                 ~~~~~~~~^^^^^^^^^^^^^^
+  File "src/gurobipy/_model.pyx", line 152, in gurobipy._model.Model.__init__
+  File "src/gurobipy/gurobi.pxi", line 40, in gurobipy._core.gurobi._getdefaultenv
+  File "src/gurobipy/env.pxi", line 112, in gurobipy._core.Env.__init__
+gurobipy._exception.GurobiError: User name mismatch (licensed to 'researcher', current user is 'codexsandboxoffline')
+2026-03-13 17:23:14,554 | ERROR | Run failed: N=50 seed=6 op=sequential method=cg
+Traceback (most recent call last):
+  File "E:\PythonProject1\src\runner.py", line 393, in run_experiment
+    sol = solve_fn(instance, method_cfg, logger)
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 227, in solve
+    obj_lp, _, duals, status_lp = _solve_master(
+                                  ~~~~~~~~~~~~~^
+        columns_all,
+        ^^^^^^^^^^^^
+    ...<5 lines>...
+        time_limit=time_limit,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 190, in _solve_master
+    _solve_with(solver)
+    ~~~~~~~~~~~^^^^^^^^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 175, in _solve_with
+    prob.solve(solver_obj)
+    ~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\pulp.py", line 2092, in solve
+    status = solver.actualSolve(self, **kwargs)
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 347, in actualSolve
+    self.buildSolverModel(lp)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 276, in buildSolverModel
+    self.initGurobi()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 262, in initGurobi
+    raise e
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 257, in initGurobi
+    self.model = gp.Model(env=self.env)
+                 ~~~~~~~~^^^^^^^^^^^^^^
+  File "src/gurobipy/_model.pyx", line 152, in gurobipy._model.Model.__init__
+  File "src/gurobipy/gurobi.pxi", line 40, in gurobipy._core.gurobi._getdefaultenv
+  File "src/gurobipy/env.pxi", line 112, in gurobipy._core.Env.__init__
+gurobipy._exception.GurobiError: User name mismatch (licensed to 'researcher', current user is 'codexsandboxoffline')
+2026-03-13 17:23:16,504 | ERROR | Run failed: N=50 seed=7 op=simops method=cg
+Traceback (most recent call last):
+  File "E:\PythonProject1\src\runner.py", line 393, in run_experiment
+    sol = solve_fn(instance, method_cfg, logger)
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 227, in solve
+    obj_lp, _, duals, status_lp = _solve_master(
+                                  ~~~~~~~~~~~~~^
+        columns_all,
+        ^^^^^^^^^^^^
+    ...<5 lines>...
+        time_limit=time_limit,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 190, in _solve_master
+    _solve_with(solver)
+    ~~~~~~~~~~~^^^^^^^^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 175, in _solve_with
+    prob.solve(solver_obj)
+    ~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\pulp.py", line 2092, in solve
+    status = solver.actualSolve(self, **kwargs)
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 347, in actualSolve
+    self.buildSolverModel(lp)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 276, in buildSolverModel
+    self.initGurobi()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 262, in initGurobi
+    raise e
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 257, in initGurobi
+    self.model = gp.Model(env=self.env)
+                 ~~~~~~~~^^^^^^^^^^^^^^
+  File "src/gurobipy/_model.pyx", line 152, in gurobipy._model.Model.__init__
+  File "src/gurobipy/gurobi.pxi", line 40, in gurobipy._core.gurobi._getdefaultenv
+  File "src/gurobipy/env.pxi", line 112, in gurobipy._core.Env.__init__
+gurobipy._exception.GurobiError: User name mismatch (licensed to 'researcher', current user is 'codexsandboxoffline')
+2026-03-13 17:23:17,613 | ERROR | Run failed: N=50 seed=7 op=sequential method=cg
+Traceback (most recent call last):
+  File "E:\PythonProject1\src\runner.py", line 393, in run_experiment
+    sol = solve_fn(instance, method_cfg, logger)
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 227, in solve
+    obj_lp, _, duals, status_lp = _solve_master(
+                                  ~~~~~~~~~~~~~^
+        columns_all,
+        ^^^^^^^^^^^^
+    ...<5 lines>...
+        time_limit=time_limit,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 190, in _solve_master
+    _solve_with(solver)
+    ~~~~~~~~~~~^^^^^^^^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 175, in _solve_with
+    prob.solve(solver_obj)
+    ~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\pulp.py", line 2092, in solve
+    status = solver.actualSolve(self, **kwargs)
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 347, in actualSolve
+    self.buildSolverModel(lp)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 276, in buildSolverModel
+    self.initGurobi()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 262, in initGurobi
+    raise e
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 257, in initGurobi
+    self.model = gp.Model(env=self.env)
+                 ~~~~~~~~^^^^^^^^^^^^^^
+  File "src/gurobipy/_model.pyx", line 152, in gurobipy._model.Model.__init__
+  File "src/gurobipy/gurobi.pxi", line 40, in gurobipy._core.gurobi._getdefaultenv
+  File "src/gurobipy/env.pxi", line 112, in gurobipy._core.Env.__init__
+gurobipy._exception.GurobiError: User name mismatch (licensed to 'researcher', current user is 'codexsandboxoffline')
+2026-03-13 17:23:19,194 | ERROR | Run failed: N=50 seed=8 op=simops method=cg
+Traceback (most recent call last):
+  File "E:\PythonProject1\src\runner.py", line 393, in run_experiment
+    sol = solve_fn(instance, method_cfg, logger)
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 227, in solve
+    obj_lp, _, duals, status_lp = _solve_master(
+                                  ~~~~~~~~~~~~~^
+        columns_all,
+        ^^^^^^^^^^^^
+    ...<5 lines>...
+        time_limit=time_limit,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 190, in _solve_master
+    _solve_with(solver)
+    ~~~~~~~~~~~^^^^^^^^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 175, in _solve_with
+    prob.solve(solver_obj)
+    ~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\pulp.py", line 2092, in solve
+    status = solver.actualSolve(self, **kwargs)
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 347, in actualSolve
+    self.buildSolverModel(lp)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 276, in buildSolverModel
+    self.initGurobi()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 262, in initGurobi
+    raise e
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 257, in initGurobi
+    self.model = gp.Model(env=self.env)
+                 ~~~~~~~~^^^^^^^^^^^^^^
+  File "src/gurobipy/_model.pyx", line 152, in gurobipy._model.Model.__init__
+  File "src/gurobipy/gurobi.pxi", line 40, in gurobipy._core.gurobi._getdefaultenv
+  File "src/gurobipy/env.pxi", line 112, in gurobipy._core.Env.__init__
+gurobipy._exception.GurobiError: User name mismatch (licensed to 'researcher', current user is 'codexsandboxoffline')
+2026-03-13 17:23:20,039 | ERROR | Run failed: N=50 seed=8 op=sequential method=cg
+Traceback (most recent call last):
+  File "E:\PythonProject1\src\runner.py", line 393, in run_experiment
+    sol = solve_fn(instance, method_cfg, logger)
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 227, in solve
+    obj_lp, _, duals, status_lp = _solve_master(
+                                  ~~~~~~~~~~~~~^
+        columns_all,
+        ^^^^^^^^^^^^
+    ...<5 lines>...
+        time_limit=time_limit,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 190, in _solve_master
+    _solve_with(solver)
+    ~~~~~~~~~~~^^^^^^^^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 175, in _solve_with
+    prob.solve(solver_obj)
+    ~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\pulp.py", line 2092, in solve
+    status = solver.actualSolve(self, **kwargs)
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 347, in actualSolve
+    self.buildSolverModel(lp)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 276, in buildSolverModel
+    self.initGurobi()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 262, in initGurobi
+    raise e
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 257, in initGurobi
+    self.model = gp.Model(env=self.env)
+                 ~~~~~~~~^^^^^^^^^^^^^^
+  File "src/gurobipy/_model.pyx", line 152, in gurobipy._model.Model.__init__
+  File "src/gurobipy/gurobi.pxi", line 40, in gurobipy._core.gurobi._getdefaultenv
+  File "src/gurobipy/env.pxi", line 112, in gurobipy._core.Env.__init__
+gurobipy._exception.GurobiError: User name mismatch (licensed to 'researcher', current user is 'codexsandboxoffline')
+2026-03-13 17:23:21,687 | ERROR | Run failed: N=50 seed=9 op=simops method=cg
+Traceback (most recent call last):
+  File "E:\PythonProject1\src\runner.py", line 393, in run_experiment
+    sol = solve_fn(instance, method_cfg, logger)
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 227, in solve
+    obj_lp, _, duals, status_lp = _solve_master(
+                                  ~~~~~~~~~~~~~^
+        columns_all,
+        ^^^^^^^^^^^^
+    ...<5 lines>...
+        time_limit=time_limit,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 190, in _solve_master
+    _solve_with(solver)
+    ~~~~~~~~~~~^^^^^^^^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 175, in _solve_with
+    prob.solve(solver_obj)
+    ~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\pulp.py", line 2092, in solve
+    status = solver.actualSolve(self, **kwargs)
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 347, in actualSolve
+    self.buildSolverModel(lp)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 276, in buildSolverModel
+    self.initGurobi()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 262, in initGurobi
+    raise e
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 257, in initGurobi
+    self.model = gp.Model(env=self.env)
+                 ~~~~~~~~^^^^^^^^^^^^^^
+  File "src/gurobipy/_model.pyx", line 152, in gurobipy._model.Model.__init__
+  File "src/gurobipy/gurobi.pxi", line 40, in gurobipy._core.gurobi._getdefaultenv
+  File "src/gurobipy/env.pxi", line 112, in gurobipy._core.Env.__init__
+gurobipy._exception.GurobiError: User name mismatch (licensed to 'researcher', current user is 'codexsandboxoffline')
+2026-03-13 17:23:22,529 | ERROR | Run failed: N=50 seed=9 op=sequential method=cg
+Traceback (most recent call last):
+  File "E:\PythonProject1\src\runner.py", line 393, in run_experiment
+    sol = solve_fn(instance, method_cfg, logger)
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 227, in solve
+    obj_lp, _, duals, status_lp = _solve_master(
+                                  ~~~~~~~~~~~~~^
+        columns_all,
+        ^^^^^^^^^^^^
+    ...<5 lines>...
+        time_limit=time_limit,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 190, in _solve_master
+    _solve_with(solver)
+    ~~~~~~~~~~~^^^^^^^^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 175, in _solve_with
+    prob.solve(solver_obj)
+    ~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\pulp.py", line 2092, in solve
+    status = solver.actualSolve(self, **kwargs)
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 347, in actualSolve
+    self.buildSolverModel(lp)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 276, in buildSolverModel
+    self.initGurobi()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 262, in initGurobi
+    raise e
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 257, in initGurobi
+    self.model = gp.Model(env=self.env)
+                 ~~~~~~~~^^^^^^^^^^^^^^
+  File "src/gurobipy/_model.pyx", line 152, in gurobipy._model.Model.__init__
+  File "src/gurobipy/gurobi.pxi", line 40, in gurobipy._core.gurobi._getdefaultenv
+  File "src/gurobipy/env.pxi", line 112, in gurobipy._core.Env.__init__
+gurobipy._exception.GurobiError: User name mismatch (licensed to 'researcher', current user is 'codexsandboxoffline')
+2026-03-13 17:23:24,252 | ERROR | Run failed: N=50 seed=10 op=simops method=cg
+Traceback (most recent call last):
+  File "E:\PythonProject1\src\runner.py", line 393, in run_experiment
+    sol = solve_fn(instance, method_cfg, logger)
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 227, in solve
+    obj_lp, _, duals, status_lp = _solve_master(
+                                  ~~~~~~~~~~~~~^
+        columns_all,
+        ^^^^^^^^^^^^
+    ...<5 lines>...
+        time_limit=time_limit,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 190, in _solve_master
+    _solve_with(solver)
+    ~~~~~~~~~~~^^^^^^^^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 175, in _solve_with
+    prob.solve(solver_obj)
+    ~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\pulp.py", line 2092, in solve
+    status = solver.actualSolve(self, **kwargs)
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 347, in actualSolve
+    self.buildSolverModel(lp)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 276, in buildSolverModel
+    self.initGurobi()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 262, in initGurobi
+    raise e
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 257, in initGurobi
+    self.model = gp.Model(env=self.env)
+                 ~~~~~~~~^^^^^^^^^^^^^^
+  File "src/gurobipy/_model.pyx", line 152, in gurobipy._model.Model.__init__
+  File "src/gurobipy/gurobi.pxi", line 40, in gurobipy._core.gurobi._getdefaultenv
+  File "src/gurobipy/env.pxi", line 112, in gurobipy._core.Env.__init__
+gurobipy._exception.GurobiError: User name mismatch (licensed to 'researcher', current user is 'codexsandboxoffline')
+2026-03-13 17:23:25,222 | ERROR | Run failed: N=50 seed=10 op=sequential method=cg
+Traceback (most recent call last):
+  File "E:\PythonProject1\src\runner.py", line 393, in run_experiment
+    sol = solve_fn(instance, method_cfg, logger)
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 227, in solve
+    obj_lp, _, duals, status_lp = _solve_master(
+                                  ~~~~~~~~~~~~~^
+        columns_all,
+        ^^^^^^^^^^^^
+    ...<5 lines>...
+        time_limit=time_limit,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 190, in _solve_master
+    _solve_with(solver)
+    ~~~~~~~~~~~^^^^^^^^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 175, in _solve_with
+    prob.solve(solver_obj)
+    ~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\pulp.py", line 2092, in solve
+    status = solver.actualSolve(self, **kwargs)
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 347, in actualSolve
+    self.buildSolverModel(lp)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 276, in buildSolverModel
+    self.initGurobi()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 262, in initGurobi
+    raise e
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 257, in initGurobi
+    self.model = gp.Model(env=self.env)
+                 ~~~~~~~~^^^^^^^^^^^^^^
+  File "src/gurobipy/_model.pyx", line 152, in gurobipy._model.Model.__init__
+  File "src/gurobipy/gurobi.pxi", line 40, in gurobipy._core.gurobi._getdefaultenv
+  File "src/gurobipy/env.pxi", line 112, in gurobipy._core.Env.__init__
+gurobipy._exception.GurobiError: User name mismatch (licensed to 'researcher', current user is 'codexsandboxoffline')
+2026-03-13 17:23:29,273 | ERROR | Run failed: N=100 seed=1 op=simops method=cg
+Traceback (most recent call last):
+  File "E:\PythonProject1\src\runner.py", line 393, in run_experiment
+    sol = solve_fn(instance, method_cfg, logger)
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 227, in solve
+    obj_lp, _, duals, status_lp = _solve_master(
+                                  ~~~~~~~~~~~~~^
+        columns_all,
+        ^^^^^^^^^^^^
+    ...<5 lines>...
+        time_limit=time_limit,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 190, in _solve_master
+    _solve_with(solver)
+    ~~~~~~~~~~~^^^^^^^^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 175, in _solve_with
+    prob.solve(solver_obj)
+    ~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\pulp.py", line 2092, in solve
+    status = solver.actualSolve(self, **kwargs)
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 347, in actualSolve
+    self.buildSolverModel(lp)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 276, in buildSolverModel
+    self.initGurobi()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 262, in initGurobi
+    raise e
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 257, in initGurobi
+    self.model = gp.Model(env=self.env)
+                 ~~~~~~~~^^^^^^^^^^^^^^
+  File "src/gurobipy/_model.pyx", line 152, in gurobipy._model.Model.__init__
+  File "src/gurobipy/gurobi.pxi", line 40, in gurobipy._core.gurobi._getdefaultenv
+  File "src/gurobipy/env.pxi", line 112, in gurobipy._core.Env.__init__
+gurobipy._exception.GurobiError: User name mismatch (licensed to 'researcher', current user is 'codexsandboxoffline')
+2026-03-13 17:23:31,626 | ERROR | Run failed: N=100 seed=1 op=sequential method=cg
+Traceback (most recent call last):
+  File "E:\PythonProject1\src\runner.py", line 393, in run_experiment
+    sol = solve_fn(instance, method_cfg, logger)
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 227, in solve
+    obj_lp, _, duals, status_lp = _solve_master(
+                                  ~~~~~~~~~~~~~^
+        columns_all,
+        ^^^^^^^^^^^^
+    ...<5 lines>...
+        time_limit=time_limit,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 190, in _solve_master
+    _solve_with(solver)
+    ~~~~~~~~~~~^^^^^^^^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 175, in _solve_with
+    prob.solve(solver_obj)
+    ~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\pulp.py", line 2092, in solve
+    status = solver.actualSolve(self, **kwargs)
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 347, in actualSolve
+    self.buildSolverModel(lp)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 276, in buildSolverModel
+    self.initGurobi()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 262, in initGurobi
+    raise e
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 257, in initGurobi
+    self.model = gp.Model(env=self.env)
+                 ~~~~~~~~^^^^^^^^^^^^^^
+  File "src/gurobipy/_model.pyx", line 152, in gurobipy._model.Model.__init__
+  File "src/gurobipy/gurobi.pxi", line 40, in gurobipy._core.gurobi._getdefaultenv
+  File "src/gurobipy/env.pxi", line 112, in gurobipy._core.Env.__init__
+gurobipy._exception.GurobiError: User name mismatch (licensed to 'researcher', current user is 'codexsandboxoffline')
+2026-03-13 17:23:35,853 | ERROR | Run failed: N=100 seed=2 op=simops method=cg
+Traceback (most recent call last):
+  File "E:\PythonProject1\src\runner.py", line 393, in run_experiment
+    sol = solve_fn(instance, method_cfg, logger)
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 227, in solve
+    obj_lp, _, duals, status_lp = _solve_master(
+                                  ~~~~~~~~~~~~~^
+        columns_all,
+        ^^^^^^^^^^^^
+    ...<5 lines>...
+        time_limit=time_limit,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 190, in _solve_master
+    _solve_with(solver)
+    ~~~~~~~~~~~^^^^^^^^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 175, in _solve_with
+    prob.solve(solver_obj)
+    ~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\pulp.py", line 2092, in solve
+    status = solver.actualSolve(self, **kwargs)
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 347, in actualSolve
+    self.buildSolverModel(lp)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 276, in buildSolverModel
+    self.initGurobi()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 262, in initGurobi
+    raise e
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 257, in initGurobi
+    self.model = gp.Model(env=self.env)
+                 ~~~~~~~~^^^^^^^^^^^^^^
+  File "src/gurobipy/_model.pyx", line 152, in gurobipy._model.Model.__init__
+  File "src/gurobipy/gurobi.pxi", line 40, in gurobipy._core.gurobi._getdefaultenv
+  File "src/gurobipy/env.pxi", line 112, in gurobipy._core.Env.__init__
+gurobipy._exception.GurobiError: User name mismatch (licensed to 'researcher', current user is 'codexsandboxoffline')
+2026-03-13 17:23:38,334 | ERROR | Run failed: N=100 seed=2 op=sequential method=cg
+Traceback (most recent call last):
+  File "E:\PythonProject1\src\runner.py", line 393, in run_experiment
+    sol = solve_fn(instance, method_cfg, logger)
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 227, in solve
+    obj_lp, _, duals, status_lp = _solve_master(
+                                  ~~~~~~~~~~~~~^
+        columns_all,
+        ^^^^^^^^^^^^
+    ...<5 lines>...
+        time_limit=time_limit,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 190, in _solve_master
+    _solve_with(solver)
+    ~~~~~~~~~~~^^^^^^^^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 175, in _solve_with
+    prob.solve(solver_obj)
+    ~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\pulp.py", line 2092, in solve
+    status = solver.actualSolve(self, **kwargs)
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 347, in actualSolve
+    self.buildSolverModel(lp)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 276, in buildSolverModel
+    self.initGurobi()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 262, in initGurobi
+    raise e
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 257, in initGurobi
+    self.model = gp.Model(env=self.env)
+                 ~~~~~~~~^^^^^^^^^^^^^^
+  File "src/gurobipy/_model.pyx", line 152, in gurobipy._model.Model.__init__
+  File "src/gurobipy/gurobi.pxi", line 40, in gurobipy._core.gurobi._getdefaultenv
+  File "src/gurobipy/env.pxi", line 112, in gurobipy._core.Env.__init__
+gurobipy._exception.GurobiError: User name mismatch (licensed to 'researcher', current user is 'codexsandboxoffline')
+2026-03-13 17:23:43,045 | ERROR | Run failed: N=100 seed=3 op=simops method=cg
+Traceback (most recent call last):
+  File "E:\PythonProject1\src\runner.py", line 393, in run_experiment
+    sol = solve_fn(instance, method_cfg, logger)
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 227, in solve
+    obj_lp, _, duals, status_lp = _solve_master(
+                                  ~~~~~~~~~~~~~^
+        columns_all,
+        ^^^^^^^^^^^^
+    ...<5 lines>...
+        time_limit=time_limit,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 190, in _solve_master
+    _solve_with(solver)
+    ~~~~~~~~~~~^^^^^^^^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 175, in _solve_with
+    prob.solve(solver_obj)
+    ~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\pulp.py", line 2092, in solve
+    status = solver.actualSolve(self, **kwargs)
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 347, in actualSolve
+    self.buildSolverModel(lp)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 276, in buildSolverModel
+    self.initGurobi()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 262, in initGurobi
+    raise e
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 257, in initGurobi
+    self.model = gp.Model(env=self.env)
+                 ~~~~~~~~^^^^^^^^^^^^^^
+  File "src/gurobipy/_model.pyx", line 152, in gurobipy._model.Model.__init__
+  File "src/gurobipy/gurobi.pxi", line 40, in gurobipy._core.gurobi._getdefaultenv
+  File "src/gurobipy/env.pxi", line 112, in gurobipy._core.Env.__init__
+gurobipy._exception.GurobiError: User name mismatch (licensed to 'researcher', current user is 'codexsandboxoffline')
+2026-03-13 17:23:45,624 | ERROR | Run failed: N=100 seed=3 op=sequential method=cg
+Traceback (most recent call last):
+  File "E:\PythonProject1\src\runner.py", line 393, in run_experiment
+    sol = solve_fn(instance, method_cfg, logger)
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 227, in solve
+    obj_lp, _, duals, status_lp = _solve_master(
+                                  ~~~~~~~~~~~~~^
+        columns_all,
+        ^^^^^^^^^^^^
+    ...<5 lines>...
+        time_limit=time_limit,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 190, in _solve_master
+    _solve_with(solver)
+    ~~~~~~~~~~~^^^^^^^^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 175, in _solve_with
+    prob.solve(solver_obj)
+    ~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\pulp.py", line 2092, in solve
+    status = solver.actualSolve(self, **kwargs)
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 347, in actualSolve
+    self.buildSolverModel(lp)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 276, in buildSolverModel
+    self.initGurobi()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 262, in initGurobi
+    raise e
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 257, in initGurobi
+    self.model = gp.Model(env=self.env)
+                 ~~~~~~~~^^^^^^^^^^^^^^
+  File "src/gurobipy/_model.pyx", line 152, in gurobipy._model.Model.__init__
+  File "src/gurobipy/gurobi.pxi", line 40, in gurobipy._core.gurobi._getdefaultenv
+  File "src/gurobipy/env.pxi", line 112, in gurobipy._core.Env.__init__
+gurobipy._exception.GurobiError: User name mismatch (licensed to 'researcher', current user is 'codexsandboxoffline')
+2026-03-13 17:23:50,293 | ERROR | Run failed: N=100 seed=4 op=simops method=cg
+Traceback (most recent call last):
+  File "E:\PythonProject1\src\runner.py", line 393, in run_experiment
+    sol = solve_fn(instance, method_cfg, logger)
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 227, in solve
+    obj_lp, _, duals, status_lp = _solve_master(
+                                  ~~~~~~~~~~~~~^
+        columns_all,
+        ^^^^^^^^^^^^
+    ...<5 lines>...
+        time_limit=time_limit,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 190, in _solve_master
+    _solve_with(solver)
+    ~~~~~~~~~~~^^^^^^^^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 175, in _solve_with
+    prob.solve(solver_obj)
+    ~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\pulp.py", line 2092, in solve
+    status = solver.actualSolve(self, **kwargs)
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 347, in actualSolve
+    self.buildSolverModel(lp)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 276, in buildSolverModel
+    self.initGurobi()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 262, in initGurobi
+    raise e
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 257, in initGurobi
+    self.model = gp.Model(env=self.env)
+                 ~~~~~~~~^^^^^^^^^^^^^^
+  File "src/gurobipy/_model.pyx", line 152, in gurobipy._model.Model.__init__
+  File "src/gurobipy/gurobi.pxi", line 40, in gurobipy._core.gurobi._getdefaultenv
+  File "src/gurobipy/env.pxi", line 112, in gurobipy._core.Env.__init__
+gurobipy._exception.GurobiError: User name mismatch (licensed to 'researcher', current user is 'codexsandboxoffline')
+2026-03-13 17:23:52,866 | ERROR | Run failed: N=100 seed=4 op=sequential method=cg
+Traceback (most recent call last):
+  File "E:\PythonProject1\src\runner.py", line 393, in run_experiment
+    sol = solve_fn(instance, method_cfg, logger)
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 227, in solve
+    obj_lp, _, duals, status_lp = _solve_master(
+                                  ~~~~~~~~~~~~~^
+        columns_all,
+        ^^^^^^^^^^^^
+    ...<5 lines>...
+        time_limit=time_limit,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 190, in _solve_master
+    _solve_with(solver)
+    ~~~~~~~~~~~^^^^^^^^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 175, in _solve_with
+    prob.solve(solver_obj)
+    ~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\pulp.py", line 2092, in solve
+    status = solver.actualSolve(self, **kwargs)
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 347, in actualSolve
+    self.buildSolverModel(lp)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 276, in buildSolverModel
+    self.initGurobi()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 262, in initGurobi
+    raise e
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 257, in initGurobi
+    self.model = gp.Model(env=self.env)
+                 ~~~~~~~~^^^^^^^^^^^^^^
+  File "src/gurobipy/_model.pyx", line 152, in gurobipy._model.Model.__init__
+  File "src/gurobipy/gurobi.pxi", line 40, in gurobipy._core.gurobi._getdefaultenv
+  File "src/gurobipy/env.pxi", line 112, in gurobipy._core.Env.__init__
+gurobipy._exception.GurobiError: User name mismatch (licensed to 'researcher', current user is 'codexsandboxoffline')
+2026-03-13 17:23:56,723 | ERROR | Run failed: N=100 seed=5 op=simops method=cg
+Traceback (most recent call last):
+  File "E:\PythonProject1\src\runner.py", line 393, in run_experiment
+    sol = solve_fn(instance, method_cfg, logger)
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 227, in solve
+    obj_lp, _, duals, status_lp = _solve_master(
+                                  ~~~~~~~~~~~~~^
+        columns_all,
+        ^^^^^^^^^^^^
+    ...<5 lines>...
+        time_limit=time_limit,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 190, in _solve_master
+    _solve_with(solver)
+    ~~~~~~~~~~~^^^^^^^^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 175, in _solve_with
+    prob.solve(solver_obj)
+    ~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\pulp.py", line 2092, in solve
+    status = solver.actualSolve(self, **kwargs)
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 347, in actualSolve
+    self.buildSolverModel(lp)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 276, in buildSolverModel
+    self.initGurobi()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 262, in initGurobi
+    raise e
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 257, in initGurobi
+    self.model = gp.Model(env=self.env)
+                 ~~~~~~~~^^^^^^^^^^^^^^
+  File "src/gurobipy/_model.pyx", line 152, in gurobipy._model.Model.__init__
+  File "src/gurobipy/gurobi.pxi", line 40, in gurobipy._core.gurobi._getdefaultenv
+  File "src/gurobipy/env.pxi", line 112, in gurobipy._core.Env.__init__
+gurobipy._exception.GurobiError: User name mismatch (licensed to 'researcher', current user is 'codexsandboxoffline')
+2026-03-13 17:23:58,925 | ERROR | Run failed: N=100 seed=5 op=sequential method=cg
+Traceback (most recent call last):
+  File "E:\PythonProject1\src\runner.py", line 393, in run_experiment
+    sol = solve_fn(instance, method_cfg, logger)
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 227, in solve
+    obj_lp, _, duals, status_lp = _solve_master(
+                                  ~~~~~~~~~~~~~^
+        columns_all,
+        ^^^^^^^^^^^^
+    ...<5 lines>...
+        time_limit=time_limit,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 190, in _solve_master
+    _solve_with(solver)
+    ~~~~~~~~~~~^^^^^^^^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 175, in _solve_with
+    prob.solve(solver_obj)
+    ~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\pulp.py", line 2092, in solve
+    status = solver.actualSolve(self, **kwargs)
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 347, in actualSolve
+    self.buildSolverModel(lp)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 276, in buildSolverModel
+    self.initGurobi()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 262, in initGurobi
+    raise e
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 257, in initGurobi
+    self.model = gp.Model(env=self.env)
+                 ~~~~~~~~^^^^^^^^^^^^^^
+  File "src/gurobipy/_model.pyx", line 152, in gurobipy._model.Model.__init__
+  File "src/gurobipy/gurobi.pxi", line 40, in gurobipy._core.gurobi._getdefaultenv
+  File "src/gurobipy/env.pxi", line 112, in gurobipy._core.Env.__init__
+gurobipy._exception.GurobiError: User name mismatch (licensed to 'researcher', current user is 'codexsandboxoffline')
+2026-03-13 17:24:03,197 | ERROR | Run failed: N=100 seed=6 op=simops method=cg
+Traceback (most recent call last):
+  File "E:\PythonProject1\src\runner.py", line 393, in run_experiment
+    sol = solve_fn(instance, method_cfg, logger)
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 227, in solve
+    obj_lp, _, duals, status_lp = _solve_master(
+                                  ~~~~~~~~~~~~~^
+        columns_all,
+        ^^^^^^^^^^^^
+    ...<5 lines>...
+        time_limit=time_limit,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 190, in _solve_master
+    _solve_with(solver)
+    ~~~~~~~~~~~^^^^^^^^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 175, in _solve_with
+    prob.solve(solver_obj)
+    ~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\pulp.py", line 2092, in solve
+    status = solver.actualSolve(self, **kwargs)
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 347, in actualSolve
+    self.buildSolverModel(lp)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 276, in buildSolverModel
+    self.initGurobi()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 262, in initGurobi
+    raise e
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 257, in initGurobi
+    self.model = gp.Model(env=self.env)
+                 ~~~~~~~~^^^^^^^^^^^^^^
+  File "src/gurobipy/_model.pyx", line 152, in gurobipy._model.Model.__init__
+  File "src/gurobipy/gurobi.pxi", line 40, in gurobipy._core.gurobi._getdefaultenv
+  File "src/gurobipy/env.pxi", line 112, in gurobipy._core.Env.__init__
+gurobipy._exception.GurobiError: User name mismatch (licensed to 'researcher', current user is 'codexsandboxoffline')
+2026-03-13 17:24:05,630 | ERROR | Run failed: N=100 seed=6 op=sequential method=cg
+Traceback (most recent call last):
+  File "E:\PythonProject1\src\runner.py", line 393, in run_experiment
+    sol = solve_fn(instance, method_cfg, logger)
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 227, in solve
+    obj_lp, _, duals, status_lp = _solve_master(
+                                  ~~~~~~~~~~~~~^
+        columns_all,
+        ^^^^^^^^^^^^
+    ...<5 lines>...
+        time_limit=time_limit,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 190, in _solve_master
+    _solve_with(solver)
+    ~~~~~~~~~~~^^^^^^^^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 175, in _solve_with
+    prob.solve(solver_obj)
+    ~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\pulp.py", line 2092, in solve
+    status = solver.actualSolve(self, **kwargs)
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 347, in actualSolve
+    self.buildSolverModel(lp)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 276, in buildSolverModel
+    self.initGurobi()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 262, in initGurobi
+    raise e
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 257, in initGurobi
+    self.model = gp.Model(env=self.env)
+                 ~~~~~~~~^^^^^^^^^^^^^^
+  File "src/gurobipy/_model.pyx", line 152, in gurobipy._model.Model.__init__
+  File "src/gurobipy/gurobi.pxi", line 40, in gurobipy._core.gurobi._getdefaultenv
+  File "src/gurobipy/env.pxi", line 112, in gurobipy._core.Env.__init__
+gurobipy._exception.GurobiError: User name mismatch (licensed to 'researcher', current user is 'codexsandboxoffline')
+2026-03-13 17:24:09,491 | ERROR | Run failed: N=100 seed=7 op=simops method=cg
+Traceback (most recent call last):
+  File "E:\PythonProject1\src\runner.py", line 393, in run_experiment
+    sol = solve_fn(instance, method_cfg, logger)
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 227, in solve
+    obj_lp, _, duals, status_lp = _solve_master(
+                                  ~~~~~~~~~~~~~^
+        columns_all,
+        ^^^^^^^^^^^^
+    ...<5 lines>...
+        time_limit=time_limit,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 190, in _solve_master
+    _solve_with(solver)
+    ~~~~~~~~~~~^^^^^^^^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 175, in _solve_with
+    prob.solve(solver_obj)
+    ~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\pulp.py", line 2092, in solve
+    status = solver.actualSolve(self, **kwargs)
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 347, in actualSolve
+    self.buildSolverModel(lp)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 276, in buildSolverModel
+    self.initGurobi()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 262, in initGurobi
+    raise e
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 257, in initGurobi
+    self.model = gp.Model(env=self.env)
+                 ~~~~~~~~^^^^^^^^^^^^^^
+  File "src/gurobipy/_model.pyx", line 152, in gurobipy._model.Model.__init__
+  File "src/gurobipy/gurobi.pxi", line 40, in gurobipy._core.gurobi._getdefaultenv
+  File "src/gurobipy/env.pxi", line 112, in gurobipy._core.Env.__init__
+gurobipy._exception.GurobiError: User name mismatch (licensed to 'researcher', current user is 'codexsandboxoffline')
+2026-03-13 17:24:11,330 | ERROR | Run failed: N=100 seed=7 op=sequential method=cg
+Traceback (most recent call last):
+  File "E:\PythonProject1\src\runner.py", line 393, in run_experiment
+    sol = solve_fn(instance, method_cfg, logger)
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 227, in solve
+    obj_lp, _, duals, status_lp = _solve_master(
+                                  ~~~~~~~~~~~~~^
+        columns_all,
+        ^^^^^^^^^^^^
+    ...<5 lines>...
+        time_limit=time_limit,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 190, in _solve_master
+    _solve_with(solver)
+    ~~~~~~~~~~~^^^^^^^^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 175, in _solve_with
+    prob.solve(solver_obj)
+    ~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\pulp.py", line 2092, in solve
+    status = solver.actualSolve(self, **kwargs)
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 347, in actualSolve
+    self.buildSolverModel(lp)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 276, in buildSolverModel
+    self.initGurobi()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 262, in initGurobi
+    raise e
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 257, in initGurobi
+    self.model = gp.Model(env=self.env)
+                 ~~~~~~~~^^^^^^^^^^^^^^
+  File "src/gurobipy/_model.pyx", line 152, in gurobipy._model.Model.__init__
+  File "src/gurobipy/gurobi.pxi", line 40, in gurobipy._core.gurobi._getdefaultenv
+  File "src/gurobipy/env.pxi", line 112, in gurobipy._core.Env.__init__
+gurobipy._exception.GurobiError: User name mismatch (licensed to 'researcher', current user is 'codexsandboxoffline')
+2026-03-13 17:24:15,290 | ERROR | Run failed: N=100 seed=8 op=simops method=cg
+Traceback (most recent call last):
+  File "E:\PythonProject1\src\runner.py", line 393, in run_experiment
+    sol = solve_fn(instance, method_cfg, logger)
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 227, in solve
+    obj_lp, _, duals, status_lp = _solve_master(
+                                  ~~~~~~~~~~~~~^
+        columns_all,
+        ^^^^^^^^^^^^
+    ...<5 lines>...
+        time_limit=time_limit,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 190, in _solve_master
+    _solve_with(solver)
+    ~~~~~~~~~~~^^^^^^^^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 175, in _solve_with
+    prob.solve(solver_obj)
+    ~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\pulp.py", line 2092, in solve
+    status = solver.actualSolve(self, **kwargs)
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 347, in actualSolve
+    self.buildSolverModel(lp)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 276, in buildSolverModel
+    self.initGurobi()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 262, in initGurobi
+    raise e
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 257, in initGurobi
+    self.model = gp.Model(env=self.env)
+                 ~~~~~~~~^^^^^^^^^^^^^^
+  File "src/gurobipy/_model.pyx", line 152, in gurobipy._model.Model.__init__
+  File "src/gurobipy/gurobi.pxi", line 40, in gurobipy._core.gurobi._getdefaultenv
+  File "src/gurobipy/env.pxi", line 112, in gurobipy._core.Env.__init__
+gurobipy._exception.GurobiError: User name mismatch (licensed to 'researcher', current user is 'codexsandboxoffline')
+2026-03-13 17:24:17,491 | ERROR | Run failed: N=100 seed=8 op=sequential method=cg
+Traceback (most recent call last):
+  File "E:\PythonProject1\src\runner.py", line 393, in run_experiment
+    sol = solve_fn(instance, method_cfg, logger)
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 227, in solve
+    obj_lp, _, duals, status_lp = _solve_master(
+                                  ~~~~~~~~~~~~~^
+        columns_all,
+        ^^^^^^^^^^^^
+    ...<5 lines>...
+        time_limit=time_limit,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 190, in _solve_master
+    _solve_with(solver)
+    ~~~~~~~~~~~^^^^^^^^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 175, in _solve_with
+    prob.solve(solver_obj)
+    ~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\pulp.py", line 2092, in solve
+    status = solver.actualSolve(self, **kwargs)
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 347, in actualSolve
+    self.buildSolverModel(lp)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 276, in buildSolverModel
+    self.initGurobi()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 262, in initGurobi
+    raise e
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 257, in initGurobi
+    self.model = gp.Model(env=self.env)
+                 ~~~~~~~~^^^^^^^^^^^^^^
+  File "src/gurobipy/_model.pyx", line 152, in gurobipy._model.Model.__init__
+  File "src/gurobipy/gurobi.pxi", line 40, in gurobipy._core.gurobi._getdefaultenv
+  File "src/gurobipy/env.pxi", line 112, in gurobipy._core.Env.__init__
+gurobipy._exception.GurobiError: User name mismatch (licensed to 'researcher', current user is 'codexsandboxoffline')
+2026-03-13 17:24:20,606 | ERROR | Run failed: N=100 seed=9 op=simops method=cg
+Traceback (most recent call last):
+  File "E:\PythonProject1\src\runner.py", line 393, in run_experiment
+    sol = solve_fn(instance, method_cfg, logger)
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 227, in solve
+    obj_lp, _, duals, status_lp = _solve_master(
+                                  ~~~~~~~~~~~~~^
+        columns_all,
+        ^^^^^^^^^^^^
+    ...<5 lines>...
+        time_limit=time_limit,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 190, in _solve_master
+    _solve_with(solver)
+    ~~~~~~~~~~~^^^^^^^^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 175, in _solve_with
+    prob.solve(solver_obj)
+    ~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\pulp.py", line 2092, in solve
+    status = solver.actualSolve(self, **kwargs)
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 347, in actualSolve
+    self.buildSolverModel(lp)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 276, in buildSolverModel
+    self.initGurobi()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 262, in initGurobi
+    raise e
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 257, in initGurobi
+    self.model = gp.Model(env=self.env)
+                 ~~~~~~~~^^^^^^^^^^^^^^
+  File "src/gurobipy/_model.pyx", line 152, in gurobipy._model.Model.__init__
+  File "src/gurobipy/gurobi.pxi", line 40, in gurobipy._core.gurobi._getdefaultenv
+  File "src/gurobipy/env.pxi", line 112, in gurobipy._core.Env.__init__
+gurobipy._exception.GurobiError: User name mismatch (licensed to 'researcher', current user is 'codexsandboxoffline')
+2026-03-13 17:24:22,374 | ERROR | Run failed: N=100 seed=9 op=sequential method=cg
+Traceback (most recent call last):
+  File "E:\PythonProject1\src\runner.py", line 393, in run_experiment
+    sol = solve_fn(instance, method_cfg, logger)
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 227, in solve
+    obj_lp, _, duals, status_lp = _solve_master(
+                                  ~~~~~~~~~~~~~^
+        columns_all,
+        ^^^^^^^^^^^^
+    ...<5 lines>...
+        time_limit=time_limit,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 190, in _solve_master
+    _solve_with(solver)
+    ~~~~~~~~~~~^^^^^^^^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 175, in _solve_with
+    prob.solve(solver_obj)
+    ~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\pulp.py", line 2092, in solve
+    status = solver.actualSolve(self, **kwargs)
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 347, in actualSolve
+    self.buildSolverModel(lp)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 276, in buildSolverModel
+    self.initGurobi()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 262, in initGurobi
+    raise e
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 257, in initGurobi
+    self.model = gp.Model(env=self.env)
+                 ~~~~~~~~^^^^^^^^^^^^^^
+  File "src/gurobipy/_model.pyx", line 152, in gurobipy._model.Model.__init__
+  File "src/gurobipy/gurobi.pxi", line 40, in gurobipy._core.gurobi._getdefaultenv
+  File "src/gurobipy/env.pxi", line 112, in gurobipy._core.Env.__init__
+gurobipy._exception.GurobiError: User name mismatch (licensed to 'researcher', current user is 'codexsandboxoffline')
+2026-03-13 17:24:26,008 | ERROR | Run failed: N=100 seed=10 op=simops method=cg
+Traceback (most recent call last):
+  File "E:\PythonProject1\src\runner.py", line 393, in run_experiment
+    sol = solve_fn(instance, method_cfg, logger)
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 227, in solve
+    obj_lp, _, duals, status_lp = _solve_master(
+                                  ~~~~~~~~~~~~~^
+        columns_all,
+        ^^^^^^^^^^^^
+    ...<5 lines>...
+        time_limit=time_limit,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 190, in _solve_master
+    _solve_with(solver)
+    ~~~~~~~~~~~^^^^^^^^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 175, in _solve_with
+    prob.solve(solver_obj)
+    ~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\pulp.py", line 2092, in solve
+    status = solver.actualSolve(self, **kwargs)
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 347, in actualSolve
+    self.buildSolverModel(lp)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 276, in buildSolverModel
+    self.initGurobi()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 262, in initGurobi
+    raise e
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 257, in initGurobi
+    self.model = gp.Model(env=self.env)
+                 ~~~~~~~~^^^^^^^^^^^^^^
+  File "src/gurobipy/_model.pyx", line 152, in gurobipy._model.Model.__init__
+  File "src/gurobipy/gurobi.pxi", line 40, in gurobipy._core.gurobi._getdefaultenv
+  File "src/gurobipy/env.pxi", line 112, in gurobipy._core.Env.__init__
+gurobipy._exception.GurobiError: User name mismatch (licensed to 'researcher', current user is 'codexsandboxoffline')
+2026-03-13 17:24:28,081 | ERROR | Run failed: N=100 seed=10 op=sequential method=cg
+Traceback (most recent call last):
+  File "E:\PythonProject1\src\runner.py", line 393, in run_experiment
+    sol = solve_fn(instance, method_cfg, logger)
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 227, in solve
+    obj_lp, _, duals, status_lp = _solve_master(
+                                  ~~~~~~~~~~~~~^
+        columns_all,
+        ^^^^^^^^^^^^
+    ...<5 lines>...
+        time_limit=time_limit,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 190, in _solve_master
+    _solve_with(solver)
+    ~~~~~~~~~~~^^^^^^^^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 175, in _solve_with
+    prob.solve(solver_obj)
+    ~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\pulp.py", line 2092, in solve
+    status = solver.actualSolve(self, **kwargs)
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 347, in actualSolve
+    self.buildSolverModel(lp)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 276, in buildSolverModel
+    self.initGurobi()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 262, in initGurobi
+    raise e
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 257, in initGurobi
+    self.model = gp.Model(env=self.env)
+                 ~~~~~~~~^^^^^^^^^^^^^^
+  File "src/gurobipy/_model.pyx", line 152, in gurobipy._model.Model.__init__
+  File "src/gurobipy/gurobi.pxi", line 40, in gurobipy._core.gurobi._getdefaultenv
+  File "src/gurobipy/env.pxi", line 112, in gurobipy._core.Env.__init__
+gurobipy._exception.GurobiError: User name mismatch (licensed to 'researcher', current user is 'codexsandboxoffline')
+2026-03-13 17:24:28,479 | ERROR | Run failed: N=200 seed=1 op=simops method=cg
+Traceback (most recent call last):
+  File "E:\PythonProject1\src\runner.py", line 393, in run_experiment
+    sol = solve_fn(instance, method_cfg, logger)
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 286, in solve
+    obj_lp, _, duals, status_lp = _solve_master(
+                                  ~~~~~~~~~~~~~^
+        columns,
+        ^^^^^^^^
+    ...<5 lines>...
+        time_limit=time_limit,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 190, in _solve_master
+    _solve_with(solver)
+    ~~~~~~~~~~~^^^^^^^^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 175, in _solve_with
+    prob.solve(solver_obj)
+    ~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\pulp.py", line 2092, in solve
+    status = solver.actualSolve(self, **kwargs)
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 347, in actualSolve
+    self.buildSolverModel(lp)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 276, in buildSolverModel
+    self.initGurobi()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 262, in initGurobi
+    raise e
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 257, in initGurobi
+    self.model = gp.Model(env=self.env)
+                 ~~~~~~~~^^^^^^^^^^^^^^
+  File "src/gurobipy/_model.pyx", line 152, in gurobipy._model.Model.__init__
+  File "src/gurobipy/gurobi.pxi", line 40, in gurobipy._core.gurobi._getdefaultenv
+  File "src/gurobipy/env.pxi", line 112, in gurobipy._core.Env.__init__
+gurobipy._exception.GurobiError: User name mismatch (licensed to 'researcher', current user is 'codexsandboxoffline')
+2026-03-13 17:24:28,889 | ERROR | Run failed: N=200 seed=1 op=sequential method=cg
+Traceback (most recent call last):
+  File "E:\PythonProject1\src\runner.py", line 393, in run_experiment
+    sol = solve_fn(instance, method_cfg, logger)
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 286, in solve
+    obj_lp, _, duals, status_lp = _solve_master(
+                                  ~~~~~~~~~~~~~^
+        columns,
+        ^^^^^^^^
+    ...<5 lines>...
+        time_limit=time_limit,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 190, in _solve_master
+    _solve_with(solver)
+    ~~~~~~~~~~~^^^^^^^^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 175, in _solve_with
+    prob.solve(solver_obj)
+    ~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\pulp.py", line 2092, in solve
+    status = solver.actualSolve(self, **kwargs)
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 347, in actualSolve
+    self.buildSolverModel(lp)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 276, in buildSolverModel
+    self.initGurobi()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 262, in initGurobi
+    raise e
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 257, in initGurobi
+    self.model = gp.Model(env=self.env)
+                 ~~~~~~~~^^^^^^^^^^^^^^
+  File "src/gurobipy/_model.pyx", line 152, in gurobipy._model.Model.__init__
+  File "src/gurobipy/gurobi.pxi", line 40, in gurobipy._core.gurobi._getdefaultenv
+  File "src/gurobipy/env.pxi", line 112, in gurobipy._core.Env.__init__
+gurobipy._exception.GurobiError: User name mismatch (licensed to 'researcher', current user is 'codexsandboxoffline')
+2026-03-13 17:24:29,337 | ERROR | Run failed: N=200 seed=2 op=simops method=cg
+Traceback (most recent call last):
+  File "E:\PythonProject1\src\runner.py", line 393, in run_experiment
+    sol = solve_fn(instance, method_cfg, logger)
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 286, in solve
+    obj_lp, _, duals, status_lp = _solve_master(
+                                  ~~~~~~~~~~~~~^
+        columns,
+        ^^^^^^^^
+    ...<5 lines>...
+        time_limit=time_limit,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 190, in _solve_master
+    _solve_with(solver)
+    ~~~~~~~~~~~^^^^^^^^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 175, in _solve_with
+    prob.solve(solver_obj)
+    ~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\pulp.py", line 2092, in solve
+    status = solver.actualSolve(self, **kwargs)
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 347, in actualSolve
+    self.buildSolverModel(lp)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 276, in buildSolverModel
+    self.initGurobi()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 262, in initGurobi
+    raise e
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 257, in initGurobi
+    self.model = gp.Model(env=self.env)
+                 ~~~~~~~~^^^^^^^^^^^^^^
+  File "src/gurobipy/_model.pyx", line 152, in gurobipy._model.Model.__init__
+  File "src/gurobipy/gurobi.pxi", line 40, in gurobipy._core.gurobi._getdefaultenv
+  File "src/gurobipy/env.pxi", line 112, in gurobipy._core.Env.__init__
+gurobipy._exception.GurobiError: User name mismatch (licensed to 'researcher', current user is 'codexsandboxoffline')
+2026-03-13 17:24:29,765 | ERROR | Run failed: N=200 seed=2 op=sequential method=cg
+Traceback (most recent call last):
+  File "E:\PythonProject1\src\runner.py", line 393, in run_experiment
+    sol = solve_fn(instance, method_cfg, logger)
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 286, in solve
+    obj_lp, _, duals, status_lp = _solve_master(
+                                  ~~~~~~~~~~~~~^
+        columns,
+        ^^^^^^^^
+    ...<5 lines>...
+        time_limit=time_limit,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 190, in _solve_master
+    _solve_with(solver)
+    ~~~~~~~~~~~^^^^^^^^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 175, in _solve_with
+    prob.solve(solver_obj)
+    ~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\pulp.py", line 2092, in solve
+    status = solver.actualSolve(self, **kwargs)
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 347, in actualSolve
+    self.buildSolverModel(lp)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 276, in buildSolverModel
+    self.initGurobi()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 262, in initGurobi
+    raise e
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 257, in initGurobi
+    self.model = gp.Model(env=self.env)
+                 ~~~~~~~~^^^^^^^^^^^^^^
+  File "src/gurobipy/_model.pyx", line 152, in gurobipy._model.Model.__init__
+  File "src/gurobipy/gurobi.pxi", line 40, in gurobipy._core.gurobi._getdefaultenv
+  File "src/gurobipy/env.pxi", line 112, in gurobipy._core.Env.__init__
+gurobipy._exception.GurobiError: User name mismatch (licensed to 'researcher', current user is 'codexsandboxoffline')
+2026-03-13 17:24:30,199 | ERROR | Run failed: N=200 seed=3 op=simops method=cg
+Traceback (most recent call last):
+  File "E:\PythonProject1\src\runner.py", line 393, in run_experiment
+    sol = solve_fn(instance, method_cfg, logger)
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 286, in solve
+    obj_lp, _, duals, status_lp = _solve_master(
+                                  ~~~~~~~~~~~~~^
+        columns,
+        ^^^^^^^^
+    ...<5 lines>...
+        time_limit=time_limit,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 190, in _solve_master
+    _solve_with(solver)
+    ~~~~~~~~~~~^^^^^^^^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 175, in _solve_with
+    prob.solve(solver_obj)
+    ~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\pulp.py", line 2092, in solve
+    status = solver.actualSolve(self, **kwargs)
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 347, in actualSolve
+    self.buildSolverModel(lp)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 276, in buildSolverModel
+    self.initGurobi()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 262, in initGurobi
+    raise e
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 257, in initGurobi
+    self.model = gp.Model(env=self.env)
+                 ~~~~~~~~^^^^^^^^^^^^^^
+  File "src/gurobipy/_model.pyx", line 152, in gurobipy._model.Model.__init__
+  File "src/gurobipy/gurobi.pxi", line 40, in gurobipy._core.gurobi._getdefaultenv
+  File "src/gurobipy/env.pxi", line 112, in gurobipy._core.Env.__init__
+gurobipy._exception.GurobiError: User name mismatch (licensed to 'researcher', current user is 'codexsandboxoffline')
+2026-03-13 17:24:30,628 | ERROR | Run failed: N=200 seed=3 op=sequential method=cg
+Traceback (most recent call last):
+  File "E:\PythonProject1\src\runner.py", line 393, in run_experiment
+    sol = solve_fn(instance, method_cfg, logger)
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 286, in solve
+    obj_lp, _, duals, status_lp = _solve_master(
+                                  ~~~~~~~~~~~~~^
+        columns,
+        ^^^^^^^^
+    ...<5 lines>...
+        time_limit=time_limit,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 190, in _solve_master
+    _solve_with(solver)
+    ~~~~~~~~~~~^^^^^^^^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 175, in _solve_with
+    prob.solve(solver_obj)
+    ~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\pulp.py", line 2092, in solve
+    status = solver.actualSolve(self, **kwargs)
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 347, in actualSolve
+    self.buildSolverModel(lp)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 276, in buildSolverModel
+    self.initGurobi()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 262, in initGurobi
+    raise e
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 257, in initGurobi
+    self.model = gp.Model(env=self.env)
+                 ~~~~~~~~^^^^^^^^^^^^^^
+  File "src/gurobipy/_model.pyx", line 152, in gurobipy._model.Model.__init__
+  File "src/gurobipy/gurobi.pxi", line 40, in gurobipy._core.gurobi._getdefaultenv
+  File "src/gurobipy/env.pxi", line 112, in gurobipy._core.Env.__init__
+gurobipy._exception.GurobiError: User name mismatch (licensed to 'researcher', current user is 'codexsandboxoffline')
+2026-03-13 17:24:31,027 | ERROR | Run failed: N=200 seed=4 op=simops method=cg
+Traceback (most recent call last):
+  File "E:\PythonProject1\src\runner.py", line 393, in run_experiment
+    sol = solve_fn(instance, method_cfg, logger)
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 286, in solve
+    obj_lp, _, duals, status_lp = _solve_master(
+                                  ~~~~~~~~~~~~~^
+        columns,
+        ^^^^^^^^
+    ...<5 lines>...
+        time_limit=time_limit,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 190, in _solve_master
+    _solve_with(solver)
+    ~~~~~~~~~~~^^^^^^^^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 175, in _solve_with
+    prob.solve(solver_obj)
+    ~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\pulp.py", line 2092, in solve
+    status = solver.actualSolve(self, **kwargs)
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 347, in actualSolve
+    self.buildSolverModel(lp)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 276, in buildSolverModel
+    self.initGurobi()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 262, in initGurobi
+    raise e
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 257, in initGurobi
+    self.model = gp.Model(env=self.env)
+                 ~~~~~~~~^^^^^^^^^^^^^^
+  File "src/gurobipy/_model.pyx", line 152, in gurobipy._model.Model.__init__
+  File "src/gurobipy/gurobi.pxi", line 40, in gurobipy._core.gurobi._getdefaultenv
+  File "src/gurobipy/env.pxi", line 112, in gurobipy._core.Env.__init__
+gurobipy._exception.GurobiError: User name mismatch (licensed to 'researcher', current user is 'codexsandboxoffline')
+2026-03-13 17:24:31,447 | ERROR | Run failed: N=200 seed=4 op=sequential method=cg
+Traceback (most recent call last):
+  File "E:\PythonProject1\src\runner.py", line 393, in run_experiment
+    sol = solve_fn(instance, method_cfg, logger)
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 286, in solve
+    obj_lp, _, duals, status_lp = _solve_master(
+                                  ~~~~~~~~~~~~~^
+        columns,
+        ^^^^^^^^
+    ...<5 lines>...
+        time_limit=time_limit,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 190, in _solve_master
+    _solve_with(solver)
+    ~~~~~~~~~~~^^^^^^^^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 175, in _solve_with
+    prob.solve(solver_obj)
+    ~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\pulp.py", line 2092, in solve
+    status = solver.actualSolve(self, **kwargs)
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 347, in actualSolve
+    self.buildSolverModel(lp)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 276, in buildSolverModel
+    self.initGurobi()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 262, in initGurobi
+    raise e
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 257, in initGurobi
+    self.model = gp.Model(env=self.env)
+                 ~~~~~~~~^^^^^^^^^^^^^^
+  File "src/gurobipy/_model.pyx", line 152, in gurobipy._model.Model.__init__
+  File "src/gurobipy/gurobi.pxi", line 40, in gurobipy._core.gurobi._getdefaultenv
+  File "src/gurobipy/env.pxi", line 112, in gurobipy._core.Env.__init__
+gurobipy._exception.GurobiError: User name mismatch (licensed to 'researcher', current user is 'codexsandboxoffline')
+2026-03-13 17:24:31,898 | ERROR | Run failed: N=200 seed=5 op=simops method=cg
+Traceback (most recent call last):
+  File "E:\PythonProject1\src\runner.py", line 393, in run_experiment
+    sol = solve_fn(instance, method_cfg, logger)
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 286, in solve
+    obj_lp, _, duals, status_lp = _solve_master(
+                                  ~~~~~~~~~~~~~^
+        columns,
+        ^^^^^^^^
+    ...<5 lines>...
+        time_limit=time_limit,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 190, in _solve_master
+    _solve_with(solver)
+    ~~~~~~~~~~~^^^^^^^^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 175, in _solve_with
+    prob.solve(solver_obj)
+    ~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\pulp.py", line 2092, in solve
+    status = solver.actualSolve(self, **kwargs)
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 347, in actualSolve
+    self.buildSolverModel(lp)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 276, in buildSolverModel
+    self.initGurobi()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 262, in initGurobi
+    raise e
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 257, in initGurobi
+    self.model = gp.Model(env=self.env)
+                 ~~~~~~~~^^^^^^^^^^^^^^
+  File "src/gurobipy/_model.pyx", line 152, in gurobipy._model.Model.__init__
+  File "src/gurobipy/gurobi.pxi", line 40, in gurobipy._core.gurobi._getdefaultenv
+  File "src/gurobipy/env.pxi", line 112, in gurobipy._core.Env.__init__
+gurobipy._exception.GurobiError: User name mismatch (licensed to 'researcher', current user is 'codexsandboxoffline')
+2026-03-13 17:24:32,311 | ERROR | Run failed: N=200 seed=5 op=sequential method=cg
+Traceback (most recent call last):
+  File "E:\PythonProject1\src\runner.py", line 393, in run_experiment
+    sol = solve_fn(instance, method_cfg, logger)
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 286, in solve
+    obj_lp, _, duals, status_lp = _solve_master(
+                                  ~~~~~~~~~~~~~^
+        columns,
+        ^^^^^^^^
+    ...<5 lines>...
+        time_limit=time_limit,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 190, in _solve_master
+    _solve_with(solver)
+    ~~~~~~~~~~~^^^^^^^^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 175, in _solve_with
+    prob.solve(solver_obj)
+    ~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\pulp.py", line 2092, in solve
+    status = solver.actualSolve(self, **kwargs)
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 347, in actualSolve
+    self.buildSolverModel(lp)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 276, in buildSolverModel
+    self.initGurobi()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 262, in initGurobi
+    raise e
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 257, in initGurobi
+    self.model = gp.Model(env=self.env)
+                 ~~~~~~~~^^^^^^^^^^^^^^
+  File "src/gurobipy/_model.pyx", line 152, in gurobipy._model.Model.__init__
+  File "src/gurobipy/gurobi.pxi", line 40, in gurobipy._core.gurobi._getdefaultenv
+  File "src/gurobipy/env.pxi", line 112, in gurobipy._core.Env.__init__
+gurobipy._exception.GurobiError: User name mismatch (licensed to 'researcher', current user is 'codexsandboxoffline')
+2026-03-13 17:24:32,766 | ERROR | Run failed: N=200 seed=6 op=simops method=cg
+Traceback (most recent call last):
+  File "E:\PythonProject1\src\runner.py", line 393, in run_experiment
+    sol = solve_fn(instance, method_cfg, logger)
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 286, in solve
+    obj_lp, _, duals, status_lp = _solve_master(
+                                  ~~~~~~~~~~~~~^
+        columns,
+        ^^^^^^^^
+    ...<5 lines>...
+        time_limit=time_limit,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 190, in _solve_master
+    _solve_with(solver)
+    ~~~~~~~~~~~^^^^^^^^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 175, in _solve_with
+    prob.solve(solver_obj)
+    ~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\pulp.py", line 2092, in solve
+    status = solver.actualSolve(self, **kwargs)
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 347, in actualSolve
+    self.buildSolverModel(lp)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 276, in buildSolverModel
+    self.initGurobi()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 262, in initGurobi
+    raise e
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 257, in initGurobi
+    self.model = gp.Model(env=self.env)
+                 ~~~~~~~~^^^^^^^^^^^^^^
+  File "src/gurobipy/_model.pyx", line 152, in gurobipy._model.Model.__init__
+  File "src/gurobipy/gurobi.pxi", line 40, in gurobipy._core.gurobi._getdefaultenv
+  File "src/gurobipy/env.pxi", line 112, in gurobipy._core.Env.__init__
+gurobipy._exception.GurobiError: User name mismatch (licensed to 'researcher', current user is 'codexsandboxoffline')
+2026-03-13 17:24:33,228 | ERROR | Run failed: N=200 seed=6 op=sequential method=cg
+Traceback (most recent call last):
+  File "E:\PythonProject1\src\runner.py", line 393, in run_experiment
+    sol = solve_fn(instance, method_cfg, logger)
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 286, in solve
+    obj_lp, _, duals, status_lp = _solve_master(
+                                  ~~~~~~~~~~~~~^
+        columns,
+        ^^^^^^^^
+    ...<5 lines>...
+        time_limit=time_limit,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 190, in _solve_master
+    _solve_with(solver)
+    ~~~~~~~~~~~^^^^^^^^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 175, in _solve_with
+    prob.solve(solver_obj)
+    ~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\pulp.py", line 2092, in solve
+    status = solver.actualSolve(self, **kwargs)
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 347, in actualSolve
+    self.buildSolverModel(lp)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 276, in buildSolverModel
+    self.initGurobi()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 262, in initGurobi
+    raise e
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 257, in initGurobi
+    self.model = gp.Model(env=self.env)
+                 ~~~~~~~~^^^^^^^^^^^^^^
+  File "src/gurobipy/_model.pyx", line 152, in gurobipy._model.Model.__init__
+  File "src/gurobipy/gurobi.pxi", line 40, in gurobipy._core.gurobi._getdefaultenv
+  File "src/gurobipy/env.pxi", line 112, in gurobipy._core.Env.__init__
+gurobipy._exception.GurobiError: User name mismatch (licensed to 'researcher', current user is 'codexsandboxoffline')
+2026-03-13 17:24:33,672 | ERROR | Run failed: N=200 seed=7 op=simops method=cg
+Traceback (most recent call last):
+  File "E:\PythonProject1\src\runner.py", line 393, in run_experiment
+    sol = solve_fn(instance, method_cfg, logger)
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 286, in solve
+    obj_lp, _, duals, status_lp = _solve_master(
+                                  ~~~~~~~~~~~~~^
+        columns,
+        ^^^^^^^^
+    ...<5 lines>...
+        time_limit=time_limit,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 190, in _solve_master
+    _solve_with(solver)
+    ~~~~~~~~~~~^^^^^^^^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 175, in _solve_with
+    prob.solve(solver_obj)
+    ~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\pulp.py", line 2092, in solve
+    status = solver.actualSolve(self, **kwargs)
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 347, in actualSolve
+    self.buildSolverModel(lp)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 276, in buildSolverModel
+    self.initGurobi()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 262, in initGurobi
+    raise e
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 257, in initGurobi
+    self.model = gp.Model(env=self.env)
+                 ~~~~~~~~^^^^^^^^^^^^^^
+  File "src/gurobipy/_model.pyx", line 152, in gurobipy._model.Model.__init__
+  File "src/gurobipy/gurobi.pxi", line 40, in gurobipy._core.gurobi._getdefaultenv
+  File "src/gurobipy/env.pxi", line 112, in gurobipy._core.Env.__init__
+gurobipy._exception.GurobiError: User name mismatch (licensed to 'researcher', current user is 'codexsandboxoffline')
+2026-03-13 17:24:34,081 | ERROR | Run failed: N=200 seed=7 op=sequential method=cg
+Traceback (most recent call last):
+  File "E:\PythonProject1\src\runner.py", line 393, in run_experiment
+    sol = solve_fn(instance, method_cfg, logger)
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 286, in solve
+    obj_lp, _, duals, status_lp = _solve_master(
+                                  ~~~~~~~~~~~~~^
+        columns,
+        ^^^^^^^^
+    ...<5 lines>...
+        time_limit=time_limit,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 190, in _solve_master
+    _solve_with(solver)
+    ~~~~~~~~~~~^^^^^^^^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 175, in _solve_with
+    prob.solve(solver_obj)
+    ~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\pulp.py", line 2092, in solve
+    status = solver.actualSolve(self, **kwargs)
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 347, in actualSolve
+    self.buildSolverModel(lp)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 276, in buildSolverModel
+    self.initGurobi()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 262, in initGurobi
+    raise e
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 257, in initGurobi
+    self.model = gp.Model(env=self.env)
+                 ~~~~~~~~^^^^^^^^^^^^^^
+  File "src/gurobipy/_model.pyx", line 152, in gurobipy._model.Model.__init__
+  File "src/gurobipy/gurobi.pxi", line 40, in gurobipy._core.gurobi._getdefaultenv
+  File "src/gurobipy/env.pxi", line 112, in gurobipy._core.Env.__init__
+gurobipy._exception.GurobiError: User name mismatch (licensed to 'researcher', current user is 'codexsandboxoffline')
+2026-03-13 17:24:34,538 | ERROR | Run failed: N=200 seed=8 op=simops method=cg
+Traceback (most recent call last):
+  File "E:\PythonProject1\src\runner.py", line 393, in run_experiment
+    sol = solve_fn(instance, method_cfg, logger)
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 286, in solve
+    obj_lp, _, duals, status_lp = _solve_master(
+                                  ~~~~~~~~~~~~~^
+        columns,
+        ^^^^^^^^
+    ...<5 lines>...
+        time_limit=time_limit,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 190, in _solve_master
+    _solve_with(solver)
+    ~~~~~~~~~~~^^^^^^^^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 175, in _solve_with
+    prob.solve(solver_obj)
+    ~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\pulp.py", line 2092, in solve
+    status = solver.actualSolve(self, **kwargs)
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 347, in actualSolve
+    self.buildSolverModel(lp)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 276, in buildSolverModel
+    self.initGurobi()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 262, in initGurobi
+    raise e
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 257, in initGurobi
+    self.model = gp.Model(env=self.env)
+                 ~~~~~~~~^^^^^^^^^^^^^^
+  File "src/gurobipy/_model.pyx", line 152, in gurobipy._model.Model.__init__
+  File "src/gurobipy/gurobi.pxi", line 40, in gurobipy._core.gurobi._getdefaultenv
+  File "src/gurobipy/env.pxi", line 112, in gurobipy._core.Env.__init__
+gurobipy._exception.GurobiError: User name mismatch (licensed to 'researcher', current user is 'codexsandboxoffline')
+2026-03-13 17:24:34,958 | ERROR | Run failed: N=200 seed=8 op=sequential method=cg
+Traceback (most recent call last):
+  File "E:\PythonProject1\src\runner.py", line 393, in run_experiment
+    sol = solve_fn(instance, method_cfg, logger)
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 286, in solve
+    obj_lp, _, duals, status_lp = _solve_master(
+                                  ~~~~~~~~~~~~~^
+        columns,
+        ^^^^^^^^
+    ...<5 lines>...
+        time_limit=time_limit,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 190, in _solve_master
+    _solve_with(solver)
+    ~~~~~~~~~~~^^^^^^^^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 175, in _solve_with
+    prob.solve(solver_obj)
+    ~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\pulp.py", line 2092, in solve
+    status = solver.actualSolve(self, **kwargs)
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 347, in actualSolve
+    self.buildSolverModel(lp)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 276, in buildSolverModel
+    self.initGurobi()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 262, in initGurobi
+    raise e
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 257, in initGurobi
+    self.model = gp.Model(env=self.env)
+                 ~~~~~~~~^^^^^^^^^^^^^^
+  File "src/gurobipy/_model.pyx", line 152, in gurobipy._model.Model.__init__
+  File "src/gurobipy/gurobi.pxi", line 40, in gurobipy._core.gurobi._getdefaultenv
+  File "src/gurobipy/env.pxi", line 112, in gurobipy._core.Env.__init__
+gurobipy._exception.GurobiError: User name mismatch (licensed to 'researcher', current user is 'codexsandboxoffline')
+2026-03-13 17:24:35,346 | ERROR | Run failed: N=200 seed=9 op=simops method=cg
+Traceback (most recent call last):
+  File "E:\PythonProject1\src\runner.py", line 393, in run_experiment
+    sol = solve_fn(instance, method_cfg, logger)
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 286, in solve
+    obj_lp, _, duals, status_lp = _solve_master(
+                                  ~~~~~~~~~~~~~^
+        columns,
+        ^^^^^^^^
+    ...<5 lines>...
+        time_limit=time_limit,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 190, in _solve_master
+    _solve_with(solver)
+    ~~~~~~~~~~~^^^^^^^^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 175, in _solve_with
+    prob.solve(solver_obj)
+    ~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\pulp.py", line 2092, in solve
+    status = solver.actualSolve(self, **kwargs)
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 347, in actualSolve
+    self.buildSolverModel(lp)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 276, in buildSolverModel
+    self.initGurobi()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 262, in initGurobi
+    raise e
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 257, in initGurobi
+    self.model = gp.Model(env=self.env)
+                 ~~~~~~~~^^^^^^^^^^^^^^
+  File "src/gurobipy/_model.pyx", line 152, in gurobipy._model.Model.__init__
+  File "src/gurobipy/gurobi.pxi", line 40, in gurobipy._core.gurobi._getdefaultenv
+  File "src/gurobipy/env.pxi", line 112, in gurobipy._core.Env.__init__
+gurobipy._exception.GurobiError: User name mismatch (licensed to 'researcher', current user is 'codexsandboxoffline')
+2026-03-13 17:24:35,749 | ERROR | Run failed: N=200 seed=9 op=sequential method=cg
+Traceback (most recent call last):
+  File "E:\PythonProject1\src\runner.py", line 393, in run_experiment
+    sol = solve_fn(instance, method_cfg, logger)
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 286, in solve
+    obj_lp, _, duals, status_lp = _solve_master(
+                                  ~~~~~~~~~~~~~^
+        columns,
+        ^^^^^^^^
+    ...<5 lines>...
+        time_limit=time_limit,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 190, in _solve_master
+    _solve_with(solver)
+    ~~~~~~~~~~~^^^^^^^^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 175, in _solve_with
+    prob.solve(solver_obj)
+    ~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\pulp.py", line 2092, in solve
+    status = solver.actualSolve(self, **kwargs)
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 347, in actualSolve
+    self.buildSolverModel(lp)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 276, in buildSolverModel
+    self.initGurobi()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 262, in initGurobi
+    raise e
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 257, in initGurobi
+    self.model = gp.Model(env=self.env)
+                 ~~~~~~~~^^^^^^^^^^^^^^
+  File "src/gurobipy/_model.pyx", line 152, in gurobipy._model.Model.__init__
+  File "src/gurobipy/gurobi.pxi", line 40, in gurobipy._core.gurobi._getdefaultenv
+  File "src/gurobipy/env.pxi", line 112, in gurobipy._core.Env.__init__
+gurobipy._exception.GurobiError: User name mismatch (licensed to 'researcher', current user is 'codexsandboxoffline')
+2026-03-13 17:24:36,146 | ERROR | Run failed: N=200 seed=10 op=simops method=cg
+Traceback (most recent call last):
+  File "E:\PythonProject1\src\runner.py", line 393, in run_experiment
+    sol = solve_fn(instance, method_cfg, logger)
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 286, in solve
+    obj_lp, _, duals, status_lp = _solve_master(
+                                  ~~~~~~~~~~~~~^
+        columns,
+        ^^^^^^^^
+    ...<5 lines>...
+        time_limit=time_limit,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 190, in _solve_master
+    _solve_with(solver)
+    ~~~~~~~~~~~^^^^^^^^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 175, in _solve_with
+    prob.solve(solver_obj)
+    ~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\pulp.py", line 2092, in solve
+    status = solver.actualSolve(self, **kwargs)
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 347, in actualSolve
+    self.buildSolverModel(lp)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 276, in buildSolverModel
+    self.initGurobi()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 262, in initGurobi
+    raise e
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 257, in initGurobi
+    self.model = gp.Model(env=self.env)
+                 ~~~~~~~~^^^^^^^^^^^^^^
+  File "src/gurobipy/_model.pyx", line 152, in gurobipy._model.Model.__init__
+  File "src/gurobipy/gurobi.pxi", line 40, in gurobipy._core.gurobi._getdefaultenv
+  File "src/gurobipy/env.pxi", line 112, in gurobipy._core.Env.__init__
+gurobipy._exception.GurobiError: User name mismatch (licensed to 'researcher', current user is 'codexsandboxoffline')
+2026-03-13 17:24:36,548 | ERROR | Run failed: N=200 seed=10 op=sequential method=cg
+Traceback (most recent call last):
+  File "E:\PythonProject1\src\runner.py", line 393, in run_experiment
+    sol = solve_fn(instance, method_cfg, logger)
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 286, in solve
+    obj_lp, _, duals, status_lp = _solve_master(
+                                  ~~~~~~~~~~~~~^
+        columns,
+        ^^^^^^^^
+    ...<5 lines>...
+        time_limit=time_limit,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 190, in _solve_master
+    _solve_with(solver)
+    ~~~~~~~~~~~^^^^^^^^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 175, in _solve_with
+    prob.solve(solver_obj)
+    ~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\pulp.py", line 2092, in solve
+    status = solver.actualSolve(self, **kwargs)
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 347, in actualSolve
+    self.buildSolverModel(lp)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 276, in buildSolverModel
+    self.initGurobi()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 262, in initGurobi
+    raise e
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 257, in initGurobi
+    self.model = gp.Model(env=self.env)
+                 ~~~~~~~~^^^^^^^^^^^^^^
+  File "src/gurobipy/_model.pyx", line 152, in gurobipy._model.Model.__init__
+  File "src/gurobipy/gurobi.pxi", line 40, in gurobipy._core.gurobi._getdefaultenv
+  File "src/gurobipy/env.pxi", line 112, in gurobipy._core.Env.__init__
+gurobipy._exception.GurobiError: User name mismatch (licensed to 'researcher', current user is 'codexsandboxoffline')
+2026-03-13 17:24:37,474 | ERROR | Run failed: N=500 seed=1 op=simops method=cg
+Traceback (most recent call last):
+  File "E:\PythonProject1\src\runner.py", line 393, in run_experiment
+    sol = solve_fn(instance, method_cfg, logger)
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 286, in solve
+    obj_lp, _, duals, status_lp = _solve_master(
+                                  ~~~~~~~~~~~~~^
+        columns,
+        ^^^^^^^^
+    ...<5 lines>...
+        time_limit=time_limit,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 190, in _solve_master
+    _solve_with(solver)
+    ~~~~~~~~~~~^^^^^^^^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 175, in _solve_with
+    prob.solve(solver_obj)
+    ~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\pulp.py", line 2092, in solve
+    status = solver.actualSolve(self, **kwargs)
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 347, in actualSolve
+    self.buildSolverModel(lp)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 276, in buildSolverModel
+    self.initGurobi()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 262, in initGurobi
+    raise e
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 257, in initGurobi
+    self.model = gp.Model(env=self.env)
+                 ~~~~~~~~^^^^^^^^^^^^^^
+  File "src/gurobipy/_model.pyx", line 152, in gurobipy._model.Model.__init__
+  File "src/gurobipy/gurobi.pxi", line 40, in gurobipy._core.gurobi._getdefaultenv
+  File "src/gurobipy/env.pxi", line 112, in gurobipy._core.Env.__init__
+gurobipy._exception.GurobiError: User name mismatch (licensed to 'researcher', current user is 'codexsandboxoffline')
+2026-03-13 17:24:38,571 | ERROR | Run failed: N=500 seed=1 op=sequential method=cg
+Traceback (most recent call last):
+  File "E:\PythonProject1\src\runner.py", line 393, in run_experiment
+    sol = solve_fn(instance, method_cfg, logger)
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 286, in solve
+    obj_lp, _, duals, status_lp = _solve_master(
+                                  ~~~~~~~~~~~~~^
+        columns,
+        ^^^^^^^^
+    ...<5 lines>...
+        time_limit=time_limit,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 190, in _solve_master
+    _solve_with(solver)
+    ~~~~~~~~~~~^^^^^^^^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 175, in _solve_with
+    prob.solve(solver_obj)
+    ~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\pulp.py", line 2092, in solve
+    status = solver.actualSolve(self, **kwargs)
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 347, in actualSolve
+    self.buildSolverModel(lp)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 276, in buildSolverModel
+    self.initGurobi()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 262, in initGurobi
+    raise e
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 257, in initGurobi
+    self.model = gp.Model(env=self.env)
+                 ~~~~~~~~^^^^^^^^^^^^^^
+  File "src/gurobipy/_model.pyx", line 152, in gurobipy._model.Model.__init__
+  File "src/gurobipy/gurobi.pxi", line 40, in gurobipy._core.gurobi._getdefaultenv
+  File "src/gurobipy/env.pxi", line 112, in gurobipy._core.Env.__init__
+gurobipy._exception.GurobiError: User name mismatch (licensed to 'researcher', current user is 'codexsandboxoffline')
+2026-03-13 17:24:39,747 | ERROR | Run failed: N=500 seed=2 op=simops method=cg
+Traceback (most recent call last):
+  File "E:\PythonProject1\src\runner.py", line 393, in run_experiment
+    sol = solve_fn(instance, method_cfg, logger)
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 286, in solve
+    obj_lp, _, duals, status_lp = _solve_master(
+                                  ~~~~~~~~~~~~~^
+        columns,
+        ^^^^^^^^
+    ...<5 lines>...
+        time_limit=time_limit,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 190, in _solve_master
+    _solve_with(solver)
+    ~~~~~~~~~~~^^^^^^^^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 175, in _solve_with
+    prob.solve(solver_obj)
+    ~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\pulp.py", line 2092, in solve
+    status = solver.actualSolve(self, **kwargs)
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 347, in actualSolve
+    self.buildSolverModel(lp)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 276, in buildSolverModel
+    self.initGurobi()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 262, in initGurobi
+    raise e
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 257, in initGurobi
+    self.model = gp.Model(env=self.env)
+                 ~~~~~~~~^^^^^^^^^^^^^^
+  File "src/gurobipy/_model.pyx", line 152, in gurobipy._model.Model.__init__
+  File "src/gurobipy/gurobi.pxi", line 40, in gurobipy._core.gurobi._getdefaultenv
+  File "src/gurobipy/env.pxi", line 112, in gurobipy._core.Env.__init__
+gurobipy._exception.GurobiError: User name mismatch (licensed to 'researcher', current user is 'codexsandboxoffline')
+2026-03-13 17:24:40,914 | ERROR | Run failed: N=500 seed=2 op=sequential method=cg
+Traceback (most recent call last):
+  File "E:\PythonProject1\src\runner.py", line 393, in run_experiment
+    sol = solve_fn(instance, method_cfg, logger)
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 286, in solve
+    obj_lp, _, duals, status_lp = _solve_master(
+                                  ~~~~~~~~~~~~~^
+        columns,
+        ^^^^^^^^
+    ...<5 lines>...
+        time_limit=time_limit,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 190, in _solve_master
+    _solve_with(solver)
+    ~~~~~~~~~~~^^^^^^^^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 175, in _solve_with
+    prob.solve(solver_obj)
+    ~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\pulp.py", line 2092, in solve
+    status = solver.actualSolve(self, **kwargs)
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 347, in actualSolve
+    self.buildSolverModel(lp)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 276, in buildSolverModel
+    self.initGurobi()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 262, in initGurobi
+    raise e
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 257, in initGurobi
+    self.model = gp.Model(env=self.env)
+                 ~~~~~~~~^^^^^^^^^^^^^^
+  File "src/gurobipy/_model.pyx", line 152, in gurobipy._model.Model.__init__
+  File "src/gurobipy/gurobi.pxi", line 40, in gurobipy._core.gurobi._getdefaultenv
+  File "src/gurobipy/env.pxi", line 112, in gurobipy._core.Env.__init__
+gurobipy._exception.GurobiError: User name mismatch (licensed to 'researcher', current user is 'codexsandboxoffline')
+2026-03-13 17:24:42,089 | ERROR | Run failed: N=500 seed=3 op=simops method=cg
+Traceback (most recent call last):
+  File "E:\PythonProject1\src\runner.py", line 393, in run_experiment
+    sol = solve_fn(instance, method_cfg, logger)
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 286, in solve
+    obj_lp, _, duals, status_lp = _solve_master(
+                                  ~~~~~~~~~~~~~^
+        columns,
+        ^^^^^^^^
+    ...<5 lines>...
+        time_limit=time_limit,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 190, in _solve_master
+    _solve_with(solver)
+    ~~~~~~~~~~~^^^^^^^^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 175, in _solve_with
+    prob.solve(solver_obj)
+    ~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\pulp.py", line 2092, in solve
+    status = solver.actualSolve(self, **kwargs)
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 347, in actualSolve
+    self.buildSolverModel(lp)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 276, in buildSolverModel
+    self.initGurobi()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 262, in initGurobi
+    raise e
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 257, in initGurobi
+    self.model = gp.Model(env=self.env)
+                 ~~~~~~~~^^^^^^^^^^^^^^
+  File "src/gurobipy/_model.pyx", line 152, in gurobipy._model.Model.__init__
+  File "src/gurobipy/gurobi.pxi", line 40, in gurobipy._core.gurobi._getdefaultenv
+  File "src/gurobipy/env.pxi", line 112, in gurobipy._core.Env.__init__
+gurobipy._exception.GurobiError: User name mismatch (licensed to 'researcher', current user is 'codexsandboxoffline')
+2026-03-13 17:24:43,178 | ERROR | Run failed: N=500 seed=3 op=sequential method=cg
+Traceback (most recent call last):
+  File "E:\PythonProject1\src\runner.py", line 393, in run_experiment
+    sol = solve_fn(instance, method_cfg, logger)
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 286, in solve
+    obj_lp, _, duals, status_lp = _solve_master(
+                                  ~~~~~~~~~~~~~^
+        columns,
+        ^^^^^^^^
+    ...<5 lines>...
+        time_limit=time_limit,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 190, in _solve_master
+    _solve_with(solver)
+    ~~~~~~~~~~~^^^^^^^^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 175, in _solve_with
+    prob.solve(solver_obj)
+    ~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\pulp.py", line 2092, in solve
+    status = solver.actualSolve(self, **kwargs)
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 347, in actualSolve
+    self.buildSolverModel(lp)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 276, in buildSolverModel
+    self.initGurobi()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 262, in initGurobi
+    raise e
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 257, in initGurobi
+    self.model = gp.Model(env=self.env)
+                 ~~~~~~~~^^^^^^^^^^^^^^
+  File "src/gurobipy/_model.pyx", line 152, in gurobipy._model.Model.__init__
+  File "src/gurobipy/gurobi.pxi", line 40, in gurobipy._core.gurobi._getdefaultenv
+  File "src/gurobipy/env.pxi", line 112, in gurobipy._core.Env.__init__
+gurobipy._exception.GurobiError: User name mismatch (licensed to 'researcher', current user is 'codexsandboxoffline')
+2026-03-13 17:24:44,316 | ERROR | Run failed: N=500 seed=4 op=simops method=cg
+Traceback (most recent call last):
+  File "E:\PythonProject1\src\runner.py", line 393, in run_experiment
+    sol = solve_fn(instance, method_cfg, logger)
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 286, in solve
+    obj_lp, _, duals, status_lp = _solve_master(
+                                  ~~~~~~~~~~~~~^
+        columns,
+        ^^^^^^^^
+    ...<5 lines>...
+        time_limit=time_limit,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 190, in _solve_master
+    _solve_with(solver)
+    ~~~~~~~~~~~^^^^^^^^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 175, in _solve_with
+    prob.solve(solver_obj)
+    ~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\pulp.py", line 2092, in solve
+    status = solver.actualSolve(self, **kwargs)
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 347, in actualSolve
+    self.buildSolverModel(lp)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 276, in buildSolverModel
+    self.initGurobi()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 262, in initGurobi
+    raise e
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 257, in initGurobi
+    self.model = gp.Model(env=self.env)
+                 ~~~~~~~~^^^^^^^^^^^^^^
+  File "src/gurobipy/_model.pyx", line 152, in gurobipy._model.Model.__init__
+  File "src/gurobipy/gurobi.pxi", line 40, in gurobipy._core.gurobi._getdefaultenv
+  File "src/gurobipy/env.pxi", line 112, in gurobipy._core.Env.__init__
+gurobipy._exception.GurobiError: User name mismatch (licensed to 'researcher', current user is 'codexsandboxoffline')
+2026-03-13 17:24:45,556 | ERROR | Run failed: N=500 seed=4 op=sequential method=cg
+Traceback (most recent call last):
+  File "E:\PythonProject1\src\runner.py", line 393, in run_experiment
+    sol = solve_fn(instance, method_cfg, logger)
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 286, in solve
+    obj_lp, _, duals, status_lp = _solve_master(
+                                  ~~~~~~~~~~~~~^
+        columns,
+        ^^^^^^^^
+    ...<5 lines>...
+        time_limit=time_limit,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 190, in _solve_master
+    _solve_with(solver)
+    ~~~~~~~~~~~^^^^^^^^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 175, in _solve_with
+    prob.solve(solver_obj)
+    ~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\pulp.py", line 2092, in solve
+    status = solver.actualSolve(self, **kwargs)
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 347, in actualSolve
+    self.buildSolverModel(lp)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 276, in buildSolverModel
+    self.initGurobi()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 262, in initGurobi
+    raise e
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 257, in initGurobi
+    self.model = gp.Model(env=self.env)
+                 ~~~~~~~~^^^^^^^^^^^^^^
+  File "src/gurobipy/_model.pyx", line 152, in gurobipy._model.Model.__init__
+  File "src/gurobipy/gurobi.pxi", line 40, in gurobipy._core.gurobi._getdefaultenv
+  File "src/gurobipy/env.pxi", line 112, in gurobipy._core.Env.__init__
+gurobipy._exception.GurobiError: User name mismatch (licensed to 'researcher', current user is 'codexsandboxoffline')
+2026-03-13 17:24:46,806 | ERROR | Run failed: N=500 seed=5 op=simops method=cg
+Traceback (most recent call last):
+  File "E:\PythonProject1\src\runner.py", line 393, in run_experiment
+    sol = solve_fn(instance, method_cfg, logger)
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 286, in solve
+    obj_lp, _, duals, status_lp = _solve_master(
+                                  ~~~~~~~~~~~~~^
+        columns,
+        ^^^^^^^^
+    ...<5 lines>...
+        time_limit=time_limit,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 190, in _solve_master
+    _solve_with(solver)
+    ~~~~~~~~~~~^^^^^^^^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 175, in _solve_with
+    prob.solve(solver_obj)
+    ~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\pulp.py", line 2092, in solve
+    status = solver.actualSolve(self, **kwargs)
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 347, in actualSolve
+    self.buildSolverModel(lp)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 276, in buildSolverModel
+    self.initGurobi()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 262, in initGurobi
+    raise e
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 257, in initGurobi
+    self.model = gp.Model(env=self.env)
+                 ~~~~~~~~^^^^^^^^^^^^^^
+  File "src/gurobipy/_model.pyx", line 152, in gurobipy._model.Model.__init__
+  File "src/gurobipy/gurobi.pxi", line 40, in gurobipy._core.gurobi._getdefaultenv
+  File "src/gurobipy/env.pxi", line 112, in gurobipy._core.Env.__init__
+gurobipy._exception.GurobiError: User name mismatch (licensed to 'researcher', current user is 'codexsandboxoffline')
+2026-03-13 17:24:48,048 | ERROR | Run failed: N=500 seed=5 op=sequential method=cg
+Traceback (most recent call last):
+  File "E:\PythonProject1\src\runner.py", line 393, in run_experiment
+    sol = solve_fn(instance, method_cfg, logger)
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 286, in solve
+    obj_lp, _, duals, status_lp = _solve_master(
+                                  ~~~~~~~~~~~~~^
+        columns,
+        ^^^^^^^^
+    ...<5 lines>...
+        time_limit=time_limit,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 190, in _solve_master
+    _solve_with(solver)
+    ~~~~~~~~~~~^^^^^^^^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 175, in _solve_with
+    prob.solve(solver_obj)
+    ~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\pulp.py", line 2092, in solve
+    status = solver.actualSolve(self, **kwargs)
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 347, in actualSolve
+    self.buildSolverModel(lp)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 276, in buildSolverModel
+    self.initGurobi()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 262, in initGurobi
+    raise e
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 257, in initGurobi
+    self.model = gp.Model(env=self.env)
+                 ~~~~~~~~^^^^^^^^^^^^^^
+  File "src/gurobipy/_model.pyx", line 152, in gurobipy._model.Model.__init__
+  File "src/gurobipy/gurobi.pxi", line 40, in gurobipy._core.gurobi._getdefaultenv
+  File "src/gurobipy/env.pxi", line 112, in gurobipy._core.Env.__init__
+gurobipy._exception.GurobiError: User name mismatch (licensed to 'researcher', current user is 'codexsandboxoffline')
+2026-03-13 17:24:49,251 | ERROR | Run failed: N=500 seed=6 op=simops method=cg
+Traceback (most recent call last):
+  File "E:\PythonProject1\src\runner.py", line 393, in run_experiment
+    sol = solve_fn(instance, method_cfg, logger)
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 286, in solve
+    obj_lp, _, duals, status_lp = _solve_master(
+                                  ~~~~~~~~~~~~~^
+        columns,
+        ^^^^^^^^
+    ...<5 lines>...
+        time_limit=time_limit,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 190, in _solve_master
+    _solve_with(solver)
+    ~~~~~~~~~~~^^^^^^^^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 175, in _solve_with
+    prob.solve(solver_obj)
+    ~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\pulp.py", line 2092, in solve
+    status = solver.actualSolve(self, **kwargs)
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 347, in actualSolve
+    self.buildSolverModel(lp)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 276, in buildSolverModel
+    self.initGurobi()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 262, in initGurobi
+    raise e
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 257, in initGurobi
+    self.model = gp.Model(env=self.env)
+                 ~~~~~~~~^^^^^^^^^^^^^^
+  File "src/gurobipy/_model.pyx", line 152, in gurobipy._model.Model.__init__
+  File "src/gurobipy/gurobi.pxi", line 40, in gurobipy._core.gurobi._getdefaultenv
+  File "src/gurobipy/env.pxi", line 112, in gurobipy._core.Env.__init__
+gurobipy._exception.GurobiError: User name mismatch (licensed to 'researcher', current user is 'codexsandboxoffline')
+2026-03-13 17:24:50,492 | ERROR | Run failed: N=500 seed=6 op=sequential method=cg
+Traceback (most recent call last):
+  File "E:\PythonProject1\src\runner.py", line 393, in run_experiment
+    sol = solve_fn(instance, method_cfg, logger)
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 286, in solve
+    obj_lp, _, duals, status_lp = _solve_master(
+                                  ~~~~~~~~~~~~~^
+        columns,
+        ^^^^^^^^
+    ...<5 lines>...
+        time_limit=time_limit,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 190, in _solve_master
+    _solve_with(solver)
+    ~~~~~~~~~~~^^^^^^^^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 175, in _solve_with
+    prob.solve(solver_obj)
+    ~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\pulp.py", line 2092, in solve
+    status = solver.actualSolve(self, **kwargs)
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 347, in actualSolve
+    self.buildSolverModel(lp)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 276, in buildSolverModel
+    self.initGurobi()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 262, in initGurobi
+    raise e
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 257, in initGurobi
+    self.model = gp.Model(env=self.env)
+                 ~~~~~~~~^^^^^^^^^^^^^^
+  File "src/gurobipy/_model.pyx", line 152, in gurobipy._model.Model.__init__
+  File "src/gurobipy/gurobi.pxi", line 40, in gurobipy._core.gurobi._getdefaultenv
+  File "src/gurobipy/env.pxi", line 112, in gurobipy._core.Env.__init__
+gurobipy._exception.GurobiError: User name mismatch (licensed to 'researcher', current user is 'codexsandboxoffline')
+2026-03-13 17:24:51,705 | ERROR | Run failed: N=500 seed=7 op=simops method=cg
+Traceback (most recent call last):
+  File "E:\PythonProject1\src\runner.py", line 393, in run_experiment
+    sol = solve_fn(instance, method_cfg, logger)
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 286, in solve
+    obj_lp, _, duals, status_lp = _solve_master(
+                                  ~~~~~~~~~~~~~^
+        columns,
+        ^^^^^^^^
+    ...<5 lines>...
+        time_limit=time_limit,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 190, in _solve_master
+    _solve_with(solver)
+    ~~~~~~~~~~~^^^^^^^^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 175, in _solve_with
+    prob.solve(solver_obj)
+    ~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\pulp.py", line 2092, in solve
+    status = solver.actualSolve(self, **kwargs)
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 347, in actualSolve
+    self.buildSolverModel(lp)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 276, in buildSolverModel
+    self.initGurobi()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 262, in initGurobi
+    raise e
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 257, in initGurobi
+    self.model = gp.Model(env=self.env)
+                 ~~~~~~~~^^^^^^^^^^^^^^
+  File "src/gurobipy/_model.pyx", line 152, in gurobipy._model.Model.__init__
+  File "src/gurobipy/gurobi.pxi", line 40, in gurobipy._core.gurobi._getdefaultenv
+  File "src/gurobipy/env.pxi", line 112, in gurobipy._core.Env.__init__
+gurobipy._exception.GurobiError: User name mismatch (licensed to 'researcher', current user is 'codexsandboxoffline')
+2026-03-13 17:24:52,825 | ERROR | Run failed: N=500 seed=7 op=sequential method=cg
+Traceback (most recent call last):
+  File "E:\PythonProject1\src\runner.py", line 393, in run_experiment
+    sol = solve_fn(instance, method_cfg, logger)
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 286, in solve
+    obj_lp, _, duals, status_lp = _solve_master(
+                                  ~~~~~~~~~~~~~^
+        columns,
+        ^^^^^^^^
+    ...<5 lines>...
+        time_limit=time_limit,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 190, in _solve_master
+    _solve_with(solver)
+    ~~~~~~~~~~~^^^^^^^^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 175, in _solve_with
+    prob.solve(solver_obj)
+    ~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\pulp.py", line 2092, in solve
+    status = solver.actualSolve(self, **kwargs)
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 347, in actualSolve
+    self.buildSolverModel(lp)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 276, in buildSolverModel
+    self.initGurobi()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 262, in initGurobi
+    raise e
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 257, in initGurobi
+    self.model = gp.Model(env=self.env)
+                 ~~~~~~~~^^^^^^^^^^^^^^
+  File "src/gurobipy/_model.pyx", line 152, in gurobipy._model.Model.__init__
+  File "src/gurobipy/gurobi.pxi", line 40, in gurobipy._core.gurobi._getdefaultenv
+  File "src/gurobipy/env.pxi", line 112, in gurobipy._core.Env.__init__
+gurobipy._exception.GurobiError: User name mismatch (licensed to 'researcher', current user is 'codexsandboxoffline')
+2026-03-13 17:24:54,006 | ERROR | Run failed: N=500 seed=8 op=simops method=cg
+Traceback (most recent call last):
+  File "E:\PythonProject1\src\runner.py", line 393, in run_experiment
+    sol = solve_fn(instance, method_cfg, logger)
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 286, in solve
+    obj_lp, _, duals, status_lp = _solve_master(
+                                  ~~~~~~~~~~~~~^
+        columns,
+        ^^^^^^^^
+    ...<5 lines>...
+        time_limit=time_limit,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 190, in _solve_master
+    _solve_with(solver)
+    ~~~~~~~~~~~^^^^^^^^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 175, in _solve_with
+    prob.solve(solver_obj)
+    ~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\pulp.py", line 2092, in solve
+    status = solver.actualSolve(self, **kwargs)
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 347, in actualSolve
+    self.buildSolverModel(lp)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 276, in buildSolverModel
+    self.initGurobi()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 262, in initGurobi
+    raise e
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 257, in initGurobi
+    self.model = gp.Model(env=self.env)
+                 ~~~~~~~~^^^^^^^^^^^^^^
+  File "src/gurobipy/_model.pyx", line 152, in gurobipy._model.Model.__init__
+  File "src/gurobipy/gurobi.pxi", line 40, in gurobipy._core.gurobi._getdefaultenv
+  File "src/gurobipy/env.pxi", line 112, in gurobipy._core.Env.__init__
+gurobipy._exception.GurobiError: User name mismatch (licensed to 'researcher', current user is 'codexsandboxoffline')
+2026-03-13 17:24:55,147 | ERROR | Run failed: N=500 seed=8 op=sequential method=cg
+Traceback (most recent call last):
+  File "E:\PythonProject1\src\runner.py", line 393, in run_experiment
+    sol = solve_fn(instance, method_cfg, logger)
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 286, in solve
+    obj_lp, _, duals, status_lp = _solve_master(
+                                  ~~~~~~~~~~~~~^
+        columns,
+        ^^^^^^^^
+    ...<5 lines>...
+        time_limit=time_limit,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 190, in _solve_master
+    _solve_with(solver)
+    ~~~~~~~~~~~^^^^^^^^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 175, in _solve_with
+    prob.solve(solver_obj)
+    ~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\pulp.py", line 2092, in solve
+    status = solver.actualSolve(self, **kwargs)
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 347, in actualSolve
+    self.buildSolverModel(lp)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 276, in buildSolverModel
+    self.initGurobi()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 262, in initGurobi
+    raise e
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 257, in initGurobi
+    self.model = gp.Model(env=self.env)
+                 ~~~~~~~~^^^^^^^^^^^^^^
+  File "src/gurobipy/_model.pyx", line 152, in gurobipy._model.Model.__init__
+  File "src/gurobipy/gurobi.pxi", line 40, in gurobipy._core.gurobi._getdefaultenv
+  File "src/gurobipy/env.pxi", line 112, in gurobipy._core.Env.__init__
+gurobipy._exception.GurobiError: User name mismatch (licensed to 'researcher', current user is 'codexsandboxoffline')
+2026-03-13 17:24:56,352 | ERROR | Run failed: N=500 seed=9 op=simops method=cg
+Traceback (most recent call last):
+  File "E:\PythonProject1\src\runner.py", line 393, in run_experiment
+    sol = solve_fn(instance, method_cfg, logger)
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 286, in solve
+    obj_lp, _, duals, status_lp = _solve_master(
+                                  ~~~~~~~~~~~~~^
+        columns,
+        ^^^^^^^^
+    ...<5 lines>...
+        time_limit=time_limit,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 190, in _solve_master
+    _solve_with(solver)
+    ~~~~~~~~~~~^^^^^^^^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 175, in _solve_with
+    prob.solve(solver_obj)
+    ~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\pulp.py", line 2092, in solve
+    status = solver.actualSolve(self, **kwargs)
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 347, in actualSolve
+    self.buildSolverModel(lp)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 276, in buildSolverModel
+    self.initGurobi()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 262, in initGurobi
+    raise e
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 257, in initGurobi
+    self.model = gp.Model(env=self.env)
+                 ~~~~~~~~^^^^^^^^^^^^^^
+  File "src/gurobipy/_model.pyx", line 152, in gurobipy._model.Model.__init__
+  File "src/gurobipy/gurobi.pxi", line 40, in gurobipy._core.gurobi._getdefaultenv
+  File "src/gurobipy/env.pxi", line 112, in gurobipy._core.Env.__init__
+gurobipy._exception.GurobiError: User name mismatch (licensed to 'researcher', current user is 'codexsandboxoffline')
+2026-03-13 17:24:57,511 | ERROR | Run failed: N=500 seed=9 op=sequential method=cg
+Traceback (most recent call last):
+  File "E:\PythonProject1\src\runner.py", line 393, in run_experiment
+    sol = solve_fn(instance, method_cfg, logger)
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 286, in solve
+    obj_lp, _, duals, status_lp = _solve_master(
+                                  ~~~~~~~~~~~~~^
+        columns,
+        ^^^^^^^^
+    ...<5 lines>...
+        time_limit=time_limit,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 190, in _solve_master
+    _solve_with(solver)
+    ~~~~~~~~~~~^^^^^^^^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 175, in _solve_with
+    prob.solve(solver_obj)
+    ~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\pulp.py", line 2092, in solve
+    status = solver.actualSolve(self, **kwargs)
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 347, in actualSolve
+    self.buildSolverModel(lp)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 276, in buildSolverModel
+    self.initGurobi()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 262, in initGurobi
+    raise e
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 257, in initGurobi
+    self.model = gp.Model(env=self.env)
+                 ~~~~~~~~^^^^^^^^^^^^^^
+  File "src/gurobipy/_model.pyx", line 152, in gurobipy._model.Model.__init__
+  File "src/gurobipy/gurobi.pxi", line 40, in gurobipy._core.gurobi._getdefaultenv
+  File "src/gurobipy/env.pxi", line 112, in gurobipy._core.Env.__init__
+gurobipy._exception.GurobiError: User name mismatch (licensed to 'researcher', current user is 'codexsandboxoffline')
+2026-03-13 17:24:58,756 | ERROR | Run failed: N=500 seed=10 op=simops method=cg
+Traceback (most recent call last):
+  File "E:\PythonProject1\src\runner.py", line 393, in run_experiment
+    sol = solve_fn(instance, method_cfg, logger)
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 286, in solve
+    obj_lp, _, duals, status_lp = _solve_master(
+                                  ~~~~~~~~~~~~~^
+        columns,
+        ^^^^^^^^
+    ...<5 lines>...
+        time_limit=time_limit,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 190, in _solve_master
+    _solve_with(solver)
+    ~~~~~~~~~~~^^^^^^^^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 175, in _solve_with
+    prob.solve(solver_obj)
+    ~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\pulp.py", line 2092, in solve
+    status = solver.actualSolve(self, **kwargs)
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 347, in actualSolve
+    self.buildSolverModel(lp)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 276, in buildSolverModel
+    self.initGurobi()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 262, in initGurobi
+    raise e
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 257, in initGurobi
+    self.model = gp.Model(env=self.env)
+                 ~~~~~~~~^^^^^^^^^^^^^^
+  File "src/gurobipy/_model.pyx", line 152, in gurobipy._model.Model.__init__
+  File "src/gurobipy/gurobi.pxi", line 40, in gurobipy._core.gurobi._getdefaultenv
+  File "src/gurobipy/env.pxi", line 112, in gurobipy._core.Env.__init__
+gurobipy._exception.GurobiError: User name mismatch (licensed to 'researcher', current user is 'codexsandboxoffline')
+2026-03-13 17:24:59,871 | ERROR | Run failed: N=500 seed=10 op=sequential method=cg
+Traceback (most recent call last):
+  File "E:\PythonProject1\src\runner.py", line 393, in run_experiment
+    sol = solve_fn(instance, method_cfg, logger)
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 286, in solve
+    obj_lp, _, duals, status_lp = _solve_master(
+                                  ~~~~~~~~~~~~~^
+        columns,
+        ^^^^^^^^
+    ...<5 lines>...
+        time_limit=time_limit,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 190, in _solve_master
+    _solve_with(solver)
+    ~~~~~~~~~~~^^^^^^^^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 175, in _solve_with
+    prob.solve(solver_obj)
+    ~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\pulp.py", line 2092, in solve
+    status = solver.actualSolve(self, **kwargs)
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 347, in actualSolve
+    self.buildSolverModel(lp)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 276, in buildSolverModel
+    self.initGurobi()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 262, in initGurobi
+    raise e
+  File "C:\Users\researcher\miniconda3\Lib\site-packages\pulp\apis\gurobi_api.py", line 257, in initGurobi
+    self.model = gp.Model(env=self.env)
+                 ~~~~~~~~^^^^^^^^^^^^^^
+  File "src/gurobipy/_model.pyx", line 152, in gurobipy._model.Model.__init__
+  File "src/gurobipy/gurobi.pxi", line 40, in gurobipy._core.gurobi._getdefaultenv
+  File "src/gurobipy/env.pxi", line 112, in gurobipy._core.Env.__init__
+gurobipy._exception.GurobiError: User name mismatch (licensed to 'researcher', current user is 'codexsandboxoffline')
+2026-03-13 17:25:00,278 | INFO | Completed. Results -> results/results_simops_rigorous.csv

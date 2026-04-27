@@ -1,0 +1,120 @@
+# configs/simops.yaml
+# SIMOPS mechanism validation experiment
+# Compares parallel (SIMOPS) vs sequential operations
+
+experiment:
+  name: simops_comparison
+  description: "Validate SIMOPS masking effect by comparing parallel vs sequential operations"
+  output_dir: results
+  fig_dir: figs/simops
+
+scenario:
+  type: U  # Consistent with other experiments
+
+instance:
+  N: [25, 50, 100, 200, 500]  # Multiple scales to show effect
+  seeds: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]  # 10 independent runs per scale
+  
+  # Instance generation parameters (same as main experiment)
+  arrival_window: 24
+  cargo_time_range: [5, 15]
+  energy_demand_range: [50, 150]
+  deadline_tightness: 1.0
+  shore_cap: 3
+  battery_cap: 2
+  battery_cost: 60
+
+operation_mode:
+  # THIS IS THE KEY EXPERIMENTAL FACTOR
+  modes: 
+    - simops        # Parallel operations (current model)
+    - sequential    # Sequential operations (modified constraints)
+
+methods:
+  - cg
+  - rolling_horizon
+  - fix_and_optimize
+  - restricted_cg
+  - greedy
+  - fifo
+  # Note: MILP methods might be too slow for sequential mode at large N
+
+solver:
+  time_limit: 300
+  mip_gap: 0.01
+
+output:
+  save_traces: true
+  save_solutions: true
+  save_gantt_data: true  # For visualization
+  
+metrics:
+  # Standard metrics
+  - obj
+  - runtime_total
+  - cost_energy
+  - cost_delay
+  
+  # Service mode counts
+  - mode_shore_count
+  - mode_battery_count
+  - mode_brown_count
+  - shore_ratio
+  - battery_ratio
+  
+  # SIMOPS-specific metrics (only for simops mode)
+  - num_fully_masked      # Ships where service fully masked by cargo
+  - num_partially_masked  # Ships where service partially masked
+  - avg_masking_rate      # Average (masked_time / service_time)
+  - time_saved_total      # Total time saved vs sequential
+  
+  # Time metrics
+  - avg_stay_time
+  - max_stay_time
+  - total_delay
+  
+  # Resource utilization
+  - shore_utilization
+  - battery_utilization
+
+figures:
+  # Cost comparison
+  - name: Fig_SIMOPS_Cost_Comparison
+    type: line
+    x: N
+    y: obj
+    groupby: [operation_mode, method]
+    
+  # Cost savings
+  - name: Fig_SIMOPS_Cost_Savings
+    type: bar
+    x: N
+    y: cost_gap_percent  # Computed: (seq - simops) / seq * 100
+    groupby: method
+    
+  # Stay time comparison
+  - name: Fig_SIMOPS_Stay_Time
+    type: line
+    x: N
+    y: avg_stay_time
+    groupby: [operation_mode, method]
+    
+  # Service mode distribution
+  - name: Fig_SIMOPS_Mode_Distribution
+    type: stacked_bar
+    x: N
+    y: [shore_ratio, battery_ratio, brown_ratio]
+    groupby: operation_mode
+    
+  # Masking effect visualization (only for simops mode)
+  - name: Fig_SIMOPS_Masking_Distribution
+    type: histogram
+    data: masking_rates
+    bins: 10
+    
+  # Gantt chart comparison (N=10, single instance)
+  - name: Fig_SIMOPS_Gantt_Comparison
+    type: gantt
+    N: 10
+    seed: 42
+    modes: [simops, sequential]

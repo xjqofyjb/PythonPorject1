@@ -1,0 +1,9 @@
+[2026-04-17 15:38:57] Experiment 1 execution started.
+[2026-04-17 15:38:57] Using config=configs/simops.yaml. Existing result backups=['backup_20260313_173822', 'backup_20260331', 'backup_after_stale_cleanup_20260316_144650', 'backup_cleanrerun_20260315_142913', 'backup_fullfinal_20260317_173738', 'backup_fullrun_20260315_162527', 'backup_main_refixed_20260317_105609'].
+[2026-04-17 15:38:57] Resolved seeds=[1, 2]; target scales=[75]; scenario=U.
+[2026-04-17 15:38:57] Current codebase uses seeds 1..10 for the SIMOPS experiment; this run keeps that seed scheme.
+[2026-04-17 15:38:57] Saved/verified 2 instances for N=75 under data\instances_smoke.
+[2026-04-17 15:38:57] Starting N=75 batch with seeds=[1, 2] and workers=2.
+[2026-04-17 15:38:57] Process-based parallelism failed for N=75; falling back to ThreadPoolExecutor.
+[2026-04-17 15:39:25] N=75 completed. success_rate=100.00%, savings=13.20%, masking=0.670, internal_gap=0.0031%.
+[2026-04-17 15:39:25] Experiment 1 finished successfully with 4 raw result files.

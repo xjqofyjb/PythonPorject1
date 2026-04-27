@@ -1,0 +1,36 @@
+{
+  "record_type": "baseline",
+  "N": 50,
+  "seed": 6,
+  "scenario": "U",
+  "method": "cg",
+  "operation_mode": "simops",
+  "baseline_pool_size": 18685,
+  "full_column_pool_size": 18685,
+  "baseline_pool_complete": true,
+  "used_full_pool_small": true,
+  "baseline_pool_mode_counts": {
+    "SP": 11316,
+    "BS": 7319,
+    "AE": 50
+  },
+  "Z_baseline_IRMP": 83947.0368396274,
+  "baseline_internal_gap": 0.005568096049421171,
+  "lp_lower_bound": 83942.36284823786,
+  "baseline_lp_status": "Optimal",
+  "baseline_ip_status": "Optimal",
+  "baseline_success": true,
+  "num_iters": 1,
+  "pricing_calls": 0,
+  "num_columns_added_during_cg": 0,
+  "min_reduced_cost_last": 0.0,
+  "mode_distribution_baseline": {
+    "SP": 0.26,
+    "BS": 0.74,
+    "AE": 0.0
+  },
+  "cost_energy": 83947.0368396274,
+  "cost_delay": 0.0,
+  "Z_MILP_exact": 83947.0368396274,
+  "gap_baseline_vs_MILP": 0.0
+}

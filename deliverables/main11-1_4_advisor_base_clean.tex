@@ -1,0 +1,1461 @@
+% !TEX program = lualatex
+\documentclass[UTF8, a4paper, 12pt]{ctexart}
+
+%% === 导言区：宏包配置 ===
+\usepackage{geometry}
+\geometry{left=2.5cm,right=2.5cm,top=2.5cm,bottom=2.5cm} % 标准页边距
+\usepackage{amsmath, amssymb,amsthm} % 数学公式
+\theoremstyle{plain}
+\newtheorem{proposition}{命题}
+\newtheorem{theorem}{定理}
+\theoremstyle{definition}
+\newtheorem{definition}{定义}
+\theoremstyle{remark}
+\newtheorem{remark}{注}
+\usepackage{graphicx}         % 图片支持
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{booktabs}     
+\usepackage{enumitem}    % 顶刊必备：专业三线表
+\usepackage{algorithm}        % 算法环境
+\usepackage{algorithmic}      % 算法伪代码
+\usepackage{longtable}        % 允许表格跨页
+\usepackage{multirow}         % 表格多行合并
+\usepackage{makecell}         % 单元格内换行
+\usepackage{threeparttable}   % 表格注释环境
+\usepackage{subcaption}       % 子图
+\usepackage[section]{placeins}         % 防止浮动体跨越章节边界
+\usepackage{calc}              % 尺寸计算（用于图片占位框）
+\usepackage{etoolbox}          % 环境钩子（统一表格字号）
+\usepackage[table]{xcolor}    % 表格颜色高亮 (必须加 table 选项)
+\usepackage[authoryear,round]{natbib} % 作者-年份引用
+\usepackage{hyperref}         % 超链接
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    citecolor=blue,           % 引用显示为蓝色，方便审稿人查看
+    urlcolor=blue
+}
+
+% 投稿版排版微调
+\captionsetup{font=small,labelfont=normalfont}
+\captionsetup[figure]{skip=6pt}
+\captionsetup[table]{skip=4pt}
+\setcounter{topnumber}{3}
+\setcounter{bottomnumber}{2}
+\setcounter{totalnumber}{5}
+\renewcommand{\topfraction}{0.9}
+\renewcommand{\bottomfraction}{0.8}
+\renewcommand{\textfraction}{0.07}
+\renewcommand{\floatpagefraction}{0.9}
+\setlength{\textfloatsep}{10pt plus 2pt minus 2pt}
+\setlength{\floatsep}{8pt plus 2pt minus 2pt}
+\setlength{\intextsep}{8pt plus 2pt minus 2pt}
+\clubpenalty=10000
+\widowpenalty=10000
+\displaywidowpenalty=10000
+\flushbottom
+\setlength{\hfuzz}{40pt}
+\setlength{\vfuzz}{300pt}
+\AtBeginEnvironment{table}{\scriptsize}
+\AtBeginEnvironment{longtable}{\scriptsize}
+
+%% === 正文开始 ===
+\begin{document}
+
+%% --- 标题页 ---
+% 标题
+\title{\heiti\zihao{2} 考虑并行作业掩盖效应的靠泊船舶异质能源服务调度优化}
+\author{}
+\date{}
+\maketitle
+
+\begin{abstract}
+现有港口能源调度研究普遍采用先装卸后补能的串行假设，导致系统性高估船舶在港停留时长，并低估异质能源服务之间的协同价值。本文指出，当能源补给与装卸作业允许并行（SIMOPS）时，离港时间结构由加法形式转变为最大值形式，从根本上改变了岸电与换电服务的相对经济价值：一旦补能时间落入装卸窗口，其时间边际成本接近零，这一“掩盖效应”使并行作业具有显著的成本节约潜力，但其实现高度依赖基础设施容量是否充足。基于这一机制，本文构建了涵盖岸电、换电与燃油辅机三类异质服务的统一调度优化框架，以时间展开混合整数规划建模，并提出列生成（CG）分解求解方案：主问题处理跨时容量耦合，定价子问题按需生成可行服务方案列，整数恢复步骤（IRMP）输出整数解并量化与 LP 松弛下界的间隙（Gap）。
+
+修正后的实验结果表明：在可有效验证的规模上，CG 在 $N=20$ 和 $N=50$ 时与精确 MILP 基准一致；当规模增至 $N=100$ 时，限时 MILP 已难以提供稳定基准，而 CG 仍保持 100\% 成功率；在扩大大规模迭代预算后，CG 在 $N=200$ 和 $N=500$ 下分别以 120.65s 和 275.90s 的平均时间稳定给出当前实验组中最优的平均结果，并整体优于 Rolling-Horizon、Fix-and-Optimize、Restricted-CG、FIFO 与 Greedy 等对比算法。进一步实验表明，SIMOPS 在中小规模下可带来 8\%--20\% 的成本改善，但在高拥挤条件下资源竞争会吞噬并行收益并出现成本反转；混合补能机制较任何单一机制降本 15\%--49\%；岸电容量扩张（容量杠杆）的结构性改善效果显著强于价格调整（价格杠杆）。上述发现为港口补能设施的投资优先级与运行调度规则提供了可量化的决策依据。
+\end{abstract}
+
+\noindent 关键词：港口调度；并行作业（SIMOPS）；岸电；电池换电；列生成
+
+%% --- 第一章：绪论 ---
+\section{绪论}
+\label{sec:intro}
+
+\subsection{研究背景与动机}
+港口减排正在进入强约束与高周转并行阶段：一方面，欧盟 FuelEU Maritime 要求相关船型在 2030 年前完成靠港岸电接入 \citep{EU2025}，中国内河也在加速推进电化改造；另一方面，港口仍需维持高密度到港下的作业效率。随着全球电动船舶市场在 2025--2030 年预计保持 20\% 以上年复合增长 \citep{Markets2025}，港口能源服务的矛盾不再是是否电气化，而是如何在拥挤系统内完成可调度的电气化。
+ 
+这一矛盾首先体现在岸电（Shore Power, SP）上。岸电具有单位能源成本低、技术成熟度高等优势，并已形成明确工程规范：IEC/IEEE~80005-1 要求船舶系缆后即可启动岸电连接，且可与装卸过程并行 \citep{IEC80005}。现实部署同样快速推进。以鹿特丹与宜昌为代表，前者在主要码头持续扩容岸电并面向 2030 年合规目标 \citep{Winkel2016}，后者已实现 63 个经营性码头岸电覆盖并累计服务逾 48{,}000 艘次 \citep{ICCT2023}。但岸电的瓶颈也十分明确：单船服务时长通常为小时级，且受泊位与电力容量双重约束，在高峰到港时易形成等待。
+ 
+相较之下，电池换电（Battery Swapping, BS）提供了以成本换时间的路径。移动换电可在约 45 分钟至 2 小时内完成整组电池更换 \citep{Zhang2022_EShip}，已在宜昌-武汉航线形成商业化运行。由此，现实港口逐步呈现 SP 与 BS 并存格局：时间敏感船舶倾向换电，时间宽松船舶倾向岸电。这种异质需求使调度问题从单资源分配转变为多资源协同与时序耦合。
+ 
+\begin{figure}[!htbp]
+    \centering
+    \begin{subfigure}[b]{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth,height=5cm,keepaspectratio]{ltd.jpg}
+        \caption{岸电连接现场（鹿特丹港）\\（装卸期间同步供电；欧盟 2030 年强制部署，宜昌已全覆盖）}
+        \label{fig:realworld_sp}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth,height=5cm,keepaspectratio]{cjhd.jpg}
+        \caption{换电集装箱船靠港作业（宜昌-武汉航线）\\（华航新能1号换电作业，45 分钟至 2 小时完成补能）}
+        \label{fig:realworld_bs}
+    \end{subfigure}
+    \caption{岸电与换电技术在宜昌港域的工程实践（左：岸电，右：换电）。}
+    \label{fig:realworld_motivation}
+\end{figure}
+% 注：投稿时请将占位框替换为真实照片。推荐图片来源：
+% (a) 鹿特丹港官网 / IMO 绿色港口报告 / IRENA 可再生能源港口报告
+% (b) 长江三峡集团新闻 / 工信部电动船舶示范项目报告 / 宜昌换电船项目
+% 确保获得使用授权或选用公开版权（CC）图片
+
+如图~\ref{fig:realworld_motivation}所示，岸电与换电正在港口侧形成并行部署格局。岸电方面，鹿特丹等国际港口已在主要码头持续推进系统建设，欧盟法规要求在 2030 年前完成相关靠港岸电推广，国内宜昌也已实现辖区 63 个码头岸电覆盖 \citep{EU2025,Winkel2016,ICCT2023}。同时，岸电连接可依据 IEC/IEEE~80005-1 在装卸作业期间同步实施（SIMOPS）\citep{IEC80005}。换电方面，宜昌-武汉航线已出现商业化运行实践，移动换电设备可在约 45 分钟至 2 小时内完成整组电池更换，为时间敏感船舶提供快速离港通道 \citep{Zhang2022_EShip}。这意味着港口现场已不再是单一补能技术，而是“岸电+换电”并存并分工服务的真实运营场景，进而直接提出联合调度优化需求。
+ 
+上述工程事实引出了一个关键矛盾：实践中，能源服务与装卸作业常常并行发生；而现有模型多采用先装卸、后补能的串行假设。若将本可重叠的作业时间简单相加，会系统性高估在港停留时长，并进一步放大等待成本与容量需求评估偏差。换言之，当前文献的主要缺口不只是多一种能源选择，而是缺少一个能够同时刻画\emph{异质能源协同、并行作业机制与规模化求解}的统一框架。更根本的问题在于：串行假设使离港时间结构失真——将本可被装卸窗口吸收的补能时间强行叠加，导致对容量需求的系统性高估与对并行节约的系统性低估，进而使不同能源服务之间的相对经济价值发生方向性偏差。
+ 
+基于上述诊断，本文的核心问题可归结为一点：\emph{一旦允许 SIMOPS，完工时间从加法结构转为最大值结构，由此如何改变各能源模式的相对价值，以及这一价值又如何受容量约束与船舶异质性的条件性支配？}围绕这一核心，本文依次回答三个可检验子问题：船舶离港时刻应如何由装卸与补能过程共同决定；系统如何在成本、时效与可行性之间进行最优权衡；当规模扩大后，如何用可扩展算法稳定求解。
+\subsection{文献综述}
+\label{sec:lit_review}
+ 
+本节围绕三个问题组织回顾：\emph{港口调度的基础结构是什么；能源维度如何进入泊位调度；并行作业如何改变离港时序与求解难度}。据此，本文将相关研究归纳为四条主线，并在每条主线末尾明确其对本文问题仍未覆盖的部分。
+ 
+\subsubsection{泊位分配问题研究进展}
+ 
+第一条主线回答港口调度的基础结构如何建模。\citet{Lim1998} 将 BAP 形式化并指出其 NP 难本质；\citet{Imai2001} 将动态到达纳入整数规划；\citet{Bierwirth2010} 给出离散/连续、静态/动态的统一分类框架；\citet{Correcher2019} 通过分支定价提升连续 BAP 的求解规模；\citet{Rodrigues2022} 进一步指出 BAP 正从时空分配走向时空-能源-环境耦合。
+ 
+这一路径奠定了本文的时窗与资源竞争建模基础，但核心局限在于：所有研究的完工时间均建模为加法结构（装卸时长 + 补能时长），无一引入并行完工的最大值结构；能源维度或完全缺失，或作为外生给定的附加环节处理，而非内生的服务选择决策。
+ 
+\subsubsection{港口岸电资源配置与泊位联合调度}
+ 
+第二条主线回答岸电如何进入港口联合调度。\citet{Winkel2016} and \citet{Zis2014} 分别从基础设施部署与减排成本角度论证岸电价值；\citet{Iris2019} 指出岸电与泊位解耦会低估冲突；\citet{Peng2021}、\citet{Yu2022_SP}、\citet{Zou2024} 则将岸电容量、泊位分配与电价扰动纳入联合优化。
+ 
+该主线已证明岸电与泊位联动是必要方向，但有两点关键局限：第一，全部文献仅考虑岸电一种清洁能源，未涉及换电与燃油辅机的并存决策；第二，岸电供给在建模中均被视为装卸之后的串行补充环节，而非可与装卸并行的同步服务，从而遗漏了 SIMOPS 带来的时间重叠节约。
+ 
+\subsubsection{电动船舶换电模式与移动补能优化}
+ 
+第三条主线回答换电能否作为高时效补能机制。\citet{Zhang2022_EShip} 总结了换电在内河与短途航运中的时间优势；\citet{Bei2024}、\citet{Zhang2024_Voyage} 关注换电站布局与航次协同；\citet{Li2022_BSS} 讨论换电站与分时电价互动；\citet{Mak2013} 的道路交通换电研究则提供了容量与排队建模参照。
+ 
+该主线已较充分刻画换电的快速补能优势，但研究对象均为单一换电场景（不涉及岸电竞争），且均采用串行时序假设；无一研究将换电纳入与岸电、燃油辅机共存的统一调度模型，更未考虑三类服务在容量约束下的联合资源竞争结构。
+ 
+\subsubsection{异质性能源协同与并行作业机制}
+ 
+第四条主线回答并行作业是否可行以及何时有价值。\citet{Zhen2022_SP} 展示了岸电与燃油切换的经济性，但对象限于拖轮；\citet{Psaraftis2016} and \citet{Wang2023} 从政策与成本结构角度解释异质补能的宏观可行性。与此同时，\citet{Fan2021}、\citet{Fan2022_SIMOPS} 在 LNG 领域验证了 SIMOPS 的可控风险，IEC/IEEE~80005-1 \cite{IEC80005} 也在标准层面确认岸电可与装卸并行，\citet{Notteboom2006} 则强调了时间压缩的供应链价值。
+ 
+然而，现有 SIMOPS 研究存在两类根本性局限：其一，\citet{Fan2021}与\citet{Fan2022_SIMOPS}仅验证了 LNG 单能源场景下的工程可行性，既未涉及多模式能源选择，也未建立可优化的调度模型；其二，现有文献均未将 SIMOPS 形式化为数学约束嵌入调度优化框架，也未验证其在中大规模实例下的计算可行性。因此，SIMOPS 的经济价值及其容量条件性边界，至今尚无定量证据。
+ 
+研究空白总结：综合上述四条主线，现有文献存在三重不可替代的研究缺口。\emph{完工时间结构缺口}：无论是 BAP 研究还是岸电/换电专题研究，几乎全部延续串行加法假设，导致对到港停留时长的系统性高估。\emph{系统边界缺口}：现有文献以单能源（仅 SP 或仅 BS）为主，在集装箱码头层面同时处理岸电、换电与燃油保底三类异质服务的研究尚属空白。\emph{计算能力缺口}：大多数精确方法的规模上限在数十艘船舶，大规模实例下直接 MILP 不稳定，而又缺乏兼顾精确性与可扩展性的分解方案。本文的研究设计即针对这三重缺口逐一回应，在当前已知的联合研究边界（固定泊位布局下的能源—作业协同调度）内构建第一个同时覆盖三类服务、SIMOPS 并行机制与大规模精确求解的统一框架。
+\subsection{并行作业掩盖效应与本文定位}
+ 
+基于上一节的文献梳理，本文提出作业掩盖效应（Masking Effect）这一核心概念，并将其纳入港口能源调度的优化框架。
+ 
+\paragraph{掩盖效应的定义}
+在允许 SIMOPS 的条件下，只要能源补给作业能够在装卸作业窗口内完成，其时间消耗便不会对船舶总体在港停留时间产生额外影响。此时，船舶在港停留时长由装卸时间与补能时间二者的\emph{较大值}决定，而非两者之和：
+\begin{equation*}
+\begin{aligned}
+T_{\text{stay}} &= \max\{T_{\text{cargo}},\; T_{\text{energy}}\} + W_{\text{queue}}
+&& \text{（并行作业）} \\
+T_{\text{stay}} &= T_{\text{cargo}} + T_{\text{energy}} + W_{\text{queue}}
+&& \text{（串行作业）}
+\end{aligned}
+\end{equation*}
+本文将并行作业引发的时间折扣现象称为\emph{作业掩盖效应}。需要强调的是，SIMOPS 并非理论假设，而是海事工业界为应对紧张船期而广泛采用的标准操作流程，其工程实践基础已在第~\ref{sec:intro}节图~\ref{fig:realworld_motivation} 中直观展示。
+ 
+\paragraph{SIMOPS 的约束性}
+SIMOPS 并不意味着无约束的完全并行。其可行性受到设备兼容性、安全规范及船舶内部作业冲突等因素的制约。本文在建模过程中显式刻画这些约束，在保证物理可行性的前提下引入掩盖效应。
+
+\paragraph{掩盖效应的三条运营规律}
+基于上述机制分析，并结合第~\ref{sec:computational} 节的数值实验结果，本文提炼出以下三条可直接用于港口运营决策的规律。这些规律是本文核心管理贡献的提炼，后续各节将提供严格的模型与实验支撑。
+
+\textbf{规律1（正收益条件）：}当岸电容量比 $\rho = K^{SP} \cdot H / (N \cdot \bar{d}^{SP})$ 高于临界阈值 $\rho^*$（数值实验标定约为 $2\%$）时，SIMOPS 相对串行作业可带来 $8\%$--$20\%$ 的系统成本改善；若 $\rho < \rho^*$，资源竞争会吞噬时间重叠收益并使成本出现反转。\emph{实践含义}：推进 SIMOPS 应以充足的基础设施容量为前提，盲目并行化反而可能增加系统成本。
+
+\textbf{规律2（模式切换条件）：}当装卸窗口长度不足以覆盖岸电服务时长（即 $T^{(i)}_{\text{cargo}} < d_i^{SP}$），掩盖效应失效，延误成本上升，系统倾向于将该船舶从岸电切换为换电服务以缩短在港时间。\emph{实践含义}：高价值短停时船舶（D型支线船）在容量紧张时自动优先换电，这一模式分工由优化模型内生决定，无需人工规则干预。
+
+\textbf{规律3（杠杆优先级）：}敏感性实验表明，岸电容量扩张（1→8桩）可同时降低系统总成本 $32.7\%$ 并消除燃油辅机使用，而同等幅度的电池成本调整仅影响总体成本水平，不改变服务模式结构。\emph{实践含义}：在投资决策中，基础设施容量扩张（容量杠杆）的结构性改善效果系统性优于价格调整（价格杠杆）。
+ 
+基于上述分析，表~\ref{tab:lit_review} 将本文与现有相关研究在研究对象、能源模式、作业逻辑和求解能力等维度进行系统比较。
+ 
+%% --- 文献对比表 ---
+\begin{table}[htbp]
+    \centering
+    \caption{本文与现有港口能源调度相关研究的特征对比分析}
+    \label{tab:lit_review}
+    \scriptsize
+    \setlength{\tabcolsep}{4pt}
+    \renewcommand{\arraystretch}{1.05}
+    \resizebox{\textwidth}{!}{%
+        \begin{tabular}{l c c c c c c}
+            \toprule
+            文献来源 & 研究对象 & 能源模式 & 作业逻辑 & 求解方法 & 计算规模 & 异质协同 \\
+            \midrule
+            \multicolumn{7}{l}{\textit{泊位分配基础研究}} \\
+            \citet{Lim1998}                      & 集装箱码头 & 无能源          & 串行 (Seq.) & 图论/精确  & 小规模   & $\times$ \\
+            \citet{Imai2001}             & 集装箱码头 & 无能源          & 串行 (Seq.) & 整数规划   & 中等     & $\times$ \\
+            \citet{Correcher2019}   & 集装箱码头 & 无能源          & 串行 (Seq.) & 分支定价   & 高       & $\times$ \\
+            \midrule
+            \multicolumn{7}{l}{\textit{港口岸电配置与调度}} \\
+            \citet{Zis2014}               & 干线航运   & 仅岸电 (SP)     & 串行 (Seq.) & 情景分析   & -        & $\times$ \\
+            \citet{Peng2021}             & 集装箱码头 & 仅岸电 (SP)     & 串行 (Seq.) & 精确算法   & 中小规模  & $\times$ \\
+            \citet{Yu2022_SP}              & 集装箱码头 & 仅岸电 (SP)     & 串行 (Seq.) & 多目标优化 & 中等     & $\times$ \\
+            \citet{Zou2024}               & 集装箱码头 & 仅岸电 (SP)     & 串行 (Seq.) & 精确算法   & 中等     & $\times$ \\
+            \midrule
+            \multicolumn{7}{l}{\textit{换电调度与移动补能}} \\
+            \citet{Mak2013}               & 道路交通   & 仅换电 (BS)     & 串行 (Seq.) & 鲁棒优化   & 中等     & $\times$ \\
+            \citet{Zhang2024_Voyage}    & 内河航运   & 仅换电 (BS)     & 串行 (Seq.) & 启发式     & 中等     & $\times$ \\
+            \midrule
+            \multicolumn{7}{l}{\textit{异质能源协同与并行作业}} \\
+            \citet{Zhen2022_SP}      & 拖轮调度   & 岸电与燃油       & 串行 (Seq.) & 精确算法   & 小规模   & 部分 \\
+            \citet{Fan2021}               & LNG加注    & 单一能源        & 并行 (SIMOPS) & 风险评估 & -  & $\times$ \\
+            \citet{Fan2022_SIMOPS} & LNG加注  & 单一能源        & 并行 (SIMOPS) & 安全分析 & -  & $\times$ \\
+            \midrule
+            \rowcolor{gray!15}
+            本文 (Ours) & 集装箱码头 & 岸电、换电与燃油 & 并行 (SIMOPS) & 列生成与整数恢复 & 高 ($N$$\le$500) & \checkmark \\
+            \bottomrule
+        \end{tabular}%
+        }
+        \vspace{2pt}
+        {\scriptsize 注：异质协同 表示是否联合考虑多种能源服务。}
+\end{table}
+ 
+如表~\ref{tab:lit_review} 所示，现有港口能源调度研究尚无文献同时具备异质能源协同、SIMOPS 并行作业建模与大规模高效求解三项特征。本文正是从这一空白出发，在\emph{固定泊位布局}条件下（即泊位分配外生给定，本文聚焦能源服务的协同决策），构建统一的港口能源-作业协同调度优化框架。这一研究边界的主动设定使本文能够精确隔离 SIMOPS 掩盖效应的机制性作用，而不被泊位决策引入的额外耦合所干扰。
+ 
+
+\subsection{本文贡献}
+为填补上述三重研究缺口，本文从建模、算法与实证三个层面作出如下贡献。
+
+\textbf{掩盖感知的统一调度模型（Masking-aware unified scheduling model）。}
+本文首次将 SIMOPS 机制形式化为可优化的离港时序约束，构建了涵盖岸电、换电与燃油辅机三类异质服务的统一调度模型。在该框架下，船舶在港停留时间由串行叠加结构转化为并行条件下的最大值结构 $L_i = \max\{A_i + T^{(i)}_{\text{cargo}},\; t_p + d_i^m\} + W_i$，使作业掩盖效应及其容量边界得以在模型内生地量化，从而可精确识别并行何时带来成本节约、何时因资源拥挤而使收益反转。
+
+\textbf{可校准且可扩展的分解求解框架（Calibrated and scalable CG framework）。}
+针对时间展开 MILP 在大规模实例下的计算瓶颈，本文构建了列生成（CG）分解框架：主问题精确求解 LP 松弛并给出理论下界 $Z_{LP}^*$，时间依赖定价子问题按需生成负缩减成本列；CG 收敛后，整数恢复主问题（IRMP）在列池上求解整数规划，并通过间隙 $\text{Gap} = (Z_{IP}^{\text{IRMP}} - Z_{LP}^*)/Z_{LP}^*$ 量化解质量。更重要的是，本文并未仅将方法与简单启发式对比，而是进一步引入 Rolling-Horizon、Fix-and-Optimize 与 Restricted-CG 三类代表性近似优化基线，分别对应滚动优化、局部重优化和近似列生成三种竞争哲学。修正后的结果表明，完整 CG 在可处理实例上可与精确 MILP 基准对齐，在大规模实例上则在解质量与规模鲁棒性之间优于上述近似框架。
+
+\textbf{掩盖效应容量条件性的系统实证与管理规律提炼（Empirical characterisation of capacity-conditional masking effects）。}
+本文以多规模（$N = 20$ 至 $500$）、多场景算例系统揭示 SIMOPS 掩盖效应的运作边界，提炼三条可直接用于运营决策的规律：（1）当岸电容量比 $\rho < \rho^*$（约 2\%）时，SIMOPS 收益将被资源竞争吞噬并出现成本反转，并行作业的推进应以容量扩充为前提；（2）峰值到达对系统成本的放大效应强于装卸时长的整体拉伸，削峰填谷比均匀延伸作业时间更能决定系统拥堵水平；（3）混合补能机制（岸电+换电）相对任何单一机制具有结构性优势，岸电容量扩张（容量杠杆）对成本与绿色覆盖率的改善效果系统性强于价格调整（价格杠杆）。
+%% ==============================================================
+%% SECTION 2: PROBLEM DESCRIPTION AND MODEL
+%% ==============================================================
+
+%% ==============================================================
+%% SECTION 2: PROBLEM DESCRIPTION AND MODEL (FINAL ACADEMIC VERSION)
+%% ==============================================================
+
+%% ==============================================================
+%% SECTION 2: PROBLEM DESCRIPTION AND MODEL (NARRATIVE FLOW VERSION)
+%% ==============================================================
+
+\section{问题描述与数学建模}
+\label{sec:model}
+
+\subsection{问题定义与决策结构}
+\label{sec:problem_definition_cn}
+
+本文研究自动化集装箱码头中的能源与作业协同调度问题。对每艘到港船舶，港口运营中心（Terminal Operating Center, TOC）需要同时决定三类变量：\emph{选择何种能源服务、何时启动服务、何时离港}。系统目标是在满足作业与容量约束的前提下，最小化由能源成本、延误惩罚与排放外部性共同构成的广义运营成本。
+
+与传统将补能视为作业系统附属环节的建模方式不同，本文将能源服务视为与在港时间内生耦合的核心决策。该问题因此不是单纯的资源分配，而是一个\emph{服务选择、排队竞争与离港时序}联合优化问题：服务选择决定资源占用轮廓，资源占用反过来影响等待时长，等待与作业完成共同决定离港时刻。
+
+\paragraph{关于单目标建模的说明}
+本文以广义运营成本最小化为目标函数，而非显式构建多目标优化框架。这一选择具有明确的方法论依据。
+
+其一，目标函数中的船舶异质性延误惩罚系数 $C^{(i)}_{\text{delay}}$ 已将效率与成本之间的权衡参数化地内嵌于成本结构中：惩罚系数较高的船舶对应高时效需求，惩罚系数较低的船舶对应成本优先型需求。通过调整 $C^{(i)}_{\text{delay}}$ 在船队中的分布，同一模型可在效率-成本权衡空间内生成对应不同决策偏好的最优解，这在形式上等价于参数化的加权多目标问题，而无需引入额外的帕累托求解机制。
+
+其二，单目标框架是本文精确求解与最优性认证方案的前提条件。多目标帕累托前沿方法通常依赖元启发式算法，难以提供可量化的解质量保证；而本文的 CG+IRMP 框架可通过内部 Gap 自证整数最优性，这一能力在精确 MILP 完全失效的大规模算例中尤为关键，也是本文区别于同类启发式方法的核心优势所在。
+
+从结构上看，本文问题具有三项关键特征。第一，服务异质性：岸电、换电与燃油辅机在资源占用方式、服务时长和单位成本上显著不同，导致系统存在明确的成本与时效替代关系。第二，价值异质性：不同船舶的延误惩罚不同，使优先级由模型内生决定，而非依赖外生规则。第三，动态竞争性：在随机到达与容量受限条件下，排队等待成为总成本的重要传导机制。
+
+更关键的是，本文允许能源补给与装卸作业并行（SIMOPS），从而打破先装卸、后补能的串行假设。该设定使离港时间不再由作业时长线性加总决定，而由作业重叠关系与等待共同决定。由此，问题的可行域与最优策略均发生结构性变化，这也是本文区别于既有串行调度模型的核心出发点。
+
+\subsection{能源服务类型与资源特征}
+\label{sec:energy_service_types}
+
+为刻画现实港口中的异质补能环境，本文将能源服务统一建模为三类资源轮廓不同的选项：岸电（SP）、换电（BS）与燃油辅机（AE）。三者并非互斥技术路线，而是在同一调度周期内共同构成可选服务集合。
+
+\paragraph{岸电服务（Shore Power, SP）}
+岸电依赖固定桩位与电力接入能力，单位能源成本与排放成本较低 \cite{andersson2017shipping,bergqvist2019ports}。其优势是绿色与低价，约束是服务时长较长且强依赖稀缺固定资源。因此在模型中，岸电被刻画为\emph{长时、低成本、强容量约束}的服务类型：一旦被占用，会显著挤占后续船舶的可行时窗。
+
+\paragraph{换电服务（Battery Swapping, BS）}
+换电通过移动设备完成整组电池替换，服务时长短、周转快，适合时间敏感船舶 \cite{Zhang2022_EShip,Bei2024}。其代价是单位服务成本通常高于岸电，且受移动设备数量约束。在模型中，换电对应\emph{短时、高成本、容量受限}的服务类型，提供以成本换时间的快速通道。
+
+\paragraph{燃油辅机服务（Auxiliary Engine, AE）}
+燃油辅机不占用港口外部能源资源，几乎不受容量约束，可避免排队，但经济与环境代价最高。本文将其设为\emph{可行性保底选项}：当绿色服务不可行或代价过高时保证模型可行，同时通过高成本惩罚抑制常态化使用 \cite{Cordeau2015,pinedo2016scheduling}。
+
+\paragraph{结构性含义}
+三类服务共同形成一条清晰的决策前沿：SP 倾向省成本、BS 倾向省时间、AE 提供保可行。因此，最优解本质上是在资源容量、时间价值与绿色目标之间进行跨服务组合，而非在单一技术内部做局部优化。
+
+\subsection{并行作业与完工时间耦合结构（SIMOPS）}
+\label{sec:simops_structure}
+
+本文的核心机制是将能源补给与装卸作业的并行关系显式纳入模型。传统串行假设默认装卸完成后再补能，其隐含前提是两类作业不可重叠；而在现实港口中，只要满足设备兼容与安全规程，二者可在同一时间窗口内同步进行 \cite{Fan2021,IEC80005}。
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.95\textwidth]{figs/simops/Fig_SIMOPS_Gantt_Comparison.png}
+    \caption{SIMOPS 掩盖效应机制可视化甘特图。灰色区域为装卸窗口，绿色条为岸电补能窗口，红色条为换电窗口。}
+    \label{fig:masking_mechanism}
+\end{figure}
+
+在 SIMOPS 条件下，船舶 $i$ 的在港停留时间由装卸时长与补能时长中的较大者决定，而非两者加总。设装卸时长为 $T^{(i)}_{\text{cargo}}$，能源服务时长为 $T^{(i)}_{\text{service}}$，等待时间为 $W_i$，则有：
+\begin{equation}
+T^{(i)}_{\text{stay}} = \max \left\{ T^{(i)}_{\text{cargo}},\; T^{(i)}_{\text{service}} \right\} + W_i .
+\label{eq:simops_max}
+\end{equation}
+
+式 \eqref{eq:simops_max} 对应本文所谓\emph{作业掩盖效应}：当 $T^{(i)}_{\text{service}} \le T^{(i)}_{\text{cargo}}$ 时，补能时间被装卸窗口吸收，其边际时间成本接近零；当装卸窗口不足以覆盖补能时间时，模型会在延误成本与服务成本之间重新权衡，可能触发由岸电向换电的模式切换（见图~\ref{fig:masking_mechanism}）。
+
+该机制带来两项建模后果。其一，完工时间从加性结构转为最大值结构，改变了问题的可行域边界。其二，服务选择与排队时序被更紧密耦合：延长补能时长不必然增加延误，关键取决于其是否落在可掩盖区间内。后续 MILP 模型与列生成算法即围绕这一耦合结构展开。
+
+\subsection{数学模型与线性化}
+\label{sec:model_formulation}
+
+本节在第~\ref{sec:problem_definition_cn}--\ref{sec:simops_structure} 节问题定义与并行作业（SIMOPS）机制的基础上，
+构建港口能源与作业协同调度问题的混合整数线性规划（MILP）模型。
+为避免使用大 $M$ 线性化并增强模型松弛强度，
+本文采用基于\emph{服务开始时刻指示变量}的时间展开（time-indexed）建模方式。
+% ------------------------------------------------
+% 2.4.1 集合、参数与变量
+% ------------------------------------------------
+\subsubsection{集合、参数与变量}
+
+\begin{table}[!htbp]
+\centering
+\caption{集合与索引定义}
+\begin{tabular}{ll}
+\toprule
+符号 & 含义 \\
+\midrule
+$\mathcal{N}$ & 规划期内待服务船舶集合，索引 $i \in \mathcal{N}$ \\
+$\mathcal{K}^{SP}$ & 岸电桩集合，索引 $k \in \mathcal{K}^{SP}$ \\
+$\mathcal{K}^{BS}$ & 换电设备集合（同质资源），$|\mathcal{K}^{BS}| = K^{BS}$ \\
+$\mathcal{T}$ & 离散时间段集合，索引 $t \in \mathcal{T}$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+
+\begin{table}[!htbp]
+\centering
+\caption{模型参数定义}
+\begin{tabular}{ll}
+\toprule
+参数 & 含义 \\
+\midrule
+$A_i$ & 船舶 $i$ 的到达时间（时间段索引） \\
+$D_i$ & 船舶 $i$ 的期望离港截止时间（时间段索引） \\
+$T^{(i)}_{\text{cargo}}$ & 船舶 $i$ 的装卸作业时长（时间段数） \\
+$E_i$ & 船舶 $i$ 的能源需求量 \\
+$P^{SP}$ & 岸电供电功率 \\
+$T^{BS}$ & 换电服务持续时间（时间段数） \\
+$C^{SP}$ & 单位岸电能源成本 \\
+$C^{BS}$ & 换电服务固定成本 \\
+$C^{AE}$ & 燃油辅机模式单位能源与排放综合成本 \\
+$C^{(i)}_{\text{delay}}$ & 船舶 $i$ 的单位延误惩罚系数 \\
+$Q_{ik}$ & 船舶 $i$ 与岸电桩 $k$ 的兼容性参数（0/1） \\
+$K^{BS}$ & 换电设备数量（$K^{BS}=|\mathcal{K}^{BS}|$） \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+
+\begin{table}[!htbp]
+\centering
+\caption{决策变量定义}
+\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{0.25\textwidth} X}
+\toprule
+变量 & 含义 \\
+\midrule
+$x_{ik} \in \{0,1\}$ & 若船舶 $i$ 选择岸电桩 $k$，则取 1 \\
+$y_i \in \{0,1\}$ & 若船舶 $i$ 选择换电服务，则取 1 \\
+$z_i \in \{0,1\}$ & 若船舶 $i$ 选择燃油辅机服务，则取 1 \\
+$w_{it} \in \{0,1\}$ & 若船舶 $i$ 在时间段 $t$ 开始能源服务，则取 1 \\
+$s_{ikt} \in \{0,1\}$ & 若船舶 $i$ 选择岸电桩 $k$ 且在时间段 $t$ 开始充电，则取 1（线性化辅助变量） \\
+$b_{it} \in \{0,1\}$ & 若船舶 $i$ 选择换电服务且在时间段 $t$ 开始换电，则取 1（线性化辅助变量） \\
+$u_{ikt} \in \{0,1\}$ & 若船舶 $i$ 在时间段 $t$ 占用岸电桩 $k$，则取 1 \\
+$v_{it} \in \{0,1\}$ & 若船舶 $i$ 在时间段 $t$ 正在进行换电服务，则取 1 \\
+$L_i \ge 0$ & 船舶 $i$ 的实际离港时间（时间段索引） \\
+$\delta_i \ge 0$ & 船舶 $i$ 的延误量 \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+
+% ------------------------------------------------
+% 2.4.2 目标函数
+% ------------------------------------------------
+\subsubsection{目标函数}
+
+模型目标是在满足资源容量与作业约束的前提下，
+最小化系统广义运营总成本：
+\begin{equation}
+\min Z =
+\sum_{i \in \mathcal{N}}
+\Big(
+C^{SP} E_i \sum_{k \in \mathcal{K}^{SP}} x_{ik}
++ C^{BS} y_i
++ C^{AE} E_i z_i
+\Big)
++ \sum_{i \in \mathcal{N}} C^{(i)}_{\text{delay}} \delta_i .
+\label{eq:obj_24_final}
+\end{equation}
+
+% ------------------------------------------------
+% 2.4.3 约束条件
+% ------------------------------------------------
+\subsubsection{约束条件}
+
+\paragraph{服务模式选择约束}
+\begin{equation}
+\sum_{k \in \mathcal{K}^{SP}} Q_{ik} x_{ik} + y_i + z_i = 1,
+\quad \forall i \in \mathcal{N}.
+\label{eq:mode_24_final}
+\end{equation}
+
+\paragraph{能源服务开始时刻约束}
+若船舶 $i$ 选择岸电或换电服务，则必须且只能在某一时间段开始能源服务：
+\begin{equation}
+\sum_{t \in \mathcal{T}} w_{it}
+=
+\sum_{k \in \mathcal{K}^{SP}} x_{ik} + y_i,
+\quad \forall i \in \mathcal{N}.
+\label{eq:w_unique_24}
+\end{equation}
+
+\paragraph{服务持续时间定义}
+\begin{equation}
+d_i^{SP} = \left\lceil \frac{E_i}{P^{SP}} \right\rceil, 
+\qquad
+d_i^{BS} = T^{BS}.
+\label{eq:duration_24}
+\end{equation}
+
+\paragraph{岸电服务启动链接约束}
+辅助变量 $s_{ikt}$ 联合表示船舶 $i$ 分配至岸电桩 $k$ 并在时间段 $t$ 开始服务。
+以下约束组确保 $s_{ikt} = x_{ik} \cdot w_{it}$ 在二元域上成立，且为纯线性形式（McCormick/Fortet 线性化）：
+\begin{align}
+s_{ikt} &\le x_{ik},
+  & \forall i \in \mathcal{N},\; k \in \mathcal{K}^{SP},\; t \in \mathcal{T},
+  \label{eq:lin_sp_a} \\
+s_{ikt} &\le w_{it},
+  & \forall i \in \mathcal{N},\; k \in \mathcal{K}^{SP},\; t \in \mathcal{T},
+  \label{eq:lin_sp_b} \\
+s_{ikt} &\ge x_{ik} + w_{it} - 1,
+  & \forall i \in \mathcal{N},\; k \in \mathcal{K}^{SP},\; t \in \mathcal{T},
+  \label{eq:lin_sp_c} \\
+\sum_{t \in \mathcal{T}} s_{ikt} &= x_{ik},
+  & \forall i \in \mathcal{N},\; k \in \mathcal{K}^{SP}.
+  \label{eq:lin_sp_d}
+\end{align}
+约束 \eqref{eq:lin_sp_a}--\eqref{eq:lin_sp_c} 为标准的 McCormick envelope，对二元变量乘积的松弛是紧的（tight）。
+约束 \eqref{eq:lin_sp_d} 为冗余强化约束（valid inequality），显式加入可显著增强 LP 松弛的紧致性。
+
+\paragraph{(4$'$) 岸电占用变量定义}
+基于线性化变量 $s_{ikt}$，岸电桩 $k$ 在时间段 $t$ 被船舶 $i$ 占用的指示变量为：
+\begin{equation}
+u_{ikt} = \sum_{\tau = \max\{0,\, t-d_i^{SP}+1\}}^{t} s_{ik\tau},
+\quad \forall i \in \mathcal{N},\; k \in \mathcal{K}^{SP},\; t \in \mathcal{T}.
+\label{eq:link_sp_24_final}
+\end{equation}
+与原约束相比，此处将非线性项 $w_{i\tau} \cdot x_{ik}$ 替换为已线性化的 $s_{ik\tau}$。
+
+\paragraph{换电服务启动链接约束}
+辅助变量 $b_{it}$ 联合表示船舶 $i$ 选择换电并在时间段 $t$ 开始服务，
+约束组确保 $b_{it} = y_i \cdot w_{it}$：
+\begin{align}
+b_{it} &\le y_i,
+  & \forall i \in \mathcal{N},\; t \in \mathcal{T},
+  \label{eq:lin_bs_a} \\
+b_{it} &\le w_{it},
+  & \forall i \in \mathcal{N},\; t \in \mathcal{T},
+  \label{eq:lin_bs_b} \\
+b_{it} &\ge y_i + w_{it} - 1,
+  & \forall i \in \mathcal{N},\; t \in \mathcal{T},
+  \label{eq:lin_bs_c} \\
+\sum_{t \in \mathcal{T}} b_{it} &= y_i,
+  & \forall i \in \mathcal{N}.
+  \label{eq:lin_bs_d}
+\end{align}
+
+\paragraph{(5$'$) 换电占用变量定义}
+\begin{equation}
+v_{it} = \sum_{\tau = \max\{0,\, t-d_i^{BS}+1\}}^{t} b_{i\tau},
+\quad \forall i \in \mathcal{N},\; t \in \mathcal{T}.
+\label{eq:link_bs_24_final}
+\end{equation}
+
+\paragraph{资源容量约束}
+岸电桩为独占性资源：每个岸电桩 $k$ 在任意时间段 $t$ 至多被一艘船舶占用。
+换电设备为同质资源，总占用量不超过设备数量 $K^{BS}$：
+\begin{align}
+\sum_{i \in \mathcal{N}} u_{ikt}
+&\le 1,
+&& \forall k \in \mathcal{K}^{SP},\; t \in \mathcal{T},
+\label{eq:cap_sp_24_final} \\
+\sum_{i \in \mathcal{N}} v_{it}
+&\le K^{BS},
+&& \forall t \in \mathcal{T}.
+\label{eq:cap_bs_24_final}
+\end{align}
+式~\eqref{eq:cap_sp_24_final} 对每根岸电桩逐时段施加独占约束，从而准确刻画一桩一船的物理限制。
+
+\paragraph{SIMOPS 完工时间约束}
+\begin{align}
+L_i &\ge A_i + T^{(i)}_{\text{cargo}},
+&& \forall i \in \mathcal{N},
+\label{eq:cargo_finish_24_final} \\
+L_i &\ge 
+\sum_{t \in \mathcal{T}} t \cdot w_{it}
++ d_i^{SP}\sum_{k \in \mathcal{K}^{SP}} x_{ik}
++ d_i^{BS} y_i,
+&& \forall i \in \mathcal{N}.
+\label{eq:service_finish_24_final}
+\end{align}
+
+\paragraph{延误量线性化}
+\begin{align}
+\delta_i &\ge L_i - D_i,
+&& \forall i \in \mathcal{N}, \\
+\delta_i &\ge 0,
+&& \forall i \in \mathcal{N}.
+\end{align}
+
+\paragraph{变量域约束}
+\begin{equation}
+x_{ik},y_i,z_i,w_{it},s_{ikt},b_{it},u_{ikt},v_{it} \in \{0,1\},
+\quad
+L_i,\delta_i \ge 0.
+\end{equation}
+
+\subsection{模型性质与特例分析}
+\label{sec:properties}
+
+本节从结构性质、计算含义与模型边界三个层面总结前述 MILP 的关键特征，为后续列生成分解提供理论动机。
+
+\subsubsection{SIMOPS 机制下的完工时间结构性质}
+
+\paragraph{命题 1（最大值完工结构）}
+在约束 \eqref{eq:cargo_finish_24_final}--\eqref{eq:service_finish_24_final} 下，船舶离港时间由装卸完成时刻与能源服务完成时刻中的较大者决定，而非二者加和。
+
+该性质意味着：能源服务时长对离港时间的影响是\emph{条件性的}。当补能过程落在装卸窗口内时，边际时间代价接近零；当补能过程溢出装卸窗口时，边际时间代价转为正值并与资源拥挤程度耦合。由此，问题从加性调度转为瓶颈主导调度，直接改变了可行域形态与对偶价格解释。
+
+\subsubsection{保底服务选项与模型可行性}
+
+\paragraph{命题 2（全局可行性）}
+由于燃油辅机模式不占用港口侧受限资源，模型在任意到达负载与容量设定下均保持可行。
+
+这一设计并不鼓励高排放方案，而是通过高成本惩罚将其限定为可行性兜底机制：当绿色资源不足时避免问题不可行；当绿色资源可用时，由目标函数自动抑制其使用比例。
+
+\subsubsection{异质性延误惩罚的结构影响}
+
+\paragraph{命题 3（内生优先级）}
+在船舶特定延误惩罚系数 $C^{(i)}_{\text{delay}}$ 下，服务优先级由优化模型内生生成，而非外生规则给定。
+
+惩罚系数越高，模型越倾向于为该船舶分配更高时效服务或减少等待；惩罚系数越低，模型越倾向于接受较长服务时长以换取更低能源成本。这一结构使同一资源环境下的调度结果呈现稳定的船舶异质性分层。
+
+\subsubsection{问题复杂性与规模增长特性}
+
+该问题虽为 MILP，但复杂性由两类因素共同驱动。第一，时间展开变量 $w_{it}$、$u_{ikt}$、$v_{it}$ 使模型规模随 $|\mathcal{N}|$ 与 $|\mathcal{T}|$ 快速增长。第二，服务选择、排队竞争与最大值完工结构同时存在，导致组合结构显著强于单一资源调度。
+
+因此，在中大规模实例下，直接求解紧凑模型的稳定性会明显下降；这也是后续采用主问题与定价子问题分解框架的核心动机。
+
+\subsubsection{特例分析}
+
+本文模型可视为一个统一母模型；在不同参数设定下可退化为若干经典问题：
+
+\paragraph{串行作业特例}
+若禁止并行作业，则完工结构退化为装卸时间与补能时间的加性形式，对应传统串行港口调度。
+
+\paragraph{纯绿色能源特例}
+若令 $z_i=0,\ \forall i$，模型退化为岸电与换电之间的纯绿色容量竞争问题。
+
+\paragraph{同质船舶特例}
+若各船舶在需求、作业时长与延误惩罚上完全一致，模型退化为同质服务对象的容量调度问题。
+
+\paragraph{单一能源特例}
+若仅保留一种能源服务（如仅岸电），模型退化为具有并行作业约束的单资源调度问题。
+
+综上，本文框架既覆盖多类已有模型作为特例，也通过异质能源、SIMOPS 与可扩展求解三要素的联立扩展了传统港口调度边界。
+
+%% ==============================================================
+%% SECTION 3: SOLUTION METHODOLOGY (Column Generation)
+%% ==============================================================
+
+\section{求解方法：基于列生成的分解框架}
+\label{sec:cg}
+
+第~\ref{sec:model} 节的紧凑 MILP 在结构上完整，但其时间展开变量
+$w_{it}$、$s_{ikt}$、$u_{ikt}$ 等会随 $|\mathcal{N}|$、$|\mathcal{K}^{SP}|$ 与
+$|\mathcal{T}|$ 同步膨胀，使大规模实例中的分支定界过程迅速退化。
+以 $|\mathcal{N}| = 100$、$|\mathcal{K}^{SP}| = 2$、$|\mathcal{T}| = 32$ 为例，
+仅 $s_{ikt}$ 就有 $6{,}400$ 个二元变量，总二元变量规模可超过 $20{,}000$。
+
+观察该模型可知：跨船耦合主要来自岸电与换电容量约束，而单船层面本质是
+在可行服务方案集合中选择一个方案。据此，本节采用 Dantzig--Wolfe
+分解并以列生成（Column Generation, CG）实现：将单船可行方案表示为列，
+在限制性主问题（RMP）中处理耦合资源约束，在定价子问题（PP）中按需生成
+负缩减成本列，从而避免对全部时间展开变量进行显式枚举。
+
+\subsection{列的定义与可行服务方案}
+\label{sec:cg_column}
+
+\noindent 定义（服务方案） 对于船舶 $i \in \mathcal{N}$，一个可行服务方案
+$p \in \mathcal{P}_i$ 定义为三元组 $p=(m_p,t_p,k_p)$。
+其中，$m_p \in \{SP, BS, AE\}$ 表示服务模式，$t_p$ 表示服务开始时段，
+$k_p$ 表示岸电桩索引：当 $m_p=SP$ 时，要求 $k_p \in \mathcal{K}^{SP}$、
+$Q_{ik_p}=1$、$t_p \in \mathcal{T}$ 且 $t_p \ge A_i$；当 $m_p=BS$ 时，取
+$k_p=\varnothing$，并要求 $t_p \in \mathcal{T},\ t_p \ge A_i$；当 $m_p=AE$
+时，取 $(t_p,k_p)=(A_i,\varnothing)$，表示不占用港口补能资源。
+
+\noindent
+对于每个服务方案 $p \in \mathcal{P}_i$，其参数可由如下方式计算：
+
+\medskip
+\noindent 直接成本：
+\begin{equation}
+  c_{ip} =
+  \begin{cases}
+    C^{SP} \cdot E_i, & \text{若 } m_p = SP, \\
+    C^{BS}, & \text{若 } m_p = BS, \\
+    C^{AE} \cdot E_i, & \text{若 } m_p = AE.
+  \end{cases}
+  \label{eq:col_cost}
+\end{equation}
+
+\noindent 完工时间与延误成本：
+\begin{align}
+  L_{ip} &= \max\!\Big\{A_i + T_{\text{cargo}}^{(i)},\;
+    t_p + d_{ip}\Big\},
+  \label{eq:col_finish} \\
+  \delta_{ip} &= \max\!\big\{L_{ip} - D_i,\; 0\big\},
+  \label{eq:col_delay} \\
+  \bar{c}_{ip} &= c_{ip} + C_{\text{delay}}^{(i)} \cdot \delta_{ip},
+  \label{eq:col_gencost}
+\end{align}
+其中 $d_{ip}$ 为方案 $p$ 的服务持续时间：
+若 $m_p = SP$ 则 $d_{ip} = d_i^{SP}$；
+若 $m_p = BS$ 则 $d_{ip} = d_i^{BS}$；
+若 $m_p = AE$ 则 $d_{ip} = 0$。
+$\bar{c}_{ip}$ 为方案 $p$ 的广义成本，
+涵盖能源直接成本与延误惩罚。
+
+\medskip
+\noindent 资源占用轮廓：
+对于方案 $p \in \mathcal{P}_i$，定义其在时间段 $t$ 对岸电桩 $k$ 和换电设备的占用：
+\begin{align}
+  \alpha_{ipkt} &=
+  \begin{cases}
+    1, & \text{若 } m_p = SP,\; k = k_p,\;
+         t_p \le t \le t_p + d_i^{SP} - 1, \\
+    0, & \text{否则},
+  \end{cases}
+  \label{eq:col_alpha} \\
+  \beta_{ipt} &=
+  \begin{cases}
+    1, & \text{若 } m_p = BS,\;
+         t_p \le t \le t_p + d_i^{BS} - 1, \\
+    0, & \text{否则}.
+  \end{cases}
+  \label{eq:col_beta}
+\end{align}
+
+\subsection{限制性主问题（RMP）}
+\label{sec:cg_rmp}
+
+设 $\hat{\mathcal{P}}_i \subseteq \mathcal{P}_i$ 为当前迭代中船舶 $i$
+可用的服务方案子集。
+引入决策变量 $\lambda_{ip} \in [0,1]$（LP 松弛域），
+表示船舶 $i$ 是否采用方案 $p$。
+限制性主问题的 LP 松弛形式为：
+\begin{align}
+  [\text{RMP}] \qquad
+  \min \quad & \sum_{i \in \mathcal{N}} \sum_{p \in \hat{\mathcal{P}}_i}
+    \bar{c}_{ip}\, \lambda_{ip}
+  \label{eq:rmp_obj} \\
+  \text{s.t.} \quad
+  & \sum_{p \in \hat{\mathcal{P}}_i} \lambda_{ip} = 1,
+    \qquad \forall\, i \in \mathcal{N},
+    \qquad [\pi_i]
+  \label{eq:rmp_convex} \\
+  & \sum_{i \in \mathcal{N}} \sum_{p \in \hat{\mathcal{P}}_i}
+    \alpha_{ipkt}\, \lambda_{ip} \le 1,
+    \qquad \forall\, k \in \mathcal{K}^{SP},\; t \in \mathcal{T},
+    \qquad [\mu_{kt}]
+  \label{eq:rmp_sp} \\
+  & \sum_{i \in \mathcal{N}} \sum_{p \in \hat{\mathcal{P}}_i}
+    \beta_{ipt}\, \lambda_{ip} \le K^{BS},
+    \qquad \forall\, t \in \mathcal{T},
+    \qquad [\nu_t]
+  \label{eq:rmp_bs} \\
+  & 0 \le \lambda_{ip} \le 1,
+    \qquad \forall\, i \in \mathcal{N},\; p \in \hat{\mathcal{P}}_i.
+  \label{eq:rmp_bound}
+\end{align}
+
+\noindent 约束说明：
+式~\eqref{eq:rmp_convex} 保证每艘船恰选一列，其对偶变量 $\pi_i$ 为单船选择的
+影子价格；式~\eqref{eq:rmp_sp} 与式~\eqref{eq:rmp_bs} 分别刻画岸电桩逐时段独占与
+换电设备逐时段容量上限。对应对偶变量 $\mu_{kt} \ge 0$ 与 $\nu_t \ge 0$
+可解释为两类资源在不同时段的拥挤价格，并直接进入定价子问题的缩减成本计算。
+
+\begin{remark}[与紧凑模型的等价性]
+当 $\hat{\mathcal{P}}_i = \mathcal{P}_i$（即包含所有可行方案）时，
+RMP 的整数最优解与紧凑模型的最优解等价。
+这是因为每个整数可行解
+$(\mathbf{x}, \mathbf{y}, \mathbf{z}, \mathbf{w})$
+可唯一映射为某个方案选择 $\lambda_{ip} = 1$，反之亦然。
+列生成的核心在于：无需显式枚举 $\mathcal{P}_i$，
+而是通过定价子问题按需生成有价值的列。
+\end{remark}
+
+\subsection{定价子问题（Pricing Subproblem）}
+\label{sec:cg_pricing}
+
+给定 RMP 的对偶最优解 $(\boldsymbol{\pi}^*,\, \boldsymbol{\mu}^*,\, \boldsymbol{\nu}^*)$ 后，
+定价步骤的目标是在每艘船的完整方案集合中寻找最小缩减成本列；若存在负缩减成本列，
+则将其加入 RMP 以继续改进主问题目标值。对于船舶 $i$，方案 $p$ 的缩减成本定义为：
+\begin{equation}
+  \bar{\sigma}_{ip}
+  = \bar{c}_{ip}
+  - \pi_i^*
+  - \sum_{k \in \mathcal{K}^{SP}} \sum_{t \in \mathcal{T}}
+    \mu_{kt}^* \cdot \alpha_{ipkt}
+  - \sum_{t \in \mathcal{T}} \nu_t^* \cdot \beta_{ipt}.
+  \label{eq:reduced_cost}
+\end{equation}
+
+对每艘船舶 $i$，定价子问题写为：
+\begin{equation}
+  [\text{PP}_i] \qquad
+  \bar{\sigma}_i^* =
+  \min_{p \in \mathcal{P}_i} \; \bar{\sigma}_{ip}.
+  \label{eq:pricing}
+\end{equation}
+
+令 $\varepsilon>0$ 为收敛容忍度。当 $\bar{\sigma}_i^*<0$ 时将对应列加入列池；
+当所有船舶均满足 $\bar{\sigma}_i^*\ge -\varepsilon$ 时，可判定当前 RMP 已达到 LP 最优性条件。
+将式~\eqref{eq:reduced_cost} 按服务模式展开后，$\text{PP}_i$ 可分解为以下三个独立子问题：
+
+\medskip
+\noindent(a) 岸电定价子问题
+($m_p = SP$)：对于每对 $(k, t)$，其中 $k \in \mathcal{K}^{SP}$
+且 $Q_{ik} = 1$，$t \in [A_i,\; |\mathcal{T}| - d_i^{SP} + 1]$，
+计算：
+\begin{equation}
+  \sigma_i^{SP}(k, t)
+  = \underbrace{C^{SP} \cdot E_i + C_{\text{delay}}^{(i)} \cdot \delta_i(t, d_i^{SP})}_{
+    \text{广义成本 } \bar{c}_{ip}}
+  - \pi_i^*
+  - \underbrace{\sum_{\tau = t}^{t + d_i^{SP} - 1} \mu_{k\tau}^*}_{
+    \text{岸电资源对偶价格}},
+  \label{eq:price_sp}
+\end{equation}
+其中 $\delta_i(t, d) = \max\!\big\{\max\{t + d,\; A_i + T_{\text{cargo}}^{(i)}\} - D_i,\; 0\big\}$
+为在时间段 $t$ 开始、持续 $d$ 时段后的延误量。
+最优岸电方案为：
+\begin{equation}
+  (k_i^*, t_i^{SP*}) = \arg\min_{k, t} \; \sigma_i^{SP}(k, t).
+  \label{eq:price_sp_opt}
+\end{equation}
+
+\noindent
+该子问题的计算复杂度为 $O(|\mathcal{K}^{SP}| \cdot |\mathcal{T}| \cdot d_{\max}^{SP})$，
+其中 $d_{\max}^{SP}=\max_{i \in \mathcal{N}} d_i^{SP}$。
+利用对偶价格的前缀和预计算
+$M_{k}(t) = \sum_{\tau=0}^{t} \mu_{k\tau}^*$，
+可将每对 $(k, t)$ 的岸电对偶价格求和简化为
+$M_{k}(t + d_i^{SP} - 1) - M_{k}(t - 1)$，
+使复杂度降至 $O(|\mathcal{K}^{SP}| \cdot |\mathcal{T}|)$。
+
+\medskip
+\noindent(b) 换电定价子问题
+($m_p = BS$)：对于每个 $t \in [A_i,\; |\mathcal{T}| - d_i^{BS} + 1]$，
+计算：
+\begin{equation}
+  \sigma_i^{BS}(t)
+  = C^{BS} + C_{\text{delay}}^{(i)} \cdot \delta_i(t, d_i^{BS})
+  - \pi_i^*
+  - \sum_{\tau = t}^{t + d_i^{BS} - 1} \nu_{\tau}^*.
+  \label{eq:price_bs}
+\end{equation}
+类似地利用前缀和，复杂度为 $O(|\mathcal{T}|)$。
+
+\medskip
+\noindent(c) 燃油辅机服务定价
+($m_p = AE$)：无资源占用，缩减成本为：
+\begin{equation}
+  \sigma_i^{AE}
+  = C^{AE} \cdot E_i
+  + C_{\text{delay}}^{(i)} \cdot \max\!\big\{A_i + T_{\text{cargo}}^{(i)} - D_i,\; 0\big\}
+  - \pi_i^*.
+  \label{eq:price_ae}
+\end{equation}
+这是一个常数（不依赖时间维度），复杂度为 $O(1)$。
+
+\medskip
+\noindent 汇总：船舶 $i$ 的最优缩减成本为：
+\begin{equation}
+  \bar{\sigma}_i^* = \min\!\Big\{
+    \min_{k,t} \sigma_i^{SP}(k,t),\;\;
+    \min_{t} \sigma_i^{BS}(t),\;\;
+    \sigma_i^{AE}
+  \Big\}.
+  \label{eq:price_min}
+\end{equation}
+
+\noindent
+定价子问题的总复杂度为
+$O\!\big(|\mathcal{N}| \cdot (|\mathcal{K}^{SP}| + 1) \cdot |\mathcal{T}|\big)$，
+在典型参数下（$|\mathcal{N}| = 500$, $|\mathcal{K}^{SP}| = 2$,
+$|\mathcal{T}| = 32$）仅需约 $48{,}000$ 次基本运算，可在毫秒级完成。
+
+\subsection{初始列池构造}
+\label{sec:cg_init}
+
+列生成需要一个可行初始列池以启动 RMP。本文将
+$\hat{\mathcal{P}}_i^{(0)}$ 构造为三层保底与启发式结构：对每艘船先加入燃油保底列
+$p_i^{AE}$（始终可行，保证 RMP 首次可行）~\cite{Cordeau2015}；对岸电兼容船舶按到达时刻
+贪心加入最早可用桩与最早可行时刻的岸电列；并为每艘船加入到达即服务的换电列
+（$t_p=A_i,\ m_p=BS$）。
+
+\noindent
+该初始化同时满足可行性与收敛效率：前者由保底列保证，后者由两类高质量启发式列提升。
+
+\subsection{收敛性与整数最优性分析}
+\label{sec:cg_convergence}
+
+本节从三个层次建立所提 CG 框架的最优性理论。
+首先给出 LP 松弛的标准收敛结论（命题~\ref{prop:lp}）；
+其次针对具有区间调度结构的简化情形，
+证明 LP 松弛自然给出整数解（定理~\ref{thm:tu}）；
+最后对一般情形提出整数恢复（Integer Recovery）方案，
+并建立其相对于原始 MILP 的最优性条件（命题~\ref{prop:integer_recovery}）。
+
+% ------------------------------------------------------------------
+% 3.5.1  LP 松弛收敛性
+% ------------------------------------------------------------------
+\subsubsection{LP 松弛的收敛性}
+
+\begin{proposition}[LP 松弛最优性]
+\label{prop:lp}
+设算法~\ref{alg:cgip}（见第~\ref{sec:cg_algorithm_full} 节）
+因 $\textit{improved} = \mathrm{False}$ 终止，
+即所有船舶的最优缩减成本 $\bar{\sigma}_i^* \ge -\varepsilon$。
+令 $Z_{LP}^*$ 为终止时 RMP 的 LP 最优值，
+$Z_{LP}^{\text{full}}$ 为完整列集 $\bigcup_i \mathcal{P}_i$ 上 LP 松弛的最优值，则：
+\begin{equation}
+  Z_{LP}^{\text{full}} \;\le\; Z_{LP}^* \;\le\; Z_{LP}^{\text{full}} + |\mathcal{N}|\cdot\varepsilon.
+  \label{eq:lp_bound}
+\end{equation}
+当 $\varepsilon\to 0$ 时，$Z_{LP}^* = Z_{LP}^{\text{full}}$，
+列生成精确求解了 LP 松弛。
+\end{proposition}
+
+\begin{proof}
+当所有定价子问题的最优缩减成本满足 $\bar{\sigma}_i^*\ge -\varepsilon$ 时，
+对任意未加入列池的方案 $p\in\mathcal{P}_i\setminus\hat{\mathcal{P}}_i$，其缩减成本
+$\bar{\sigma}_{ip}\ge\bar{\sigma}_i^*\ge -\varepsilon$。
+由线性规划对偶理论，当前对偶解
+$(\boldsymbol{\pi}^*,\boldsymbol{\mu}^*,\boldsymbol{\nu}^*)$
+对完整列集的所有列满足近似对偶可行性，
+对偶目标与原始目标之差不超过 $|\mathcal{N}|\cdot\varepsilon$，
+由强对偶定理得式~\eqref{eq:lp_bound}。
+详细证明见 Desaulniers et al.~\cite{Desaulniers2005} 第 2 章。
+\end{proof}
+
+% ------------------------------------------------------------------
+% 3.5.2  简化情形的全单模性与整数解
+% ------------------------------------------------------------------
+\subsubsection{简化情形下的全单模性}
+
+下面分析 RMP 约束矩阵的结构，以确立整数解的理论基础。
+用行向量表示 RMP 的约束矩阵 $\mathbf{A}$，
+其行分属三组：
+凸性行（Convexity, 简记 $\mathcal{R}_C$）、
+岸电容量行（Shore Power, $\mathcal{R}_S$）和
+换电容量行（Battery Swap, $\mathcal{R}_B$）；
+列由方案 $(i,p)$ 索引。
+记单个方案 $(i,p)$ 对应的列向量为 $\mathbf{a}_{ip}$，则：
+\begin{equation}
+  [\mathbf{A}]_{r,\,(i,p)}
+  \;=\;
+  \begin{cases}
+    1, & r = C_i\in\mathcal{R}_C, \\
+    \alpha_{ipkt}, & r = S_{kt}\in\mathcal{R}_S, \\
+    \beta_{ipt},   & r = B_{t}\in\mathcal{R}_B.
+  \end{cases}
+\end{equation}
+
+矩阵 $\mathbf{A}$ 具有如下关键结构：
+\begin{enumerate}[label=(\roman*)]
+  \item \emph{对角块凸性}：凸性行上，$[\mathbf{A}]_{C_i,\,(j,p)}=1$ 当且仅当 $j=i$，
+        因此 $\mathbf{A}$ 的凸性块为分块对角的全一矩阵。
+  \item \emph{区间结构}：对任意固定 $(i,p)$，
+        岸电占用 $\alpha_{ipkt}=1$ 当且仅当 $t\in[t_p,\,t_p+d_i^{SP}-1]$；
+        换电占用 $\beta_{ipt}=1$ 当且仅当 $t\in[t_p,\,t_p+d_i^{BS}-1]$。
+        即每一列在 $\mathcal{R}_S$ 或 $\mathcal{R}_B$ 中各有至多一段连续的 $1$，
+        且两段不同时为非零（每个方案至多占用一类资源）。
+  \item \emph{互斥资源占用}：每列在 $\mathcal{R}_S$ 与 $\mathcal{R}_B$ 中至多有一段非零，
+        且该段与凸性行中唯一的 $1$ 属于同一船舶 $i$。
+\end{enumerate}
+
+基于上述结构，在以下简化情形下可建立全单模性（Total Unimodularity, TU）：
+
+\begin{theorem}[简化情形的全单模性]
+\label{thm:tu}
+设换电设备数量 $K^{BS}=1$，
+且每艘船舶至多与一个岸电桩兼容（$\sum_{k}Q_{ik}\le 1$，$\forall\,i$）。
+在此条件下，RMP 的约束矩阵 $\mathbf{A}$ 是全单模矩阵，
+从而 RMP 的 LP 松弛在任意有界可行的目标函数下必然存在整数最优解，即列生成收敛后直接获得原整数规划的全局最优解。
+\end{theorem}
+
+\begin{proof}
+利用 Ghouila-Houri 定理~\cite{Papadimitriou1998}：
+$0$-$1$ 矩阵 $\mathbf{A}$ 是全单模矩阵，
+当且仅当对于 $\mathbf{A}$ 的任意行子集 $\mathcal{R}'\subseteq\mathcal{R}$，
+存在二着色划分 $\mathcal{R}'=\mathcal{R}^+\cup\mathcal{R}^-$，使得对每一列 $(i,p)$ 有：
+\begin{equation}
+  \left|
+    \sum_{r\in\mathcal{R}^+}\mathbf{A}_{r,(i,p)}
+    -
+    \sum_{r\in\mathcal{R}^-}\mathbf{A}_{r,(i,p)}
+  \right|
+  \;\le\; 1.
+  \label{eq:gh}
+\end{equation}
+
+给定任意 $\mathcal{R}'\subseteq\mathcal{R}$，构造如下二着色方案。对于凸性行子集 $\mathcal{R}'\cap\mathcal{R}_C$，按船舶编号奇偶进行着色：$i$ 为奇时 $C_i\in\mathcal{R}^+$，$i$ 为偶时 $C_i\in\mathcal{R}^-$。对于岸电容量行子集 $\mathcal{R}'\cap\mathcal{R}_S$，按时段 $t$ 的奇偶进行着色：$t$ 为奇时 $S_{kt}\in\mathcal{R}^+$，$t$ 为偶时 $S_{kt}\in\mathcal{R}^-$。对于换电容量行子集 $\mathcal{R}'\cap\mathcal{R}_B$，同样按时段 $t$ 的奇偶进行着色。
+
+现验证式~\eqref{eq:gh} 对任意列 $(i,p)$ 成立。
+固定列 $(i,p)$，其在三组行中的贡献分别如下。
+
+\medskip
+\noindent（1）凸性行的贡献
+列 $(i,p)$ 在 $\mathcal{R}_C$ 中仅 $C_i$ 一行非零，
+故凸性行对式~\eqref{eq:gh} 左侧贡献为 $\pm 1$（视 $i$ 奇偶而定）。
+
+\medskip
+\noindent（2）资源行的贡献
+由互斥资源占用（结构性质 (iii)），
+方案 $p$ 在 $\mathcal{R}_S$ 和 $\mathcal{R}_B$ 中至多一组非零。
+
+不妨设方案 $p$ 为岸电服务，
+占用岸电桩 $k_p$，时段区间为 $[t_p,\,t_p+d_i^{SP}-1]$。
+由时段奇偶二着色，
+该区间内奇时段数与偶时段数之差至多为 $1$，
+故岸电行对式~\eqref{eq:gh} 左侧的贡献满足 $|\cdot|\le 1$。
+此外，由于 $K^{BS}=1$ 且每列在 $\mathcal{R}_B$ 中的非零段长度至多为
+$d_i^{BS}$（连续区间），同理换电行贡献也满足 $|\cdot|\le 1$。
+
+\medskip
+\noindent（3）三组合并
+三组贡献分别源自互不相交的行子集。
+注意到在 $\sum_k Q_{ik}\le 1$（每船至多一桩）且 $K^{BS}=1$ 的假设下，
+每列在凸性行恰好有 $1$ 个非零，在资源行至多有 $1$ 段连续的非零，
+且两者属于同一船舶的局部子矩阵。
+该子矩阵等价于一个节点-弧关联矩阵（Node-Arc Incidence Matrix），
+将时间轴上每个时段视为节点，每个服务方案（持续时段 $[t_p, t_p+d-1]$）
+视为连接起止时段的有向弧，则资源行即为弧所经过节点的关联行。
+节点-弧关联矩阵是经典的全单模矩阵~\cite{Nemhauser1988}，
+其对偶方向的任意行子集均满足 Ghouila-Houri 条件式~\eqref{eq:gh}，
+即差值绝对值 $\le 1$。
+由全单模矩阵在行列重排和行子集选取下的封闭性，
+完整约束矩阵 $\mathbf{A}$ 也是全单模矩阵。
+
+因此，Ghouila-Houri 条件式~\eqref{eq:gh} 对所有列和所有行子集成立，
+$\mathbf{A}$ 为全单模矩阵，证毕。
+\end{proof}
+
+\begin{remark}[定理条件的工程含义]
+定理~\ref{thm:tu} 的条件，单换电单元（$K^{BS}=1$）且每船至多单桩兼容，
+对应小型港口或单码头泊位的典型基础设施配置。
+当 $K^{BS}>1$ 或船舶兼容多个岸电桩时，
+$\mathbf{A}$ 的全单模性不再成立（可构造整分量不为整数的极点），
+此时需借助第~\ref{sec:cg_ir} 节的整数恢复方案。
+\end{remark}
+
+% ------------------------------------------------------------------
+% 3.5.3  一般情形：整数恢复（Integer Recovery）
+% ------------------------------------------------------------------
+\subsubsection{一般情形下的整数恢复方案}
+\label{sec:cg_ir}
+
+对于 $K^{BS}>1$ 或多桩兼容的一般情形，
+CG 收敛后 LP 松弛可能存在非整数极点。
+本文采用整数恢复（Integer Recovery）方案：
+以 CG 收敛时积累的列池 $\hat{\mathcal{P}}_i$ 为变量空间，
+对 RMP 施加整数约束，求解如下整数限制性主问题（Integer-RMP，简称 IRMP）：
+
+\begin{align}
+  [\text{IRMP}] \qquad
+  \min \quad & \sum_{i \in \mathcal{N}} \sum_{p \in \hat{\mathcal{P}}_i}
+    \bar{c}_{ip}\, \lambda_{ip}
+  \label{eq:irmp_obj} \\
+  \text{s.t.} \quad
+  & \sum_{p \in \hat{\mathcal{P}}_i} \lambda_{ip} = 1,
+    \qquad \forall\, i \in \mathcal{N},
+  \label{eq:irmp_convex} \\
+  & \sum_{i \in \mathcal{N}} \sum_{p \in \hat{\mathcal{P}}_i}
+    \alpha_{ipkt}\, \lambda_{ip} \le 1,
+    \qquad \forall\, k \in \mathcal{K}^{SP},\; t \in \mathcal{T},
+  \label{eq:irmp_sp} \\
+  & \sum_{i \in \mathcal{N}} \sum_{p \in \hat{\mathcal{P}}_i}
+    \beta_{ipt}\, \lambda_{ip} \le K^{BS},
+    \qquad \forall\, t \in \mathcal{T},
+  \label{eq:irmp_bs} \\
+  & \lambda_{ip} \in \{0,1\},
+    \qquad \forall\, i \in \mathcal{N},\; p \in \hat{\mathcal{P}}_i.
+  \label{eq:irmp_int}
+\end{align}
+
+与紧凑 MILP 相比，IRMP 的规模极小：
+变量数为列池总大小 $|\hat{\mathcal{P}}|=\sum_i|\hat{\mathcal{P}}_i|$，
+在典型设置下（$|\mathcal{N}|=100$，每船约 10 列）仅约 $1{,}000$ 个；
+约束数约为 $|\mathcal{N}|+|\mathcal{K}^{SP}|\cdot|\mathcal{T}|+|\mathcal{T}|$，
+在典型配置下约为 $200$。
+因此，IRMP 通常可由商业求解器在毫秒至秒级内精确求解。
+
+\begin{proposition}[整数恢复的最优性条件]
+\label{prop:integer_recovery}
+设 CG 收敛时生成的列池为 $\hat{\mathcal{P}}_i\subseteq\mathcal{P}_i$，
+$Z_{IP}^{\text{IRMP}}$ 为 IRMP 的最优值，
+$Z_{IP}^{\text{opt}}$ 为原始紧凑 MILP 的全局最优值。则：
+\begin{equation}
+  Z_{LP}^* \;\le\; Z_{IP}^{\text{opt}} \;\le\; Z_{IP}^{\text{IRMP}}.
+  \label{eq:gap_chain}
+\end{equation}
+若 $Z_{LP}^* = Z_{IP}^{\text{IRMP}}$，则 $Z_{IP}^{\text{IRMP}} = Z_{IP}^{\text{opt}}$，
+IRMP 给出全局整数最优解。
+此外，即使 $Z_{LP}^* < Z_{IP}^{\text{IRMP}}$，
+可计算最优性间隙上界：
+\begin{equation}
+  \text{Gap} \;=\; \frac{Z_{IP}^{\text{IRMP}} - Z_{LP}^*}{Z_{LP}^*} \;\times\; 100\%,
+  \label{eq:gap_def}
+\end{equation}
+为解质量提供可量化的最坏情形保证。
+\end{proposition}
+
+\begin{proof}
+式~\eqref{eq:gap_chain} 左侧不等式：
+LP 松弛是整数规划的松弛，故 $Z_{LP}^*\le Z_{IP}^{\text{opt}}$。
+
+式~\eqref{eq:gap_chain} 右侧不等式：
+IRMP 在 $\hat{\mathcal{P}}_i\subseteq\mathcal{P}_i$ 上求解整数规划，
+其可行集是紧凑 MILP 可行集（限制在 $\hat{\mathcal{P}}_i$ 上）的子集，
+故 $Z_{IP}^{\text{opt}}\le Z_{IP}^{\text{IRMP}}$。
+
+当 $Z_{LP}^* = Z_{IP}^{\text{IRMP}}$ 时，
+三者同时被下界 $Z_{LP}^*$ 和上界 $Z_{IP}^{\text{IRMP}}$ 夹紧，故相等。
+
+间隙式~\eqref{eq:gap_def} 为标准的 MIP 最优性间隙定义，直接由
+式~\eqref{eq:gap_chain} 推导得出。
+\end{proof}
+
+\begin{remark}[列池完备性的充分条件]
+\label{rem:pool_complete}
+若列池 $\hat{\mathcal{P}}_i$ 包含原始紧凑 MILP 最优解所涉及的每艘船舶的最优方案，
+则 $Z_{IP}^{\text{IRMP}} = Z_{IP}^{\text{opt}}$。
+这一条件在实践中由 CG 的定价机制天然趋向满足：
+由于 CG 在每次迭代中将当前对偶价格下缩减成本最小的方案加入列池，
+凡具有较低广义成本的方案均会在早期迭代中被生成。
+如第~\ref{sec:overall_results} 节数值实验所示，
+$N=20$ 与 $N=50$ 时 IRMP 最优值与精确 MILP 完全吻合（外部验证），
+CG 内部 Gap 分别不超过 $0.08\%$ 与 $0.01\%$；
+$N=100$ 时精确 MILP 完全失效（成功率 $0\%$），
+但 IRMP 内部间隙 Gap $= 0.00\%$ 自证整数最优性，
+充分条件在所有可测实例上成立。
+\end{remark}
+
+% ------------------------------------------------------------------
+% 3.5.4  更新后的完整算法
+% ------------------------------------------------------------------
+\subsubsection{整合整数恢复的完整算法框架}
+\label{sec:cg_algorithm_full}
+
+结合上述分析，算法~\ref{alg:cgip} 给出了含整数恢复步骤的完整 CG 框架。
+与传统仅返回 LP 松弛解的 CG 相比，关键修改在于整数恢复步骤（第~\ref{sec:cg_ir} 节）：
+在 CG LP 迭代收敛后，以最终列池为基础求解 IRMP，
+输出带整数最优性保证（或可量化间隙上界）的解。
+
+\begin{algorithm}[htbp]
+\caption{含整数恢复的列生成求解框架（CG 与 IR）}
+\label{alg:cgip}
+\begin{algorithmic}[1]
+\REQUIRE 问题实例 $(\mathcal{N}, \mathcal{K}^{SP}, K^{BS}, \mathcal{T},
+  \text{参数})$；收敛阈值 $\varepsilon > 0$；最大迭代数 $I_{\max}$
+\ENSURE 整数最优（或具备间隙上界保证）的服务方案分配
+\STATE 构造初始列池 $\hat{\mathcal{P}}_i^{(0)}$（含燃油保底列），$\forall\, i \in \mathcal{N}$
+  \hfill \textit{// 第~\ref{sec:cg_init} 节}
+\STATE $\ell \leftarrow 0$
+\STATE $\textit{improved} \leftarrow \mathrm{True}$
+\WHILE{$\textit{improved} = \mathrm{True}$ and $\ell < I_{\max}$}
+  \STATE \textit{// LP 迭代阶段}
+  \STATE $\ell \leftarrow \ell + 1$
+  \STATE 求解 RMP 的 LP 松弛，获得对偶解
+    $(\boldsymbol{\pi}^*,\, \boldsymbol{\mu}^*,\, \boldsymbol{\nu}^*)$
+    \hfill \textit{// 第~\ref{sec:cg_rmp} 节}
+  \STATE $\textit{improved} \leftarrow \mathrm{False}$
+  \FOR{each $i \in \mathcal{N}$}
+    \STATE 求解 $\text{PP}_i$，计算最优缩减成本 $\bar{\sigma}_i^*$ 和对应方案 $p_i^*$
+      \hfill \textit{// 第~\ref{sec:cg_pricing} 节}
+    \IF{$\bar{\sigma}_i^* < -\varepsilon$}
+      \STATE $\hat{\mathcal{P}}_i \leftarrow \hat{\mathcal{P}}_i \cup \{p_i^*\}$（若采用多列定价，加入所有满足条件的方案）
+      \STATE $\textit{improved} \leftarrow \mathrm{True}$
+    \ENDIF
+  \ENDFOR
+\ENDWHILE
+\STATE 记录 LP 下界 $Z_{LP}^* \leftarrow$ 当前 RMP 的 LP 最优值
+\STATE 整数恢复步骤： 以列池 $\{\hat{\mathcal{P}}_i\}$ 为变量空间，求解 IRMP（式
+  \eqref{eq:irmp_obj}--\eqref{eq:irmp_int}）
+  \hfill \textit{// 第~\ref{sec:cg_ir} 节}
+\STATE 计算最优性间隙 $\text{Gap} = (Z_{IP}^{\text{IRMP}} - Z_{LP}^*) / Z_{LP}^*$
+  \hfill \textit{// 式~\eqref{eq:gap_def}}
+\IF{Gap $= 0$}
+  \RETURN IRMP 最优解（已验证为全局整数最优，由命题~\ref{prop:integer_recovery}）
+\ELSE
+  \RETURN IRMP 最优解及间隙上界 Gap（解质量的可量化保证）
+\ENDIF
+\end{algorithmic}
+\end{algorithm}
+
+\paragraph{算法说明}
+算法~\ref{alg:cgip} 将求解过程明确划分为两阶段：
+LP 迭代阶段（第 2--11 行）通过列生成精确求解 LP 松弛，
+生成高质量的候选服务方案列池；
+整数恢复阶段（第 12 行起）在小规模列池上直接求解 IRMP，
+获得带最优性保证的整数解。
+两阶段的分离使得整数求解的计算负担极低：
+IRMP 的变量规模仅为列池大小（典型值约为 $100$--$1{,}500$），
+相较紧凑 MILP 降低两个量级以上。
+
+在满足定理~\ref{thm:tu} 条件（$K^{BS}=1$ 且每船单桩兼容）时，
+LP 松弛极点天然为整数，整数恢复阶段等价于直接读取 LP 最优解，
+计算开销可忽略不计。
+
+在一般情形下（$K^{BS}>1$ 或多桩兼容），
+整数恢复阶段在数秒内完成，间隙通常为 $0\%$（见第~\ref{sec:overall_results} 节），
+表明列池完备性条件（注~\ref{rem:pool_complete}）在实验规模下普遍满足。
+
+\subsection{算法复杂度总结}
+\label{sec:cg_complexity}
+
+表~\ref{tab:complexity} 汇总了列生成框架各组件的计算复杂度。
+
+\begin{table}[htbp]
+\centering
+\caption{列生成框架计算复杂度分析}
+\label{tab:complexity}
+\begin{tabular}{lll}
+\toprule
+组件 & 单次复杂度 & 说明 \\
+\midrule
+RMP 求解 & $O(\text{LP}(|\hat{\mathcal{P}}|,\, m))$
+  & $|\hat{\mathcal{P}}|$ 为列池大小，$m$ 为约束数 \\
+岸电定价 & $O(|\mathcal{N}| \cdot |\mathcal{K}^{SP}| \cdot |\mathcal{T}|)$
+  & 利用前缀和优化 \\
+换电定价 & $O(|\mathcal{N}| \cdot |\mathcal{T}|)$
+  & 利用前缀和优化 \\
+燃油服务定价 & $O(|\mathcal{N}|)$
+  & 常数时间/船 \\
+整数恢复 & $O(\text{MIP}(|\hat{\mathcal{P}}|,\, m))$
+  & 在收敛列池上求解 \\
+\midrule
+总迭代数 & $O(I_{\max})$
+  & 典型值 $I_{\max} = 20$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\noindent
+与直接求解紧凑 MILP 相比，列生成的核心优势在于：
+(i) RMP 的规模由活跃列数而非全部时间展开变量决定，
+大幅减少了 LP 求解的计算负担；
+(ii) 定价子问题按船舶独立分解，可并行求解；
+(iii) 通过 LP 对偶信息引导列的生成方向，
+避免了对 $O(|\mathcal{N}| \cdot |\mathcal{K}^{SP}| \cdot |\mathcal{T}|)$
+可行方案的显式枚举。
+
+
+%% ==============================================================
+%% SECTION 4: NUMERICAL EXPERIMENTS
+%% ==============================================================
+
+\section{数值实验}
+\label{sec:computational}
+
+本章通过数值实验系统评估所提出的考虑 SIMOPS 掩盖效应的港口异质能源协同调度模型及其列生成（CG）求解框架的有效性与可扩展性，关注三个核心问题：SIMOPS 掩盖效应在成本与效率层面的量化收益、相较基准方法的解质量与计算效率优势，以及在不同资源配置与船舶结构下调度策略的变化规律。
+
+\subsection{实验设置}
+\label{sec:exp_setup}
+
+\subsubsection{算例生成与场景设置}
+\label{sec:data_instances}
+实验采用可控异质性仿真算例。船舶到达时间在 $[0,8]$ 小时的到达窗口内生成，时间离散粒度为 $\Delta t=0.25$ 小时（15 分钟），总规划时域设置为 48 小时，以覆盖装卸作业、能源服务与延后离港的完整过程。能量需求与装卸作业时长按照船舶类型分布（见表 \ref{tab:ship_types}）随机采样；离港截止时间取到达时间 + 装卸时长 + 松弛时间，其中松弛时间在 $[2,6]$ 小时内均匀抽样，并乘以紧迫度系数 $d$（敏感性分析中取 $d\in\{0.8,1.0,1.2\}$）。
+
+设置三类运行场景：U（Uniform）为均匀到达；P（Peaked Arrivals）为峰值到达（以中期为峰、与均匀到达混合）；L（Long Service）为装卸时间较长场景（整体上移装卸时长分布）。规模设置为 $N\in\{20,50,100,200,500\}$，每个配置重复 10 个随机种子以消除随机波动。
+
+\subsubsection{参数设定}
+\label{sec:parameter_setting}
+
+本节实验参数校准基于已发表文献和行业报告，以确保仿真场景的现实相关性与可信度。表 \ref{tab:exp_params} 给出基准参数设置，表 \ref{tab:ship_types} 给出船舶类型结构。所有参数的选择均有明确的文献依据或工程实践支撑。
+
+\begin{table}[htbp]
+    \centering
+    \caption{基准参数设置与文献依据}
+    \label{tab:exp_params}
+    \scriptsize
+    \renewcommand{\arraystretch}{1.0}
+    \begin{threeparttable}
+    \begin{tabular}{p{3.2cm} p{2cm} p{9cm}}
+        \toprule
+        参数 & 取值 & 文献依据与说明 \\
+        \midrule
+        时间步长 $\Delta t$ & 0.25 h & 15分钟粒度在计算精度与求解效率间取得平衡。更细粒度（如5分钟）会导致时间索引变量数量激增，更粗粒度（如1小时）则无法准确刻画能源服务与装卸作业的时间重叠关系。 \\
+        到达窗口 / 总规划时域 & [0, 8] h / 48 h & 到达需求集中在 8 小时窗口内生成，而 48 小时总规划时域用于完整刻画装卸、补能和可能的延后离港过程。该设置既保留高峰到达造成的资源竞争，也避免将长装卸或长岸电服务截断在规划期之外。 \\
+        装卸时间 $T_{\text{cargo}}^i$ & Uniform [6, 24] h & 基于UNCTAD (2021) \cite{UNCTAD2021}全球港口统计数据，集装箱船平均在港作业时间为0.8--1.25天（19--30小时）。本文取其核心装卸作业段，设定为[6, 24]小时，均值约12小时，代表中型集装箱船（5,000--10,000 TEU）的典型装卸时长。该范围覆盖了高效自动化码头（6--8小时）到传统人工码头（20--24小时）的操作水平。 \\
+        能源需求 $E_i$ & Uniform [3,000, 8,000] kWh & 参照ICCT (2023) \cite{ICCT2023}和Sustainable Ships (2025) \cite{SustainableShips2025}对集装箱船岸电需求的研究，船舶辅助发动机平均功率为329--1,400 kW。考虑本文场景下装卸作业窗口为6--24小时，能源需求设定为[3,000, 8,000] kWh，对应于中小型集装箱船（1,000--5,000 TEU）的在港能耗水平。该参数校准已涵盖Feedermax级别集装箱船的实测数据（8,482 kWh/天）。 \\
+        岸电功率 $P^{SP}$ & 900 kW & 参照IEC/IEEE 80005-1国际标准\cite{IEC80005}和MDPI (2025) \cite{MDPI2025}的岸电功率调研，集装箱船岸电系统功率范围为650--1,950 kW。本文设定为900 kW，对应于低压岸电供电系统（LVSC，0.4 kV），这是中小型集装箱码头的典型配置。该功率水平可为一艘中型集装箱船（能源需求约5,000 kWh）提供约5.5小时的充电服务。 \\
+        换电时间 $T^{BS}$ & 0.75 h & 参照Wu et al. (2020) \cite{Zhang2022_EShip}和Zhang et al. (2024) \cite{Zhang2024_Voyage}对电动船舶换电技术的综述，船舶换电作为一种快速补能方式，典型作业时长在0.5--2小时范围内。本文设定为0.75小时（45分钟），基于以下考虑：(1) 船舶电池组重量通常在2--5吨，需要起重设备辅助更换；(2) 参照LNG加注作业的时间特征（1--3小时）\cite{Fan2021}，换电作为更快速的操作，时间应显著短于LNG加注；(3) 对比电动重卡换电实践（15--30分钟），船舶换电由于规模更大，时间适当延长。 \\
+        岸电成本 $C^{SP}$ & 0.15 \$/kWh & 参照欧洲工业电价水平（0.10--0.20 EUR/kWh，约0.11--0.22 USD/kWh）和港口岸电定价实践。本文设定的0.15 \$/kWh略高于电网批发价格（约0.08 \$/kWh），反映了岸电基础设施的运营与维护成本。 \\
+        换电成本 $C^{BS}$ & 0.45 \$/kWh & 参照Sustainable Ships (2025) \cite{SustainableShips2025}对集装箱船岸电与换电服务的案例研究，换电服务定价为0.40 EUR/kWh（约0.44 USD/kWh），该价格包含了电池租赁、折旧和服务费。本文设定为0.45 \$/kWh，是岸电成本的3倍，体现了换电服务高成本--高效率的特征。 \\
+        燃油辅机成本 $C^{AE}$ & 0.90 \$/kWh & 综合船用柴油成本（约0.17 \$/kWh）和碳排放外部性成本。假设碳价为200 \$/吨CO$_2$（接近欧盟碳排放交易体系ETS的价格趋势），船用柴油发电的碳排放强度约为2.5 kg CO$_2$/kWh，对应碳成本约0.50 \$/kWh。加上燃油费和设备折旧，总成本设定为0.90 \$/kWh。该定价反映了燃油辅机服务的高环境成本，在目标函数中引导港口优先选择绿色能源方案。 \\
+        岸电桩数量 $|\mathcal{K}^{SP}|$ & 2 & 反映中型集装箱码头的典型配置。参照ICCT (2023) \cite{ICCT2023}的欧洲岸电基础设施调查，荷兰鹿特丹港拥有105个岸电连接器服务于整个港区的多个码头。本文场景设定为单一码头运营环境（4--6个泊位），配备2个岸电桩，对应约40\%的泊位覆盖率，反映了岸电设施尚未全面普及的过渡期现实。该配置创造了资源竞争条件，有助于验证调度算法在资源约束环境下的性能表现。 \\
+        换电设备数量 $K^{BS}$ & 2 & 换电设备为移动式资源，不受固定泊位限制。设定2台移动换电车辆，可灵活服务多个泊位，与固定岸电桩形成互补。该配置参考了陆地电动卡车换电站的典型规模（2--4台设备/站点）。 \\
+        \bottomrule
+    \end{tabular}
+    \end{threeparttable}
+\end{table}
+
+\begin{table}[htbp]
+    \centering
+    \caption{船舶类型与参数结构}
+    \label{tab:ship_types}
+    \scriptsize
+    \renewcommand{\arraystretch}{1.3}
+    \begin{threeparttable}
+    \begin{tabular}{c c c c c c p{4cm}}
+        \toprule
+        类型 & 占比 & 能量需求 & 延误惩罚 & 岸电 & 装卸时长 & 说明 \\
+        & & (kWh) & (\$/h) & 兼容 & (h) & \\
+        \midrule
+        A & 0.20 & [6000, 8000] & 2000 & 是 & [6, 24] & 高价值货物运输船（如冷藏集装箱船、特种货船），对延误高度敏感 \\
+        \addlinespace
+        B & 0.50 & [3000, 5000] & 800 & 是 & [6, 24] & 标准集装箱船，是港口的主要服务对象 \\
+        \addlinespace
+        C & 0.15 & [3000, 4000] & 500 & 否 & [6, 24] & 尚未完成岸电改造的传统船舶 \\
+        \addlinespace
+        D & 0.15 & [4000, 4000] & 1500 & 是 & [6, 12] & 支线船（Feeder）或快速周转船，装卸时间短 \\
+        \bottomrule
+    \end{tabular}
+    \end{threeparttable}
+\end{table}
+
+船舶类型结构基于实际港口运营特征设定。Type A（20\%）代表高价值货物运输船只，如冷藏集装箱船或特种货船，这类船舶对延误高度敏感；Type B（50\%）为标准集装箱船，是港口的主要服务对象；Type C（15\%）代表尚未完成岸电改造的传统船舶，在欧盟FuelEU Maritime规定\cite{EU2025}要求2030年全面实施岸电前，这类船舶在过渡期内仍占有一定比例；Type D（15\%）为支线船（Feeder）或快速周转船，其装卸时间相对较短。
+
+该船型分布反映了港口脱碳转型过渡期的异质性船队结构。其中85\%船舶兼容岸电的比例与欧盟委员会预测的2026年岸电改造率（约80--90\%）基本一致。类型C的存在确保模型在现实约束下仍能保持可行性，因为燃油辅机服务作为保底选项（fallback option），可为不兼容岸电的船舶提供能源供给。
+
+\subsubsection{对比算法与实现细节}
+\label{sec:baselines_impl}
+对比算法包括三类。第一类是精确基准：CG（本文方法）与 MILP60/MILP300（时间索引 MILP，时间上限分别为 60s 与 300s）。第二类是近似优化基线：Rolling-Horizon（滚动窗口 MILP）、Fix-and-Optimize（局部重优化）与 Restricted-CG（受限定价的近似列生成）。第三类是简单规则基线：FIFO（按到达顺序）与 Greedy（局部成本优先）。为保证可比性，所有算法均采用相同的目标函数、船舶实例和参数设置。
+
+CG 在 $N\le 100$ 时保留完整定价与整数恢复步骤；在更大规模下仍采用列生成与整数恢复框架，并保留 top-$K$ 定价策略（$K=3$）。结合本次修正后的诊断结果，主实验中的大规模 CG 迭代预算提高为 60 轮，以避免过早截断导致的系统性低估。Restricted-CG 仅对部分船舶做定价并限制迭代轮数，用以代表“快速近似优化”；Rolling-Horizon 与 Fix-and-Optimize 则分别代表滚动优化与局部精确改进两类常见工程型基线。MILP 结果仅报告到 $N=100$，更大规模下不再尝试直接求解。所有实验均在同一台工作站上完成（Python 3.13，PuLP/Gurobi），计时包含建模与求解。
+
+需要强调的是，本文不预先假设 $N\le 100$ 时 CG 必然与 MILP 完全一致，而是以后续实验中的实际成功率与目标值对齐情况进行报告。这一处理有助于避免将限时 MILP 的未完全求透结果误写为精确基准；同时，对于大规模实例，本文也不再将“固定 20 轮截断的 CG 结果”视为最终结论，而是采用修正后的迭代预算重新报告主实验结果。
+
+\textbf{可复现性说明。}本文所有算例均通过受控仿真生成，具体流程如下：以到达时间窗口 $[0,8]$ 小时为基础，按均匀分布（U场景）、高斯混合分布（P场景）或拉长服务时长分布（L场景）生成船舶序列；船舶参数按表~\ref{tab:ship_types} 所示分布独立抽样；每个规模-场景组合运行 10 个随机种子（seed=1--10），共生成 $5 \times 3 \times 10 = 150$ 个基准算例，SIMOPS/串行对照实验另外独立运行。所有随机生成均使用 Python \texttt{numpy.random} 模块，设 \texttt{seed} 后完全可复现。实验代码与算例数据将在接受后以补充材料或公开仓库形式提供（upon request）。
+
+\subsubsection{评价指标}
+\label{sec:metrics}
+评价指标包括：总成本（目标函数值）、能源成本、延误成本、岸电/换电/燃油辅机模式占比、岸电利用率、平均在港停留时间、SIMOPS 掩盖率及求解时间等。对比结果以均值 $\pm$ 标准差的形式报告。
+
+\subsection{总体结果与对比分析}
+\label{sec:overall_results}
+表 \ref{tab:main_results} 与图 \ref{fig:main_results} 从方法可靠性与计算可扩展性两个维度汇报总体结果。
+
+\textbf{方法可靠性。}$N=20$ 时，CG、MILP60 与 MILP300 的平均目标值均为 24{,}666.41，LP 松弛下界与 IRMP 整数解一致，外部 MILP 验证确认全局最优；$N=50$ 时，CG 与 MILP300 均给出 82{,}695.01，MILP60 在 60s 时限下求解成功率为 80\%，剩余 20\% 实例因超时未获最优解。$N=100$ 时，MILP300 与 MILP60 在各自时限内求解成功率均为 $0\%$，外部 MILP 基准失效；CG 仍以 $100\%$ 成功率在平均 21.53s 内完成求解，IRMP 报告的整数间隙 Gap $= 0.00\%$，在缺乏外部 MILP 验证的条件下提供了最强可用的解质量证据。需要注意的是，Gap $= 0.00\%$ 表示 IRMP 整数解与 CG 的 LP 松弛下界完全吻合，并非通过与精确 MILP 最优解的直接比对确认；其意义是 LP 下界已紧，而非全局最优的严格证明。
+
+\textbf{计算可扩展性。}在修正大规模 CG 的迭代预算后，$N=200$ 与 $N=500$ 下的主实验结果发生了实质性改善。MILP 已无法提供任何有效基准，而 CG 仍分别以 120.65s 和 275.90s 的平均时间稳定给出当前实验组中最优的平均结果，对应平均目标值分别为 535{,}891.97 和 1{,}690{,}831.88。相比之下，Rolling-Horizon 在这两个规模下的平均目标值为 595{,}687.29 和 1{,}820{,}918.33，Fix-and-Optimize 为 584{,}668.86 和 1{,}810{,}200.64，Restricted-CG 为 598{,}148.62 和 1{,}821{,}088.59。由此可见，完整 CG 虽然计算时间高于近似优化基线，但在解质量上保持了显著优势。
+
+从“解质量—速度”权衡的角度看，不同算法家族形成了清晰分层。Restricted-CG 的运行时间极低，例如在 $N=500$ 时平均仅为 5.15s，但其目标值明显弱于完整 CG；Rolling-Horizon 在解质量上优于简单启发式，但由于窗口提交削弱了全局协调能力，整体仍显著落后于 CG；Fix-and-Optimize 作为局部精确改进基线，平均表现优于 Rolling-Horizon，但在所有规模下仍未超过完整 CG。与两类启发式相比，CG 在各规模下均保持成本优势。相对 Greedy，CG 的平均降本在 $N=20,50,100,200,500$ 下分别约为 9.7\%、2.9\%、16.7\%、10.5\% 和 7.2\%；相对 FIFO 分别约为 9.8\%、2.9\%、16.4\%、10.2\% 和 7.4\%。这说明本文方法的优势并非建立在与弱基线的比较之上，而是在与滚动优化、局部重优化和近似列生成等代表性近似框架的对比中依然成立。
+
+需要说明的是，本文算法的核心价值定位在于：\emph{足以支撑机制洞见的精确可扩展求解}，而非方法学创新本身。CG 在此处的作用是提供一个高质量的优化基准，使 SIMOPS 掩盖效应的规律提炼（规律1--3）和管理规则的量化（规则1--4）建立在有据可查的最优解或近优解之上，而不是依赖启发式规则所得的可能次优结果。这一定位使本文适合从机制发现与管理洞见的角度理解其方法贡献，而非从算法方法学竞争的角度评价。
+
+\begin{table}[htbp]
+    \centering
+    \caption{不同规模下各算法的总体对比结果}
+    \label{tab:main_results}
+    \scriptsize
+    \input{results/main_table.tex}
+\end{table}
+
+\paragraph{场景对比分析}
+表 \ref{tab:scenario_results} 与图 \ref{fig:scenario_mechanism} 的左侧面板展示了不同到达/服务场景下的表现。三类场景中，峰值到达场景（P）的系统成本最高，CG 的平均目标值为 187028.55；均匀到达场景（U）为 183337.84；长作业场景（L）最低，为 181005.36。这表明在当前参数设定下，到达需求的时间集中性比装卸作业整体拉长更容易诱发资源拥堵。其机制在于：峰值到达压缩了资源调度的时间分散空间，导致多艘船舶在短时间内同时竞争少量岸电桩与换电设备；而长作业场景仅延长了单船占用时长，并不直接改变多船之间的竞争结构。进一步看，CG 在 P 场景相对 FIFO 和 Greedy 的平均降本分别达到 19.35\% 和 20.03\%，均高于 U 与 L 场景，说明当需求峰值更尖锐时，统一优化相对于局部规则的优势会进一步放大。与此同时，MILP300 在 P 场景的成功率仅为 10\%，而在 U 与 L 场景分别为 40\%，也说明峰值到达场景对精确求解器更具挑战性。
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.98\textwidth]{figs/paper/Fig_Paper_Main_Performance.pdf}
+    \caption{主实验主文图：不同规模下各算法的总成本、相对 CG 的性能差距、运行时间以及 CG 搜索开销。}
+    \label{fig:main_results}
+\end{figure}
+
+\begin{table}[htbp]
+    \centering
+    \caption{场景对比结果（$N=100$）}
+    \label{tab:scenario_results}
+    \scriptsize
+    \input{results/scenario_table.tex}
+\end{table}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.98\textwidth]{figs/paper/Fig_Paper_Scenario_Mechanism.pdf}
+    \caption{场景与机制主文图：左侧为三类运行场景下的成本对比，右侧为不同补能机制下的成本对比。}
+    \label{fig:scenario_mechanism}
+\end{figure}
+
+\subsection{SIMOPS 掩盖效应的价值评估}
+\label{sec:simops_value}
+为量化 SIMOPS 的价值，设置 SIMOPS 与串行作业两种操作模式并进行对照实验。
+
+\paragraph{串行基线的操作定义}
+对照实验中的串行（Sequential）模式严格对应现有文献的主流假设：能源补给服务在装卸作业\emph{完全结束后}方可启动，两类作业在时间轴上不发生任何重叠。
+
+在模型实现层面，串行模式通过替换完工时间约束来构造：将 SIMOPS 下的最大值结构
+\[
+L_i \;\ge\; \max\!\bigl\{A_i + T^{(i)}_{\text{cargo}},\; t_p + d_i^m\bigr\}
+\]
+替换为加性结构
+\[
+L_i \;=\; A_i + T^{(i)}_{\text{cargo}} + d_i^m + W_i,
+\]
+即能源服务时长在装卸完成后顺序叠加。除此之外，两种模式在岸电与换电容量约束、能源成本结构、服务选项集合及优化目标上完全保持一致。这一单一变量设计确保两种模式之间的成本差异\emph{仅}来自并行作业带来的时间掩盖效应，排除了其他建模因素的干扰，从而使对照实验具有严格的可解释性。
+
+表 \ref{tab:simops_results} 与图 \ref{fig:simops_results} 显示，SIMOPS 的收益具有明显的规模依赖性。以 CG 为例，当 $N=25,50,100$ 时，SIMOPS 相对串行作业的平均降本幅度分别为 20.29\%、8.37\% 和 19.71\%，对应的平均掩盖率分别为 0.655、0.627 和 0.497；说明在中小规模下，能源服务与装卸作业的时间重叠能够显著削弱补能过程对系统成本的影响。另一方面，当规模扩大到 $N=200$ 和 $N=500$ 时，SIMOPS 相对串行作业的成本变化分别为 +0.45\% 和 +0.90\%，即系统总成本略高于串行模式，而平均掩盖率也进一步下降至 0.327 和 0.129。由此可见，SIMOPS 并非在所有负载水平下都必然优于串行作业，其有效性依赖于现有岸电与换电能力是否足以支撑并行化后的服务需求。
+
+\begin{table}[htbp]
+    \centering
+    \caption{SIMOPS 与串行作业对比（均值 $\pm$ 标准差）}
+    \label{tab:simops_results}
+    \scriptsize
+    \resizebox{\textwidth}{!}{\input{results/simops_table.tex}}
+\end{table}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.98\textwidth]{figs/paper/Fig_Paper_SIMOPS.pdf}
+    \caption{SIMOPS 主文图：不同方法下的降本幅度、停留时间变化，以及 CG 下的掩盖率分布和船型拆分结果。}
+    \label{fig:simops_results}
+\end{figure}
+
+\paragraph{机制解释与规律验证}
+图 \ref{fig:simops_results} 的左下与右下面板进一步给出了掩盖效应的分布及其在船型间的差异。总体上，随着系统规模增大，掩盖率由 $N=25$ 时的 0.655 下降到 $N=500$ 时的 0.129，表明并行作业释放的时间收益会在高拥挤条件下被资源竞争逐步吞噬。
+
+上述结果为第~\ref{sec:lit_review} 节提出的三条运营规律提供了直接的实验支撑。\textbf{规律1}（正收益条件）在数值上体现为：$N=25,50,100$ 时 SIMOPS 降本 $8\%$--$20\%$，而 $N=200,500$ 时成本反转 $+0.45\%$、$+0.90\%$，转折点对应岸电容量比 $\rho$ 的临界值约 $2\%$。\textbf{规律2}（模式切换）体现在 D 型支线船（装卸时间短，$[6,12]$ 小时）在高负载场景下更多转向换电服务，与装卸窗口不足以覆盖岸电服务时长的理论分析一致。\textbf{规律3}（容量杠杆优先）将由第~\ref{sec:sensitivity} 节的敏感性实验进一步量化。
+
+\subsection{敏感性分析与管理启示}
+\label{sec:sensitivity}
+图 \ref{fig:sensitivity_results} 总结了关键参数的敏感性结果（$N=100$，U 场景）。首先，当电池成本由 0.30 增至 0.80 \$/kWh 时，系统总成本均值由 125287.86 上升至 318703.75，说明换电价格是决定系统经济性的关键参数；但在当前区间内，服务模式结构几乎保持不变，岸电占比稳定在约 0.149、换电占比稳定在约 0.851，仅在 0.80 \$/kWh 时出现极少量燃油辅机模式（0.004）。这说明电池成本上升主要抬升了成本水平，但尚未触发大规模的模式切换。
+
+其次，岸电容量扩张对成本和服务结构的影响更加直接。当岸电桩数量由 1 增至 8 时，平均总成本由 198105.48 下降至 133257.40，累计降幅约为 32.73\%；与此同时，岸电占比由 0.086 持续提升至 0.484，燃油辅机模式占比由 0.032 降至 0。相比之下，截止期紧迫度的影响相对温和：当紧迫度系数由 0.80 提升至 1.20 时，平均成本仅由 185002.17 小幅降至 182638.89，但换电占比由 0.840 上升到 0.862，表明更宽松的时间窗口有助于提高绿色服务的可调度性，不过其边际作用弱于基础设施扩容。
+
+\begin{figure}[!htbp]
+    \centering
+    \includegraphics[width=0.98\textwidth]{figs/paper/Fig_Paper_Sensitivity.pdf}
+    \caption{敏感性主文图：电池成本、岸电容量与截止期紧迫度对系统目标值及燃油辅机模式占比的影响。}
+    \label{fig:sensitivity_results}
+\end{figure}
+
+\subsection{服务机制对比：混合补能的价值}
+\label{sec:mechanism_comparison}
+除场景和参数扰动外，本文进一步比较了三种服务机制：仅换电（battery-only）、仅岸电（shore-only）和混合补能（hybrid）。结果显示，混合机制在成本与可行性上均优于任何单一补能方案。以 CG 为例，hybrid 的平均总成本为 183337.84，明显低于 battery-only 的 217571.42 和 shore-only 的 357065.41；相应地，hybrid 相对 battery-only 与 shore-only 的平均降本幅度分别约为 15.73\% 和 48.65\%。这一结果说明岸电与换电并非简单替代关系，而是典型的互补关系：岸电提供低成本但服务时间较长的固定服务，换电提供高时效但成本较高的灵活服务，二者联合后能够在成本与可行性之间取得更优平衡。
+
+从模式结构看，battery-only 机制下系统主要依赖换电，平均换电占比达到 0.896，但仍有 10.4\% 的需求落入燃油辅机模式；shore-only 机制由于缺乏灵活补能手段，燃油辅机模式占比高达 0.876；hybrid 机制则在岸电占比 0.149 与换电占比 0.851 之间形成分工，并将燃油辅机模式压缩至 0。换言之，混合机制不仅降低了总成本，也显著提升了绿色服务覆盖率。该结论可由图 \ref{fig:scenario_mechanism} 的右侧面板进一步直观看出。
+
+%% ================================================
+%% 第四章：结论
+%% ================================================
+
+\section{结论}
+\label{sec:conclusion}
+
+\subsection{主要结论与机制解释}
+\label{sec:main_findings}
+
+围绕固定泊位布局下的港口能源—作业协同调度问题，本文从算法性能与机制洞见两个维度归纳四项可检验结论，分别对应第~\ref{sec:lit_review} 节提炼的三条运营规律与第~\ref{sec:contributions} 节的四条管理规则。
+
+\emph{结论一：算法性能——可校准、可扩展且在多类基线比较中保持优势的求解框架。}$N=20$ 与 $N=50$ 时，CG 与 MILP300 目标值完全吻合（外部验证）；$N=100$ 时，限时 MILP 求解成功率降至 $0\%$，CG 以 $100\%$ 成功率在 21.53s 内完成求解，IRMP 间隙 Gap $= 0.00\%$（内部验证：整数解与 LP 下界完全吻合，无法通过外部 MILP 独立验证）；$N=200$ 与 $N=500$ 下，在扩大大规模迭代预算后，CG 分别以 120.65s 和 275.90s 的平均时间稳定给出当前实验组中最优的平均结果，并整体优于 Rolling-Horizon、Fix-and-Optimize、Restricted-CG、FIFO 与 Greedy。由此可见，CG 的优势不仅体现在与启发式对比上，也体现在与多类代表性近似优化框架的比较中。
+
+\emph{结论二：掩盖效应的容量条件性（对应规律1与管理规则1）。}SIMOPS 的收益具有清晰边界。其在 $N=25,50,100$ 时分别带来 20.29\%、8.37\%、19.71\% 的降本，但在 $N=200$ 与 $N=500$ 时出现 +0.45\% 与 +0.90\% 的小幅成本反转，平均掩盖率也由 0.655 下降到 0.129。由此可见，SIMOPS 的有效区间并非所有负载，而是并行需求与基础设施容量大致匹配的区间；一旦拥堵跨过阈值，资源竞争会吞噬时间重叠收益。
+
+\emph{结论三：峰值到达的非线性放大效应（对应管理规则2）。}系统成本对到达集中性的敏感度高于对作业时长整体拉长的敏感度。于 $N=100$ 场景对比中，峰值到达场景（P）成本最高（187028.55），高于均匀到达（U，183337.84）与长作业场景（L，181005.36），且 CG 在 P 场景相对 FIFO、Greedy 的降本幅度最大（19.35\%、20.03\%）。这说明削峰填谷比平均延长作业更能决定系统拥堵水平。
+
+\emph{结论四：互补关系与杠杆优先级（对应规律3与管理规则3、4）。}岸电与换电是互补关系而非替代关系，且容量杠杆强于价格杠杆。混合机制（hybrid）较 battery-only 与 shore-only 分别降本 15.73\% 与 48.65\%，并将燃油辅机占比压缩至 0；敏感性实验进一步显示，电池成本变化主要抬升成本水平，而岸电扩容同时改善成本与绿色覆盖结构。由此，管理上应优先识别并缓解容量瓶颈，而不是仅依赖价格调整。
+
+\subsection{方法贡献与管理含义}
+\label{sec:contributions}
+
+\paragraph{方法贡献}
+本文的方法贡献体现在三个层面，各层面对应的研究空白已在第~\ref{sec:lit_review} 节明确说明，其定位适合从机制揭示与管理洞见的角度理解，而非单纯从方法学竞争角度评价。其一，本文将 SIMOPS 从工程操作规则转化为可优化的离港时序约束，建立了刻画掩盖效应容量条件性的统一数学框架；这一结构性贡献使“串行假设导致完工时间失真”从定性描述变为可计算的量化结论。其二，本文在同一优化框架下统一处理岸电、换电与燃油辅机三类异质服务，在固定泊位布局下构建了同时覆盖三类服务与 SIMOPS 机制的调度模型。其三，本文不仅提供了完整 CG 这一高质量求解工具，还通过 Rolling-Horizon、Fix-and-Optimize 与 Restricted-CG 三类新增基线，系统比较了滚动优化、局部重优化与近似列生成三种竞争哲学，使本文关于“完整 CG 在解质量与规模鲁棒性之间提供更优平衡”的结论建立在更充分的对比基础上。
+
+\paragraph{管理启示：if-then 决策规则}
+以下四条规则直接由实验结果归纳，可作为港口运营与投资决策的操作指引。
+
+\textbf{规则1（SIMOPS 适用条件）}
+\textbf{若}当前港口岸电容量比 $\rho \ge \rho^*$（约 $2\%$），\textbf{则}启用 SIMOPS 并行作业模式，预期可带来 $8\%$--$20\%$ 的系统成本改善；\textbf{若} $\rho < \rho^*$，\textbf{则}应优先扩容岸电基础设施，而非盲目推进并行化——强行并行在容量不足时反而导致成本反转。
+
+\textbf{规则2（到港需求管理优先级）}
+\textbf{若}面临到达需求集中（峰值到达），\textbf{则}应优先部署联合调度优化（本文 CG 框架在峰值场景相对启发式规则降本幅度最大，达 19\%--20\%），其效果优于通过拉伸装卸时窗来缓解拥堵；\textbf{若}需求分布均匀，\textbf{则}简单规则（FIFO/Greedy）与优化方法的差距缩小，可适当降低调度复杂度。
+
+\textbf{规则3（补能机制选择）}
+\textbf{若}港口需同时服务时间敏感型与成本敏感型船舶，\textbf{则}采用混合补能（岸电+换电）而非任何单一机制；混合机制相对换电唯一方案降本约 $15.7\%$，相对岸电唯一方案降本约 $48.7\%$，且完全消除燃油辅机使用，绿色服务覆盖率达 $100\%$。
+
+\textbf{规则4（投资优先级）}
+\textbf{若}同时面临岸电容量扩张与换电成本降低两类投资选项，\textbf{则}优先投资岸电容量扩张——岸电桩从 1 增至 8 可同时降低系统总成本 $32.7\%$ 并消除燃油辅机；而同等幅度的换电成本调整仅影响总体成本水平，不改变服务结构。容量杠杆的结构性改善效果系统性优于价格杠杆。
+
+\begin{table}[htbp]
+\centering
+\caption{管理启示总结}
+\label{tab:mgmt_rules}
+\scriptsize
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.15}
+\begin{tabular}{p{1.8cm} p{3.5cm} p{3.5cm} p{3.5cm}}
+\toprule
+决策场景 & 触发条件（If） & 管理含义（Then） & 实验依据 \\
+\midrule
+SIMOPS 推进 & 岸电容量比 $\rho \ge \rho^*\approx2\%$ & 启用并行作业，降本 8\%--20\% & SIMOPS 对照实验 \\
+           & $\rho < \rho^*$ & 先扩容，勿盲目并行 & 成本反转现象 \\
+\addlinespace
+需求管理 & 到达高度集中（峰值） & 部署联合优化，优势最大 & 场景实验 P vs U/L \\
+         & 到达均匀分布 & 简单规则可接受 & CG vs FIFO/Greedy差距收窄 \\
+\addlinespace
+补能机制 & 需服务异质需求 & 混合机制（SP+BS） & 机制对比实验 \\
+         & 强制单一机制 & battery-only 优于 shore-only & AE占比差异显著 \\
+\addlinespace
+投资优先级 & 容量与价格均可调整 & 优先扩岸电容量 & 敏感性分析 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{局限、拓展方向与结语}
+\label{sec:limitations}
+
+本文的研究范围与局限需从两个层面说明：一是主动选择的研究边界，二是有待扩展的研究局限。
+
+\textbf{研究边界}
+
+本文明确聚焦于\emph{固定泊位布局下的能源—作业协同调度}，即泊位分配由外生给定，TOC 的决策权限在于在已知泊位布局下优化能源服务模式与时序。这一边界设定使本文能够精确刻画 SIMOPS 掩盖效应的容量条件性机制——若同时开放泊位决策，研究问题将扩大为泊位—能源一体化联动优化，涉及完全不同的决策耦合结构，超出本文机制研究的范畴。在文献定位上，本文研究是 \citet{Peng2021}、\citet{Iris2019} 等泊位—岸电联合调度研究的下游扩展：在给定泊位安排的前提下，引入换电、燃油辅机与 SIMOPS 并行机制，聚焦能源层面的协同决策。泊位—能源一体化联动优化是一个明确的下一步研究方向，本文框架可作为其能源子问题的基础模块。
+
+\textbf{研究局限}
+
+第一，实验采用确定性到达与需求设定；现实港口存在船期偏差、作业扰动与负荷波动 \citep{UNCTAD2021}，在不确定条件下构建两阶段鲁棒调度模型是重要的扩展方向。第二，当前框架以加权广义成本最小化为目标，已将效率与成本权衡参数化内嵌；显式的帕累托分析（同时刻画排放、公平与可靠性）是有价值的后续工作。第三，尽管大规模 CG 的结果已经通过扩大迭代预算显著改善，但如何进一步设计自适应 stopping rule 与更强的列管理策略，仍是提升超大规模求解效率的重要方向。第四，尽管参数已完成文献校准，仍需基于真实运营日志开展外部效度验证。
+
+据此，后续研究可沿四条路径推进：其一，将可再生能源、港内储能与岸电调度联立建模，研究补能系统与电力侧灵活性的协同 \cite{Li2022_BSS}；其二，在到达、负荷与电价不确定条件下构建日前规划与实时重调度的两阶段模型；其三，引入学习方法辅助列生成中的热启动、列筛选与 stopping rule 设计，以提升超大规模实例下的在线求解性能 \cite{Bengio2021}；其四，将移动换电单元扩展到多码头网络，研究码头间重定位与码头内调度的双层耦合。
+
+总体而言，本文表明 SIMOPS 不是可脱离容量条件单独讨论的操作细节，而是与基础设施能力、船舶异质性和补能机制共同决定系统成本边界的关键变量。只有在并行作业机制、混合补能结构与可扩展优化方法协同作用下，港口电气化转型才可能同时实现经济性、可行性与绿色化目标。
+
+\FloatBarrier
+
+%% --- 参考文献区 ---
+\bibliographystyle{plainnat} % 作者-年份风格（natbib）
+\bibliography{ref11}
+
+\end{document}

@@ -1,0 +1,382 @@
+2026-03-11 17:44:45,833 | INFO | Experiment=scenario | Seeds=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10] | Methods=['cg', 'greedy', 'fifo', 'milp60', 'milp300']
+2026-03-11 19:47:21,410 | ERROR | Run failed: scenario=P seed=10 method=milp300
+Traceback (most recent call last):
+  File "E:\PythonProject1\src\runner.py", line 296, in run_experiment
+    sol = solve_fn(instance, method_cfg, logger)
+  File "E:\PythonProject1\src\solvers\milp_solver.py", line 220, in solve
+    prob.solve(solver)
+    ~~~~~~~~~~^^^^^^^^
+  File "C:\Users\researcher\AppData\Local\Programs\Python\Python314\Lib\site-packages\pulp\pulp.py", line 2092, in solve
+    status = solver.actualSolve(self, **kwargs)
+  File "C:\Users\researcher\AppData\Local\Programs\Python\Python314\Lib\site-packages\pulp\apis\gurobi_api.py", line 493, in actualSolve
+    self.delete_tmp_files(tmpLp, tmpMst, tmpSol, "gurobi.log")
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\researcher\AppData\Local\Programs\Python\Python314\Lib\site-packages\pulp\apis\core.py", line 367, in delete_tmp_files
+    self.silent_remove(file)
+    ~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\researcher\AppData\Local\Programs\Python\Python314\Lib\site-packages\pulp\apis\core.py", line 359, in silent_remove
+    os.remove(file)
+    ~~~~~~~~~^^^^^^
+PermissionError: [WinError 32] 另一个程序正在使用此文件，进程无法访问。: 'gurobi.log'
+2026-03-11 19:48:39,283 | ERROR | Run failed: scenario=L seed=1 method=milp60
+Traceback (most recent call last):
+  File "E:\PythonProject1\src\runner.py", line 296, in run_experiment
+    sol = solve_fn(instance, method_cfg, logger)
+  File "E:\PythonProject1\src\solvers\milp_solver.py", line 220, in solve
+    prob.solve(solver)
+    ~~~~~~~~~~^^^^^^^^
+  File "C:\Users\researcher\AppData\Local\Programs\Python\Python314\Lib\site-packages\pulp\pulp.py", line 2092, in solve
+    status = solver.actualSolve(self, **kwargs)
+  File "C:\Users\researcher\AppData\Local\Programs\Python\Python314\Lib\site-packages\pulp\apis\gurobi_api.py", line 493, in actualSolve
+    self.delete_tmp_files(tmpLp, tmpMst, tmpSol, "gurobi.log")
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\researcher\AppData\Local\Programs\Python\Python314\Lib\site-packages\pulp\apis\core.py", line 367, in delete_tmp_files
+    self.silent_remove(file)
+    ~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\researcher\AppData\Local\Programs\Python\Python314\Lib\site-packages\pulp\apis\core.py", line 359, in silent_remove
+    os.remove(file)
+    ~~~~~~~~~^^^^^^
+PermissionError: [WinError 32] 另一个程序正在使用此文件，进程无法访问。: 'gurobi.log'
+2026-03-11 19:53:42,413 | ERROR | Run failed: scenario=L seed=1 method=milp300
+Traceback (most recent call last):
+  File "E:\PythonProject1\src\runner.py", line 296, in run_experiment
+    sol = solve_fn(instance, method_cfg, logger)
+  File "E:\PythonProject1\src\solvers\milp_solver.py", line 220, in solve
+    prob.solve(solver)
+    ~~~~~~~~~~^^^^^^^^
+  File "C:\Users\researcher\AppData\Local\Programs\Python\Python314\Lib\site-packages\pulp\pulp.py", line 2092, in solve
+    status = solver.actualSolve(self, **kwargs)
+  File "C:\Users\researcher\AppData\Local\Programs\Python\Python314\Lib\site-packages\pulp\apis\gurobi_api.py", line 493, in actualSolve
+    self.delete_tmp_files(tmpLp, tmpMst, tmpSol, "gurobi.log")
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\researcher\AppData\Local\Programs\Python\Python314\Lib\site-packages\pulp\apis\core.py", line 367, in delete_tmp_files
+    self.silent_remove(file)
+    ~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\researcher\AppData\Local\Programs\Python\Python314\Lib\site-packages\pulp\apis\core.py", line 359, in silent_remove
+    os.remove(file)
+    ~~~~~~~~~^^^^^^
+PermissionError: [WinError 32] 另一个程序正在使用此文件，进程无法访问。: 'gurobi.log'
+2026-03-11 19:55:00,749 | ERROR | Run failed: scenario=L seed=2 method=milp60
+Traceback (most recent call last):
+  File "E:\PythonProject1\src\runner.py", line 296, in run_experiment
+    sol = solve_fn(instance, method_cfg, logger)
+  File "E:\PythonProject1\src\solvers\milp_solver.py", line 220, in solve
+    prob.solve(solver)
+    ~~~~~~~~~~^^^^^^^^
+  File "C:\Users\researcher\AppData\Local\Programs\Python\Python314\Lib\site-packages\pulp\pulp.py", line 2092, in solve
+    status = solver.actualSolve(self, **kwargs)
+  File "C:\Users\researcher\AppData\Local\Programs\Python\Python314\Lib\site-packages\pulp\apis\gurobi_api.py", line 493, in actualSolve
+    self.delete_tmp_files(tmpLp, tmpMst, tmpSol, "gurobi.log")
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\researcher\AppData\Local\Programs\Python\Python314\Lib\site-packages\pulp\apis\core.py", line 367, in delete_tmp_files
+    self.silent_remove(file)
+    ~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\researcher\AppData\Local\Programs\Python\Python314\Lib\site-packages\pulp\apis\core.py", line 359, in silent_remove
+    os.remove(file)
+    ~~~~~~~~~^^^^^^
+PermissionError: [WinError 32] 另一个程序正在使用此文件，进程无法访问。: 'gurobi.log'
+2026-03-11 20:00:03,634 | ERROR | Run failed: scenario=L seed=2 method=milp300
+Traceback (most recent call last):
+  File "E:\PythonProject1\src\runner.py", line 296, in run_experiment
+    sol = solve_fn(instance, method_cfg, logger)
+  File "E:\PythonProject1\src\solvers\milp_solver.py", line 220, in solve
+    prob.solve(solver)
+    ~~~~~~~~~~^^^^^^^^
+  File "C:\Users\researcher\AppData\Local\Programs\Python\Python314\Lib\site-packages\pulp\pulp.py", line 2092, in solve
+    status = solver.actualSolve(self, **kwargs)
+  File "C:\Users\researcher\AppData\Local\Programs\Python\Python314\Lib\site-packages\pulp\apis\gurobi_api.py", line 493, in actualSolve
+    self.delete_tmp_files(tmpLp, tmpMst, tmpSol, "gurobi.log")
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\researcher\AppData\Local\Programs\Python\Python314\Lib\site-packages\pulp\apis\core.py", line 367, in delete_tmp_files
+    self.silent_remove(file)
+    ~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\researcher\AppData\Local\Programs\Python\Python314\Lib\site-packages\pulp\apis\core.py", line 359, in silent_remove
+    os.remove(file)
+    ~~~~~~~~~^^^^^^
+PermissionError: [WinError 32] 另一个程序正在使用此文件，进程无法访问。: 'gurobi.log'
+2026-03-11 20:01:21,597 | ERROR | Run failed: scenario=L seed=3 method=milp60
+Traceback (most recent call last):
+  File "E:\PythonProject1\src\runner.py", line 296, in run_experiment
+    sol = solve_fn(instance, method_cfg, logger)
+  File "E:\PythonProject1\src\solvers\milp_solver.py", line 220, in solve
+    prob.solve(solver)
+    ~~~~~~~~~~^^^^^^^^
+  File "C:\Users\researcher\AppData\Local\Programs\Python\Python314\Lib\site-packages\pulp\pulp.py", line 2092, in solve
+    status = solver.actualSolve(self, **kwargs)
+  File "C:\Users\researcher\AppData\Local\Programs\Python\Python314\Lib\site-packages\pulp\apis\gurobi_api.py", line 493, in actualSolve
+    self.delete_tmp_files(tmpLp, tmpMst, tmpSol, "gurobi.log")
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\researcher\AppData\Local\Programs\Python\Python314\Lib\site-packages\pulp\apis\core.py", line 367, in delete_tmp_files
+    self.silent_remove(file)
+    ~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\researcher\AppData\Local\Programs\Python\Python314\Lib\site-packages\pulp\apis\core.py", line 359, in silent_remove
+    os.remove(file)
+    ~~~~~~~~~^^^^^^
+PermissionError: [WinError 32] 另一个程序正在使用此文件，进程无法访问。: 'gurobi.log'
+2026-03-11 20:06:25,040 | ERROR | Run failed: scenario=L seed=3 method=milp300
+Traceback (most recent call last):
+  File "E:\PythonProject1\src\runner.py", line 296, in run_experiment
+    sol = solve_fn(instance, method_cfg, logger)
+  File "E:\PythonProject1\src\solvers\milp_solver.py", line 220, in solve
+    prob.solve(solver)
+    ~~~~~~~~~~^^^^^^^^
+  File "C:\Users\researcher\AppData\Local\Programs\Python\Python314\Lib\site-packages\pulp\pulp.py", line 2092, in solve
+    status = solver.actualSolve(self, **kwargs)
+  File "C:\Users\researcher\AppData\Local\Programs\Python\Python314\Lib\site-packages\pulp\apis\gurobi_api.py", line 493, in actualSolve
+    self.delete_tmp_files(tmpLp, tmpMst, tmpSol, "gurobi.log")
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\researcher\AppData\Local\Programs\Python\Python314\Lib\site-packages\pulp\apis\core.py", line 367, in delete_tmp_files
+    self.silent_remove(file)
+    ~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\researcher\AppData\Local\Programs\Python\Python314\Lib\site-packages\pulp\apis\core.py", line 359, in silent_remove
+    os.remove(file)
+    ~~~~~~~~~^^^^^^
+PermissionError: [WinError 32] 另一个程序正在使用此文件，进程无法访问。: 'gurobi.log'
+2026-03-11 20:07:43,442 | ERROR | Run failed: scenario=L seed=4 method=milp60
+Traceback (most recent call last):
+  File "E:\PythonProject1\src\runner.py", line 296, in run_experiment
+    sol = solve_fn(instance, method_cfg, logger)
+  File "E:\PythonProject1\src\solvers\milp_solver.py", line 220, in solve
+    prob.solve(solver)
+    ~~~~~~~~~~^^^^^^^^
+  File "C:\Users\researcher\AppData\Local\Programs\Python\Python314\Lib\site-packages\pulp\pulp.py", line 2092, in solve
+    status = solver.actualSolve(self, **kwargs)
+  File "C:\Users\researcher\AppData\Local\Programs\Python\Python314\Lib\site-packages\pulp\apis\gurobi_api.py", line 493, in actualSolve
+    self.delete_tmp_files(tmpLp, tmpMst, tmpSol, "gurobi.log")
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\researcher\AppData\Local\Programs\Python\Python314\Lib\site-packages\pulp\apis\core.py", line 367, in delete_tmp_files
+    self.silent_remove(file)
+    ~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\researcher\AppData\Local\Programs\Python\Python314\Lib\site-packages\pulp\apis\core.py", line 359, in silent_remove
+    os.remove(file)
+    ~~~~~~~~~^^^^^^
+PermissionError: [WinError 32] 另一个程序正在使用此文件，进程无法访问。: 'gurobi.log'
+2026-03-11 20:12:46,769 | ERROR | Run failed: scenario=L seed=4 method=milp300
+Traceback (most recent call last):
+  File "E:\PythonProject1\src\runner.py", line 296, in run_experiment
+    sol = solve_fn(instance, method_cfg, logger)
+  File "E:\PythonProject1\src\solvers\milp_solver.py", line 220, in solve
+    prob.solve(solver)
+    ~~~~~~~~~~^^^^^^^^
+  File "C:\Users\researcher\AppData\Local\Programs\Python\Python314\Lib\site-packages\pulp\pulp.py", line 2092, in solve
+    status = solver.actualSolve(self, **kwargs)
+  File "C:\Users\researcher\AppData\Local\Programs\Python\Python314\Lib\site-packages\pulp\apis\gurobi_api.py", line 493, in actualSolve
+    self.delete_tmp_files(tmpLp, tmpMst, tmpSol, "gurobi.log")
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\researcher\AppData\Local\Programs\Python\Python314\Lib\site-packages\pulp\apis\core.py", line 367, in delete_tmp_files
+    self.silent_remove(file)
+    ~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\researcher\AppData\Local\Programs\Python\Python314\Lib\site-packages\pulp\apis\core.py", line 359, in silent_remove
+    os.remove(file)
+    ~~~~~~~~~^^^^^^
+PermissionError: [WinError 32] 另一个程序正在使用此文件，进程无法访问。: 'gurobi.log'
+2026-03-11 20:14:03,565 | ERROR | Run failed: scenario=L seed=5 method=milp60
+Traceback (most recent call last):
+  File "E:\PythonProject1\src\runner.py", line 296, in run_experiment
+    sol = solve_fn(instance, method_cfg, logger)
+  File "E:\PythonProject1\src\solvers\milp_solver.py", line 220, in solve
+    prob.solve(solver)
+    ~~~~~~~~~~^^^^^^^^
+  File "C:\Users\researcher\AppData\Local\Programs\Python\Python314\Lib\site-packages\pulp\pulp.py", line 2092, in solve
+    status = solver.actualSolve(self, **kwargs)
+  File "C:\Users\researcher\AppData\Local\Programs\Python\Python314\Lib\site-packages\pulp\apis\gurobi_api.py", line 493, in actualSolve
+    self.delete_tmp_files(tmpLp, tmpMst, tmpSol, "gurobi.log")
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\researcher\AppData\Local\Programs\Python\Python314\Lib\site-packages\pulp\apis\core.py", line 367, in delete_tmp_files
+    self.silent_remove(file)
+    ~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\researcher\AppData\Local\Programs\Python\Python314\Lib\site-packages\pulp\apis\core.py", line 359, in silent_remove
+    os.remove(file)
+    ~~~~~~~~~^^^^^^
+PermissionError: [WinError 32] 另一个程序正在使用此文件，进程无法访问。: 'gurobi.log'
+2026-03-11 20:19:06,527 | ERROR | Run failed: scenario=L seed=5 method=milp300
+Traceback (most recent call last):
+  File "E:\PythonProject1\src\runner.py", line 296, in run_experiment
+    sol = solve_fn(instance, method_cfg, logger)
+  File "E:\PythonProject1\src\solvers\milp_solver.py", line 220, in solve
+    prob.solve(solver)
+    ~~~~~~~~~~^^^^^^^^
+  File "C:\Users\researcher\AppData\Local\Programs\Python\Python314\Lib\site-packages\pulp\pulp.py", line 2092, in solve
+    status = solver.actualSolve(self, **kwargs)
+  File "C:\Users\researcher\AppData\Local\Programs\Python\Python314\Lib\site-packages\pulp\apis\gurobi_api.py", line 493, in actualSolve
+    self.delete_tmp_files(tmpLp, tmpMst, tmpSol, "gurobi.log")
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\researcher\AppData\Local\Programs\Python\Python314\Lib\site-packages\pulp\apis\core.py", line 367, in delete_tmp_files
+    self.silent_remove(file)
+    ~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\researcher\AppData\Local\Programs\Python\Python314\Lib\site-packages\pulp\apis\core.py", line 359, in silent_remove
+    os.remove(file)
+    ~~~~~~~~~^^^^^^
+PermissionError: [WinError 32] 另一个程序正在使用此文件，进程无法访问。: 'gurobi.log'
+2026-03-11 20:20:22,788 | ERROR | Run failed: scenario=L seed=6 method=milp60
+Traceback (most recent call last):
+  File "E:\PythonProject1\src\runner.py", line 296, in run_experiment
+    sol = solve_fn(instance, method_cfg, logger)
+  File "E:\PythonProject1\src\solvers\milp_solver.py", line 220, in solve
+    prob.solve(solver)
+    ~~~~~~~~~~^^^^^^^^
+  File "C:\Users\researcher\AppData\Local\Programs\Python\Python314\Lib\site-packages\pulp\pulp.py", line 2092, in solve
+    status = solver.actualSolve(self, **kwargs)
+  File "C:\Users\researcher\AppData\Local\Programs\Python\Python314\Lib\site-packages\pulp\apis\gurobi_api.py", line 493, in actualSolve
+    self.delete_tmp_files(tmpLp, tmpMst, tmpSol, "gurobi.log")
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\researcher\AppData\Local\Programs\Python\Python314\Lib\site-packages\pulp\apis\core.py", line 367, in delete_tmp_files
+    self.silent_remove(file)
+    ~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\researcher\AppData\Local\Programs\Python\Python314\Lib\site-packages\pulp\apis\core.py", line 359, in silent_remove
+    os.remove(file)
+    ~~~~~~~~~^^^^^^
+PermissionError: [WinError 32] 另一个程序正在使用此文件，进程无法访问。: 'gurobi.log'
+2026-03-11 20:25:25,830 | ERROR | Run failed: scenario=L seed=6 method=milp300
+Traceback (most recent call last):
+  File "E:\PythonProject1\src\runner.py", line 296, in run_experiment
+    sol = solve_fn(instance, method_cfg, logger)
+  File "E:\PythonProject1\src\solvers\milp_solver.py", line 220, in solve
+    prob.solve(solver)
+    ~~~~~~~~~~^^^^^^^^
+  File "C:\Users\researcher\AppData\Local\Programs\Python\Python314\Lib\site-packages\pulp\pulp.py", line 2092, in solve
+    status = solver.actualSolve(self, **kwargs)
+  File "C:\Users\researcher\AppData\Local\Programs\Python\Python314\Lib\site-packages\pulp\apis\gurobi_api.py", line 493, in actualSolve
+    self.delete_tmp_files(tmpLp, tmpMst, tmpSol, "gurobi.log")
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\researcher\AppData\Local\Programs\Python\Python314\Lib\site-packages\pulp\apis\core.py", line 367, in delete_tmp_files
+    self.silent_remove(file)
+    ~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\researcher\AppData\Local\Programs\Python\Python314\Lib\site-packages\pulp\apis\core.py", line 359, in silent_remove
+    os.remove(file)
+    ~~~~~~~~~^^^^^^
+PermissionError: [WinError 32] 另一个程序正在使用此文件，进程无法访问。: 'gurobi.log'
+2026-03-11 20:26:41,614 | ERROR | Run failed: scenario=L seed=7 method=milp60
+Traceback (most recent call last):
+  File "E:\PythonProject1\src\runner.py", line 296, in run_experiment
+    sol = solve_fn(instance, method_cfg, logger)
+  File "E:\PythonProject1\src\solvers\milp_solver.py", line 220, in solve
+    prob.solve(solver)
+    ~~~~~~~~~~^^^^^^^^
+  File "C:\Users\researcher\AppData\Local\Programs\Python\Python314\Lib\site-packages\pulp\pulp.py", line 2092, in solve
+    status = solver.actualSolve(self, **kwargs)
+  File "C:\Users\researcher\AppData\Local\Programs\Python\Python314\Lib\site-packages\pulp\apis\gurobi_api.py", line 493, in actualSolve
+    self.delete_tmp_files(tmpLp, tmpMst, tmpSol, "gurobi.log")
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\researcher\AppData\Local\Programs\Python\Python314\Lib\site-packages\pulp\apis\core.py", line 367, in delete_tmp_files
+    self.silent_remove(file)
+    ~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\researcher\AppData\Local\Programs\Python\Python314\Lib\site-packages\pulp\apis\core.py", line 359, in silent_remove
+    os.remove(file)
+    ~~~~~~~~~^^^^^^
+PermissionError: [WinError 32] 另一个程序正在使用此文件，进程无法访问。: 'gurobi.log'
+2026-03-11 20:31:44,742 | ERROR | Run failed: scenario=L seed=7 method=milp300
+Traceback (most recent call last):
+  File "E:\PythonProject1\src\runner.py", line 296, in run_experiment
+    sol = solve_fn(instance, method_cfg, logger)
+  File "E:\PythonProject1\src\solvers\milp_solver.py", line 220, in solve
+    prob.solve(solver)
+    ~~~~~~~~~~^^^^^^^^
+  File "C:\Users\researcher\AppData\Local\Programs\Python\Python314\Lib\site-packages\pulp\pulp.py", line 2092, in solve
+    status = solver.actualSolve(self, **kwargs)
+  File "C:\Users\researcher\AppData\Local\Programs\Python\Python314\Lib\site-packages\pulp\apis\gurobi_api.py", line 493, in actualSolve
+    self.delete_tmp_files(tmpLp, tmpMst, tmpSol, "gurobi.log")
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\researcher\AppData\Local\Programs\Python\Python314\Lib\site-packages\pulp\apis\core.py", line 367, in delete_tmp_files
+    self.silent_remove(file)
+    ~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\researcher\AppData\Local\Programs\Python\Python314\Lib\site-packages\pulp\apis\core.py", line 359, in silent_remove
+    os.remove(file)
+    ~~~~~~~~~^^^^^^
+PermissionError: [WinError 32] 另一个程序正在使用此文件，进程无法访问。: 'gurobi.log'
+2026-03-11 20:33:00,622 | ERROR | Run failed: scenario=L seed=8 method=milp60
+Traceback (most recent call last):
+  File "E:\PythonProject1\src\runner.py", line 296, in run_experiment
+    sol = solve_fn(instance, method_cfg, logger)
+  File "E:\PythonProject1\src\solvers\milp_solver.py", line 220, in solve
+    prob.solve(solver)
+    ~~~~~~~~~~^^^^^^^^
+  File "C:\Users\researcher\AppData\Local\Programs\Python\Python314\Lib\site-packages\pulp\pulp.py", line 2092, in solve
+    status = solver.actualSolve(self, **kwargs)
+  File "C:\Users\researcher\AppData\Local\Programs\Python\Python314\Lib\site-packages\pulp\apis\gurobi_api.py", line 493, in actualSolve
+    self.delete_tmp_files(tmpLp, tmpMst, tmpSol, "gurobi.log")
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\researcher\AppData\Local\Programs\Python\Python314\Lib\site-packages\pulp\apis\core.py", line 367, in delete_tmp_files
+    self.silent_remove(file)
+    ~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\researcher\AppData\Local\Programs\Python\Python314\Lib\site-packages\pulp\apis\core.py", line 359, in silent_remove
+    os.remove(file)
+    ~~~~~~~~~^^^^^^
+PermissionError: [WinError 32] 另一个程序正在使用此文件，进程无法访问。: 'gurobi.log'
+2026-03-11 20:38:03,748 | ERROR | Run failed: scenario=L seed=8 method=milp300
+Traceback (most recent call last):
+  File "E:\PythonProject1\src\runner.py", line 296, in run_experiment
+    sol = solve_fn(instance, method_cfg, logger)
+  File "E:\PythonProject1\src\solvers\milp_solver.py", line 220, in solve
+    prob.solve(solver)
+    ~~~~~~~~~~^^^^^^^^
+  File "C:\Users\researcher\AppData\Local\Programs\Python\Python314\Lib\site-packages\pulp\pulp.py", line 2092, in solve
+    status = solver.actualSolve(self, **kwargs)
+  File "C:\Users\researcher\AppData\Local\Programs\Python\Python314\Lib\site-packages\pulp\apis\gurobi_api.py", line 493, in actualSolve
+    self.delete_tmp_files(tmpLp, tmpMst, tmpSol, "gurobi.log")
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\researcher\AppData\Local\Programs\Python\Python314\Lib\site-packages\pulp\apis\core.py", line 367, in delete_tmp_files
+    self.silent_remove(file)
+    ~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\researcher\AppData\Local\Programs\Python\Python314\Lib\site-packages\pulp\apis\core.py", line 359, in silent_remove
+    os.remove(file)
+    ~~~~~~~~~^^^^^^
+PermissionError: [WinError 32] 另一个程序正在使用此文件，进程无法访问。: 'gurobi.log'
+2026-03-11 20:39:19,158 | ERROR | Run failed: scenario=L seed=9 method=milp60
+Traceback (most recent call last):
+  File "E:\PythonProject1\src\runner.py", line 296, in run_experiment
+    sol = solve_fn(instance, method_cfg, logger)
+  File "E:\PythonProject1\src\solvers\milp_solver.py", line 220, in solve
+    prob.solve(solver)
+    ~~~~~~~~~~^^^^^^^^
+  File "C:\Users\researcher\AppData\Local\Programs\Python\Python314\Lib\site-packages\pulp\pulp.py", line 2092, in solve
+    status = solver.actualSolve(self, **kwargs)
+  File "C:\Users\researcher\AppData\Local\Programs\Python\Python314\Lib\site-packages\pulp\apis\gurobi_api.py", line 493, in actualSolve
+    self.delete_tmp_files(tmpLp, tmpMst, tmpSol, "gurobi.log")
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\researcher\AppData\Local\Programs\Python\Python314\Lib\site-packages\pulp\apis\core.py", line 367, in delete_tmp_files
+    self.silent_remove(file)
+    ~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\researcher\AppData\Local\Programs\Python\Python314\Lib\site-packages\pulp\apis\core.py", line 359, in silent_remove
+    os.remove(file)
+    ~~~~~~~~~^^^^^^
+PermissionError: [WinError 32] 另一个程序正在使用此文件，进程无法访问。: 'gurobi.log'
+2026-03-11 20:42:43,153 | ERROR | Run failed: scenario=L seed=9 method=milp300
+Traceback (most recent call last):
+  File "E:\PythonProject1\src\runner.py", line 296, in run_experiment
+    sol = solve_fn(instance, method_cfg, logger)
+  File "E:\PythonProject1\src\solvers\milp_solver.py", line 220, in solve
+    prob.solve(solver)
+    ~~~~~~~~~~^^^^^^^^
+  File "C:\Users\researcher\AppData\Local\Programs\Python\Python314\Lib\site-packages\pulp\pulp.py", line 2092, in solve
+    status = solver.actualSolve(self, **kwargs)
+  File "C:\Users\researcher\AppData\Local\Programs\Python\Python314\Lib\site-packages\pulp\apis\gurobi_api.py", line 493, in actualSolve
+    self.delete_tmp_files(tmpLp, tmpMst, tmpSol, "gurobi.log")
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\researcher\AppData\Local\Programs\Python\Python314\Lib\site-packages\pulp\apis\core.py", line 367, in delete_tmp_files
+    self.silent_remove(file)
+    ~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\researcher\AppData\Local\Programs\Python\Python314\Lib\site-packages\pulp\apis\core.py", line 359, in silent_remove
+    os.remove(file)
+    ~~~~~~~~~^^^^^^
+PermissionError: [WinError 32] 另一个程序正在使用此文件，进程无法访问。: 'gurobi.log'
+2026-03-11 20:44:01,091 | ERROR | Run failed: scenario=L seed=10 method=milp60
+Traceback (most recent call last):
+  File "E:\PythonProject1\src\runner.py", line 296, in run_experiment
+    sol = solve_fn(instance, method_cfg, logger)
+  File "E:\PythonProject1\src\solvers\milp_solver.py", line 220, in solve
+    prob.solve(solver)
+    ~~~~~~~~~~^^^^^^^^
+  File "C:\Users\researcher\AppData\Local\Programs\Python\Python314\Lib\site-packages\pulp\pulp.py", line 2092, in solve
+    status = solver.actualSolve(self, **kwargs)
+  File "C:\Users\researcher\AppData\Local\Programs\Python\Python314\Lib\site-packages\pulp\apis\gurobi_api.py", line 493, in actualSolve
+    self.delete_tmp_files(tmpLp, tmpMst, tmpSol, "gurobi.log")
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\researcher\AppData\Local\Programs\Python\Python314\Lib\site-packages\pulp\apis\core.py", line 367, in delete_tmp_files
+    self.silent_remove(file)
+    ~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\researcher\AppData\Local\Programs\Python\Python314\Lib\site-packages\pulp\apis\core.py", line 359, in silent_remove
+    os.remove(file)
+    ~~~~~~~~~^^^^^^
+PermissionError: [WinError 32] 另一个程序正在使用此文件，进程无法访问。: 'gurobi.log'
+2026-03-11 20:49:04,207 | INFO | Completed. Results -> results/results_scenario_rigorous.csv

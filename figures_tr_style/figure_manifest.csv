@@ -1,0 +1,9 @@
+figure_id,title,expected_layout,data_source_file,reconstructed_from_table_or_not,status
+Fig1,"Engineering-practice photo panel","Two-panel photo comparison","C:\Users\researcher\Desktop\Elsevier_s_CAS_LaTeX_Single_Column_Template\ltd.jpg; C:\Users\researcher\Desktop\Elsevier_s_CAS_LaTeX_Single_Column_Template\cjhd.jpg","No","rendered_tr_style"
+Fig2,"Mechanism Gantt comparison","Two stacked Gantt panels","configs/simops.yaml; src/instances.py; src/solvers/cg_solver.py","No","rendered_tr_style"
+Fig3,"Main comparative results","2x2 comparative results figure","results/results_main_rigorous.csv","No","rendered_tr_style"
+Fig4,"Scenario and mechanism comparisons","1x2 grouped bar chart figure","results/results_scenario_rigorous.csv; results/results_mechanism_rigorous.csv","No","rendered_tr_style"
+Fig5,"SIMOPS mechanism insights","One wide top panel + two bottom panels","results/results_simops_rigorous.csv","No","rendered_tr_style"
+Fig6,"Sensitivity analysis","1x3 line-chart sensitivity figure","results/results_sensitivity_rigorous.csv","No","rendered_tr_style"
+Fig7,"Carbon-price dual-layer policy figure","Dual-axis policy figure","results/carbon_price_dual_summary.csv","No","rendered_tr_style"
+Fig8,"Arrival-perturbation robustness figure","1x2 robustness figure","results/robustness_fixed_deadline_summary.csv; results/robustness_fixed_deadline.csv","No","rendered_tr_style"

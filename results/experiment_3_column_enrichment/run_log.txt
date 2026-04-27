@@ -1,0 +1,8 @@
+[2026-04-17 17:46:32] Step 1 complete: loaded config, matched target N in {20, 50, 100}, and located exact MILP references for N=20/50.
+[2026-04-17 17:46:32] Step 2 start: running baseline CG/IRMP snapshots and enriched-pool re-solves.
+[2026-04-17 18:02:34] Step 2 complete: wrote 30 baseline records and 90 enriched records.
+[2026-04-17 18:02:34] Diagnostic: 90/90 enriched runs added zero columns; baseline_pool_complete_all=True.
+[2026-04-17 18:02:34] No gamma/delta signal detected during run stage.
+[2026-04-17 18:02:34] Step 3 pending: run analyze_experiment_3.py to aggregate figures, tables, and summary.
+[2026-04-17 18:02:44] Step 3 complete: aggregated.csv, per_seed_comparison.csv, figures, table, and summary generated.
+[2026-04-17 18:03:24] Step 3 complete: aggregated.csv, per_seed_comparison.csv, figures, table, and summary generated.

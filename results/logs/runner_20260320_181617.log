@@ -1,0 +1,20 @@
+2026-03-20 18:16:17,862 | INFO | Experiment=main | Seeds=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10] | Methods=['cg', 'greedy', 'fifo', 'milp60', 'milp300']
+2026-03-20 18:24:01,543 | ERROR | Run failed: N=50 seed=3 method=cg
+Traceback (most recent call last):
+  File "E:\PythonProject1\src\runner.py", line 206, in run_experiment
+    sol = solve_fn(instance, method_cfg, logger)
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 270, in solve
+    obj_ip, solution, _, status_ip = _solve_master(
+                                     ~~~~~~~~~~~~~^
+        columns_all,
+        ^^^^^^^^^^^^
+    ...<5 lines>...
+        time_limit=time_limit,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\PythonProject1\src\solvers\cg_solver.py", line 227, in _solve_master
+    obj = float(pulp.value(prob.objective)) if prob.objective is not None else float("nan")
+          ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: float() argument must be a string or a real number, not 'NoneType'
+2026-03-20 19:43:47,731 | INFO | Completed. Results -> results/results_main_rigorous.csv

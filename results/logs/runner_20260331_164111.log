@@ -1,0 +1,12 @@
+2026-03-31 16:41:11,791 | INFO | Experiment=scenario | Seeds=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10] | Methods=['rolling_horizon', 'fix_and_optimize', 'restricted_cg']
+2026-03-31 16:45:12,910 | INFO | Fix-and-optimize solved N=100 with block=10 step=5 passes=2 obj=186788.81 runtime=127.71s
+2026-03-31 16:49:29,904 | INFO | Fix-and-optimize solved N=100 with block=10 step=5 passes=2 obj=198681.19 runtime=147.01s
+2026-03-31 16:54:00,824 | INFO | Fix-and-optimize solved N=100 with block=10 step=5 passes=2 obj=187585.65 runtime=122.51s
+2026-03-31 16:57:58,844 | INFO | Fix-and-optimize solved N=100 with block=10 step=5 passes=2 obj=184132.48 runtime=135.84s
+2026-03-31 17:02:52,996 | INFO | Fix-and-optimize solved N=100 with block=10 step=5 passes=2 obj=188712.51 runtime=160.49s
+2026-03-31 17:07:14,281 | INFO | Fix-and-optimize solved N=100 with block=10 step=5 passes=2 obj=192445.40 runtime=128.32s
+2026-03-31 17:12:27,390 | INFO | Fix-and-optimize solved N=100 with block=10 step=5 passes=2 obj=201715.35 runtime=194.66s
+2026-03-31 17:18:11,077 | INFO | Fix-and-optimize solved N=100 with block=10 step=5 passes=2 obj=194202.54 runtime=196.91s
+2026-03-31 17:21:52,925 | INFO | Fix-and-optimize solved N=100 with block=10 step=5 passes=2 obj=190820.23 runtime=116.74s
+2026-03-31 17:25:16,552 | INFO | Fix-and-optimize solved N=100 with block=10 step=5 passes=2 obj=190965.01 runtime=112.18s
+2026-03-31 17:25:17,946 | INFO | Completed. Results -> results/results_scenario_rigorous.csv

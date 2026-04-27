@@ -1,0 +1,25 @@
+.idea/
+.obsidian/
+.claude/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Solver and local runtime artifacts
+*.lp
+*.sol
+gurobi.log
+nul
+
+# Local environment noise
+.DS_Store
+Thumbs.db
+
+# Currently inaccessible local files
+Parameter_Calibration_Report.md
+SIMOPS_Experiment_Quick_Guide.md
+main.pdf
+main11-1 (2).tex
+main11-1.tex
+nul

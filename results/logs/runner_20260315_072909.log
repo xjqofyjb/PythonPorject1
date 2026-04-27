@@ -1,0 +1,2 @@
+2026-03-15 07:29:09,643 | INFO | Experiment=simops | Seeds=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10] | Methods=['cg', 'greedy', 'fifo']
+2026-03-15 07:54:07,167 | INFO | Completed. Results -> results/results_simops_rigorous.csv

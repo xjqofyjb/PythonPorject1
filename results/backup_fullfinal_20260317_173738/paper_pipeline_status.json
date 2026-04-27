@@ -1,0 +1,6 @@
+﻿{
+    "updated_at":  "2026-03-17T09:26:11",
+    "stage":  "scenario_run",
+    "state":  "running",
+    "detail":  "-m src.runner --config configs/scenario.yaml"
+}

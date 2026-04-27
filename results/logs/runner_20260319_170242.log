@@ -1,0 +1,2 @@
+2026-03-19 17:02:42,778 | INFO | Experiment=main | Seeds=[1, 2, 3, 4, 5] | Methods=['cg_basic', 'cg_warm', 'cg_stab', 'cg_multik', 'cg_full', 'fifo', 'greedy', 'milp60', 'milp300']
+2026-03-19 18:18:55,890 | INFO | Completed. Results -> results/results_ablation_rigorous.csv

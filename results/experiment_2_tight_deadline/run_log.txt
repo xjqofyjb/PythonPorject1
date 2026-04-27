@@ -1,0 +1,10 @@
+[2026-04-17 16:46:37] Experiment 2 execution started.
+[2026-04-17 16:46:37] Resolved seeds=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]; scenario=U; N=100.
+[2026-04-17 16:46:37] Running precheck for slack range (0.5, 1.5).
+[2026-04-17 16:55:31] Precheck for (0.5, 1.5) flagged 0 / 10 seeds.
+[2026-04-17 16:55:31] Final tight slack range selected: U[0.5, 1.5].
+[2026-04-17 16:55:31] Precheck stats: AE mean=6.00%, delay share mean=0.55%, gap mean=0.0239%.
+[2026-04-17 16:55:31] Running full perturbation batch for loose slack (2.0, 6.0).
+[2026-04-17 17:07:46] Running full perturbation batch for tight slack (0.5, 1.5).
+[2026-04-17 17:16:41] Checkpoint Δ=1.0h (tight): delay_cost_pct_mean=1.92%, AE_share_mean=5.10%.
+[2026-04-17 17:16:41] Experiment 2 finished successfully with 100 raw result rows.

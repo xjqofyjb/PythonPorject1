@@ -1,0 +1,11 @@
+[2026-04-18 10:14:30] [PRECHECK PASSED]
+[2026-04-18 10:14:30]   N=100: pool=9280 / full=37670 (non-complete), iters=60, used_full_pool_small=False
+[2026-04-18 10:14:30]   N=200: pool=17118 / full=74305 (non-complete), iters=60, used_full_pool_small=False
+[2026-04-18 10:14:30]   N=500: pool=39944 / full=189097 (non-complete), iters=60, used_full_pool_small=False
+[2026-04-18 10:14:30] All three scales confirmed to use iterative top-K pricing. Proceeding to Step 1.
+[2026-04-18 10:14:30] Step 1/2 start: running 30 baseline captures with shared enrichment sweeps.
+[2026-04-18 11:23:02] Step 2 complete: wrote 30 baseline records and 90 enriched records.
+[2026-04-18 11:23:02] Equivalence-type totals: {'alternative_optima': 90}
+[2026-04-18 11:23:02] N=100 top-K diagnostic vs full-pool mean objective diff = 0.000000%.
+[2026-04-18 11:23:02] Step 3 pending: run analyze_experiment_3_followup.py to build aggregated tables, figures, and summary.
+[2026-04-18 11:24:11] Step 6 complete: aggregated outputs, figures, and summary generated.

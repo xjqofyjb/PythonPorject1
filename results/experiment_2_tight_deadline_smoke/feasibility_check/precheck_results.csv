@@ -1,0 +1,3 @@
+seed,slack_low,slack_high,objective,ae_share,delay_cost_pct,internal_gap,flag_ae,flag_delay,flag_gap,flagged
+1,0.5,1.5,188475.44267810768,0.05,0.6897450307201222,5.349070240552856e-05,False,False,False,False
+2,0.5,1.5,205662.78710945454,0.08,0.4619211931103541,0.0035853688086931812,False,False,False,False

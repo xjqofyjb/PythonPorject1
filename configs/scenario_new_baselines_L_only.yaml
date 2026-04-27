@@ -1,0 +1,88 @@
+experiment: scenario
+output: results/results_scenario_rigorous.csv
+meta: results/meta.json
+log_dir: results/logs
+scenarios:
+- L
+methods:
+- rolling_horizon
+- fix_and_optimize
+- restricted_cg
+N: 100
+seeds: 10
+mechanism: hybrid
+cg:
+  use_full_pool_small: true
+  full_pool_n: 100
+  pricing_top_k: 3
+  pricing_eps: 1e-6
+  time_limit: 60
+  max_iters: 20
+params:
+  time_step_hours: 0.25
+  arrival_window_hours: 8.0
+  shore_power_kw: 900
+  battery_swap_hours: 0.75
+  peaked_arrival_mean_hours: 4.0
+  peaked_arrival_std_hours: 1.0
+  peaked_arrival_uniform_mix: 0.3
+  long_service_shift_hours: 4.0
+  battery_cost: 0.45
+  shore_cost: 0.15
+  brown_cost: 0.9
+  ship_type_defs:
+    A:
+      prob: 0.2
+      energy_range:
+      - 6000
+      - 8000
+      delay: 2000
+      shore: 1
+      cargo_range:
+      - 6
+      - 24
+    B:
+      prob: 0.5
+      energy_range:
+      - 3000
+      - 5000
+      delay: 800
+      shore: 1
+      cargo_range:
+      - 6
+      - 24
+    C:
+      prob: 0.15
+      energy_range:
+      - 3000
+      - 4000
+      delay: 500
+      shore: 0
+      cargo_range:
+      - 6
+      - 24
+    D:
+      prob: 0.15
+      energy_range:
+      - 4000
+      - 4000
+      delay: 1500
+      shore: 1
+      cargo_range:
+      - 6
+      - 12
+  shore_cap: 2
+  battery_slots: 2
+  deadline_tightness: 1.0
+  brown_available: true
+  wait_cost: 0.0
+  infeasible_penalty: 10000
+rolling_horizon:
+  window_size: 10
+  commit_size: 5
+  time_limit: 30
+fix_and_optimize:
+  block_size: 10
+  step_size: 5
+  max_passes: 2
+  time_limit: 30

@@ -1,0 +1,2 @@
+2026-03-19 16:57:21,222 | INFO | Experiment=mechanism | Seeds=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10] | Methods=['cg', 'greedy', 'fifo']
+2026-03-19 17:01:50,980 | INFO | Completed. Results -> results/results_mechanism_rigorous.csv

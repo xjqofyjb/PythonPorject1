@@ -1,0 +1,32 @@
+2026-04-01 22:02:47,730 | INFO | Experiment=sensitivity | Seeds=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10] | Methods=['rolling_horizon', 'fix_and_optimize', 'restricted_cg']
+2026-04-01 22:07:03,569 | INFO | Fix-and-optimize solved N=100 with block=10 step=5 passes=2 obj=202053.48 runtime=140.06s
+2026-04-01 22:11:34,470 | INFO | Fix-and-optimize solved N=100 with block=10 step=5 passes=2 obj=219418.41 runtime=167.29s
+2026-04-01 22:15:41,585 | INFO | Fix-and-optimize solved N=100 with block=10 step=5 passes=2 obj=210149.04 runtime=108.81s
+2026-04-01 22:20:41,408 | INFO | Fix-and-optimize solved N=100 with block=10 step=5 passes=2 obj=196168.63 runtime=158.60s
+2026-04-01 22:24:56,503 | INFO | Fix-and-optimize solved N=100 with block=10 step=5 passes=2 obj=210673.02 runtime=160.32s
+2026-04-01 22:29:08,924 | INFO | Fix-and-optimize solved N=100 with block=10 step=5 passes=2 obj=206223.51 runtime=123.96s
+2026-04-01 22:33:26,984 | INFO | Fix-and-optimize solved N=100 with block=10 step=5 passes=2 obj=214844.08 runtime=152.54s
+2026-04-01 22:39:27,238 | INFO | Fix-and-optimize solved N=100 with block=10 step=5 passes=2 obj=213602.24 runtime=224.70s
+2026-04-01 22:42:54,120 | INFO | Fix-and-optimize solved N=100 with block=10 step=5 passes=2 obj=205845.19 runtime=107.63s
+2026-04-01 22:46:23,172 | INFO | Fix-and-optimize solved N=100 with block=10 step=5 passes=2 obj=204223.71 runtime=119.72s
+2026-04-01 22:50:16,513 | INFO | Fix-and-optimize solved N=100 with block=10 step=5 passes=2 obj=198604.26 runtime=126.87s
+2026-04-01 22:54:34,256 | INFO | Fix-and-optimize solved N=100 with block=10 step=5 passes=2 obj=219804.27 runtime=147.82s
+2026-04-01 22:58:25,042 | INFO | Fix-and-optimize solved N=100 with block=10 step=5 passes=2 obj=204083.77 runtime=108.32s
+2026-04-01 23:03:27,442 | INFO | Fix-and-optimize solved N=100 with block=10 step=5 passes=2 obj=200678.73 runtime=171.08s
+2026-04-01 23:07:37,106 | INFO | Fix-and-optimize solved N=100 with block=10 step=5 passes=2 obj=205428.33 runtime=145.21s
+2026-04-01 23:11:34,171 | INFO | Fix-and-optimize solved N=100 with block=10 step=5 passes=2 obj=202638.03 runtime=116.01s
+2026-04-01 23:16:28,872 | INFO | Fix-and-optimize solved N=100 with block=10 step=5 passes=2 obj=212192.04 runtime=163.67s
+2026-04-01 23:22:06,173 | INFO | Fix-and-optimize solved N=100 with block=10 step=5 passes=2 obj=211160.75 runtime=190.70s
+2026-04-01 23:25:29,132 | INFO | Fix-and-optimize solved N=100 with block=10 step=5 passes=2 obj=202938.92 runtime=106.83s
+2026-04-01 23:29:13,624 | INFO | Fix-and-optimize solved N=100 with block=10 step=5 passes=2 obj=200804.61 runtime=130.61s
+2026-04-01 23:33:18,225 | INFO | Fix-and-optimize solved N=100 with block=10 step=5 passes=2 obj=196402.99 runtime=139.36s
+2026-04-01 23:37:35,367 | INFO | Fix-and-optimize solved N=100 with block=10 step=5 passes=2 obj=214972.91 runtime=155.79s
+2026-04-01 23:41:30,745 | INFO | Fix-and-optimize solved N=100 with block=10 step=5 passes=2 obj=203108.33 runtime=114.93s
+2026-04-01 23:45:51,894 | INFO | Fix-and-optimize solved N=100 with block=10 step=5 passes=2 obj=195840.23 runtime=144.79s
+2026-04-01 23:50:42,519 | INFO | Fix-and-optimize solved N=100 with block=10 step=5 passes=2 obj=205384.14 runtime=180.32s
+2026-04-01 23:54:49,313 | INFO | Fix-and-optimize solved N=100 with block=10 step=5 passes=2 obj=199332.58 runtime=126.57s
+2026-04-01 23:59:25,176 | INFO | Fix-and-optimize solved N=100 with block=10 step=5 passes=2 obj=210644.33 runtime=152.22s
+2026-04-02 00:04:20,349 | INFO | Fix-and-optimize solved N=100 with block=10 step=5 passes=2 obj=204986.05 runtime=169.12s
+2026-04-02 00:07:39,345 | INFO | Fix-and-optimize solved N=100 with block=10 step=5 passes=2 obj=199835.42 runtime=108.74s
+2026-04-02 00:10:57,490 | INFO | Fix-and-optimize solved N=100 with block=10 step=5 passes=2 obj=197389.43 runtime=107.26s
+2026-04-02 00:10:58,827 | INFO | Completed. Results -> results/results_sensitivity_rigorous.csv

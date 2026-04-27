@@ -1,0 +1,17 @@
+[2026-04-17 15:39:50] Experiment 1 execution started.
+[2026-04-17 15:39:50] Using config=configs/simops.yaml. Existing result backups=['backup_20260313_173822', 'backup_20260331', 'backup_after_stale_cleanup_20260316_144650', 'backup_cleanrerun_20260315_142913', 'backup_fullfinal_20260317_173738', 'backup_fullrun_20260315_162527', 'backup_main_refixed_20260317_105609'].
+[2026-04-17 15:39:50] Resolved seeds=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]; target scales=[75, 125, 150]; scenario=U.
+[2026-04-17 15:39:50] Current codebase uses seeds 1..10 for the SIMOPS experiment; this run keeps that seed scheme.
+[2026-04-17 15:39:50] Saved/verified 10 instances for N=75 under data\instances.
+[2026-04-17 15:39:50] Saved/verified 10 instances for N=125 under data\instances.
+[2026-04-17 15:39:50] Saved/verified 10 instances for N=150 under data\instances.
+[2026-04-17 15:39:50] Starting N=75 batch with seeds=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10] and workers=4.
+[2026-04-17 15:39:50] Process-based parallelism failed for N=75; falling back to ThreadPoolExecutor.
+[2026-04-17 15:41:51] N=75 completed. success_rate=100.00%, savings=11.35%, masking=0.696, internal_gap=0.0053%.
+[2026-04-17 15:41:51] Starting N=125 batch with seeds=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10] and workers=4.
+[2026-04-17 15:41:51] Process-based parallelism failed for N=125; falling back to ThreadPoolExecutor.
+[2026-04-17 15:50:02] N=125 completed. success_rate=100.00%, savings=16.05%, masking=0.371, internal_gap=0.0128%.
+[2026-04-17 15:50:02] Starting N=150 batch with seeds=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10] and workers=4.
+[2026-04-17 15:50:02] Process-based parallelism failed for N=150; falling back to ThreadPoolExecutor.
+[2026-04-17 16:02:19] N=150 completed. success_rate=100.00%, savings=12.81%, masking=0.303, internal_gap=0.0057%.
+[2026-04-17 16:02:19] Experiment 1 finished successfully with 60 raw result files.

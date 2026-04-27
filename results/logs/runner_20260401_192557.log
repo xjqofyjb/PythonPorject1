@@ -1,0 +1,12 @@
+2026-04-01 19:25:57,222 | INFO | Experiment=sensitivity | Seeds=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10] | Methods=['rolling_horizon', 'fix_and_optimize', 'restricted_cg']
+2026-04-01 19:39:27,767 | INFO | Fix-and-optimize solved N=100 with block=10 step=5 passes=2 obj=139491.20 runtime=499.22s
+2026-04-01 19:56:58,715 | INFO | Fix-and-optimize solved N=100 with block=10 step=5 passes=2 obj=149591.22 runtime=596.71s
+2026-04-01 20:10:52,018 | INFO | Fix-and-optimize solved N=100 with block=10 step=5 passes=2 obj=139438.14 runtime=462.05s
+2026-04-01 20:27:47,142 | INFO | Fix-and-optimize solved N=100 with block=10 step=5 passes=2 obj=130724.85 runtime=545.25s
+2026-04-01 20:42:06,745 | INFO | Fix-and-optimize solved N=100 with block=10 step=5 passes=2 obj=137407.03 runtime=449.81s
+2026-04-01 20:59:15,240 | INFO | Fix-and-optimize solved N=100 with block=10 step=5 passes=2 obj=137553.08 runtime=581.53s
+2026-04-01 21:17:32,703 | INFO | Fix-and-optimize solved N=100 with block=10 step=5 passes=2 obj=148057.85 runtime=638.78s
+2026-04-01 21:33:36,424 | INFO | Fix-and-optimize solved N=100 with block=10 step=5 passes=2 obj=142181.59 runtime=504.27s
+2026-04-01 21:46:11,583 | INFO | Fix-and-optimize solved N=100 with block=10 step=5 passes=2 obj=143231.72 runtime=421.57s
+2026-04-01 22:02:19,485 | INFO | Fix-and-optimize solved N=100 with block=10 step=5 passes=2 obj=138662.70 runtime=550.67s
+2026-04-01 22:02:22,224 | INFO | Completed. Results -> results/results_sensitivity_rigorous.csv

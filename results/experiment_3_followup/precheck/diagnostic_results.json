@@ -1,0 +1,93 @@
+{
+  "passed": true,
+  "target_scales": [
+    100,
+    200,
+    500
+  ],
+  "records": [
+    {
+      "N": 100,
+      "seed": 1,
+      "baseline_pool_size": 9280,
+      "full_column_pool_size": 37670,
+      "baseline_pool_complete": false,
+      "use_full_pool_small_requested": false,
+      "used_full_pool_small": false,
+      "num_iters": 60,
+      "is_restricted": false,
+      "pricing_calls": 6000,
+      "num_columns_added_during_cg": 9180,
+      "arrival_signature_first3": [
+        5.230928,
+        3.449814,
+        6.938564
+      ],
+      "energy_sum": 436308.005579,
+      "objective": 178339.474213,
+      "hard_gates": {
+        "baseline_pool_complete_false": true,
+        "use_full_pool_small_false": true,
+        "num_iters_ge_5": true,
+        "is_restricted_false": true
+      },
+      "soft_gate_ok": true
+    },
+    {
+      "N": 200,
+      "seed": 1,
+      "baseline_pool_size": 17118,
+      "full_column_pool_size": 74305,
+      "baseline_pool_complete": false,
+      "use_full_pool_small_requested": true,
+      "used_full_pool_small": false,
+      "num_iters": 60,
+      "is_restricted": false,
+      "pricing_calls": 12000,
+      "num_columns_added_during_cg": 16918,
+      "arrival_signature_first3": [
+        4.496413,
+        3.102153,
+        6.33325
+      ],
+      "energy_sum": 883196.720362,
+      "objective": 525417.67396,
+      "hard_gates": {
+        "baseline_pool_complete_false": true,
+        "use_full_pool_small_false": true,
+        "num_iters_ge_5": true,
+        "is_restricted_false": true
+      },
+      "soft_gate_ok": true
+    },
+    {
+      "N": 500,
+      "seed": 1,
+      "baseline_pool_size": 39944,
+      "full_column_pool_size": 189097,
+      "baseline_pool_complete": false,
+      "use_full_pool_small_requested": true,
+      "used_full_pool_small": false,
+      "num_iters": 60,
+      "is_restricted": false,
+      "pricing_calls": 30000,
+      "num_columns_added_during_cg": 39444,
+      "arrival_signature_first3": [
+        3.372828,
+        0.204537,
+        1.343852
+      ],
+      "energy_sum": 2263410.872369,
+      "objective": 1698230.331863,
+      "hard_gates": {
+        "baseline_pool_complete_false": true,
+        "use_full_pool_small_false": true,
+        "num_iters_ge_5": true,
+        "is_restricted_false": true
+      },
+      "soft_gate_ok": true
+    }
+  ],
+  "hard_gate_failures": [],
+  "soft_gate_warnings": []
+}

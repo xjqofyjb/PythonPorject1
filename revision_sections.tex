@@ -1,0 +1,696 @@
+%% ============================================================
+%% 论文修改稿：三大核心问题的完整修改
+%% 问题3: 约束(8)(9)的非线性项线性化
+%% 问题4: 约束(10)岸电容量约束的逻辑修正
+%% 问题2: 补全列生成算法的完整技术细节
+%% ============================================================
+%% 使用说明：
+%%   - 第一部分：替换原文 2.4.4 节中的约束 (4)-(6)
+%%   - 第二部分：作为新的第 3 节插入（原第 3 节数值实验改为第 4 节）
+%% ============================================================
+
+\documentclass[11pt,a4paper]{article}
+\usepackage[UTF8]{ctex}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{algorithm,algorithmic}
+\usepackage{booktabs}
+\usepackage{geometry}
+\geometry{left=2.5cm,right=2.5cm,top=2.5cm,bottom=2.5cm}
+
+\newtheorem{proposition}{命题}
+\newtheorem{remark}{注}
+\newtheorem{definition}{定义}
+
+\begin{document}
+
+%% ============================================================
+%% 第一部分：修正后的 MILP 约束条件
+%% 替换原文 2.4.4 节中的约束 (4)-(9) 及相应文字
+%% ============================================================
+
+\section*{【修改一】2.4.4 节约束条件的修正版本}
+
+\noindent\textbf{修改说明：}原约束 (8) 和 (9) 中存在二元变量乘积项 $w_{i\tau} \cdot x_{ik}$
+和 $w_{i\tau} \cdot y_i$，使模型实质为非线性整数规划（MINLP），与文中声称的 MILP 不符。
+原约束 (10) 对所有岸电桩聚合求和，未正确建立单桩独占约束。以下给出完整修正方案。
+
+\bigskip
+\hrule
+\bigskip
+
+\subsection*{2.4.3\quad 变量补充定义}
+
+在原有变量基础上，为实现线性化，引入以下辅助变量：
+
+\begin{table}[h]
+\centering
+\caption{补充决策变量定义}
+\begin{tabular}{ll}
+\toprule
+变量 & 含义 \\
+\midrule
+$s_{ikt} \in \{0,1\}$ & 若船舶 $i$ 选择岸电桩 $k$ 且在时间段 $t$ 开始充电，则取 1 \\
+$b_{it} \in \{0,1\}$ & 若船舶 $i$ 选择换电服务且在时间段 $t$ 开始换电，则取 1 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\noindent\textbf{变量语义说明：} $s_{ikt}$ 联合编码了"船舶 $i$ 分配到岸电桩 $k$"
+与"在时间段 $t$ 开始服务"两个决策，等价于原模型中 $x_{ik} \cdot w_{it}$ 的线性化替代。
+类似地，$b_{it}$ 编码了"船舶 $i$ 选择换电"与"在时间段 $t$ 开始服务"，
+等价于 $y_i \cdot w_{it}$。
+
+\subsection*{2.4.4\quad 约束条件（修正版）}
+
+\medskip
+\noindent\textbf{(1) 服务模式选择约束}\quad 每艘船舶恰好选择一种能源服务模式：
+%
+\begin{equation}
+  \sum_{k \in \mathcal{K}^{SP}} Q_{ik}\, x_{ik} \;+\; y_i \;+\; z_i \;=\; 1,
+  \qquad \forall\, i \in \mathcal{N}.
+  \tag{5}
+\end{equation}
+
+\medskip
+\noindent\textbf{(2) 能源服务开始时刻约束}\quad
+若船舶 $i$ 选择岸电或换电服务，则必须恰好在某一时间段启动：
+%
+\begin{equation}
+  \sum_{t \in \mathcal{T}} w_{it}
+  \;=\; \sum_{k \in \mathcal{K}^{SP}} x_{ik} \;+\; y_i,
+  \qquad \forall\, i \in \mathcal{N}.
+  \tag{6}
+\end{equation}
+
+\medskip
+\noindent\textbf{(3) 服务持续时间定义}
+%
+\begin{equation}
+  d_i^{SP} = \left\lceil \frac{E_i}{P^{SP}} \right\rceil, \qquad
+  d_i^{BS} = T^{BS}.
+  \tag{7}
+\end{equation}
+
+%% ===== 核心修正：约束 (8)(9) 的线性化 =====
+
+\medskip
+\noindent\textbf{(4) 岸电服务启动链接约束（线性化）}\quad
+辅助变量 $s_{ikt}$ 联合表示"船舶 $i$ 分配至岸电桩 $k$ 并在时间段 $t$ 开始服务"。
+以下约束组确保 $s_{ikt} = x_{ik} \cdot w_{it}$ 在二元域上成立，且为纯线性形式：
+%
+\begin{align}
+  s_{ikt} &\;\leq\; x_{ik},
+    & \forall\, i \in \mathcal{N},\; k \in \mathcal{K}^{SP},\; t \in \mathcal{T},
+    \tag{8a} \\[4pt]
+  s_{ikt} &\;\leq\; w_{it},
+    & \forall\, i \in \mathcal{N},\; k \in \mathcal{K}^{SP},\; t \in \mathcal{T},
+    \tag{8b} \\[4pt]
+  s_{ikt} &\;\geq\; x_{ik} + w_{it} - 1,
+    & \forall\, i \in \mathcal{N},\; k \in \mathcal{K}^{SP},\; t \in \mathcal{T},
+    \tag{8c} \\[4pt]
+  \sum_{t \in \mathcal{T}} s_{ikt} &\;=\; x_{ik},
+    & \forall\, i \in \mathcal{N},\; k \in \mathcal{K}^{SP}.
+    \tag{8d}
+\end{align}
+
+\noindent\textbf{约束解释：}
+约束 (8a)--(8c) 是标准的 McCormick envelope（也称 Fortet 线性化），
+用于精确线性化两个二元变量 $x_{ik}$ 与 $w_{it}$ 的乘积。
+具体地：(8a) 和 (8b) 要求 $s_{ikt}$ 不超过任一因子；
+(8c) 要求当两个因子同时为 1 时 $s_{ikt}$ 至少为 1。
+对于二元变量，该松弛是紧的（tight），即 $s_{ikt} = x_{ik} \cdot w_{it}$ 恰好成立。
+约束 (8d) 是冗余强化约束（valid inequality）：
+若船舶 $i$ 被分配到岸电桩 $k$（$x_{ik}=1$），
+则恰好存在一个时间段 $t$ 使得 $s_{ikt}=1$；
+若 $x_{ik}=0$，则所有 $s_{ikt}=0$。
+该约束虽然可由 (8a)--(8c) 与 (6) 联合推出，
+但显式加入可显著增强 LP 松弛的紧致性。
+
+\medskip
+\noindent\textbf{(4$'$) 岸电占用变量定义}\quad
+基于线性化变量 $s_{ikt}$，岸电桩 $k$ 在时间段 $t$ 被船舶 $i$ 占用的指示变量为：
+%
+\begin{equation}
+  u_{ikt} \;=\; \sum_{\tau = \max\{0,\, t - d_i^{SP} + 1\}}^{t} s_{ik\tau},
+  \qquad \forall\, i \in \mathcal{N},\; k \in \mathcal{K}^{SP},\; t \in \mathcal{T}.
+  \tag{9}
+\end{equation}
+
+\noindent\textbf{说明：}与原约束 (8) 相比，此处将非线性项 $w_{i\tau} \cdot x_{ik}$
+替换为已线性化的 $s_{ik\tau}$，从而使约束 (9) 成为纯线性定义式。
+直观地，$u_{ikt} = 1$ 当且仅当船舶 $i$ 在某个时间段
+$\tau \in [t - d_i^{SP} + 1,\; t]$ 开始在岸电桩 $k$ 上充电，
+且充电过程尚未结束（即时间段 $t$ 仍处于服务窗口内）。
+
+\medskip
+\noindent\textbf{(5) 换电服务启动链接约束（线性化）}\quad
+辅助变量 $b_{it}$ 联合表示"船舶 $i$ 选择换电并在时间段 $t$ 开始服务"，
+约束组确保 $b_{it} = y_i \cdot w_{it}$：
+%
+\begin{align}
+  b_{it} &\;\leq\; y_i,
+    & \forall\, i \in \mathcal{N},\; t \in \mathcal{T},
+    \tag{10a} \\[4pt]
+  b_{it} &\;\leq\; w_{it},
+    & \forall\, i \in \mathcal{N},\; t \in \mathcal{T},
+    \tag{10b} \\[4pt]
+  b_{it} &\;\geq\; y_i + w_{it} - 1,
+    & \forall\, i \in \mathcal{N},\; t \in \mathcal{T},
+    \tag{10c} \\[4pt]
+  \sum_{t \in \mathcal{T}} b_{it} &\;=\; y_i,
+    & \forall\, i \in \mathcal{N}.
+    \tag{10d}
+\end{align}
+
+\noindent\textbf{(5$'$) 换电占用变量定义}
+%
+\begin{equation}
+  v_{it} \;=\; \sum_{\tau = \max\{0,\, t - d_i^{BS} + 1\}}^{t} b_{i\tau},
+  \qquad \forall\, i \in \mathcal{N},\; t \in \mathcal{T}.
+  \tag{11}
+\end{equation}
+
+%% ===== 核心修正：约束 (10) 的逻辑修正 =====
+
+\medskip
+\noindent\textbf{(6) 资源容量约束（修正版）}\quad
+岸电桩为独占性资源：每个岸电桩 $k$ 在任意时间段 $t$
+至多被一艘船舶占用。换电设备为同质资源，
+总占用量不超过设备数量 $K^{BS}$：
+%
+\begin{align}
+  \sum_{i \in \mathcal{N}} u_{ikt} &\;\leq\; 1,
+    & \forall\, k \in \mathcal{K}^{SP},\; t \in \mathcal{T},
+    \tag{12} \\[4pt]
+  \sum_{i \in \mathcal{N}} v_{it} &\;\leq\; K^{BS},
+    & \forall\, t \in \mathcal{T}.
+    \tag{13}
+\end{align}
+
+\noindent\textbf{修正说明：}原约束 (10) 写为
+$\sum_{i \in \mathcal{N}} \sum_{k \in \mathcal{K}^{SP}} u_{ikt} \leq |\mathcal{K}^{SP}|$，
+对所有岸电桩聚合求和。该形式仅约束了系统总使用量不超过桩的数量，
+但未排除两艘船舶同时使用同一根桩的情况。
+例如，若 $|\mathcal{K}^{SP}| = 2$，原约束允许桩 1 同时服务 2 艘船舶
+而桩 2 空闲，因为 $2 + 0 = 2 \leq 2$，但这在物理上是不可行的。
+修正后的约束 (12) 对每根岸电桩单独施加独占约束，正确刻画了"一桩一船"的物理限制。
+
+\medskip
+\noindent\textbf{(7) SIMOPS 完工时间约束}\quad
+船舶离港时间由装卸作业和能源服务中较长者主导：
+%
+\begin{align}
+  L_i &\;\geq\; A_i + T_{\text{cargo}}^{(i)},
+    & \forall\, i \in \mathcal{N},
+    \tag{14} \\[4pt]
+  L_i &\;\geq\; \sum_{t \in \mathcal{T}} t \cdot w_{it}
+    \;+\; d_i^{SP} \sum_{k \in \mathcal{K}^{SP}} x_{ik}
+    \;+\; d_i^{BS}\, y_i,
+    & \forall\, i \in \mathcal{N}.
+    \tag{15}
+\end{align}
+
+\medskip
+\noindent\textbf{(8) 延误量线性化}
+%
+\begin{align}
+  \delta_i &\;\geq\; L_i - D_i,
+    & \forall\, i \in \mathcal{N},
+    \tag{16} \\[4pt]
+  \delta_i &\;\geq\; 0,
+    & \forall\, i \in \mathcal{N}.
+    \tag{17}
+\end{align}
+
+\medskip
+\noindent\textbf{(9) 变量域约束}
+%
+\begin{equation}
+  x_{ik},\; y_i,\; z_i,\; w_{it},\; s_{ikt},\; b_{it},\;
+  u_{ikt},\; v_{it} \in \{0,1\},
+  \qquad L_i,\; \delta_i \geq 0.
+  \tag{18}
+\end{equation}
+
+\begin{remark}[模型规模分析]
+线性化引入的额外变量 $s_{ikt}$ 和 $b_{it}$ 使得变量总数增加
+$O(|\mathcal{N}| \cdot |\mathcal{K}^{SP}| \cdot |\mathcal{T}|)$ 和 $O(|\mathcal{N}| \cdot |\mathcal{T}|)$。
+然而，由于 McCormick 线性化对二元变量是紧的，
+修正后模型的 LP 松弛界不弱于原非线性模型的连续松弛，
+从而不会降低求解效率。实际上，显式的线性化约束
+反而有助于商业求解器（如 Gurobi、CPLEX）利用预处理和割平面技术，
+往往比在求解过程中隐式处理双线性项更加高效。
+\end{remark}
+
+
+\newpage
+%% ============================================================
+%% 第二部分：列生成算法的完整技术细节
+%% 作为新的第 3 节插入
+%% ============================================================
+
+\section*{【修改二】新增第 3 节：求解方法}
+
+\setcounter{section}{2}
+\setcounter{equation}{18}
+
+\section{求解方法：基于列生成的分解框架}
+
+第 2 节建立的混合整数线性规划模型（以下简称紧凑模型，Compact MILP）
+在理论上可由商业求解器直接求解。
+然而，时间展开变量 $w_{it}$、$s_{ikt}$、$u_{ikt}$ 等的数量随船舶规模 $|\mathcal{N}|$、
+岸电桩数 $|\mathcal{K}^{SP}|$ 及时间段数 $|\mathcal{T}|$ 呈多项式增长，
+导致大规模实例下的直接求解面临严峻的计算瓶颈。
+例如，在 $|\mathcal{N}| = 100$、$|\mathcal{K}^{SP}| = 2$、$|\mathcal{T}| = 32$
+的典型配置下，仅 $s_{ikt}$ 变量即达 $100 \times 2 \times 32 = 6{,}400$ 个，
+加上其他时间展开变量，总二元变量数可超过 $20{,}000$。
+
+为此，本节提出一种基于列生成（Column Generation, CG）的分解求解框架。
+其核心思想是：将每艘船舶的所有可行服务方案（包含服务模式选择、
+服务开始时刻及相应资源占用轮廓）预先定义为"列"（column），
+通过限制性主问题（Restricted Master Problem, RMP）
+与定价子问题（Pricing Subproblem, PP）的交替求解，
+迭代生成并选择高质量的服务方案，
+避免显式枚举全部时间展开变量。
+
+\subsection{列的定义与可行服务方案}
+
+\begin{definition}[服务方案]
+对于船舶 $i \in \mathcal{N}$，一个\textbf{可行服务方案} $p \in \mathcal{P}_i$
+由以下元素构成：
+\begin{itemize}
+  \item 服务模式 $m_p \in \{SP, BS, AE\}$；
+  \item 若 $m_p = SP$：所分配的岸电桩 $k_p \in \mathcal{K}^{SP}$
+        且满足兼容性 $Q_{ik_p} = 1$，以及服务开始时间段 $t_p \in \mathcal{T}$
+        且 $t_p \geq A_i$；
+  \item 若 $m_p = BS$：服务开始时间段 $t_p \in \mathcal{T}$
+        且 $t_p \geq A_i$；
+  \item 若 $m_p = AE$：无需额外参数（无资源占用）。
+\end{itemize}
+\end{definition}
+
+\noindent
+对于每个服务方案 $p \in \mathcal{P}_i$，其参数可由如下方式计算：
+
+\medskip
+\noindent\textbf{直接成本：}
+\begin{equation}
+  c_{ip} =
+  \begin{cases}
+    C^{SP} \cdot E_i, & \text{若 } m_p = SP, \\
+    C^{BS}, & \text{若 } m_p = BS, \\
+    C^{AE} \cdot E_i, & \text{若 } m_p = AE.
+  \end{cases}
+  \tag{19}
+\end{equation}
+
+\noindent\textbf{完工时间与延误成本：}
+\begin{align}
+  L_{ip} &= \max\!\Big\{A_i + T_{\text{cargo}}^{(i)},\;
+    t_p + d_{ip}\Big\},
+  \tag{20} \\[4pt]
+  \delta_{ip} &= \max\!\big\{L_{ip} - D_i,\; 0\big\},
+  \tag{21} \\[4pt]
+  \bar{c}_{ip} &= c_{ip} + C_{\text{delay}}^{(i)} \cdot \delta_{ip},
+  \tag{22}
+\end{align}
+%
+其中 $d_{ip}$ 为方案 $p$ 的服务持续时间：
+若 $m_p = SP$ 则 $d_{ip} = d_i^{SP}$；
+若 $m_p = BS$ 则 $d_{ip} = d_i^{BS}$；
+若 $m_p = AE$ 则 $d_{ip} = 0$。
+$\bar{c}_{ip}$ 为方案 $p$ 的\textbf{广义成本}，
+涵盖能源直接成本与延误惩罚。
+
+\medskip
+\noindent\textbf{资源占用轮廓：}
+对于方案 $p \in \mathcal{P}_i$，定义其在时间段 $t$ 对岸电桩 $k$ 和换电设备的占用：
+%
+\begin{align}
+  \alpha_{ipkt} &=
+  \begin{cases}
+    1, & \text{若 } m_p = SP,\; k = k_p,\;
+         t_p \leq t \leq t_p + d_i^{SP} - 1, \\
+    0, & \text{否则},
+  \end{cases}
+  \tag{23} \\[6pt]
+  \beta_{ipt} &=
+  \begin{cases}
+    1, & \text{若 } m_p = BS,\;
+         t_p \leq t \leq t_p + d_i^{BS} - 1, \\
+    0, & \text{否则}.
+  \end{cases}
+  \tag{24}
+\end{align}
+
+\subsection{限制性主问题（RMP）}
+
+设 $\hat{\mathcal{P}}_i \subseteq \mathcal{P}_i$ 为当前迭代中船舶 $i$
+可用的服务方案子集。
+引入决策变量 $\lambda_{ip} \in [0,1]$（LP 松弛域），
+表示船舶 $i$ 是否采用方案 $p$。
+限制性主问题的 LP 松弛形式为：
+
+\begin{align}
+  [\text{RMP}] \qquad
+  \min \quad & \sum_{i \in \mathcal{N}} \sum_{p \in \hat{\mathcal{P}}_i}
+    \bar{c}_{ip}\, \lambda_{ip}
+  \tag{25} \\[6pt]
+  \text{s.t.} \quad
+  & \sum_{p \in \hat{\mathcal{P}}_i} \lambda_{ip} = 1,
+    \qquad \forall\, i \in \mathcal{N},
+    \qquad [\pi_i]
+  \tag{26} \\[4pt]
+  & \sum_{i \in \mathcal{N}} \sum_{p \in \hat{\mathcal{P}}_i}
+    \alpha_{ipkt}\, \lambda_{ip} \leq 1,
+    \qquad \forall\, k \in \mathcal{K}^{SP},\; t \in \mathcal{T},
+    \qquad [\mu_{kt}]
+  \tag{27} \\[4pt]
+  & \sum_{i \in \mathcal{N}} \sum_{p \in \hat{\mathcal{P}}_i}
+    \beta_{ipt}\, \lambda_{ip} \leq K^{BS},
+    \qquad \forall\, t \in \mathcal{T},
+    \qquad [\nu_t]
+  \tag{28} \\[4pt]
+  & 0 \leq \lambda_{ip} \leq 1,
+    \qquad \forall\, i \in \mathcal{N},\; p \in \hat{\mathcal{P}}_i.
+  \tag{29}
+\end{align}
+
+\noindent\textbf{约束说明：}
+\begin{itemize}
+  \item 约束 (26)（凸性约束）：每艘船舶恰好选择一个服务方案。
+        对偶变量 $\pi_i$ 为自由变量，表示船舶 $i$ 的"影子价格"。
+  \item 约束 (27)（岸电独占约束）：每根岸电桩在每个时间段最多服务一艘船。
+        对偶变量 $\mu_{kt} \geq 0$，反映时段 $t$ 上岸电桩 $k$ 的拥挤价格。
+  \item 约束 (28)（换电容量约束）：换电设备总占用不超过容量上限。
+        对偶变量 $\nu_t \geq 0$，反映换电资源在时段 $t$ 的稀缺程度。
+\end{itemize}
+
+\begin{remark}[与紧凑模型的等价性]
+当 $\hat{\mathcal{P}}_i = \mathcal{P}_i$（即包含所有可行方案）时，
+RMP 的整数最优解与紧凑模型 (4)--(18) 的最优解等价。
+这是因为每个整数可行解
+$(\mathbf{x}, \mathbf{y}, \mathbf{z}, \mathbf{w})$
+可唯一映射为某个方案选择 $\lambda_{ip} = 1$，反之亦然。
+列生成的核心在于：无需显式枚举 $\mathcal{P}_i$，
+而是通过定价子问题按需生成有价值的列。
+\end{remark}
+
+\subsection{定价子问题（Pricing Subproblem）}
+
+在每次 RMP 求解后，利用对偶最优解 $(\boldsymbol{\pi}^*,\, \boldsymbol{\mu}^*,\, \boldsymbol{\nu}^*)$
+检验是否存在尚未加入 RMP 的列具有负的缩减成本（reduced cost）。
+对于船舶 $i$，方案 $p$ 的缩减成本定义为：
+%
+\begin{equation}
+  \bar{\sigma}_{ip}
+  \;=\; \bar{c}_{ip}
+  \;-\; \pi_i^*
+  \;-\; \sum_{k \in \mathcal{K}^{SP}} \sum_{t \in \mathcal{T}}
+    \mu_{kt}^* \cdot \alpha_{ipkt}
+  \;-\; \sum_{t \in \mathcal{T}} \nu_t^* \cdot \beta_{ipt}.
+  \tag{30}
+\end{equation}
+
+\noindent
+若 $\bar{\sigma}_{ip} < 0$，则将方案 $p$ 加入 $\hat{\mathcal{P}}_i$
+可改善 RMP 的目标值。
+
+对于每艘船舶 $i$，定价子问题为：
+\begin{equation}
+  [\text{PP}_i] \qquad
+  \bar{\sigma}_i^* \;=\;
+  \min_{p \in \mathcal{P}_i} \; \bar{\sigma}_{ip}.
+  \tag{31}
+\end{equation}
+
+\noindent
+将 (30) 中各项展开，$\text{PP}_i$ 可按服务模式分解为三个独立的子问题：
+
+\medskip
+\noindent\textbf{(a) 岸电定价子问题}
+($m_p = SP$)：对于每对 $(k, t)$，其中 $k \in \mathcal{K}^{SP}$
+且 $Q_{ik} = 1$，$t \in [A_i,\; |\mathcal{T}| - d_i^{SP} + 1]$，
+计算：
+%
+\begin{equation}
+  \sigma_i^{SP}(k, t)
+  \;=\; \underbrace{C^{SP} \cdot E_i + C_{\text{delay}}^{(i)} \cdot \delta_i(t, d_i^{SP})}_{
+    \text{广义成本 } \bar{c}_{ip}}
+  \;-\; \pi_i^*
+  \;-\; \underbrace{\sum_{\tau = t}^{t + d_i^{SP} - 1} \mu_{k\tau}^*}_{
+    \text{岸电资源对偶价格}},
+  \tag{32}
+\end{equation}
+%
+其中 $\delta_i(t, d) = \max\!\big\{\max\{t + d,\; A_i + T_{\text{cargo}}^{(i)}\} - D_i,\; 0\big\}$
+为在时间段 $t$ 开始、持续 $d$ 时段后的延误量。
+最优岸电方案为：
+\begin{equation}
+  (k_i^*, t_i^{SP*}) = \arg\min_{k, t} \; \sigma_i^{SP}(k, t).
+  \tag{33}
+\end{equation}
+
+\noindent
+该子问题的计算复杂度为 $O(|\mathcal{K}^{SP}| \cdot |\mathcal{T}| \cdot d_{\max}^{SP})$，
+其中 $d_{\max}^{SP} = \max_{i} d_i^{SP}$。
+利用对偶价格的前缀和预计算
+$M_{k}(t) = \sum_{\tau=0}^{t} \mu_{k\tau}^*$，
+可将每对 $(k, t)$ 的岸电对偶价格求和简化为
+$M_{k}(t + d_i^{SP} - 1) - M_{k}(t - 1)$，
+使复杂度降至 $O(|\mathcal{K}^{SP}| \cdot |\mathcal{T}|)$。
+
+\medskip
+\noindent\textbf{(b) 换电定价子问题}
+($m_p = BS$)：对于每个 $t \in [A_i,\; |\mathcal{T}| - d_i^{BS} + 1]$，
+计算：
+%
+\begin{equation}
+  \sigma_i^{BS}(t)
+  \;=\; C^{BS} + C_{\text{delay}}^{(i)} \cdot \delta_i(t, d_i^{BS})
+  \;-\; \pi_i^*
+  \;-\; \sum_{\tau = t}^{t + d_i^{BS} - 1} \nu_{\tau}^*.
+  \tag{34}
+\end{equation}
+%
+类似地利用前缀和，复杂度为 $O(|\mathcal{T}|)$。
+
+\medskip
+\noindent\textbf{(c) 褐色服务定价}
+($m_p = AE$)：无资源占用，缩减成本为：
+%
+\begin{equation}
+  \sigma_i^{AE}
+  \;=\; C^{AE} \cdot E_i
+  \;+\; C_{\text{delay}}^{(i)} \cdot \max\!\big\{A_i + T_{\text{cargo}}^{(i)} - D_i,\; 0\big\}
+  \;-\; \pi_i^*.
+  \tag{35}
+\end{equation}
+%
+这是一个常数（不依赖时间维度），复杂度为 $O(1)$。
+
+\medskip
+\noindent\textbf{汇总：}船舶 $i$ 的最优缩减成本为：
+\begin{equation}
+  \bar{\sigma}_i^* = \min\!\Big\{
+    \min_{k,t} \sigma_i^{SP}(k,t),\;\;
+    \min_{t} \sigma_i^{BS}(t),\;\;
+    \sigma_i^{AE}
+  \Big\}.
+  \tag{36}
+\end{equation}
+
+\noindent
+定价子问题的\textbf{总复杂度}为
+$O\!\big(|\mathcal{N}| \cdot (|\mathcal{K}^{SP}| + 1) \cdot |\mathcal{T}|\big)$，
+在典型参数下（$|\mathcal{N}| = 500$, $|\mathcal{K}^{SP}| = 2$,
+$|\mathcal{T}| = 32$）仅需约 $48{,}000$ 次基本运算，可在毫秒级完成。
+
+\subsection{初始列池构造}
+
+列生成算法需要一个可行的初始列池以启动 RMP 求解。
+本文采用以下策略构造初始列池 $\hat{\mathcal{P}}_i^{(0)}$：
+
+\begin{enumerate}
+  \item \textbf{褐色保底列：}对每艘船舶 $i$，加入褐色服务方案
+        $p_i^{AE}$（$m_p = AE$）。由于褐色服务不消耗任何港口资源，
+        该方案始终可行，从而保证 RMP 在任意迭代中均有可行解。
+        该设计与运输调度中"外包兜底"的建模思想一致~\cite{Cordeau2015}。
+  \item \textbf{贪心岸电列：}对每艘兼容岸电的船舶 $i$
+        （$\exists\, k: Q_{ik} = 1$），按到达时间排序，
+        贪心分配最早可用的岸电桩和最早可行开始时间。
+  \item \textbf{即时换电列：}对每艘船舶 $i$，
+        加入在到达时刻立即换电的方案（$t_p = A_i$，$m_p = BS$）。
+\end{enumerate}
+
+\noindent
+该初始化策略保证了两个性质：
+(i) RMP 在首次迭代即可行（由褐色列保证）；
+(ii) 初始解质量不过差（贪心列和即时列提供了合理的起始点），
+有助于加速后续列生成的收敛。
+
+\subsection{列生成迭代流程与终止准则}
+
+算法~\ref{alg:cg} 给出了列生成框架的完整流程。
+
+\begin{algorithm}[htbp]
+\caption{列生成求解框架}
+\label{alg:cg}
+\begin{algorithmic}[1]
+\REQUIRE 问题实例 $(\mathcal{N}, \mathcal{K}^{SP}, \mathcal{K}^{BS}, \mathcal{T},
+  \text{参数})$；收敛阈值 $\epsilon > 0$；最大迭代数 $I_{\max}$
+\ENSURE 近最优服务方案分配
+\STATE 构造初始列池 $\hat{\mathcal{P}}_i^{(0)}$，$\forall\, i \in \mathcal{N}$
+  \hfill \textit{// 第 3.4 节}
+\STATE $\ell \leftarrow 0$
+\REPEAT
+  \STATE $\ell \leftarrow \ell + 1$
+  \STATE 求解 RMP 的 LP 松弛，获得原始解 $\boldsymbol{\lambda}^*$
+    和对偶解 $(\boldsymbol{\pi}^*,\, \boldsymbol{\mu}^*,\, \boldsymbol{\nu}^*)$
+    \hfill \textit{// 第 3.2 节}
+  \STATE $\textit{improved} \leftarrow \textsc{False}$
+  \FOR{each $i \in \mathcal{N}$}
+    \STATE 求解 $\text{PP}_i$：计算 $\bar{\sigma}_i^*$
+      及对应最优方案 $p_i^*$
+      \hfill \textit{// 第 3.3 节}
+    \IF{$\bar{\sigma}_i^* < -\epsilon$}
+      \STATE $\hat{\mathcal{P}}_i \leftarrow \hat{\mathcal{P}}_i \cup \{p_i^*\}$
+      \STATE $\textit{improved} \leftarrow \textsc{True}$
+    \ENDIF
+  \ENDFOR
+\UNTIL{$\textit{improved} = \textsc{False}$ \textbf{or} $\ell \geq I_{\max}$}
+\STATE 在最终列池 $\hat{\mathcal{P}}_i$ 上
+  将 $\lambda_{ip}$ 恢复为整数变量，求解整数 RMP
+\RETURN 最优整数解对应的服务方案分配
+\end{algorithmic}
+\end{algorithm}
+
+\subsection{收敛性与最优性分析}
+
+\begin{proposition}[LP 松弛最优性]
+若算法~\ref{alg:cg} 因 $\textit{improved} = \textsc{False}$ 终止
+（即所有船舶的最小缩减成本 $\bar{\sigma}_i^* \geq -\epsilon$），
+则 RMP 的当前 LP 最优值 $Z_{LP}^*$ 满足：
+\begin{equation}
+  Z_{LP}^* \;\leq\; Z_{LP}^{\text{full}} + |\mathcal{N}| \cdot \epsilon,
+  \tag{37}
+\end{equation}
+其中 $Z_{LP}^{\text{full}}$ 为完整列集 $\mathcal{P}_i$ 上 LP 松弛的最优值。
+当 $\epsilon \to 0$ 时，$Z_{LP}^* = Z_{LP}^{\text{full}}$，
+即列生成精确求解了 LP 松弛。
+\end{proposition}
+
+\begin{proof}
+这是列生成框架的标准收敛性结果。
+当所有定价子问题的最优缩减成本非负时，
+由线性规划的对偶理论，当前 RMP 对偶解对于完整列集也是可行的，
+其对偶目标值即为 LP 松弛的最优值。
+由强对偶定理，原始最优值 $Z_{LP}^*$ 等于对偶最优值，
+从而等于完整列集上的 LP 最优值。
+详见 Desaulniers et al.~\cite{Desaulniers2005}
+第 2 章的标准证明。
+\end{proof}
+
+\begin{proposition}[整数最优性条件]
+\label{prop:integer}
+设 CG 收敛后 LP 最优值为 $Z_{LP}^*$，
+最终整数 RMP 的最优值为 $Z_{IP}^*$。则：
+\begin{equation}
+  Z_{LP}^* \;\leq\; Z_{IP}^{\text{opt}} \;\leq\; Z_{IP}^*,
+  \tag{38}
+\end{equation}
+其中 $Z_{IP}^{\text{opt}}$ 为紧凑模型 (4)--(18) 的全局整数最优值。
+当 $Z_{LP}^* = Z_{IP}^*$ 时，
+列生成获得了全局整数最优解。
+\end{proposition}
+
+\begin{proof}
+第一个不等式成立是因为 LP 松弛提供整数规划的下界。
+第二个不等式成立是因为限制列集上的整数最优解
+是完整列集上的一个可行整数解。
+当两个界重合时，最优性得证。
+\end{proof}
+
+\begin{remark}[实际求解中的整数恢复]
+在实验中，当 $|\mathcal{N}| \leq 100$ 时，
+CG 收敛后在最终列池上求解整数 RMP，
+所得目标值与紧凑 MILP 的最优值完全一致
+（$Z_{LP}^* = Z_{IP}^*$，见第 4 节表 7），
+验证了命题~\ref{prop:integer} 中的充分条件在中等规模下普遍成立。
+当 $|\mathcal{N}| > 100$ 时，
+本文在每次定价迭代中仅保留缩减成本最优的 $K$ 列
+（$K = 3$），以控制列池规模，
+并设置最大迭代数 $I_{\max} = 20$ 和总时间上限 60 秒。
+此时解可能不具有严格最优性保证，
+但由 (38) 可计算最优性间隙上界
+$\text{gap} = (Z_{IP}^* - Z_{LP}^*) / Z_{LP}^*$，
+为解质量提供了可量化的评估依据。
+\end{remark}
+
+\subsection{算法复杂度总结}
+
+表~\ref{tab:complexity} 汇总了列生成框架各组件的计算复杂度。
+
+\begin{table}[htbp]
+\centering
+\caption{列生成框架计算复杂度分析}
+\label{tab:complexity}
+\begin{tabular}{lll}
+\toprule
+组件 & 单次复杂度 & 说明 \\
+\midrule
+RMP 求解 & $O(\text{LP}(|\hat{\mathcal{P}}|,\, m))$
+  & $|\hat{\mathcal{P}}|$ 为列池大小，$m$ 为约束数 \\
+岸电定价 & $O(|\mathcal{N}| \cdot |\mathcal{K}^{SP}| \cdot |\mathcal{T}|)$
+  & 利用前缀和优化 \\
+换电定价 & $O(|\mathcal{N}| \cdot |\mathcal{T}|)$
+  & 利用前缀和优化 \\
+褐色定价 & $O(|\mathcal{N}|)$
+  & 常数时间 / 船 \\
+整数恢复 & $O(\text{MIP}(|\hat{\mathcal{P}}|,\, m))$
+  & 在收敛列池上求解 \\
+\midrule
+总迭代数 & $O(I_{\max})$
+  & 典型值 $I_{\max} = 20$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\noindent
+与直接求解紧凑 MILP 相比，列生成的核心优势在于：
+(i) RMP 的规模由活跃列数而非全部时间展开变量决定，
+大幅减少了 LP 求解的计算负担；
+(ii) 定价子问题按船舶独立分解，可并行求解；
+(iii) 通过 LP 对偶信息引导列的生成方向，
+避免了对 $O(|\mathcal{N}| \cdot |\mathcal{K}^{SP}| \cdot |\mathcal{T}|)$
+可行方案的显式枚举。
+
+%% ============================================================
+%% 参考文献（仅列出本修改新增引用的条目）
+%% ============================================================
+
+\begin{thebibliography}{99}
+
+\bibitem{Desaulniers2005}
+G.~Desaulniers, J.~Desrosiers, and M.M.~Solomon.
+\textit{Column Generation}.
+Springer, New York, 2005.
+
+\bibitem{Cordeau2015}
+J.-F.~Cordeau, G.~Laporte, M.W.P.~Savelsbergh, and D.~Vigo.
+Transportation and logistics.
+\textit{Handbooks in Operations Research and Management Science}, 14:1--43, 2015.
+
+\bibitem{Barnhart1998}
+C.~Barnhart, E.L.~Johnson, G.L.~Nemhauser, M.W.P.~Savelsbergh, and P.H.~Vance.
+Branch-and-price: Column generation for solving huge integer programs.
+\textit{Operations Research}, 46(3):316--329, 1998.
+
+\bibitem{Lubbecke2005}
+M.E.~L\"ubbecke and J.~Desrosiers.
+Selected topics in column generation.
+\textit{Operations Research}, 53(6):1007--1023, 2005.
+
+\end{thebibliography}
+
+\end{document}

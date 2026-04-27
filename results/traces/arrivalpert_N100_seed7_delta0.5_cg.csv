@@ -1,0 +1,2 @@
+iteration,wall_time,rmp_obj,rmp_lb,best_primal_obj,columns_added_this_iter,pricing_calls_cum,min_reduced_cost_last,dual_norm
+1,14.589487099961843,189155.92187721966,189155.92187721966,189161.1527529627,0,0,0.0,0.0
