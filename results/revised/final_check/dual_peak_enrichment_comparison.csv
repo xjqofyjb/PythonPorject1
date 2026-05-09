@@ -1,0 +1,4 @@
+N,original_saving_mean,enriched_saving_mean,absolute_change_pct,original_dominance_pass_rate,enriched_dominance_pass_rate,original_objective_stabilized_rate,enriched_objective_stabilized_rate,use_enriched_value_in_final_plot
+110,19.041895149612568,19.18138738384984,0.13949223423727375,1.0,1.0,0.4,0.4,False
+125,15.915599553145412,16.03782869648141,0.12222914333599633,1.0,1.0,0.6,0.5,False
+150,12.706132844603522,12.809057445202239,0.10292460059871722,1.0,1.0,0.8,0.7,False

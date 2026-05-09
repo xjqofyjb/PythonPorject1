@@ -6,6 +6,8 @@ from typing import Dict, Any
 
 import numpy as np
 
+from src.model_utils import ceil_slots, horizon_slots
+
 
 @dataclass
 class Instance:
@@ -38,6 +40,7 @@ class Instance:
     energy_kwh: np.ndarray
     shore_power_kw: float
     battery_swap_hours: float
+    horizon_steps: int
 
 
 def generate_instance(
@@ -55,7 +58,8 @@ def generate_instance(
     scenario_code = scenario.upper()
 
     dt_hours = float(params.get("time_step_hours", 0.25))
-    arrival_window_hours = float(params.get("arrival_window_hours", params.get("horizon_hours", 8.0)))
+    horizon_steps = horizon_slots(params)
+    arrival_window_hours = float(params.get("arrival_window_hours", 8.0))
     shore_power_kw = float(params.get("shore_power_kw", 900.0))
     battery_swap_hours = float(params.get("battery_swap_hours", 0.75))
 
@@ -125,11 +129,11 @@ def generate_instance(
     elif mechanism == "no_brown":
         brown_cost = brown_cost * 10.0
 
-    arrival_steps = np.ceil(arrival_times / dt_hours).astype(int)
-    cargo_steps = np.ceil(cargo_times / dt_hours).astype(int)
-    deadline_steps = np.ceil(deadlines / dt_hours).astype(int)
-    sp_duration_steps = np.ceil(energy_kwh / (shore_power_kw * dt_hours)).astype(int)
-    bs_duration_steps = np.full(N, int(np.ceil(battery_swap_hours / dt_hours)), dtype=int)
+    arrival_steps = np.array([ceil_slots(x, dt_hours) for x in arrival_times], dtype=int)
+    cargo_steps = np.array([ceil_slots(x, dt_hours) for x in cargo_times], dtype=int)
+    deadline_steps = np.array([ceil_slots(x, dt_hours) for x in deadlines], dtype=int)
+    sp_duration_steps = np.array([ceil_slots(x / shore_power_kw, dt_hours) for x in energy_kwh], dtype=int)
+    bs_duration_steps = np.full(N, ceil_slots(battery_swap_hours, dt_hours), dtype=int)
 
     return Instance(
         N=N,
@@ -160,4 +164,5 @@ def generate_instance(
         energy_kwh=energy_kwh,
         shore_power_kw=shore_power_kw,
         battery_swap_hours=battery_swap_hours,
+        horizon_steps=horizon_steps,
     )

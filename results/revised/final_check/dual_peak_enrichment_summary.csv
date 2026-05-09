@@ -1,0 +1,4 @@
+N,simops_saving_pct_mean,simops_saving_pct_std,simops_saving_ci95_low,simops_saving_ci95_high,dominance_pass_rate,objective_stabilized_rate,pricing_converged_rate,gap_type,stabilization_applicable,objective_stabilized_rate_display
+110,19.18138738384984,1.2589377948332865,18.41041666764662,19.922551916889294,1.0,0.4,0.0,Pool LP-IP gap,True,0.400
+125,16.03782869648141,0.754810933486075,15.621191260884926,16.48912828884171,1.0,0.5,0.0,Pool LP-IP gap,True,0.500
+150,12.809057445202239,0.9064136350330376,12.290040884508308,13.340960892639975,1.0,0.7,0.0,Pool LP-IP gap,True,0.700

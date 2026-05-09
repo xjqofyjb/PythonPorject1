@@ -1,0 +1,4 @@
+threshold_definition,detected_threshold_C_BS,BS_share_before_threshold,BS_share_after_threshold,AE_share_before_threshold,AE_share_after_threshold,notes
+First C_BS where mean BS_share < 0.10,0.9,0.8480000000000001,0.0,0.013000000000000001,0.876,Abrupt structural BS-AE substitution threshold.
+First C_BS where mean AE_share > 0.50,0.9,0.8480000000000001,0.0,0.013000000000000001,0.876,Abrupt structural BS-AE substitution threshold.
+First C_BS where total cost stops increasing smoothly because AE fallback dominates,0.9,0.8480000000000001,0.0,0.013000000000000001,0.876,Abrupt structural BS-AE substitution threshold.

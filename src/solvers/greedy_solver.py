@@ -12,6 +12,7 @@ import numpy as np
 
 from src.instances import Instance
 from src.metrics import compute_simops_metrics, compute_type_breakdown
+from src.model_utils import energy_direct_cost, horizon_slots, operation_start_min
 
 
 def solve(instance: Instance, cfg: Dict[str, Any], logger) -> Dict[str, Any]:
@@ -28,8 +29,7 @@ def solve(instance: Instance, cfg: Dict[str, Any], logger) -> Dict[str, Any]:
     sp_dur = instance.sp_duration_steps
     bs_dur = instance.bs_duration_steps
 
-    horizon = int(max(np.max(deadlines + sp_dur + 2), np.max(arrival + cargo + sp_dur + 2)))
-    horizon = max(horizon, int(np.max(deadlines)) + 5)
+    horizon = int(getattr(instance, "horizon_steps", horizon_slots(instance.params)))
 
     # Per-berth shore power usage tracking
     shore_usage = np.zeros((max(K_SP, 1), horizon), dtype=int)
@@ -45,6 +45,7 @@ def solve(instance: Instance, cfg: Dict[str, Any], logger) -> Dict[str, Any]:
     service_durs = np.zeros(instance.N, dtype=float)
     start_steps = np.zeros(instance.N, dtype=int)
     duration_steps = np.zeros(instance.N, dtype=int)
+    service_berths = np.full(instance.N, -1, dtype=int)
     modes = ["brown"] * instance.N
 
     def feasible_shore(start: int, duration: int) -> int:
@@ -73,10 +74,7 @@ def solve(instance: Instance, cfg: Dict[str, Any], logger) -> Dict[str, Any]:
 
     for i in order:
         op_mode = cfg.get("operation_mode", "simops")
-        if op_mode == "sequential":
-            start_min = int(arrival[i] + cargo[i])
-        else:
-            start_min = int(arrival[i])
+        start_min = operation_start_min(int(arrival[i]), int(cargo[i]), op_mode)
 
         best = None
         demand = instance.energy_kwh[i]
@@ -90,7 +88,7 @@ def solve(instance: Instance, cfg: Dict[str, Any], logger) -> Dict[str, Any]:
                     continue
                 completion = max(arrival[i] + cargo[i], t + duration)
                 tardy = max(0, completion - deadlines[i])
-                cost = instance.shore_cost * demand + delay_cost * dt * tardy
+                cost = energy_direct_cost(instance.shore_cost, demand) + delay_cost * dt * tardy
                 if best is None or cost < best[0]:
                     best = (cost, "shore", t, duration, k)
 
@@ -100,14 +98,14 @@ def solve(instance: Instance, cfg: Dict[str, Any], logger) -> Dict[str, Any]:
                 continue
             completion = max(arrival[i] + cargo[i], t + duration)
             tardy = max(0, completion - deadlines[i])
-            cost = instance.battery_cost * demand + delay_cost * dt * tardy
+            cost = energy_direct_cost(instance.battery_cost, demand) + delay_cost * dt * tardy
             if best is None or cost < best[0]:
                 best = (cost, "battery", t, duration, -1)
 
         if brown_available:
             completion = int(arrival[i] + cargo[i])
             tardy = max(0, completion - deadlines[i])
-            cost = instance.brown_cost * demand + delay_cost * dt * tardy
+            cost = energy_direct_cost(instance.brown_cost, demand) + delay_cost * dt * tardy
             if best is None or cost < best[0]:
                 best = (cost, "brown", int(arrival[i]), 0, -1)
 
@@ -124,6 +122,7 @@ def solve(instance: Instance, cfg: Dict[str, Any], logger) -> Dict[str, Any]:
         service_durs[i] = float(duration) * dt
         start_steps[i] = int(start)
         duration_steps[i] = int(duration)
+        service_berths[i] = int(berth_k)
         modes[i] = mode
         total_cost += cost
         if mode == "shore":
@@ -165,6 +164,7 @@ def solve(instance: Instance, cfg: Dict[str, Any], logger) -> Dict[str, Any]:
         result["schedule"] = {
             "service_start_times": service_starts.tolist(),
             "service_durations": service_durs.tolist(),
+            "service_berths": service_berths.tolist(),
             "modes": modes,
         }
     return result

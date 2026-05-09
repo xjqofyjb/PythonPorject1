@@ -10,6 +10,7 @@ import numpy as np
 
 from src.instances import Instance
 from src.metrics import compute_simops_metrics, compute_type_breakdown
+from src.model_utils import horizon_slots, operation_start_min
 
 
 @dataclass(frozen=True)
@@ -84,11 +85,9 @@ def _compute_horizon_steps(ships: List[Ship], params: Dict[str, Any]) -> int:
     horizon_hours = float(params.get("T_horizon", params.get("T_horizon_hours", 48.0)))
     horizon_steps = int(math.ceil(horizon_hours / dt))
     if ships:
-        max_finish = max(
-            max(ship.arrival_step + ship.cargo_step, ship.deadline_step) + max(ship.sp_duration_step, ship.bs_duration_step) + 5
-            for ship in ships
-        )
-        horizon_steps = max(horizon_steps, int(max_finish))
+        latest_needed = max(max(ship.arrival_step + ship.cargo_step, ship.deadline_step) for ship in ships)
+        if latest_needed > horizon_steps:
+            horizon_steps = int(latest_needed)
     return horizon_steps
 
 
@@ -147,7 +146,7 @@ def _greedy_window_solution(
         return not np.any(battery_usage[start:end] >= k_bs)
 
     for ship in sorted(window_ships, key=lambda s: (s.arrival_step, s.ship_id)):
-        start_min = ship.arrival_step if operation_mode == "simops" else ship.arrival_step + ship.cargo_step
+        start_min = operation_start_min(ship.arrival_step, ship.cargo_step, operation_mode)
         best = None
 
         if ship.shore_compatible:
@@ -312,7 +311,7 @@ def solve_window_milp(
     start_sp: Dict[int, List[int]] = {}
     start_bs: Dict[int, List[int]] = {}
     for ship in window_ships:
-        start_min = ship.arrival_step if operation_mode == "simops" else ship.arrival_step + ship.cargo_step
+        start_min = operation_start_min(ship.arrival_step, ship.cargo_step, operation_mode)
         start_sp[ship.ship_id] = []
         start_bs[ship.ship_id] = []
 

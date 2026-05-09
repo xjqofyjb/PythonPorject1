@@ -1,0 +1,30 @@
+\begin{tabular}{rllrrrrrrllrrrrr}
+\toprule
+N & scenario & method & objective_mean & objective_std & rel_gap_to_CG_mean & runtime_mean & runtime_std & status_success_rate & cg_status & gap_type & pricing_converged_rate & objective_stabilized_rate & pool_gap_pct_mean & columns_mean & iterations_mean \\
+\midrule
+200 & U & CG+IR & 535891.968251 & 8120.043953 & 0.000000 & 33.607883 & 1.006274 & 1.000000 & budgeted_stabilized & Pool LP-IP gap & 0.000000 & 1.000000 & 0.001162 & 11556.200000 & 20.100000 \\
+200 & U & Rolling-Horizon & 596178.676121 & 10632.321146 & 11.249270 & 38.154820 & 2.132741 & 1.000000 & NaN & NaN & NaN & NaN & NaN & NaN & NaN \\
+200 & U & Fix-and-Optimize & 586061.174595 & 10314.764259 & 9.363096 & 25.635607 & 1.821265 & 1.000000 & NaN & NaN & NaN & NaN & NaN & NaN & NaN \\
+200 & U & Restricted-CG & 597018.304747 & 10883.541187 & 11.404488 & 3.284847 & 0.489726 & 1.000000 & budgeted_max_iter;budgeted_stabilized & Pool LP-IP gap & 0.000000 & 0.800000 & 0.004180 & 2025.800000 & 6.400000 \\
+200 & U & FIFO & 596409.358219 & 10779.776783 & 11.291866 & 0.083611 & 0.001537 & 1.000000 & NaN & NaN & NaN & NaN & NaN & NaN & NaN \\
+200 & U & Greedy & 598402.658213 & 10424.765952 & 11.664893 & 0.164263 & 0.001769 & 1.000000 & NaN & NaN & NaN & NaN & NaN & NaN & NaN \\
+200 & P & CG+IR & 542832.303566 & 9972.522380 & 0.000000 & 36.758506 & 3.826744 & 1.000000 & budgeted_stabilized & Pool LP-IP gap & 0.000000 & 1.000000 & 0.003660 & 10929.600000 & 20.000000 \\
+200 & P & Rolling-Horizon & 608630.128556 & 15555.084013 & 12.113522 & 36.953952 & 2.100968 & 1.000000 & NaN & NaN & NaN & NaN & NaN & NaN & NaN \\
+200 & P & Fix-and-Optimize & 597021.600772 & 14673.357372 & 9.975610 & 26.442823 & 2.264561 & 1.000000 & NaN & NaN & NaN & NaN & NaN & NaN & NaN \\
+200 & P & Restricted-CG & 604726.111004 & 14923.656409 & 11.395908 & 3.341950 & 0.731223 & 1.000000 & budgeted_max_iter;budgeted_stabilized & Pool LP-IP gap & 0.000000 & 0.900000 & 0.000000 & 1957.400000 & 6.200000 \\
+200 & P & FIFO & 606209.595445 & 14279.523090 & 11.670016 & 0.107230 & 0.060479 & 1.000000 & NaN & NaN & NaN & NaN & NaN & NaN & NaN \\
+200 & P & Greedy & 605071.551482 & 15242.157714 & 11.458702 & 0.200282 & 0.114367 & 1.000000 & NaN & NaN & NaN & NaN & NaN & NaN & NaN \\
+200 & L & CG+IR & 511397.240433 & 8089.088164 & 0.000000 & 43.632740 & 5.752678 & 1.000000 & budgeted_max_iter;budgeted_stabilized & Pool LP-IP gap & 0.000000 & 0.900000 & 0.004345 & 14025.400000 & 21.000000 \\
+200 & L & Rolling-Horizon & 571080.140904 & 9351.528281 & 11.671850 & 32.218005 & 2.320813 & 1.000000 & NaN & NaN & NaN & NaN & NaN & NaN & NaN \\
+200 & L & Fix-and-Optimize & 558193.443871 & 10374.341146 & 9.149770 & 21.245544 & 0.920550 & 1.000000 & NaN & NaN & NaN & NaN & NaN & NaN & NaN \\
+200 & L & Restricted-CG & 569565.879700 & 11592.865198 & 11.370300 & 3.221488 & 0.411662 & 1.000000 & budgeted_max_iter;budgeted_stabilized & Pool LP-IP gap & 0.000000 & 0.900000 & 0.000000 & 1943.100000 & 6.200000 \\
+200 & L & FIFO & 569774.906419 & 12259.389937 & 11.410250 & 0.097176 & 0.001709 & 1.000000 & NaN & NaN & NaN & NaN & NaN & NaN & NaN \\
+200 & L & Greedy & 569729.044338 & 11640.380472 & 11.402404 & 0.166928 & 0.002832 & 1.000000 & NaN & NaN & NaN & NaN & NaN & NaN & NaN \\
+500 & U & CG+IR & 1690831.876915 & 14156.217057 & 0.000000 & 96.904468 & 2.210015 & 1.000000 & budgeted_stabilized & Pool LP-IP gap & 0.000000 & 1.000000 & 0.000225 & 27593.500000 & 20.000000 \\
+500 & U & Rolling-Horizon & 1821716.384623 & 14175.735382 & 7.741822 & 79.435232 & 3.880180 & 1.000000 & NaN & NaN & NaN & NaN & NaN & NaN & NaN \\
+500 & U & Fix-and-Optimize & 1812278.476515 & 14785.584863 & 7.183288 & 56.268049 & 2.179577 & 1.000000 & NaN & NaN & NaN & NaN & NaN & NaN & NaN \\
+500 & U & Restricted-CG & 1820005.965871 & 15925.639664 & 7.640171 & 7.802894 & 1.256045 & 1.000000 & budgeted_max_iter;budgeted_stabilized & Pool LP-IP gap & 0.000000 & 0.700000 & 0.010501 & 5217.300000 & 6.400000 \\
+500 & U & FIFO & 1825679.247301 & 14934.872805 & 7.975870 & 0.267852 & 0.012861 & 1.000000 & NaN & NaN & NaN & NaN & NaN & NaN & NaN \\
+500 & U & Greedy & 1821269.836082 & 16513.729317 & 7.714551 & 0.412832 & 0.007291 & 1.000000 & NaN & NaN & NaN & NaN & NaN & NaN & NaN \\
+\bottomrule
+\end{tabular}

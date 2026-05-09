@@ -1,0 +1,90 @@
+\begin{tabular}{rllrrrrrll}
+\toprule
+N & scenario & method & obj_mean & obj_std & runtime_mean & gap_pct_mean & success_rate & cg_status & gap_type \\
+\midrule
+20 & L & CG+IR & 22895.293 & 1624.906 & 3.424 & 0.301 & 1.000 & full_pricing_converged & Full-CG LP-IP gap \\
+20 & L & FIFO & 25393.130 & 1774.747 & 0.004 & NaN & 1.000 &  &  \\
+20 & L & Greedy & 25393.130 & 1774.747 & 0.017 & NaN & 1.000 &  &  \\
+20 & L & Restricted-CG & 25393.130 & 1774.747 & 0.449 & 0.000 & 1.000 & budgeted_topK & Pool LP-IP gap \\
+20 & L & fix_and_optimize & 23994.522 & 2328.705 & 5.062 & NaN & 1.000 &  &  \\
+20 & L & rolling_horizon & 24661.510 & 888.322 & 4.434 & NaN & 1.000 &  &  \\
+20 & P & CG+IR & 24097.836 & 1717.657 & 2.900 & 0.037 & 1.000 & full_pricing_converged & Full-CG LP-IP gap \\
+20 & P & FIFO & 25659.293 & 1525.062 & 0.003 & NaN & 1.000 &  &  \\
+20 & P & Greedy & 25312.227 & 2046.732 & 0.018 & NaN & 1.000 &  &  \\
+20 & P & Restricted-CG & 25312.227 & 2046.732 & 0.447 & 0.000 & 1.000 & budgeted_topK & Pool LP-IP gap \\
+20 & P & fix_and_optimize & 24692.028 & 1546.226 & 4.983 & NaN & 1.000 &  &  \\
+20 & P & rolling_horizon & 25599.850 & 1784.799 & 5.617 & NaN & 1.000 &  &  \\
+20 & U & CG+IR & 25010.012 & 1692.172 & 3.010 & 0.216 & 1.000 & full_pricing_converged & Full-CG LP-IP gap \\
+20 & U & FIFO & 26591.937 & 1490.217 & 0.003 & NaN & 1.000 &  &  \\
+20 & U & Greedy & 26591.937 & 1490.217 & 0.017 & NaN & 1.000 &  &  \\
+20 & U & Restricted-CG & 26591.937 & 1490.217 & 0.444 & 0.000 & 1.000 & budgeted_topK & Pool LP-IP gap \\
+20 & U & fix_and_optimize & 25788.486 & 1768.180 & 4.934 & NaN & 1.000 &  &  \\
+20 & U & rolling_horizon & 26838.209 & 2550.529 & 5.558 & NaN & 1.000 &  &  \\
+50 & L & CG+IR & 80985.884 & 3696.290 & 8.794 & 0.015 & 1.000 & full_pricing_converged & Full-CG LP-IP gap \\
+50 & L & FIFO & 84298.832 & 5355.316 & 0.014 & NaN & 1.000 &  &  \\
+50 & L & Greedy & 83482.091 & 5079.497 & 0.044 & NaN & 1.000 &  &  \\
+50 & L & Restricted-CG & 83482.091 & 5079.497 & 0.784 & 0.000 & 1.000 & budgeted_topK & Pool LP-IP gap \\
+50 & L & fix_and_optimize & 82540.781 & 4597.514 & 7.298 & NaN & 1.000 &  &  \\
+50 & L & rolling_horizon & 84493.180 & 6775.475 & 12.029 & NaN & 1.000 &  &  \\
+50 & P & CG+IR & 81408.931 & 1024.887 & 7.322 & 0.010 & 1.000 & full_pricing_converged & Full-CG LP-IP gap \\
+50 & P & FIFO & 83894.621 & 532.610 & 0.013 & NaN & 1.000 &  &  \\
+50 & P & Greedy & 84050.224 & 322.399 & 0.043 & NaN & 1.000 &  &  \\
+50 & P & Restricted-CG & 84050.224 & 322.399 & 0.761 & 0.000 & 1.000 & budgeted_topK & Pool LP-IP gap \\
+50 & P & fix_and_optimize & 82805.958 & 840.239 & 9.427 & NaN & 1.000 &  &  \\
+50 & P & rolling_horizon & 84114.454 & 1055.819 & 9.671 & NaN & 1.000 &  &  \\
+50 & U & CG+IR & 83126.178 & 3693.303 & 7.653 & 0.020 & 1.000 & full_pricing_converged & Full-CG LP-IP gap \\
+50 & U & FIFO & 85172.612 & 5903.486 & 0.012 & NaN & 1.000 &  &  \\
+50 & U & Greedy & 87595.020 & 4832.859 & 0.043 & NaN & 1.000 &  &  \\
+50 & U & Restricted-CG & 87595.020 & 4832.859 & 0.804 & 0.000 & 1.000 & budgeted_topK & Pool LP-IP gap \\
+50 & U & fix_and_optimize & 83904.966 & 3431.787 & 8.083 & NaN & 1.000 &  &  \\
+50 & U & rolling_horizon & 84422.183 & 3724.788 & 11.120 & NaN & 1.000 &  &  \\
+100 & L & CG+IR & 182306.030 & 8636.722 & 18.656 & 0.002 & 1.000 & full_pricing_converged & Full-CG LP-IP gap \\
+100 & L & FIFO & 204804.080 & 11776.622 & 0.038 & NaN & 1.000 &  &  \\
+100 & L & Greedy & 205175.750 & 11124.528 & 0.086 & NaN & 1.000 &  &  \\
+100 & L & Restricted-CG & 205175.750 & 11124.528 & 1.329 & 0.000 & 1.000 & budgeted_topK & Pool LP-IP gap \\
+100 & L & fix_and_optimize & 193229.837 & 10637.762 & 13.529 & NaN & 1.000 &  &  \\
+100 & L & rolling_horizon & 199564.869 & 2897.365 & 17.851 & NaN & 1.000 &  &  \\
+100 & P & CG+IR & 188483.259 & 2225.411 & 18.592 & 0.002 & 1.000 & full_pricing_converged & Full-CG LP-IP gap \\
+100 & P & FIFO & 234220.182 & 4557.521 & 0.036 & NaN & 1.000 &  &  \\
+100 & P & Greedy & 234036.354 & 2187.217 & 0.086 & NaN & 1.000 &  &  \\
+100 & P & Restricted-CG & 233246.072 & 1069.590 & 1.317 & 0.000 & 1.000 & budgeted_topK & Pool LP-IP gap \\
+100 & P & fix_and_optimize & 221055.884 & 894.117 & 14.733 & NaN & 1.000 &  &  \\
+100 & P & rolling_horizon & 226373.191 & 9971.849 & 21.758 & NaN & 1.000 &  &  \\
+100 & U & CG+IR & 184592.698 & 8843.394 & 19.493 & 0.005 & 1.000 & full_pricing_converged & Full-CG LP-IP gap \\
+100 & U & FIFO & 225685.364 & 9708.088 & 0.034 & NaN & 1.000 &  &  \\
+100 & U & Greedy & 227163.698 & 9897.192 & 0.085 & NaN & 1.000 &  &  \\
+100 & U & Restricted-CG & 227163.698 & 9897.192 & 1.405 & 0.000 & 1.000 & budgeted_topK & Pool LP-IP gap \\
+100 & U & fix_and_optimize & 211890.022 & 10617.281 & 15.007 & NaN & 1.000 &  &  \\
+100 & U & rolling_horizon & 210813.033 & 11177.961 & 20.587 & NaN & 1.000 &  &  \\
+200 & L & CG+IR & 670238.008 & 10684.984 & 6.836 & 0.002 & 1.000 & budgeted_topK & Pool LP-IP gap \\
+200 & L & FIFO & 562161.502 & 8835.373 & 0.099 & NaN & 1.000 &  &  \\
+200 & L & Greedy & 563994.042 & 3011.027 & 0.171 & NaN & 1.000 &  &  \\
+200 & L & Restricted-CG & 563994.042 & 3011.027 & 2.482 & 0.000 & 1.000 & budgeted_topK & Pool LP-IP gap \\
+200 & L & fix_and_optimize & 553559.443 & 2390.153 & 19.527 & NaN & 1.000 &  &  \\
+200 & L & rolling_horizon & 567344.357 & 6882.848 & 32.245 & NaN & 1.000 &  &  \\
+200 & P & CG+IR & 690043.205 & 18874.345 & 6.380 & 0.000 & 1.000 & budgeted_topK & Pool LP-IP gap \\
+200 & P & FIFO & 610610.437 & 6495.721 & 0.088 & NaN & 1.000 &  &  \\
+200 & P & Greedy & 612766.563 & 6550.991 & 0.166 & NaN & 1.000 &  &  \\
+200 & P & Restricted-CG & 612766.563 & 6550.991 & 2.443 & 0.000 & 1.000 & budgeted_topK & Pool LP-IP gap \\
+200 & P & fix_and_optimize & 603652.737 & 9994.278 & 23.397 & NaN & 1.000 &  &  \\
+200 & P & rolling_horizon & 618715.455 & 10161.200 & 34.623 & NaN & 1.000 &  &  \\
+200 & U & CG+IR & 667515.805 & 12922.684 & 6.034 & 0.000 & 1.000 & budgeted_topK & Pool LP-IP gap \\
+200 & U & FIFO & 593160.757 & 6338.740 & 0.087 & NaN & 1.000 &  &  \\
+200 & U & Greedy & 595818.597 & 3730.200 & 0.168 & NaN & 1.000 &  &  \\
+200 & U & Restricted-CG & 595818.597 & 3730.200 & 2.490 & 0.000 & 1.000 & budgeted_topK & Pool LP-IP gap \\
+200 & U & fix_and_optimize & 583667.192 & 2257.329 & 24.691 & NaN & 1.000 &  &  \\
+200 & U & rolling_horizon & 587278.869 & 3631.231 & 36.942 & NaN & 1.000 &  &  \\
+500 & L & CG+IR & 1900519.895 & 2588.100 & 17.725 & 0.000 & 1.000 & budgeted_topK & Pool LP-IP gap \\
+500 & L & FIFO & 1805766.734 & 1861.718 & 0.301 & NaN & 1.000 &  &  \\
+500 & L & Greedy & 1800258.752 & 6088.110 & 0.415 & NaN & 1.000 &  &  \\
+500 & L & Restricted-CG & 1800258.752 & 6088.110 & 5.830 & 0.000 & 1.000 & budgeted_topK & Pool LP-IP gap \\
+500 & P & CG+IR & 1910885.329 & 28701.182 & 16.168 & 0.000 & 1.000 & budgeted_topK & Pool LP-IP gap \\
+500 & P & FIFO & 1844197.010 & 30652.501 & 0.261 & NaN & 1.000 &  &  \\
+500 & P & Greedy & 1836775.901 & 22973.708 & 0.421 & NaN & 1.000 &  &  \\
+500 & P & Restricted-CG & 1836623.898 & 23188.671 & 5.855 & 0.000 & 1.000 & budgeted_topK & Pool LP-IP gap \\
+500 & U & CG+IR & 1895879.119 & 2067.946 & 16.228 & 0.016 & 1.000 & budgeted_topK & Pool LP-IP gap \\
+500 & U & FIFO & 1832081.126 & 8348.230 & 0.260 & NaN & 1.000 &  &  \\
+500 & U & Greedy & 1827966.737 & 4424.616 & 0.416 & NaN & 1.000 &  &  \\
+500 & U & Restricted-CG & 1827373.012 & 5264.269 & 5.866 & 0.000 & 1.000 & budgeted_topK & Pool LP-IP gap \\
+\bottomrule
+\end{tabular}

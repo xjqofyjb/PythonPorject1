@@ -1,0 +1,3 @@
+N,variant,irmp_obj,lp_obj_final_pool,pool_gap_pct,num_columns_total,runtime_sec,objective_improvement_vs_baseline_pct
+200,baseline,667515.8045691814,667515.8045691814,0.0,4967.5,5.88376579999931,0.0
+200,topK5,630647.6665531493,630647.6665531493,0.0,8127.0,8.490034199999172,5.508176218918784

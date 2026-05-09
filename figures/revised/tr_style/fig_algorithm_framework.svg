@@ -1,0 +1,449 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="597.24pt" height="332.856pt" viewBox="0 0 597.24 332.856" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-04-30T17:53:58.458108</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.10.8, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 332.856 
+L 597.24 332.856 
+L 597.24 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 23.5818 144.185472 
+L 183.2814 144.185472 
+Q 190.37916 144.185472 190.37916 140.26032 
+L 190.37916 47.03796 
+Q 190.37916 43.112808 183.2814 43.112808 
+L 23.5818 43.112808 
+Q 16.48404 43.112808 16.48404 47.03796 
+L 16.48404 140.26032 
+Q 16.48404 144.185472 23.5818 144.185472 
+z
+" clip-path="url(#pedb8ebc201)" style="fill: #eeeeee; stroke: #444444; stroke-width: 0.8; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 221.7276 131.101632 
+L 372.555 131.101632 
+Q 379.65276 131.101632 379.65276 127.17648 
+L 379.65276 50.30892 
+Q 379.65276 46.383768 372.555 46.383768 
+L 221.7276 46.383768 
+Q 214.62984 46.383768 214.62984 50.30892 
+L 214.62984 127.17648 
+Q 214.62984 131.101632 221.7276 131.101632 
+z
+" clip-path="url(#pedb8ebc201)" style="fill: #dbeaf7; stroke: #444444; stroke-width: 0.8; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 221.7276 224.323992 
+L 372.555 224.323992 
+Q 379.65276 224.323992 379.65276 220.39884 
+L 379.65276 150.0732 
+Q 379.65276 146.148048 372.555 146.148048 
+L 221.7276 146.148048 
+Q 214.62984 146.148048 214.62984 150.0732 
+L 214.62984 220.39884 
+Q 214.62984 224.323992 221.7276 224.323992 
+z
+" clip-path="url(#pedb8ebc201)" style="fill: #fde6cc; stroke: #444444; stroke-width: 0.8; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 419.8734 142.549992 
+L 573.6582 142.549992 
+Q 580.75596 142.549992 580.75596 138.62484 
+L 580.75596 45.40248 
+Q 580.75596 41.477328 573.6582 41.477328 
+L 419.8734 41.477328 
+Q 412.77564 41.477328 412.77564 45.40248 
+L 412.77564 138.62484 
+Q 412.77564 142.549992 419.8734 142.549992 
+z
+" clip-path="url(#pedb8ebc201)" style="fill: #fff4c2; stroke: #444444; stroke-width: 0.8; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 419.8734 221.053032 
+L 573.6582 221.053032 
+Q 580.75596 221.053032 580.75596 217.12788 
+L 580.75596 169.69896 
+Q 580.75596 165.773808 573.6582 165.773808 
+L 419.8734 165.773808 
+Q 412.77564 165.773808 412.77564 169.69896 
+L 412.77564 217.12788 
+Q 412.77564 221.053032 419.8734 221.053032 
+z
+" clip-path="url(#pedb8ebc201)" style="fill: #dff0df; stroke: #444444; stroke-width: 0.8; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 419.8734 312.639912 
+L 573.6582 312.639912 
+Q 580.75596 312.639912 580.75596 308.71476 
+L 580.75596 243.29556 
+Q 580.75596 239.370408 573.6582 239.370408 
+L 419.8734 239.370408 
+Q 412.77564 239.370408 412.77564 243.29556 
+L 412.77564 308.71476 
+Q 412.77564 312.639912 419.8734 312.639912 
+z
+" clip-path="url(#pedb8ebc201)" style="fill: #dff0df; stroke: #444444; stroke-width: 0.8; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_8">
+    <path d="M 221.7276 299.556072 
+L 372.555 299.556072 
+Q 379.65276 299.556072 379.65276 295.63092 
+L 379.65276 244.93104 
+Q 379.65276 241.005888 372.555 241.005888 
+L 221.7276 241.005888 
+Q 214.62984 241.005888 214.62984 244.93104 
+L 214.62984 295.63092 
+Q 214.62984 299.556072 221.7276 299.556072 
+z
+" clip-path="url(#pedb8ebc201)" style="fill: #f8f8f8; stroke: #444444; stroke-width: 0.8; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_9">
+    <path d="M 23.5818 268.481952 
+L 183.2814 268.481952 
+Q 190.37916 268.481952 190.37916 264.5568 
+L 190.37916 204.04404 
+Q 190.37916 200.118888 183.2814 200.118888 
+L 23.5818 200.118888 
+Q 16.48404 200.118888 16.48404 204.04404 
+L 16.48404 264.5568 
+Q 16.48404 268.481952 23.5818 268.481952 
+z
+" clip-path="url(#pedb8ebc201)" style="fill: #eeeeee; stroke: #444444; stroke-width: 0.8; stroke-linejoin: miter"/>
+   </g>
+   <g id="text_1">
+    <text style="font-weight: 700; font-size: 11px; font-family: 'Arial', 'DejaVu Sans'; text-anchor: middle; fill: #111111" x="298.62" y="22.336016" transform="rotate(-0 298.62 22.336016)">Decomposition-based solution framework and solution-quality diagnostics</text>
+   </g>
+   <g id="text_2">
+    <text style="font-weight: 700; font-size: 8px; font-family: 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #111111" x="34.22844" y="64.31007" transform="rotate(-0 34.22844 64.31007)">1. Input and feasible service plans</text>
+   </g>
+   <g id="text_3">
+    <text style="font-size: 7.15px; font-family: 'Arial', 'DejaVu Sans'; fill: #222222" transform="translate(34.22844 77.669284)">Vessel data and compatibility</text>
+    <text style="font-size: 7.15px; font-family: 'Arial', 'DejaVu Sans'; fill: #222222" transform="translate(34.22844 86.044705)">SP/BS capacities</text>
+    <text style="font-size: 7.15px; font-family: 'Arial', 'DejaVu Sans'; fill: #222222" transform="translate(34.22844 94.22131)">Feasible start sets</text>
+    <text style="font-size: 7.15px; font-family: 'Arial', 'DejaVu Sans'; fill: #222222" transform="translate(34.22844 102.397916)">Initial AE/SP/BS columns</text>
+   </g>
+   <g id="text_4">
+    <text style="font-weight: 700; font-size: 8px; font-family: 'Arial', 'DejaVu Sans'; fill: #111111" transform="translate(232.37424 67.48353)">2. Restricted master</text>
+    <text style="font-weight: 700; font-size: 8px; font-family: 'Arial', 'DejaVu Sans'; fill: #111111" transform="translate(232.37424 76.05078)">problem (RMP)</text>
+   </g>
+   <g id="text_5">
+    <text style="font-size: 7.15px; font-family: 'Arial', 'DejaVu Sans'; fill: #222222" transform="translate(232.37424 92.061508)">Assignment constraints</text>
+    <text style="font-size: 7.15px; font-family: 'Arial', 'DejaVu Sans'; fill: #222222" transform="translate(232.37424 100.436929)">SP/BS capacity constraints</text>
+    <!-- LP duals: $\pi_i, \rho_{kt}, \eta_t$ -->
+    <g style="fill: #222222" transform="translate(232.37424 108.73714)">
+     <text>
+      <tspan x="0" y="-0.984375" style="font-size: 7.15px; font-family: 'Arial'; fill: #222222">L</tspan>
+      <tspan x="3.962585" y="-0.984375" style="font-size: 7.15px; font-family: 'Arial'; fill: #222222">P</tspan>
+      <tspan x="8.714905" y="-0.984375" style="font-size: 7.15px; font-family: 'Arial'; fill: #222222"> </tspan>
+      <tspan x="10.694458" y="-0.984375" style="font-size: 7.15px; font-family: 'Arial'; fill: #222222">d</tspan>
+      <tspan x="14.657043" y="-0.984375" style="font-size: 7.15px; font-family: 'Arial'; fill: #222222">u</tspan>
+      <tspan x="18.619629" y="-0.984375" style="font-size: 7.15px; font-family: 'Arial'; fill: #222222">a</tspan>
+      <tspan x="22.582214" y="-0.984375" style="font-size: 7.15px; font-family: 'Arial'; fill: #222222">l</tspan>
+      <tspan x="24.165161" y="-0.984375" style="font-size: 7.15px; font-family: 'Arial'; fill: #222222">s</tspan>
+      <tspan x="27.727661" y="-0.984375" style="font-size: 7.15px; font-family: 'Arial'; fill: #222222">:</tspan>
+      <tspan x="29.707214" y="-0.984375" style="font-size: 7.15px; font-family: 'Arial'; fill: #222222"> </tspan>
+      <tspan x="31.686768" y="-0.984375" style="font-size: 7.15px; font-family: 'Arial'; fill: #222222">π</tspan>
+      <tspan x="38.191176" y="-0.984375" style="font-size: 7.15px; font-family: 'Arial'; fill: #222222">,</tspan>
+      <tspan x="41.558852" y="-0.984375" style="font-size: 7.15px; font-family: 'Arial'; fill: #222222">ρ</tspan>
+      <tspan x="49.971842" y="-0.984375" style="font-size: 7.15px; font-family: 'Arial'; fill: #222222">,</tspan>
+      <tspan x="53.339518" y="-0.984375" style="font-size: 7.15px; font-family: 'Arial'; fill: #222222">η</tspan>
+      <tspan x="36.727178" y="1.151241" style="font-size: 5.005px; font-family: 'Arial'; fill: #222222">i</tspan>
+      <tspan x="45.736469" y="1.151241" style="font-size: 5.005px; font-family: 'Arial'; fill: #222222">k</tspan>
+      <tspan x="48.230219" y="1.151241" style="font-size: 5.005px; font-family: 'Arial'; fill: #222222">t</tspan>
+      <tspan x="57.426681" y="1.151241" style="font-size: 5.005px; font-family: 'Arial'; fill: #222222">t</tspan>
+     </text>
+    </g>
+   </g>
+   <g id="text_6">
+    <text style="font-weight: 700; font-size: 8px; font-family: 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #111111" x="232.37424" y="167.34531" transform="rotate(-0 232.37424 167.34531)">3. Mode-specific pricing</text>
+   </g>
+   <g id="text_7">
+    <text style="font-size: 7.15px; font-family: 'Arial', 'DejaVu Sans'; fill: #222222" transform="translate(232.37424 180.791665)">SP pricing</text>
+    <text style="font-size: 7.15px; font-family: 'Arial', 'DejaVu Sans'; fill: #222222" transform="translate(232.37424 189.167085)">BS pricing</text>
+    <text style="font-size: 7.15px; font-family: 'Arial', 'DejaVu Sans'; fill: #222222" transform="translate(232.37424 197.542506)">AE fallback pricing</text>
+    <text style="font-size: 7.15px; font-family: 'Arial', 'DejaVu Sans'; fill: #222222" transform="translate(232.37424 205.802901)">Negative reduced-cost columns</text>
+   </g>
+   <g id="text_8">
+    <text style="font-weight: 700; font-size: 8px; font-family: 'Arial', 'DejaVu Sans'; fill: #111111" transform="translate(430.52004 62.67459)">5. Stopping and</text>
+    <text style="font-weight: 700; font-size: 8px; font-family: 'Arial', 'DejaVu Sans'; fill: #111111" transform="translate(430.52004 71.22984)">solution-quality logic</text>
+   </g>
+   <g id="text_9">
+    <!-- $N \leq 100$: full pricing -->
+    <g style="fill: #222222" transform="translate(430.52004 87.256732)">
+     <text>
+      <tspan x="0" y="-0.90625" style="font-size: 7.15px; font-family: 'Arial'; fill: #222222">N</tspan>
+      <tspan x="6.533569" y="-0.90625" style="font-size: 7.15px; font-family: 'Arial'; fill: #222222">≤</tspan>
+      <tspan x="11.832092" y="-0.90625" style="font-size: 7.15px; font-family: 'Arial'; fill: #222222">1</tspan>
+      <tspan x="15.794678" y="-0.90625" style="font-size: 7.15px; font-family: 'Arial'; fill: #222222">0</tspan>
+      <tspan x="19.757263" y="-0.90625" style="font-size: 7.15px; font-family: 'Arial'; fill: #222222">0</tspan>
+      <tspan x="23.719849" y="-0.90625" style="font-size: 7.15px; font-family: 'Arial'; fill: #222222">:</tspan>
+      <tspan x="25.699402" y="-0.90625" style="font-size: 7.15px; font-family: 'Arial'; fill: #222222"> </tspan>
+      <tspan x="27.678955" y="-0.90625" style="font-size: 7.15px; font-family: 'Arial'; fill: #222222">f</tspan>
+      <tspan x="29.658508" y="-0.90625" style="font-size: 7.15px; font-family: 'Arial'; fill: #222222">u</tspan>
+      <tspan x="33.621094" y="-0.90625" style="font-size: 7.15px; font-family: 'Arial'; fill: #222222">l</tspan>
+      <tspan x="35.204041" y="-0.90625" style="font-size: 7.15px; font-family: 'Arial'; fill: #222222">l</tspan>
+      <tspan x="36.786987" y="-0.90625" style="font-size: 7.15px; font-family: 'Arial'; fill: #222222"> </tspan>
+      <tspan x="38.766541" y="-0.90625" style="font-size: 7.15px; font-family: 'Arial'; fill: #222222">p</tspan>
+      <tspan x="42.729126" y="-0.90625" style="font-size: 7.15px; font-family: 'Arial'; fill: #222222">r</tspan>
+      <tspan x="45.101807" y="-0.90625" style="font-size: 7.15px; font-family: 'Arial'; fill: #222222">i</tspan>
+      <tspan x="46.684753" y="-0.90625" style="font-size: 7.15px; font-family: 'Arial'; fill: #222222">c</tspan>
+      <tspan x="50.247253" y="-0.90625" style="font-size: 7.15px; font-family: 'Arial'; fill: #222222">i</tspan>
+      <tspan x="51.8302" y="-0.90625" style="font-size: 7.15px; font-family: 'Arial'; fill: #222222">n</tspan>
+      <tspan x="55.792786" y="-0.90625" style="font-size: 7.15px; font-family: 'Arial'; fill: #222222">g</tspan>
+     </text>
+    </g>
+    <text style="font-size: 7.15px; font-family: 'Arial', 'DejaVu Sans'; fill: #222222" transform="translate(430.52004 95.700301)">Full-CG LP-IP gap</text>
+    <!-- $N=200,500$: budgeted CG -->
+    <g style="fill: #222222" transform="translate(430.52004 104.094893)">
+     <text>
+      <tspan x="0" y="-0.90625" style="font-size: 7.15px; font-family: 'Arial'; fill: #222222">N</tspan>
+      <tspan x="6.533569" y="-0.90625" style="font-size: 7.15px; font-family: 'Arial'; fill: #222222">=</tspan>
+      <tspan x="12.082581" y="-0.90625" style="font-size: 7.15px; font-family: 'Arial'; fill: #222222">2</tspan>
+      <tspan x="16.045166" y="-0.90625" style="font-size: 7.15px; font-family: 'Arial'; fill: #222222">0</tspan>
+      <tspan x="20.007751" y="-0.90625" style="font-size: 7.15px; font-family: 'Arial'; fill: #222222">0</tspan>
+      <tspan x="23.970337" y="-0.90625" style="font-size: 7.15px; font-family: 'Arial'; fill: #222222">,</tspan>
+      <tspan x="27.338013" y="-0.90625" style="font-size: 7.15px; font-family: 'Arial'; fill: #222222">5</tspan>
+      <tspan x="31.300598" y="-0.90625" style="font-size: 7.15px; font-family: 'Arial'; fill: #222222">0</tspan>
+      <tspan x="35.263184" y="-0.90625" style="font-size: 7.15px; font-family: 'Arial'; fill: #222222">0</tspan>
+      <tspan x="39.225769" y="-0.90625" style="font-size: 7.15px; font-family: 'Arial'; fill: #222222">:</tspan>
+      <tspan x="41.205322" y="-0.90625" style="font-size: 7.15px; font-family: 'Arial'; fill: #222222"> </tspan>
+      <tspan x="43.184875" y="-0.90625" style="font-size: 7.15px; font-family: 'Arial'; fill: #222222">b</tspan>
+      <tspan x="47.147461" y="-0.90625" style="font-size: 7.15px; font-family: 'Arial'; fill: #222222">u</tspan>
+      <tspan x="51.110046" y="-0.90625" style="font-size: 7.15px; font-family: 'Arial'; fill: #222222">d</tspan>
+      <tspan x="55.072632" y="-0.90625" style="font-size: 7.15px; font-family: 'Arial'; fill: #222222">g</tspan>
+      <tspan x="59.035217" y="-0.90625" style="font-size: 7.15px; font-family: 'Arial'; fill: #222222">e</tspan>
+      <tspan x="62.997803" y="-0.90625" style="font-size: 7.15px; font-family: 'Arial'; fill: #222222">t</tspan>
+      <tspan x="64.977356" y="-0.90625" style="font-size: 7.15px; font-family: 'Arial'; fill: #222222">e</tspan>
+      <tspan x="68.939941" y="-0.90625" style="font-size: 7.15px; font-family: 'Arial'; fill: #222222">d</tspan>
+      <tspan x="72.902527" y="-0.90625" style="font-size: 7.15px; font-family: 'Arial'; fill: #222222"> </tspan>
+      <tspan x="74.88208" y="-0.90625" style="font-size: 7.15px; font-family: 'Arial'; fill: #222222">C</tspan>
+      <tspan x="80.027527" y="-0.90625" style="font-size: 7.15px; font-family: 'Arial'; fill: #222222">G</tspan>
+     </text>
+    </g>
+    <text style="font-size: 7.15px; font-family: 'Arial', 'DejaVu Sans'; fill: #222222" transform="translate(430.52004 112.423436)">Pool LP-IP gap</text>
+    <text style="font-size: 7.15px; font-family: 'Arial', 'DejaVu Sans'; fill: #222222" transform="translate(430.52004 120.798857)">No global certificate</text>
+   </g>
+   <g id="text_10">
+    <text style="font-weight: 700; font-size: 8px; font-family: 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #111111" x="430.52004" y="186.89732" transform="rotate(-0 430.52004 186.89732)">6. Integer recovery</text>
+   </g>
+   <g id="text_11">
+    <text style="font-size: 7.15px; font-family: 'Arial', 'DejaVu Sans'; fill: #222222" transform="translate(430.52004 200.330284)">Solve IRMP</text>
+    <text style="font-size: 7.15px; font-family: 'Arial', 'DejaVu Sans'; fill: #222222" transform="translate(430.52004 208.50689)">Recover integer schedule</text>
+   </g>
+   <g id="text_12">
+    <text style="font-weight: 700; font-size: 8px; font-family: 'Arial', 'DejaVu Sans'; fill: #111111" transform="translate(430.52004 260.56767)">7. Outputs and</text>
+    <text style="font-weight: 700; font-size: 8px; font-family: 'Arial', 'DejaVu Sans'; fill: #111111" transform="translate(430.52004 269.01792)">diagnostics</text>
+   </g>
+   <g id="text_13">
+    <text style="font-size: 7.15px; font-family: 'Arial', 'DejaVu Sans'; fill: #222222" transform="translate(430.52004 285.048148)">Cost and mode shares</text>
+    <text style="font-size: 7.15px; font-family: 'Arial', 'DejaVu Sans'; fill: #222222" transform="translate(430.52004 293.224754)">Delay and masking rate</text>
+    <text style="font-size: 7.15px; font-family: 'Arial', 'DejaVu Sans'; fill: #222222" transform="translate(430.52004 301.600174)">Gap type</text>
+    <text style="font-size: 7.15px; font-family: 'Arial', 'DejaVu Sans'; fill: #222222" transform="translate(430.52004 309.860569)">SIMOPS dominance check</text>
+   </g>
+   <g id="text_14">
+    <text style="font-weight: 700; font-size: 8px; font-family: 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #111111" x="232.37424" y="262.20315" transform="rotate(-0 232.37424 262.20315)">4. Column generation loop</text>
+   </g>
+   <g id="text_15">
+    <text style="font-size: 7.15px; font-family: 'Arial', 'DejaVu Sans'; fill: #222222" transform="translate(232.37424 275.562364)">Add columns</text>
+    <text style="font-size: 7.15px; font-family: 'Arial', 'DejaVu Sans'; fill: #222222" transform="translate(232.37424 283.73897)">Resolve RMP</text>
+    <text style="font-size: 7.15px; font-family: 'Arial', 'DejaVu Sans'; fill: #222222" transform="translate(232.37424 291.915576)">Repeat until stop</text>
+   </g>
+   <g id="text_16">
+    <text style="font-weight: 700; font-size: 8px; font-family: 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #111111" x="34.22844" y="221.31615" transform="rotate(-0 34.22844 221.31615)">Optional injected columns</text>
+   </g>
+   <g id="text_17">
+    <text style="font-size: 7.15px; font-family: 'Arial', 'DejaVu Sans'; fill: #222222" transform="translate(34.22844 234.675364)">Heuristic incumbents</text>
+    <text style="font-size: 7.15px; font-family: 'Arial', 'DejaVu Sans'; fill: #222222" transform="translate(34.22844 242.972894)">Sequential-to-SIMOPS columns</text>
+    <text style="font-size: 7.15px; font-family: 'Arial', 'DejaVu Sans'; fill: #222222" transform="translate(34.22844 251.1495)">Feasibility checked</text>
+   </g>
+   <g id="text_18">
+    <text style="font-size: 7px; font-family: 'Arial', 'DejaVu Sans'; text-anchor: middle; fill: #666666" x="298.62" y="321.960799" transform="rotate(-0 298.62 321.960799)">Solid arrows: column generation and recovery flow. Dashed arrows: optional injected incumbent or sequential columns.</text>
+   </g>
+   <g id="patch_10">
+    <path d="M 186.261544 93.268819 
+Q 202.507439 91.195545 217.755199 89.249651 
+" style="fill: none; stroke: #333333; stroke-width: 0.9; stroke-linecap: round"/>
+    <path d="M 213.534196 87.772108 
+L 217.755199 89.249651 
+L 214.040563 91.739928 
+z
+" style="fill: #333333; stroke: #333333; stroke-width: 0.9; stroke-linecap: round"/>
+   </g>
+   <g id="patch_11">
+    <path d="M 297.1413 130.175525 
+Q 297.1413 138.625722 297.1413 146.069688 
+" style="fill: none; stroke: #333333; stroke-width: 0.9; stroke-linecap: round"/>
+    <path d="M 299.1413 142.069688 
+L 297.1413 146.069688 
+L 295.1413 142.069688 
+z
+" style="fill: #333333; stroke: #333333; stroke-width: 0.9; stroke-linecap: round"/>
+   </g>
+   <g id="patch_12">
+    <path d="M 297.1413 223.396488 
+Q 297.1413 232.664074 297.1413 240.925429 
+" style="fill: none; stroke: #333333; stroke-width: 0.9; stroke-linecap: round"/>
+    <path d="M 299.1413 236.925429 
+L 297.1413 240.925429 
+L 295.1413 236.925429 
+z
+" style="fill: #333333; stroke: #333333; stroke-width: 0.9; stroke-linecap: round"/>
+   </g>
+   <g id="line2d_1">
+    <path d="M 221.7276 270.28098 
+L 201.0258 270.28098 
+L 201.0258 88.7427 
+" clip-path="url(#pedb8ebc201)" style="fill: none; stroke: #333333; stroke-width: 0.9; stroke-linecap: square"/>
+   </g>
+   <g id="patch_13">
+    <path d="M 201.0258 88.7427 
+Q 209.876881 88.7427 217.721731 88.7427 
+" style="fill: none; stroke: #333333; stroke-width: 0.9; stroke-linecap: round"/>
+    <path d="M 213.721731 86.7427 
+L 217.721731 88.7427 
+L 213.721731 90.7427 
+z
+" style="fill: #333333; stroke: #333333; stroke-width: 0.9; stroke-linecap: round"/>
+   </g>
+   <g id="patch_14">
+    <path d="M 375.549945 88.94973 
+Q 396.214295 90.378187 415.87481 91.737251 
+" style="fill: none; stroke: #333333; stroke-width: 0.9; stroke-linecap: round"/>
+    <path d="M 412.022257 89.466164 
+L 415.87481 91.737251 
+L 411.746409 93.456642 
+z
+" style="fill: #333333; stroke: #333333; stroke-width: 0.9; stroke-linecap: round"/>
+   </g>
+   <g id="patch_15">
+    <path d="M 496.7658 141.625283 
+Q 496.7658 154.162825 496.7658 165.694137 
+" style="fill: none; stroke: #333333; stroke-width: 0.9; stroke-linecap: round"/>
+    <path d="M 498.7658 161.694137 
+L 496.7658 165.694137 
+L 494.7658 161.694137 
+z
+" style="fill: #333333; stroke: #333333; stroke-width: 0.9; stroke-linecap: round"/>
+   </g>
+   <g id="patch_16">
+    <path d="M 496.7658 220.127325 
+Q 496.7658 230.211107 496.7658 239.288658 
+" style="fill: none; stroke: #333333; stroke-width: 0.9; stroke-linecap: round"/>
+    <path d="M 498.7658 235.288658 
+L 496.7658 239.288658 
+L 494.7658 235.288658 
+z
+" style="fill: #333333; stroke: #333333; stroke-width: 0.9; stroke-linecap: round"/>
+   </g>
+   <g id="patch_17">
+    <path d="M 105.674958 202.051889 
+Q 163.730526 150.869231 235.692394 125.24016 
+" style="fill: none; stroke-dasharray: 3.6,2.7; stroke-dashoffset: 0; stroke: #333333; stroke-width: 0.9; stroke-linecap: round"/>
+    <path d="M 231.25323 124.698103 
+L 235.692394 125.24016 
+L 232.59525 128.466257 
+z
+" style="fill: #333333; stroke-dasharray: 3.6,2.7; stroke-dashoffset: 0; stroke: #333333; stroke-width: 0.9; stroke-linecap: round"/>
+   </g>
+   <g id="line2d_2">
+    <path d="M 183.2814 234.30042 
+L 201.0258 234.30042 
+L 201.0258 270.28098 
+" clip-path="url(#pedb8ebc201)" style="fill: none; stroke-dasharray: 3.6,2.7; stroke-dashoffset: 0; stroke: #333333; stroke-width: 0.9"/>
+   </g>
+   <g id="patch_18">
+    <path d="M 201.0258 270.28098 
+Q 209.876881 270.28098 217.721731 270.28098 
+" style="fill: none; stroke-dasharray: 3.6,2.7; stroke-dashoffset: 0; stroke: #333333; stroke-width: 0.9; stroke-linecap: round"/>
+    <path d="M 213.721731 268.28098 
+L 217.721731 270.28098 
+L 213.721731 272.28098 
+z
+" style="fill: #333333; stroke-dasharray: 3.6,2.7; stroke-dashoffset: 0; stroke: #333333; stroke-width: 0.9; stroke-linecap: round"/>
+   </g>
+   <g id="text_19">
+    <g id="patch_19">
+     <path d="M 178.8578 86.943926 
+L 223.1938 86.943926 
+L 223.1938 79.093114 
+L 178.8578 79.093114 
+z
+" style="fill: #ffffff; opacity: 0.92"/>
+    </g>
+    <text style="font-size: 6.8px; font-family: 'Arial', 'DejaVu Sans'; text-anchor: middle; fill: #666666" x="201.0258" y="84.776426" transform="rotate(-0 201.0258 84.776426)">initial columns</text>
+   </g>
+   <g id="text_20">
+    <g id="patch_20">
+     <path d="M 302.064675 142.550246 
+L 336.578925 142.550246 
+L 336.578925 134.699434 
+L 302.064675 134.699434 
+z
+" style="fill: #ffffff; opacity: 0.92"/>
+    </g>
+    <text style="font-size: 6.8px; font-family: 'Arial', 'DejaVu Sans'; text-anchor: middle; fill: #666666" x="319.3218" y="140.382746" transform="rotate(-0 319.3218 140.382746)">dual prices</text>
+   </g>
+   <g id="text_21">
+    <g id="patch_21">
+     <path d="M 271.450331 234.17697 
+L 367.193269 234.17697 
+L 367.193269 226.24647 
+L 271.450331 226.24647 
+z
+" style="fill: #ffffff; opacity: 0.92"/>
+    </g>
+    <text style="font-size: 6.8px; font-family: 'Arial', 'DejaVu Sans'; text-anchor: middle; fill: #666666" x="319.3218" y="231.929782" transform="rotate(-0 319.3218 231.929782)">negative reduced-cost columns</text>
+   </g>
+   <g id="text_22">
+    <g id="patch_22">
+     <path d="M 179.923629 186.708206 
+L 200.834691 186.708206 
+L 200.834691 178.857394 
+L 179.923629 178.857394 
+z
+" style="fill: #ffffff; opacity: 0.92"/>
+    </g>
+    <text style="font-size: 6.8px; font-family: 'Arial', 'DejaVu Sans'; text-anchor: middle; fill: #666666" x="190.37916" y="184.540706" transform="rotate(-0 190.37916 184.540706)">repeat</text>
+   </g>
+   <g id="text_23">
+    <g id="patch_23">
+     <path d="M 482.340769 158.128744 
+L 511.190831 158.128744 
+L 511.190831 150.195056 
+L 482.340769 150.195056 
+z
+" style="fill: #ffffff; opacity: 0.92"/>
+    </g>
+    <text style="font-size: 6.8px; font-family: 'Arial', 'DejaVu Sans'; text-anchor: middle; fill: #666666" x="496.7658" y="155.961244" transform="rotate(-0 496.7658 155.961244)">final pool</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="pedb8ebc201">
+   <rect x="2.88" y="2.88" width="591.48" height="327.096"/>
+  </clipPath>
+ </defs>
+</svg>

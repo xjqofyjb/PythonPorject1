@@ -1,0 +1,21 @@
+\begin{tabular}{llrrrrrll}
+\toprule
+scenario & method & obj_mean & obj_std & runtime_mean & gap_pct_mean & success_rate & cg_status & gap_type \\
+\midrule
+L & CG+IR & 182306.030 & 8636.722 & 18.702 & 0.002 & 1.000 & full_pricing_converged & Full-CG LP-IP gap \\
+L & FIFO & 204804.080 & 11776.622 & 0.035 & NaN & 1.000 &  &  \\
+L & Greedy & 205175.750 & 11124.528 & 0.085 & NaN & 1.000 &  &  \\
+L & fix_and_optimize & 193229.837 & 10637.762 & 13.558 & NaN & 1.000 &  &  \\
+L & rolling_horizon & 199564.869 & 2897.365 & 17.787 & NaN & 1.000 &  &  \\
+P & CG+IR & 188483.259 & 2225.411 & 20.796 & 0.002 & 1.000 & full_pricing_converged & Full-CG LP-IP gap \\
+P & FIFO & 234220.182 & 4557.521 & 0.036 & NaN & 1.000 &  &  \\
+P & Greedy & 234036.354 & 2187.217 & 0.084 & NaN & 1.000 &  &  \\
+P & fix_and_optimize & 221055.884 & 894.117 & 14.880 & NaN & 1.000 &  &  \\
+P & rolling_horizon & 226373.191 & 9971.849 & 21.693 & NaN & 1.000 &  &  \\
+U & CG+IR & 184592.698 & 8843.394 & 19.284 & 0.005 & 1.000 & full_pricing_converged & Full-CG LP-IP gap \\
+U & FIFO & 225685.364 & 9708.088 & 0.067 & NaN & 1.000 &  &  \\
+U & Greedy & 227163.698 & 9897.192 & 0.168 & NaN & 1.000 &  &  \\
+U & fix_and_optimize & 211890.022 & 10617.281 & 16.699 & NaN & 1.000 &  &  \\
+U & rolling_horizon & 210813.033 & 11177.961 & 21.671 & NaN & 1.000 &  &  \\
+\bottomrule
+\end{tabular}

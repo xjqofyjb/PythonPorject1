@@ -1,0 +1,35 @@
+N,pricing_converged_rate,objective_stabilized_rate,objective_stabilized_rate_display,stabilization_applicable,gap_type,source
+25,1.0,0.0,N/A,False,Full-CG LP-IP gap,simops_dual_peak
+50,1.0,0.0,N/A,False,Full-CG LP-IP gap,simops_dual_peak
+75,1.0,0.0,N/A,False,Full-CG LP-IP gap,simops_dual_peak
+90,1.0,0.0,N/A,False,Full-CG LP-IP gap,simops_dual_peak
+100,1.0,0.0,N/A,False,Full-CG LP-IP gap,simops_dual_peak
+110,0.0,0.4,0.400,True,Pool LP-IP gap,simops_dual_peak
+125,0.0,0.6,0.600,True,Pool LP-IP gap,simops_dual_peak
+150,0.0,0.8,0.800,True,Pool LP-IP gap,simops_dual_peak
+200,0.0,1.0,1.000,True,Pool LP-IP gap,simops_dual_peak
+500,0.0,1.0,1.000,True,Pool LP-IP gap,simops_dual_peak
+200,0.0,1.0,1.000,True,Pool LP-IP gap,table8
+200,,,,True,,table8
+200,,,,True,,table8
+200,0.0,0.8,0.800,True,Pool LP-IP gap,table8
+200,,,,True,,table8
+200,,,,True,,table8
+200,0.0,1.0,1.000,True,Pool LP-IP gap,table8
+200,,,,True,,table8
+200,,,,True,,table8
+200,0.0,0.9,0.900,True,Pool LP-IP gap,table8
+200,,,,True,,table8
+200,,,,True,,table8
+200,0.0,0.9,0.900,True,Pool LP-IP gap,table8
+200,,,,True,,table8
+200,,,,True,,table8
+200,0.0,0.9,0.900,True,Pool LP-IP gap,table8
+200,,,,True,,table8
+200,,,,True,,table8
+500,0.0,1.0,1.000,True,Pool LP-IP gap,table8
+500,,,,True,,table8
+500,,,,True,,table8
+500,0.0,0.7,0.700,True,Pool LP-IP gap,table8
+500,,,,True,,table8
+500,,,,True,,table8

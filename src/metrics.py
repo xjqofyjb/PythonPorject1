@@ -50,6 +50,57 @@ def compute_mode_ratios(mechanism_counts: Dict[str, int], total_jobs: int) -> Di
     }
 
 
+def compute_solution_operational_metrics(
+    instance: Instance,
+    schedule: Dict[str, Any] | None,
+    operation_mode: str = "simops",
+    grid_emission_factor_kg_per_kwh: float = 0.445,
+    ae_emission_factor_kg_per_kwh: float = 0.70,
+) -> Dict[str, Any]:
+    """Compute delay and emissions from a per-vessel returned schedule."""
+    if not schedule:
+        return {
+            "avg_delay_h": np.nan,
+            "delay_cost": np.nan,
+            "emissions_total_kg": np.nan,
+            "emissions_total_tCO2": np.nan,
+        }
+
+    modes = list(schedule.get("modes") or [])
+    starts = np.asarray(schedule.get("service_start_times") or [], dtype=float)
+    durs = np.asarray(schedule.get("service_durations") or [], dtype=float)
+    if len(modes) != instance.N or len(starts) != instance.N or len(durs) != instance.N:
+        return {
+            "avg_delay_h": np.nan,
+            "delay_cost": np.nan,
+            "emissions_total_kg": np.nan,
+            "emissions_total_tCO2": np.nan,
+        }
+
+    delays = np.zeros(instance.N, dtype=float)
+    emissions_kg = np.zeros(instance.N, dtype=float)
+    for i, mode in enumerate(modes):
+        cargo_completion = float(instance.arrival_times[i] + instance.cargo_times[i])
+        service_completion = float(starts[i] + durs[i])
+        if mode == "brown":
+            departure = cargo_completion
+            emissions_factor = ae_emission_factor_kg_per_kwh
+        else:
+            departure = service_completion if operation_mode == "sequential" else max(cargo_completion, service_completion)
+            emissions_factor = grid_emission_factor_kg_per_kwh
+        delays[i] = max(0.0, departure - float(instance.deadlines[i]))
+        emissions_kg[i] = float(instance.energy_kwh[i]) * emissions_factor
+
+    delay_cost_total = float(np.sum(delays * instance.delay_costs))
+    emissions_total_kg = float(np.sum(emissions_kg))
+    return {
+        "avg_delay_h": float(np.mean(delays)) if instance.N else 0.0,
+        "delay_cost": delay_cost_total,
+        "emissions_total_kg": emissions_total_kg,
+        "emissions_total_tCO2": emissions_total_kg / 1000.0,
+    }
+
+
 def compute_simops_metrics(
     instance: Instance,
     operation_mode: str,
@@ -112,7 +163,12 @@ def compute_simops_metrics(
     service_ends = service_start_times + service_durations
 
     overlap = np.maximum(0.0, np.minimum(cargo_ends, service_ends) - np.maximum(cargo_starts, service_start_times))
-    masking_rate = np.where(service_durations > 0, overlap / service_durations, 0.0)
+    masking_rate = np.divide(
+        overlap,
+        service_durations,
+        out=np.zeros_like(overlap, dtype=float),
+        where=service_durations > 0,
+    )
 
     num_fully = int(np.sum(masking_rate >= 0.99))
     num_partial = int(np.sum((masking_rate > 0.0) & (masking_rate < 0.99)))

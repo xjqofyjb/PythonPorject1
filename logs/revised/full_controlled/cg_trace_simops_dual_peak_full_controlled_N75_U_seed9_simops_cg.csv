@@ -1,0 +1,2 @@
+iteration,wall_time,rmp_lp_obj,lp_obj_final_pool_if_available,irmp_obj_checkpoint_if_solved,columns_added_this_iter,total_columns,pricing_calls_cum,min_reduced_cost_scanned_last,num_negative_columns_scanned_last,num_columns_added_last,min_reduced_cost_added_last,min_reduced_cost_last,num_negative_columns_last,pool_gap_pct_if_available,relative_improvement_last_5,pricing_converged,objective_stabilized
+1,11.286281199998484,137513.3352568646,137513.3352568646,137520.8730950891,0,30998,0,0.0,0,0,0.0,0.0,0,0.005481232088516608,0.0,True,False

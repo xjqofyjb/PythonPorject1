@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import argparse
+from pathlib import Path
 
 import numpy as np
 import pandas as pd
@@ -17,14 +18,22 @@ METHOD_ORDER = [
     "greedy",
 ]
 METHOD_LABELS = {
-    "cg": "CG",
-    "milp300": "MILP300",
-    "milp60": "MILP60",
+    "cg": "CG+IR",
+    "CG+IR": "CG+IR",
+    "milp300": "MILP-300",
+    "MILP300": "MILP-300",
+    "milp60": "MILP-60",
+    "MILP60": "MILP-60",
     "rolling_horizon": "Rolling-H",
+    "Rolling-Horizon": "Rolling-Horizon",
     "fix_and_optimize": "F\\&O",
+    "Fix-and-Optimize": "Fix-and-Optimize",
     "restricted_cg": "Restricted-CG",
+    "Restricted-CG": "Restricted-CG",
     "fifo": "FIFO",
+    "FIFO": "FIFO",
     "greedy": "Greedy",
+    "Greedy": "Greedy",
 }
 
 
@@ -37,6 +46,9 @@ def format_mean_std(series: pd.Series, digits: int = 2) -> str:
 
 
 def make_table(df: pd.DataFrame) -> pd.DataFrame:
+    obj_col = "obj" if "obj" in df.columns else "objective"
+    runtime_col = "runtime_total" if "runtime_total" in df.columns else "runtime_sec"
+    df = df[pd.to_numeric(df.get(obj_col), errors="coerce").notna()].copy()
     grouped = df.groupby(["N", "method"], dropna=False)
     has_gap_pct = "gap_pct" in df.columns and df["gap_pct"].notna().any()
     has_gap = "gap" in df.columns and df["gap"].notna().any()
@@ -46,14 +58,18 @@ def make_table(df: pd.DataFrame) -> pd.DataFrame:
         row = {
             "N": int(N),
             "method": method,
-            "obj": format_mean_std(g["obj"]),
-            "runtime": format_mean_std(g["runtime_total"], digits=3),
+            "obj": format_mean_std(pd.to_numeric(g[obj_col], errors="coerce")),
+            "runtime": format_mean_std(pd.to_numeric(g[runtime_col], errors="coerce"), digits=3),
             "success": f"{success_rate * 100:.1f}\\%",
         }
         if has_gap_pct:
             row["Gap(\\%)"] = format_mean_std(g["gap_pct"])
         elif has_gap:
             row["Gap(\\%)"] = format_mean_std(g["gap"] * 100.0)
+        for meta_col in ["cg_status", "gap_type", "pricing_converged", "objective_stabilized"]:
+            if meta_col in g.columns:
+                vals = [str(v) for v in g[meta_col].dropna().unique() if str(v) != "nan"]
+                row[meta_col] = ";".join(vals)
         rows.append(row)
     table = pd.DataFrame(rows)
     if not table.empty:
@@ -118,12 +134,91 @@ def make_table_scenario(df: pd.DataFrame) -> pd.DataFrame:
     return table.sort_values(["scenario", "method"])
 
 
+def make_table8_final_controlled(source: str | Path) -> pd.DataFrame:
+    source = Path(source)
+    inputs = [
+        source / "n200_table8_full_replacement_summary.csv",
+        source / "n500_table8_full_replacement_summary.csv",
+    ]
+    frames = []
+    for path in inputs:
+        if path.exists():
+            frames.append(pd.read_csv(path))
+    if not frames:
+        raise FileNotFoundError(f"No controlled Table 8 summary CSVs found in {source}")
+
+    table = pd.concat(frames, ignore_index=True)
+    table = table[pd.to_numeric(table["objective_mean"], errors="coerce").notna()].copy()
+    keep_cols = [
+        "N",
+        "scenario",
+        "method",
+        "objective_mean",
+        "objective_std",
+        "rel_gap_to_CG_mean",
+        "runtime_mean",
+        "runtime_std",
+        "status_success_rate",
+        "cg_status",
+        "gap_type",
+        "pricing_converged_rate",
+        "objective_stabilized_rate",
+        "pool_gap_pct_mean",
+        "columns_mean",
+        "iterations_mean",
+    ]
+    for col in keep_cols:
+        if col not in table.columns:
+            table[col] = np.nan
+    table = table[keep_cols]
+    table["method"] = table["method"].map(METHOD_LABELS).fillna(table["method"])
+    scenario_order = [s for s in ["U", "P", "L"] if s in table["scenario"].dropna().unique()]
+    if scenario_order:
+        table["scenario"] = pd.Categorical(table["scenario"], categories=scenario_order, ordered=True)
+    method_order = [
+        "CG+IR",
+        "MILP-60",
+        "MILP-300",
+        "Rolling-Horizon",
+        "Fix-and-Optimize",
+        "Restricted-CG",
+        "FIFO",
+        "Greedy",
+    ]
+    present = [m for m in method_order if m in table["method"].dropna().unique()]
+    if present:
+        table["method"] = pd.Categorical(table["method"], categories=present, ordered=True)
+    return table.sort_values(["N", "scenario", "method"])
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description="Make LaTeX tables from results.")
-    parser.add_argument("--in", dest="inp", required=True, help="Input CSV path")
-    parser.add_argument("--out", required=True, help="Output LaTeX file path")
+    parser.add_argument("--in", dest="inp", help="Input CSV path")
+    parser.add_argument("--out", help="Output LaTeX file path")
     parser.add_argument("--experiment", default="", help="main/mechanism/sensitivity/simops; inferred if empty")
+    parser.add_argument("--source", help="Directory containing controlled result CSVs")
+    parser.add_argument("--table", help="Named table to generate")
+    parser.add_argument("--output", help="Output directory for named tables")
     args = parser.parse_args()
+
+    if args.table:
+        if args.table != "table8_final_controlled":
+            raise ValueError(f"Unsupported named table: {args.table}")
+        if not args.source or not args.output:
+            raise ValueError("--source and --output are required with --table")
+        out_dir = Path(args.output)
+        out_dir.mkdir(parents=True, exist_ok=True)
+        table = make_table8_final_controlled(args.source)
+        csv_path = out_dir / "table8_final_controlled.csv"
+        tex_path = out_dir / "table8_final_controlled.tex"
+        table.to_csv(csv_path, index=False)
+        latex = table.to_latex(index=False, escape=False)
+        with open(tex_path, "w", encoding="utf-8") as f:
+            f.write(latex)
+        return
+
+    if not args.inp or not args.out:
+        parser.error("--in and --out are required unless --table is used")
 
     df = pd.read_csv(args.inp)
 

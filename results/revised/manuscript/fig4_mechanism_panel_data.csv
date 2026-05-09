@@ -1,0 +1,13 @@
+method,mechanism,penalty_vs_hybrid_pct_mean,penalty_vs_hybrid_pct_std,infeasibility_rate_mean,scenarios
+CG+IR,BS_only,16.18002326205198,3.1231754668801357,0.0,"L,P,U"
+CG+IR,Green_only_no_AE,0.0,0.0,0.0,"L,P,U"
+CG+IR,Hybrid,0.0,0.0,0.0,"L,P,U"
+CG+IR,SP_only,94.84010708829054,0.2508773144448125,0.0,"L,P,U"
+Fix-and-Optimize,BS_only,15.516694640742296,1.1039296397926783,0.0,"L,P,U"
+Fix-and-Optimize,Green_only_no_AE,,,1.0,"L,P,U"
+Fix-and-Optimize,Hybrid,0.0,0.0,0.0,"L,P,U"
+Fix-and-Optimize,SP_only,76.13224385756094,7.45275059403413,0.0,"L,P,U"
+Rolling-Horizon,BS_only,12.789287519670353,1.7192879575545286,0.0,"L,P,U"
+Rolling-Horizon,Green_only_no_AE,,,1.0,"L,P,U"
+Rolling-Horizon,Hybrid,0.0,0.0,0.0,"L,P,U"
+Rolling-Horizon,SP_only,74.04770640353887,7.152423881759754,0.0,"L,P,U"

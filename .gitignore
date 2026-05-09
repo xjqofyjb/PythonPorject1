@@ -2,9 +2,13 @@
 .obsidian/
 .claude/
 __pycache__/
+.pytest_cache/
+pytest-cache-files-*/
 *.pyc
 *.pyo
 *.pyd
+*.log
+!logs/**/*.log
 
 # Solver and local runtime artifacts
 *.lp
@@ -12,9 +16,16 @@ __pycache__/
 gurobi.log
 nul
 
+# Local solver exports
+*-pulp.lp
+*-pulp.sol
+
 # Local environment noise
 .DS_Store
 Thumbs.db
+.venv/
+venv/
+env/
 
 # Currently inaccessible local files
 Parameter_Calibration_Report.md

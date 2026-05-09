@@ -13,6 +13,7 @@ import numpy as np
 
 from src.instances import Instance
 from src.metrics import compute_simops_metrics, compute_type_breakdown
+from src.model_utils import horizon_slots, operation_start_min
 
 
 def _make_solver_candidates(pulp_module, time_limit: int) -> List[Tuple[str, Any]]:
@@ -81,17 +82,13 @@ def solve(instance: Instance, cfg: Dict[str, Any], logger) -> Dict[str, Any]:
     K_SP = int(instance.shore_berths) if hasattr(instance, 'shore_berths') else int(instance.shore_cap)
     K_BS = int(instance.battery_slots)
 
-    horizon = int(max(np.max(deadlines + sp_dur + 2), np.max(arrival + cargo + sp_dur + 2)))
-    horizon = max(horizon, int(np.max(deadlines)) + 5)
+    horizon = int(getattr(instance, "horizon_steps", horizon_slots(instance.params)))
 
     # Feasible start times for each ship
     start_sp: List[List[int]] = []
     start_bs: List[List[int]] = []
     for i in range(N):
-        if op_mode == "sequential":
-            start_min = int(arrival[i] + cargo[i])
-        else:
-            start_min = int(arrival[i])
+        start_min = operation_start_min(int(arrival[i]), int(cargo[i]), op_mode)
         start_max_sp = horizon - int(sp_dur[i])
         start_max_bs = horizon - int(bs_dur[i])
         sp_times = list(range(start_min, start_max_sp + 1)) if start_max_sp >= start_min else []

@@ -1,0 +1,12 @@
+\begin{tabular}{rllrrrrrrllrrrrrr}
+\toprule
+N & scenario & method & objective_mean & objective_std & rel_gap_to_CG_mean & runtime_mean & runtime_std & status_success_rate & cg_status & gap_type & pricing_converged_rate & objective_stabilized_rate & pool_gap_pct_mean & columns_mean & iterations_mean & relative_improvement_last_5_mean \\
+\midrule
+500 & U & CG+IR & 1690815.934 & 16307.503 & 0.000 & 94.992 & 1.621 & 1.000 & budgeted_stabilized & Pool LP-IP gap & 0.000 & 1.000 & 0.000 & 27476.000 & 20.000 & 0.000 \\
+500 & U & FIFO & 1823680.305 & 16156.508 & 7.859 & 0.261 & 0.002 & 1.000 &  &  & NaN & NaN & NaN & NaN & NaN & NaN \\
+500 & U & Fix-and-Optimize & 1808985.442 & 15957.672 & 6.990 & 57.086 & 2.601 & 1.000 &  &  & NaN & NaN & NaN & NaN & NaN & NaN \\
+500 & U & Greedy & 1816712.427 & 19894.324 & 7.445 & 0.415 & 0.003 & 1.000 &  &  & NaN & NaN & NaN & NaN & NaN & NaN \\
+500 & U & Restricted-CG & 1815121.895 & 19505.352 & 7.351 & 7.882 & 1.215 & 1.000 & budgeted_max_iter;budgeted_stabilized & Pool LP-IP gap & 0.000 & 0.600 & 0.005 & 5230.000 & 6.400 & 0.000 \\
+500 & U & Rolling-Horizon & 1818280.901 & 14232.971 & 7.540 & 80.089 & 3.453 & 1.000 &  &  & NaN & NaN & NaN & NaN & NaN & NaN \\
+\bottomrule
+\end{tabular}

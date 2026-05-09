@@ -1,0 +1,31 @@
+\begin{tabular}{rllrrrrll}
+\toprule
+N & Scenario & Method & Objective mean & Objective std. & Gap to CG+IR (%) & Runtime (s) & CG status & Gap type \\
+\midrule
+200 & U & CG+IR & 535891.968 & 8120.044 & 0.000 & 33.608 & budgeted_stabilized & Pool LP-IP gap \\
+200 & U & Rolling-Horizon & 596178.676 & 10632.321 & 11.249 & 38.155 & -- & -- \\
+200 & U & Fix-and-Optimize & 586061.175 & 10314.764 & 9.363 & 25.636 & -- & -- \\
+200 & U & Restricted-CG & 597018.305 & 10883.541 & 11.404 & 3.285 & budgeted_max_iter;budgeted_stabilized & Pool LP-IP gap \\
+200 & U & FIFO & 596409.358 & 10779.777 & 11.292 & 0.084 & -- & -- \\
+200 & U & Greedy & 598402.658 & 10424.766 & 11.665 & 0.164 & -- & -- \\
+200 & P & CG+IR & 542832.304 & 9972.522 & 0.000 & 36.759 & budgeted_stabilized & Pool LP-IP gap \\
+200 & P & Rolling-Horizon & 608630.129 & 15555.084 & 12.114 & 36.954 & -- & -- \\
+200 & P & Fix-and-Optimize & 597021.601 & 14673.357 & 9.976 & 26.443 & -- & -- \\
+200 & P & Restricted-CG & 604726.111 & 14923.656 & 11.396 & 3.342 & budgeted_max_iter;budgeted_stabilized & Pool LP-IP gap \\
+200 & P & FIFO & 606209.595 & 14279.523 & 11.670 & 0.107 & -- & -- \\
+200 & P & Greedy & 605071.551 & 15242.158 & 11.459 & 0.200 & -- & -- \\
+200 & L & CG+IR & 511397.240 & 8089.088 & 0.000 & 43.633 & budgeted_max_iter;budgeted_stabilized & Pool LP-IP gap \\
+200 & L & Rolling-Horizon & 571080.141 & 9351.528 & 11.672 & 32.218 & -- & -- \\
+200 & L & Fix-and-Optimize & 558193.444 & 10374.341 & 9.150 & 21.246 & -- & -- \\
+200 & L & Restricted-CG & 569565.880 & 11592.865 & 11.370 & 3.221 & budgeted_max_iter;budgeted_stabilized & Pool LP-IP gap \\
+200 & L & FIFO & 569774.906 & 12259.390 & 11.410 & 0.097 & -- & -- \\
+200 & L & Greedy & 569729.044 & 11640.380 & 11.402 & 0.167 & -- & -- \\
+500 & U (U-only) & CG+IR & 1690831.877 & 14156.217 & 0.000 & 96.904 & budgeted_stabilized & Pool LP-IP gap \\
+500 & U (U-only) & Rolling-Horizon & 1821716.385 & 14175.735 & 7.742 & 79.435 & -- & -- \\
+500 & U (U-only) & Fix-and-Optimize & 1812278.477 & 14785.585 & 7.183 & 56.268 & -- & -- \\
+500 & U (U-only) & Restricted-CG & 1820005.966 & 15925.640 & 7.640 & 7.803 & budgeted_max_iter;budgeted_stabilized & Pool LP-IP gap \\
+500 & U (U-only) & FIFO & 1825679.247 & 14934.873 & 7.976 & 0.268 & -- & -- \\
+500 & U (U-only) & Greedy & 1821269.836 & 16513.729 & 7.715 & 0.413 & -- & -- \\
+\multicolumn{9}{p{0.98\linewidth}}{\footnotesize Notes: N=200 and N=500 report Pool LP-IP gaps for generated-pool budgeted-CG runs. N=500 is scenario U only.}\\
+\bottomrule
+\end{tabular}

@@ -1,0 +1,3 @@
+seed,sequential_obj,simops_obj,simops_saving_pct,dominance_check_passed,sequential_AE_share,simops_AE_share,sequential_BS_share,simops_BS_share,sequential_SP_share,simops_SP_share,seq_cg_status,simops_cg_status,seq_gap_type,simops_gap_type,seq_objective_stabilized,simops_objective_stabilized,seq_best_reduced_cost_last,simops_best_reduced_cost_last
+1,578475.6166288754,525417.6739598438,9.172027505365229,True,0.575,0.445,0.36,0.465,0.065,0.09,budgeted_max_iter,budgeted_stabilized,Pool LP-IP gap,Pool LP-IP gap,False,True,0.0,-111.50101046196096
+2,592034.4141693121,539083.6193973668,8.943871083278324,True,0.58,0.45,0.36,0.465,0.06,0.085,budgeted_stabilized,budgeted_stabilized,Pool LP-IP gap,Pool LP-IP gap,True,True,-291.8151443146003,-288.4192517331869
